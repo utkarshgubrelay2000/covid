@@ -1,0 +1,283 @@
+@media screen and (max-width: 1199px) {
+
+    .site-header .cp-navbar-light .cp-navbar-nav .cp-nav-link,
+    .site-header .cp-nav-link {
+        padding: 6px 15px;
+    }
+
+    .site-banner .banner-content {
+        background-color: rgba(255,255,255,0.9);
+    }
+    
+    .book-consultation {
+        margin-top: 0;
+        padding: 40px 0;
+    }
+
+}
+
+
+@media screen and (max-width: 991px) {
+
+    
+    h1,
+    h2 {
+        font-size: 38px;
+        line-height: 45px;
+    }
+
+    section {
+        padding: 40px 0 20px;
+    }
+    .site-banner {
+        padding: 40px 0;
+    }
+
+
+    .site-footer {
+        background-color: #094496;
+        padding: 30px 0 10px;   
+    }    
+
+    .site-banner .banner-content {
+        padding: 25px 15px;
+    }
+
+    .find-test-center-sec .contact-form-box {
+        padding: 30px;
+    }
+    .find-test-center-sec .search-pincode .field {
+        margin: 5px 0 10px;
+        padding: 13px 12px;
+        width: 70%;
+    }
+
+        
+    .find-test-center-sec .result-listing .listing {
+        height: 70%;
+    }
+    .find-test-center-sec .results {
+        height: 70%;
+    }
+
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .site-header .cp-navbar-brand {
+        max-width: 72%;
+    }
+    
+    .before-arrival .content table {
+        display: block;
+        overflow: scroll;
+    }
+    .before-arrival .content td,
+    .before-arrival .content td span {
+        width: 150px;  
+    }
+
+    
+    .book-test-sec .tabbing .nav-pills .nav-link {
+        margin: 15px 0;
+    }
+
+    .find-test-center-sec .contact-form-box {
+        padding: 20px;
+    }
+    .find-test-center-sec .search-pincode .field {
+        margin: 5px 0 10px;
+        padding: 13px 12px;
+        width: 100%;
+    }
+
+    
+    .find-test-center-sec .result-listing .listing {
+        border: 1px solid #424240;
+        height: 500px;
+        margin-top: 15px;
+        padding: 20px 10px;
+        position: relative;
+        width: 100%;
+        top: initial;
+        left: initial;
+    }
+    .find-test-center-sec .results {
+        height: 380px;
+    }
+
+    
+    .pick-slots-sec .contact-form-box .days-content {
+        border-bottom: 1px solid #3E4266;
+        margin-bottom: 15px;
+    }
+
+}
+
+
+@media screen and (max-width: 575px) {
+
+
+    
+}
+
+
+@media (min-width: 768px) {
+
+    .slots-popup .modal-dialog {
+        max-width: 700px;
+    }
+
+    
+    .pick-slots-sec .contact-form-box .days-content {
+        position: relative;
+    }
+    .pick-slots-sec .contact-form-box .days-content:first-child::before {
+        content: '';
+        background-color: #3E4266;
+        display: block;
+        height: 90%;
+        width: 1px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+}
+
+@media (min-width: 992px) {
+    
+    .testimonial-slider .slick-slide {
+        padding: 15px 0;
+    }
+
+    .before-arrival .content td,
+    .before-arrival .content td span {
+        width: 350px;  
+    }
+
+    .slots-popup .modal-dialog {
+        max-width: 800px;
+    }
+    
+    
+}
+
+@media (min-width: 1200px) {
+    
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl {
+        max-width: 1140px;
+    }
+
+    .site-header .cp-navbar-light .cp-navbar-nav .cp-nav-link, .site-header .cp-nav-link {
+        padding: 10px 8px;
+    }
+    .site-header .btn-purple-border,
+    .site-header .btn-purple {
+        padding: 10px 15px !important;
+    }
+    .site-header .cp-navbar-brand {
+        max-width: 20%;
+    }
+
+    
+    .site-header .parent-menu {
+        position: relative;
+    }
+    .site-header .parent-menu a i {
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        margin-left: 3px;
+        top: 2px;
+    }
+    .site-header .sub-menu {
+        background-color: #f8f8f8;
+        box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+        position: absolute;
+        min-width: 215px;
+        z-index: 99;
+    }
+    .site-header .parent-menu .sub-menu li {
+        text-align: left;
+    }
+    .site-header .parent-menu .sub-menu .cp-nav-link {
+        padding: 10px 20px !important;
+    }
+    .site-header .parent-menu:hover .sub-menu {
+        display: block;
+    }
+
+    
+    .book-test-sec .tabbing .nav-pills {
+        max-width: 75%;
+        margin: 0 auto;
+    }
+    
+    .pick-slots-sec .contact-form-box {
+        padding: 50px;
+    }
+
+}
+
+@media (min-width: 1280px) {
+    
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl {
+        max-width: 1200px;
+    }
+
+    .site-header .cp-navbar-light .cp-navbar-nav .cp-nav-link, .site-header .cp-nav-link {
+        padding: 10px 11px;
+    }
+
+    
+}
+
+@media (min-width: 1440px) {
+    
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl {
+        max-width: 1350px;
+    }
+
+    .site-header .cp-navbar-light .cp-navbar-nav .cp-nav-link, .site-header .cp-nav-link {
+        padding: 10px 18px;
+    }
+
+    
+
+}
+
+@media (min-width: 1600px) {
+    
+    .container, 
+    .container-lg, 
+    .container-md, 
+    .container-sm, 
+    .container-xl {
+        max-width: 1500px;
+    }
+
+    
+}
+
+
+
+@media (min-width: 1920px) {
+    
+
+
+}

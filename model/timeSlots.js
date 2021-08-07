@@ -1,0 +1,38 @@
+const mongoose = require("mongoose");
+
+const timeSlotSchema = new mongoose.Schema(
+  {
+    User: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    test: { type: mongoose.Schema.Types.ObjectId, ref: "Test" },
+    available: { type: Boolean },
+    bookedFor: { type: Date, default: Date.now() },
+    paid: { type: Boolean, default: false },
+    duration: { type: String },
+    booked: { type: Boolean, default: false },
+    approved: { type: Boolean, default: false },
+    amount: { type: String },
+    // booking_id: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Booking",
+    // },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "PersonalDetails",
+    },
+    transaction_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Transaction",
+    },
+    results: {
+      type: String,
+      enum: ["positive", "negative", "pending", "cancelled"],
+      required: true,
+      default: "pending",
+    },
+  },
+  { timestamps: true }
+);
+
+const TimeSlots = new mongoose.model("TimeSlots", timeSlotSchema);
+
+module.exports = TimeSlots;

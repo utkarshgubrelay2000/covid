@@ -1,0 +1,187 @@
+@media(min-width: 1600px){
+    .container{
+        max-width: 1500px;
+    }
+    .job-data li{
+        font-size: 15px!important;
+    }
+    .user-img {
+        max-height: 104px;
+        max-width: 104px;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1200px){
+    ul.navbar-right li+li {
+        margin-left: 12px;
+    }
+    .dropdown-toggle,.username {
+        font-size: 14px;
+    }
+    .notify-btn a{
+        font-size: 20px;
+    }
+}
+@media(max-width: 1200px){
+    .project-data .title {
+        width: 100%;
+        display: flex;
+    }
+    .profile-box .rating {
+        font-size: 16px;
+    }
+    .profile-box h5{
+        font-size: 14px;
+    }
+    .profile-box h2{
+        font-size: 22px;
+    }
+    .profile-box .theme-btn{
+        padding: 10px 8px;
+    }
+    .job-data li{
+        width: 100%;
+    }
+
+    .notifications-sec .notification .img {
+        margin-bottom: 15px;
+    }
+}
+@media(min-width: 992px){
+    .navbar-nav li {
+        padding: 15px 0;
+        position: relative;
+    }
+    .navbar-nav li+li{
+        margin-left: 90px;
+    }
+    .navbar-nav li+li:after {
+        content: "";
+        border-radius: 50px;
+        height: 6px;
+        width: 6px;
+        background: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: -45px;
+        transform: translate(-50%,-50%);
+    }
+    .job-data li{
+        font-size: 12px;
+    }
+}
+@media(max-width: 991px){
+    /* mobile menu */
+    .navbar-expand-md .navbar-nav{
+        flex-direction: column;
+    }
+    .mobile-menu{
+        z-index: 9;
+        position: relative;
+        font-size: 30px;
+        color: #fff;
+    }
+    .sidenav {
+        height: 100%;
+        width: 100%;
+        max-width: 300px;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: -100%;
+        background: linear-gradient(#0A457D,#217CD7);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    .sidenav a {
+        padding: 12px 0;
+        text-decoration: none;
+        font-size: 16px;
+        color: #fff;
+        padding-left: 30px;
+        display: block;
+        transition: 0.3s;    
+    }
+    .sidenav a+a {    
+        border-bottom: 1px solid #ffffff1a;
+    }
+    .sidenav a:hover{
+        color: #f1f1f1;
+    }
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 18px;
+        font-size: 38px;
+        padding: 0;
+    }
+    ul.navbar-nav{
+        padding: 20px;
+    }
+    ul.navbar-nav li+li{
+        margin-top: 20px;
+    }
+    .job-data li+li:before{
+        left: -18px;
+    }
+
+    .contact-info .title {
+        display: block;
+        width: 100%;
+    }
+    .contact-info .lines {
+        margin: 0 0 25px;
+    }
+
+
+}
+@media(max-width: 768px){
+    .project-data {
+        font-size: 13px;
+    }
+    .project-list .project-item{
+        padding: 20px 0;
+    }
+    .title-img{
+        height: 360px;
+    }
+    .profile-dropdown{
+        right: -28px!important;
+        min-width: 345px;
+    }
+    .card-title h5{
+        font-size: 15px;
+    }
+    .project-tab a.nav-link{
+        min-width: auto;
+        padding: 4px 16px;
+    }
+    .project-tab a.nav-link.active:after{
+        font-size: 32px;
+    }
+}
+@media(max-width: 767px){
+    .trust-point li+li{
+        margin: 6px 0 0 0;
+    }
+    .support-tab a.nav-link {
+        padding: 5px 10px;
+    }
+
+   
+}
+@media(min-width: 768px){
+    .position-md-absolute{
+        position: absolute!important;
+    }
+
+
+}
+
+@media (min-width: 1920px) {
+    
+    .appointment-booking .tabbing table thead tr th,
+    .appointment-booking .tabbing table tbody tr td {
+        padding: 15px 25px;
+    }
+}
