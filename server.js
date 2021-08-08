@@ -5,6 +5,7 @@ const cors = require("cors")
 const mongoose=require('mongoose')
 require("dotenv").config({path:"./config/config.env"});
 const Routes=require('./routes/router')
+const auth=require('./routes/auth')
 
 
 const bodyParser = require('body-parser');
@@ -37,6 +38,7 @@ app.use(express.json())
 // Auth Routers
 
  app.use('/',Routes)
+ app.use('/',auth)
 
 
 
