@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const registerController=require('../controller/routerController')
+const timeSlots=require('../controller/timeSlots')
 var mutter=require('multer')
 var path=require('path')
 /* GET home page. */
@@ -22,6 +23,31 @@ router.get('/',registerController.homePage)
  router.get('/testimonials',registerController.testimonials)
  router.get('/test-Terms',registerController.testTerms)
  router.get('/appointment',registerController.appointment)
-
+ router.post('/get-avaiable-session',timeSlots.getSlots)
+ router.get("/get-time-slots").get(async (req, res) => {
+    function addDays(theDate, days) {
+      return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
+    }
+    // let today = new Date()
+    let newDate = new Date();
+    let nextDate = addDays(newDate, 1);
+  
+    const tests = await Test.find();
+    const slots = await TimeSlots.find({
+      test: tests[0]._id,
+      booked: false,
+      bookedFor: { $gt: newDate, $lt: nextDate },
+    });
+    const users = await User.find();
+    // console.log(users);
+    res.json({
+      tests,
+      slots,
+      users: users.filter(
+        (el) => el.firstName && (el.role === "user" || el.role === "User")
+      ),
+    });
+  });
+  
 
 module.exports=router

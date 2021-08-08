@@ -1,3 +1,4 @@
+const TimeSlots = require("../model/timeSlots");
 const FAQ = require("../model/faqModel");
 const Test = require("../model/testModel");
 
@@ -32,8 +33,21 @@ exports.loadMoreFaqs =async (req, res) => {
 exports.appointment = (req, res) => {
   res.render("appointment-bookings");
 };
-exports.chooseslots = (req, res) => {
-  res.render("choose-slots",{_id:req.params.id,testId:req.params.testId});
+exports.chooseslots = async (req, res) => {
+  function addDays(theDate, days) {
+    return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
+  }
+  // let today = new Date()
+  let newDate = new Date();
+  let nextDate = addDays(newDate, 1);
+
+  const tests = await Test.find();
+  const slots = await TimeSlots.find({
+    test: tests[0]._id,
+    booked: false,
+    bookedFor: { $gt: newDate, $lt: nextDate },
+  });
+  res.render("choose-slots",{_id:req.params.id,slots:slots});
 };
 exports.contactdetails = (req, res) => {
   console.log(req.body)
@@ -68,7 +82,7 @@ exports.testimonials = (req, res) => {
 };
 exports.testslisting =async (req, res) => {
   let tests=await Test.find({})
- // console.log(tests)
+  console.log(tests)
   res.render("tests-listing",{tests:tests});
 };
 exports.testsbyId =async (req, res) => {

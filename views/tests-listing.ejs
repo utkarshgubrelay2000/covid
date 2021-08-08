@@ -19,7 +19,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
         <!-- custom -->
         <link rel="stylesheet" href="assets/styles/slick.css">
@@ -239,16 +239,19 @@
                             <div class="tabbing">
                                 <div class="nav nav-pills row d-md-flex d-block mb-4" data-aos="zoom-in-up">	
                                     <% tests.map((test,index)=>{%>						
-                                    <div class="nav-item col-4">
+                                    <div class="nav-item ">
                                         <div class="nav-link tab-boxes text-center " data-toggle="pill" href="#tab<%=index%>">
                                             <img src="assets/images/fly.png" alt="fly" class="mb-4" />
                                             <h6>
-                                                I am travelling <strong>FROM</strong> the UK
+                                                <%=test.test_name%>
+                                            </h6>
+                                            <h6>
+                                                <%=test.sub_heading%>
                                             </h6>
                                             <div class="small-desc">
                                                 <p>
-                                                    I need a Fit to Fly certificate <br/>                                                
-                                                    (excludes Jersey)
+                                                    <%=test.short_description%>
+
                                                 </p>
                                             </div>
                                             <a href="#tab<%=index%>" onclick="selectTest('<%=test._id%>','<%=index%>')"
@@ -259,6 +262,7 @@
                                         </div>
                                     </div>						
                                     <% })%>	
+                                
                                 </div>
 
 
@@ -488,15 +492,17 @@
         </footer>
         <!-- ./site-footer -->
 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- custom js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js" integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
         <script src="assets/scripts/jquery.min.js"></script>
         <script src="assets/scripts/popper.min.js"></script>
         <script src="assets/bootstrap-4/bootstrap.min.js"></script>
         <script src="assets/scripts/slick.js"></script>
         <script src="assets/scripts/jquery.matchHeight-min.js"></script>
         <script src="assets/scripts/aos.js"></script>
-        <script src="assets/js/main.js"></script>
+       <script src="assets/js/main.js"></script>
       
 
         <script>

@@ -1,8 +1,9 @@
+
 // mobile menu open close
 let str = "";
 let covid_token = localStorage.getItem("covid");
 
-window.onload(checkLogin(covid_token))
+checkLogin(covid_token)
 function openNav() {
   document.getElementById("mySidenav").style.left = "0";
 }
@@ -41,7 +42,7 @@ $("#imageUpload").change(function () {
 //console.log('hello')
 async function selectTest(id, index) {
   //console.log(index,id)
-  let str = "";
+   str = "";
   $(".test-div").html(str);
   let selectClasses = document.getElementsByClassName("btn-skyblue-border");
   for (let i = 0; i < selectClasses.length; i++) {
@@ -68,8 +69,8 @@ async function selectTest(id, index) {
       let body;
       res.tests.test_list.forEach((ele) => {
         var spot = ele;
-        body = `
- <div class="col-xl-2 col-lg-4 col-md-6">
+        body += `
+ <div class="col-xl-4 col-lg-4 col-md-6">
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
@@ -138,7 +139,7 @@ for (var i = 0; i < btn.length; i++) {
 
 $("#booking-head").html(str);
 function checkLogin(token) {
-  console.log('ehllo')
+
   if (!token) {
     str = ` <li class="nav-item cp-nav-item">
                                         <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
@@ -155,4 +156,36 @@ function checkLogin(token) {
   $("#booking-head").html(str);
   console.log(str);
 }
+function getSlots(){
+$("#slots").html(str);
+
+  let id=document.getElementById('test').value
+  let date=document.getElementById('date').value
+ let data={   test: id,limit: 1,date: date}
+ console.log(data)
+ $.ajax({
+  url: "/get-avaiable-session",
+  method: "POST",
+data:data,
+  success: function (res) {
+    console.log(res);
+    if(res.status){
+      alert(res.message)
+
+      res.data.forEach((ele) => {
+        var spot = ele;
+        str += `<option value="${ele._id}">${new Date(ele.bookedFor).toLocaleTimeString() } </option>`;
+      });
+      $("#slots").html(str);
+    }
+    else{
+      alert('Slots not found')
+    }
+   
+  },
+  error: function () {
+    Toast("error", "Error!", "Something happens in Server!");
+  }})}
+ 
+    
 
