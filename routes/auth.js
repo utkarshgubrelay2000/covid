@@ -8,9 +8,12 @@ var userAuthentication=require('../controller/authController');
 router.post('/signup',userAuthentication.Signup,err=>{
   console.log('error while signup user')
 })
-router.post('/signin',userAuthentication.Signin,err=>{
+router.post('/login',userAuthentication.Signin,err=>{
   console.log('error while signup user')
 })
+ router.get('/signup', userAuthentication.SignupPage)
+ router.get('/login', userAuthentication.LoginPage)
+
 
 
 /// FORGOT PASSWORD APIS  //////

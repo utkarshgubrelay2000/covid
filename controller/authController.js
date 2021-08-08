@@ -37,12 +37,9 @@ exports.Signup = (req, res) => {
             .save()
             .then((user) => {
         
-             const token = jwt.sign(
-              { secretId: user._id },
-              process.env.JWT_SECRET
-            );
+        
           
-             res.redirect('/')
+             res.render('/login')
             })
             .catch((err) => {
               //   console.log(err.message)
@@ -94,6 +91,12 @@ exports.Signin = (req, res) => {
   
 };
 
+exports.SignupPage=(req,res)=>{
+  res.render('signup')
+}
+exports.LoginPage=(req,res)=>{
+  res.render('login')
+}
 // exports.ForgetPassword = (req, res) => {
 //   var otpGenerator = require('otp-generator')
 //    let ResetOTP=otpGenerator.generate(6, { upperCase: false, specialChars: false,alphabets:false });
