@@ -277,25 +277,7 @@
                                                         Amber Arrivals Test Package
                                                     </span>
                                                 </h2>
-                                                <form>
-                                                    <div class="row mt-5">
-                                                        <div class="col-12 text-center">
-                                                            <div class="form-group select-people">
-                                                                <label>
-                                                                    <i class="fas fa-users"></i>
-                                                                    No. of people in booking
-                                                                </label>
-                                                                <select class="numbers">
-                                                                    <option value='1' class="1">1</option>
-                                                                    <option value='2' class="2">2</option>
-                                                                    <option value='3' class="3">3</option>
-                                                                    <option value='4' class="4">4</option>
-                                                                    <option value='5' class="5">5</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                      
                                             </div>
                                         </div>
 
@@ -303,7 +285,23 @@
                                             <div class="col-xl-10">                                                
                                                 <div class="contact-form-box">
                                                     <form    method='POST' id="loginForm" action="/contact-details">
-                                                        
+                                                        <div class="row mt-5">
+                                                            <div class="col-12 text-center">
+                                                                <div class="form-group select-people">
+                                                                    <label>
+                                                                        <i class="fas fa-users"></i>
+                                                                        No. of people in booking
+                                                                    </label>
+                                                                    <select name='people' class="numbers">
+                                                                        <option value='1' class="1">1</option>
+                                                                        <option value='2' class="2">2</option>
+                                                                        <option value='3' class="3">3</option>
+                                                                        <option value='4' class="4">4</option>
+                                                                        <option value='5' class="5">5</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <input value='<%=_id%>' name='_id' id='test'/>
                                                      
                                                         <div class="row">
@@ -815,9 +813,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mt-4">
-                                    <button onclick="getSlots()" class="btn-purple d-inline-block mr-1 ml-1 d-none">
-                                        BOOK TEST
-                                    </button>
+                                  
                                     <button id='modal-btn' class="btn-purple  mr-1 ml-1 " data-dismiss="modal" aria-label="Close">
                                         BOOK TEST
                                     </button>

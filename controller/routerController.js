@@ -49,9 +49,18 @@ exports.chooseslots = async (req, res) => {
   });
   res.render("choose-slots",{_id:req.params.id,slots:slots});
 };
-exports.contactdetails = (req, res) => {
+exports.contactdetails =async (req, res) => {
   console.log(req.body)
-  res.render("contact-details");
+  let test=await Test.findOne({_id:req.body._id})
+  let peopleArray=[]
+  let peoplesDetails={email:"",firstName:"",lastName:"",phone:"",dob:"",gender:"",address:"",
+   arrival_vessel_number:"",passport_id:'',ethnicity:"",NHS:"",date_of_arrival:"", residing_address:"",
+   country_before_arriva:"",vaccination_status:"", date_depart_out_cta:"",date_arrival_out_cta:""}
+   for (let index = 0; index < Number(req.body.people); index++) {
+     peopleArray.push(peoplesDetails); 
+   }
+   console.log(peopleArray.length)
+  res.render("contact-details",{testDetails:test,date:req.body.date,slot:req.body.slot,people:peopleArray});
 };
 exports.contact = (req, res) => {
   res.render("contact");
