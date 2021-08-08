@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
-const userModel=require('../model/userModel')
+const userModel = require("../model/userModel");
 //const cartModel=require('../model/CartModel')
 
 const nodemailer = require("nodemailer");
@@ -25,36 +25,38 @@ const nodemailer = require("nodemailer");
 
 exports.Signup = (req, res) => {
   const userDetails = req.body;
-   
-    userModel.findOne({ email: userDetails.email }).then((user) => {
-      if (user) {
-        res.status(404).json({ error: "email Address is already taken" });
-      } else {
-        bcryptjs.hash(userDetails.password, 12).then((hashedpassword) => {
-          let newStudent = new userModel({ ...userDetails,password:hashedpassword});
-        //  console.log('done');
-          newStudent
-            .save()
-            .then((user) => {
-        
-        
-          
-             res.render('login')
-            })
-            .catch((err) => {
-              //   console.log(err.message)
-              res.status(404).json({ error: err.message });
-            });
+
+  userModel.findOne({ email: userDetails.email }).then((user) => {
+    if (user) {
+      res.status(404).json({ error: "email Address is already taken" });
+    } else {
+      bcryptjs.hash(userDetails.password, 12).then((hashedpassword) => {
+        let newStudent = new userModel({
+          ...userDetails,
+          password: hashedpassword,
         });
-      }
-    });}
-   
+        //  console.log('done');
+        newStudent
+          .save()
+          .then((user) => {
+            res.render("login");
+          })
+          .catch((err) => {
+            //   console.log(err.message)
+            res.status(404).json({ error: err.message });
+          });
+      });
+    }
+  });
+};
 
 /////////------ User SignIn ----////////////////
 exports.Signin = (req, res) => {
   const { email, password } = req.body;
-  console.log(email,password)
-    userModel.findOne({ email: email }).then((user) => {
+  console.log(email, password);
+  userModel
+    .findOne({ email: email })
+    .then((user) => {
       if (user) {
         // console.log(password,user.password)
         bcryptjs
@@ -62,7 +64,6 @@ exports.Signin = (req, res) => {
           .then((ifSame) => {
             //if user is normal user
             if (ifSame) {
-             
               const token = jwt.sign(
                 { secretId: user._id },
                 process.env.JWT_SECRET
@@ -72,7 +73,7 @@ exports.Signin = (req, res) => {
                 token: token,
                 email: user.email,
                 name: user.name,
-                userId:user._id
+                userId: user._id,
               });
             } else {
               res.status(400).json({ error: "Invalid password" });
@@ -86,18 +87,20 @@ exports.Signin = (req, res) => {
           .status(404)
           .json({ error: "User not found of " + email + " address" });
       }
-    }).catch(err=>{
-      res.status(404).json({ error:true,data:"Something went wrong",errMsg:err });
+    })
+    .catch((err) => {
+      res
+        .status(404)
+        .json({ error: true, data: "Something went wrong", errMsg: err });
     });
-  
 };
 
-exports.SignupPage=(req,res)=>{
-  res.render('signup')
-}
-exports.LoginPage=(req,res)=>{
-  res.render('login')
-}
+exports.SignupPage = (req, res) => {
+  res.render("signup");
+};
+exports.LoginPage = (req, res) => {
+  res.render("login");
+};
 // exports.ForgetPassword = (req, res) => {
 //   var otpGenerator = require('otp-generator')
 //    let ResetOTP=otpGenerator.generate(6, { upperCase: false, specialChars: false,alphabets:false });
@@ -146,7 +149,7 @@ exports.LoginPage=(req,res)=>{
 //                       color: #803487;
 //                       font-size: 14px;
 //                     }
-                 
+
 //                     tr .resetButton a {
 //                       text-decoration: none;
 //                       color: #728b6b;
@@ -177,7 +180,7 @@ exports.LoginPage=(req,res)=>{
 //                           cellspacing="0"
 //                           width="100%"
 //                           id="emailContainer"
-//                           style="font-family: Arial; color: 
+//                           style="font-family: Arial; color:
 //                           #803487; padding: 10px;"
 //                         >
 //                           <tr></tr>
@@ -208,16 +211,16 @@ exports.LoginPage=(req,res)=>{
 //                               colspan="2"
 //                               style="padding-top: 10px"
 //                             >
-                             
+
 //                                   <span style=" line-height: 1.5;">
-//                                       We have sent you this email in response to your request to 
+//                                       We have sent you this email in response to your request to
 //                                       reset your password on Asli Chandi. After you reset your password, any credit card information stored in My Account will be deleted as a security measure.
 //                                       <br/><br/>
 //                                       To reset your password for please follow the link below:
 //                                       <br/><br/>
 //                                       <div class=" text-center ">
 //           <h1>${user.otp}</h1>
-                                     
+
 //                                       </div>
 //                                 <tr>
 //                                   <td>Looking forward to a lot of interaction with you :)</td>
@@ -232,21 +235,21 @@ exports.LoginPage=(req,res)=>{
 //                                   </td>
 //                                 </tr>
 //                                 <tr>
-//                                 <td> 
-                                 
+//                                 <td>
+
 //                                 <br/>
 //                                 1. Ishaan Arora - 9650746842
 //                            <br/> 2. Murrad Beigh - 7006559176
 //                                 <br/>
-//                                 Regards <br/> 
-//                                 Team Asli Chandi 
+//                                 Regards <br/>
+//                                 Team Asli Chandi
 //                                 <br/>
 //                                  <a target='_blank' href='https://Asli Chandi.co/'>www.Asli Chandi.co</a>
 //                                   <br/>
 //                                 Email -
 //                                 team@Asli Chandi.co
 //                               </td>
-                              
+
 //                             </td>
 //                           </tr>
 //                         </table>
@@ -272,7 +275,7 @@ exports.LoginPage=(req,res)=>{
 //           res.json({error:false,data:"check your email"});
 //         }
 //       });
-    
+
 // };
 
 // exports.verifyOTP = (req, res) => {

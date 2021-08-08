@@ -1,330 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Home | Covid -19 PCR Testing</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>Home | Covid -19 PCR Testing</title>
 
-        <!-- favicon -->
-        <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- bootstrape -->
-        <link rel="stylesheet" href="/assets/bootstrap-4/bootstrap.min.css">
+    <!-- favicon -->
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="16x16">
 
-        <!-- font-awesome -->
-        <script src="/assets/scripts/font-awesome-5-pro.js"></script>
+    <!-- bootstrape -->
+    <link rel="stylesheet" href="/assets/bootstrap-4/bootstrap.min.css">
 
-        <!-- Font Family -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- font-awesome -->
+    <script src="/assets/scripts/font-awesome-5-pro.js"></script>
 
-        <!-- custom -->
-        <link rel="stylesheet" href="/assets/styles/slick.css">
-        <link rel="stylesheet" href="/assets/styles/aos.css">
-        <link rel="stylesheet" href="/assets/styles/main.css">
-        <link rel="stylesheet" href="/assets/styles/responsive.css">  
-    </head>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-    <body>
+    <!-- custom -->
+    <link rel="stylesheet" href="/assets/styles/slick.css">
+    <link rel="stylesheet" href="/assets/styles/aos.css">
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/responsive.css">
+</head>
 
-        <!-- .site-header -->
-        <header class="site-header">
-            <div class="top-bar">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
-                            <div class="gov-uk">
-                                <div class="d-flex align-items-center">
-                                    <img src="/assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
-                                    <p class="text-white mb-0">
-                                        Listed on Government website / GOV.UK
-                                    </p>
-                                </div>
-                            </div>                            
-                        </div>
-                        <div class="col-xl-6 col-6 d-md-block d-none text-xl-center text-right">
-                            <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
-                        </div>
-                        <div class="col-xl-2 col-6 d-xl-block d-none text-lg-right">
-                            <a href="tel:01254933033" class="text-white mb-0 location-phone">
-                                <i class="fas fa-phone-alt"></i>
-                                01254 933033
-                            </a>
+<body>
+
+    <!-- .site-header -->
+    <header class="site-header">
+        <div class="top-bar">
+            <input id='token' class="d-none" />
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="gov-uk">
+                            <div class="d-flex align-items-center">
+                                <img src="/assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
+                                <p class="text-white mb-0">
+                                    Listed on Government website / GOV.UK
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="site-menu">
-                <div class="container">
-                    <nav class="navbar navbar-expand-xl navbar-light cp-navbar-light w-100 p-0">
-                        <a class="navbar-brand cp-navbar-brand" href="/">
-                            <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
+                    <div class="col-xl-6 col-6 d-md-block d-none text-xl-center text-right">
+                        <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
+                    </div>
+                    <div class="col-xl-2 col-6 d-xl-block d-none text-lg-right">
+                        <a href="tel:01254933033" class="text-white mb-0 location-phone">
+                            <i class="fas fa-phone-alt"></i>
+                            01254 933033
                         </a>
-                        <button class="navbar-toggler cp-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon cp-navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse cp-navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav mt-lg-0 mt-3 ml-auto cp-navbar-nav">
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link active" href="/">                                        
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="about-us">
-                                        About Us
-                                    </a>
-                                </li>
-                                <li class="nav-item cp-nav-item parent-menu">
-                                    <a class="nav-link cp-nav-link" href="javascript:void(0)">
-                                        Your Test <i class="fal fa-angle-down"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Preparing for the test
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                After your test
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li> 
-                                <li class="nav-item cp-nav-item parent-menu">
-                                    <a class="nav-link cp-nav-link" href="javascript:void(0)">
-                                        Vaccinations <i class="fal fa-angle-down"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="diphtheria">
-                                                Diphtheria
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Cholera
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Yellow Fever
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Hepatitis A
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Hepatitis B
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Japanese Encephalitis
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Malaria
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Meningococcal Disease
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Polio
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Rabies
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Tetanus
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Tick-Borne
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Typhoid
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="#">
-                                        Price
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="testimonials">
-                                        Testimonials
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="faq">
-                                        FAQs
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="contact-us">
-                                        Contact us
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
-                                        LOGIN
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
-                                        BOOK TEST
-                                    </a>
-                                </li> 
-                            </ul>
-                            <ul class="d-xl-none d-block text-center">
-                                <li class="nav-item cp-nav-item">
-                                    <a href="tel:01254933033" class="nav-link cp-nav-link location-phone">
-                                        <i class="fas fa-phone-alt"></i>
-                                        01254 933033
-                                    </a>
-                                </li> 
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="bottom-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <h6 class="text-white text-center mb-0">                                
-                                Results by 11am the next day including weekends and Bank Holidays. 
-                            </h6>
-                        </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- ./site-header -->
-
-        <main>
-
-            <!-- .site-banner -->
-            <section class="site-banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 offset-xl-1 col-lg-7 offset-lg-1 col-md-9">
-                            <div class="banner-content" data-aos="zoom-in-up">
-                                <img src="/assets/images/suitcase.png" alt="suitecase" class="d-block mb-3" />
-                                <h1 class="d-inline-block">
-                                    COVID-19 
-                                    <span class="text-skyblue">Testing</span>
-                                    <img src="/assets/images/plane.png" alt="plane" class="plane-img d-md-block d-none" />
-                                </h1>
-                                <!-- <p>
-                                    Guaranteed results by 11pm the next day including weekends and Bank Holidays
-                                </p> -->
-                                <ul class="banner-list">
+        </div>
+        <div class="site-menu">
+            <div class="container">
+                <nav class="navbar navbar-expand-xl navbar-light cp-navbar-light w-100 p-0">
+                    <a class="navbar-brand cp-navbar-brand" href="/">
+                        <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo" />
+                    </a>
+                    <button class="navbar-toggler cp-navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon cp-navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse cp-navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mt-lg-0 mt-3 ml-auto cp-navbar-nav">
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link active" href="/">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="about-us">
+                                    About Us
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item parent-menu">
+                                <a class="nav-link cp-nav-link" href="javascript:void(0)">
+                                    Your Test <i class="fal fa-angle-down"></i>
+                                </a>
+                                <ul class="sub-menu">
                                     <li>
-                                        <i class="fas fa-clock"></i>
-                                        Results by 11:00 am the next day for tests taken by 11:30 am.
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Preparing for the test
+                                        </a>
                                     </li>
                                     <li>
-                                        <i class="fas fa-clock"></i>
-                                        Results by 23:00 pm the next day for tests taken betweebn by 12:00 pm & 18:30 pm.
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-plane"></i>
-                                        Fit to Fly certificate included
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-envelope"></i>
-                                        Secure, Verifiable results send by email
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            After your test
+                                        </a>
                                     </li>
                                 </ul>
-                                <div class="buttons mt-4">
-                                    <a href="tests-listing" class="btn-purple d-md-inline-block d-block text-center mr-md-3 mb-md-0 mb-3">
-                                        BOOK TEST
-                                    </a>
-                                    <a href="#" class="btn-purple-border d-md-inline-block d-block text-center">                                        
-                                        <i class="fas fa-phone-alt mr-2"></i>
-                                        CALL
-                                    </a>
-                                </div>
+                            </li>
+                            <li class="nav-item cp-nav-item parent-menu">
+                                <a class="nav-link cp-nav-link" href="javascript:void(0)">
+                                    Vaccinations <i class="fal fa-angle-down"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="diphtheria">
+                                            Diphtheria
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Cholera
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Yellow Fever
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Hepatitis A
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Hepatitis B
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Japanese Encephalitis
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Malaria
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Meningococcal Disease
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Polio
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Rabies
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Tetanus
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Tick-Borne
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Typhoid
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="#">
+                                    Price
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="testimonials">
+                                    Testimonials
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="faq">
+                                    FAQs
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="contact-us">
+                                    Contact us
+                                </a>
+                            </li>
+                            <div id='booking-head'>
+
+
+                            </div>
+                        </ul>
+                        <ul class="d-xl-none d-block text-center">
+                            <li class="nav-item cp-nav-item">
+                                <a href="tel:01254933033" class="nav-link cp-nav-link location-phone">
+                                    <i class="fas fa-phone-alt"></i>
+                                    01254 933033
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h6 class="text-white text-center mb-0">
+                            Results by 11am the next day including weekends and Bank Holidays.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ./site-header -->
+
+    <main>
+
+        <!-- .site-banner -->
+        <section class="site-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 offset-xl-1 col-lg-7 offset-lg-1 col-md-9">
+                        <div class="banner-content" data-aos="zoom-in-up">
+                            <img src="/assets/images/suitcase.png" alt="suitecase" class="d-block mb-3" />
+                            <h1 class="d-inline-block">
+                                COVID-19
+                                <span class="text-skyblue">Testing</span>
+                                <img src="/assets/images/plane.png" alt="plane" class="plane-img d-md-block d-none" />
+                            </h1>
+                            <!-- <p>
+                                    Guaranteed results by 11pm the next day including weekends and Bank Holidays
+                                </p> -->
+                            <ul class="banner-list">
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    Results by 11:00 am the next day for tests taken by 11:30 am.
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    Results by 23:00 pm the next day for tests taken betweebn by 12:00 pm & 18:30 pm.
+                                </li>
+                                <li>
+                                    <i class="fas fa-plane"></i>
+                                    Fit to Fly certificate included
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    Secure, Verifiable results send by email
+                                </li>
+                            </ul>
+                            <div class="buttons mt-4 ">
+                                <a href="tests-listing"
+                                    class="btn-purple d-md-inline-block d-block text-center mr-md-3 mb-md-0 mb-3">
+                                    BOOK TEST
+                                </a>
+                                <a href="#" class="btn-purple-border d-md-inline-block d-block text-center">
+                                    <i class="fas fa-phone-alt mr-2"></i>
+                                    CALL
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- ./site-banner -->
+            </div>
+        </section>
+        <!-- ./site-banner -->
 
-            <!-- .our-test-sec -->
-            <section class="our-test-sec">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <!-- <div class="col-lg-5 order-lg-1 order-2">
+        <!-- .our-test-sec -->
+        <section class="our-test-sec">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- <div class="col-lg-5 order-lg-1 order-2">
                             <div class="border-radius-10" data-aos="fade-right">
                                 <img src="/assets/images/our-test.png" alt="our test" class="w-100" />
                             </div>
                         </div> -->
-                        <div class="col-lg-6 offset-lg-3" data-aos="zoom-in-up">
-                            <h2 class="text-center">
-                                Our 
-                                <span class="text-skyblue">
-                                    Test
-                                </span>
-                            </h2>
-                            <ul class="listing">
-                                <li>
-                                    We offer a range of covid-19 tests including PCR fit to fly, Day 2 & Day 8 Tests and Test to release. 
-                                </li>
-                                <li>
-                                    A PCR (polymerase chain reaction) test is the GOLD standard method of Covid detection and is performed by a nasopharyngeal swab.
-                                </li>
-                                <li>
-                                    Samples are hand delivered to UK Government approved laboratories
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-lg-6 offset-lg-3" data-aos="zoom-in-up">
+                        <h2 class="text-center">
+                            Our
+                            <span class="text-skyblue">
+                                Test
+                            </span>
+                        </h2>
+                        <ul class="listing">
+                            <li>
+                                We offer a range of covid-19 tests including PCR fit to fly, Day 2 & Day 8 Tests and
+                                Test to release.
+                            </li>
+                            <li>
+                                A PCR (polymerase chain reaction) test is the GOLD standard method of Covid detection
+                                and is performed by a nasopharyngeal swab.
+                            </li>
+                            <li>
+                                Samples are hand delivered to UK Government approved laboratories
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-            <!-- ./our-test-sec -->
+            </div>
+        </section>
+        <!-- ./our-test-sec -->
 
-            <!-- .howitwork-sec -->
-            <section class="howitwork-sec bg-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 text-center" data-aos="zoom-in-up">
-                            <h2>
-                                How it 
-                                <span class="text-skyblue">
-                                    works
-                                </span>
-                            </h2>
-                            <p>
-                                All our tests have been listed by the UK Government and our PCR tests are analysed in established laboratories to deliver gold standard COVID-19 results
-                            </p>
-                        </div>
+        <!-- .howitwork-sec -->
+        <section class="howitwork-sec bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 text-center" data-aos="zoom-in-up">
+                        <h2>
+                            How it
+                            <span class="text-skyblue">
+                                works
+                            </span>
+                        </h2>
+                        <p>
+                            All our tests have been listed by the UK Government and our PCR tests are analysed in
+                            established laboratories to deliver gold standard COVID-19 results
+                        </p>
                     </div>
-                    <div class="row align-items-center mt-lg-5 mt-4">
-                        <!-- <div class="col-12">
+                </div>
+                <div class="row align-items-center mt-lg-5 mt-4">
+                    <!-- <div class="col-12">
                             <div class="text-center mb-4" data-aos="zoom-in-up">
                                 <h3>
                                     Screening Steps
@@ -338,1000 +342,1080 @@
                                 </span>
                             </div>
                         </div> -->
-                        <div class="col-xl-3 col-lg-3">         
-                            <div class="left-box">
-                                <div class="left boxes text-center">
-                                    <div class="img ml-auto mr-auto mb-3">
-                                        <img src="/assets/images/setting.png" alt="setting icon" class="" />
-                                    </div>
-                                    <div class="content mr-0">                                        
-                                        <span class="number">
-                                            1
-                                        </span>
-                                        <p class="mb-0">
-                                            Select the tests most suited to your needs
-                                        </p>
-                                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="left-box">
+                            <div class="left boxes text-center">
+                                <div class="img ml-auto mr-auto mb-3">
+                                    <img src="/assets/images/setting.png" alt="setting icon" class="" />
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">         
-                            <div class="left-box">
-                                <div class="left boxes text-center">
-                                    <div class="img ml-auto mr-auto mb-3">
-                                        <img src="/assets/images/calender-checked.png" alt="setting icon" class="" />
-                                    </div>
-                                    <div class="content mr-0">                                        
-                                        <span class="number">
-                                            2
-                                        </span>
-                                        <p class="mb-0">
-                                            Choose the date & time that best suits you from our online booking portal
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">         
-                            <div class="left-box">
-                                <div class="left boxes text-center">
-                                    <div class="img ml-auto mr-auto mb-3">
-                                        <img src="/assets/images/people.png" alt="setting icon" class="" />
-                                    </div>
-                                    <div class="content mr-0">                                        
-                                        <span class="number">
-                                            3
-                                        </span>
-                                        <p class="mb-0">
-                                            Arrive at our test Centre to have test
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">         
-                            <div class="left-box">
-                                <div class="left boxes text-center">
-                                    <div class="img ml-auto mr-auto mb-3">
-                                        <img src="/assets/images/map.png" alt="setting icon" class="" />
-                                    </div>
-                                    <div class="content mr-0">                                        
-                                        <span class="number">
-                                            4
-                                        </span>
-                                        <p class="mb-0">
-                                            Receive your test result the next day via email by 11:00 am or 23:00 (11:00 pm) depending on what time you booked your test
-                                        </p>
-                                    </div>
+                                <div class="content mr-0">
+                                    <span class="number">
+                                        1
+                                    </span>
+                                    <p class="mb-0">
+                                        Select the tests most suited to your needs
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center">
-                        <a href="#" class="btn-blue-border d-inline-block mt-lg-4 mt-4" data-aos="zoom-in-up">
-                            FIND OUT MORE
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <!-- ./howitwork-sec -->
-
-            <!-- .departing-sec -->
-            <section class="departing-sec bg-offwhite">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-7 col-lg-6 mb-lg-0 mb-3" data-aos="fade-right">
-                            <h2>
-                                Departing 
-                                <span class="text-skyblue">
-                                    The UK
-                                </span>
-                            </h2>
-                            <p>
-                                Booking is essential for all Departures tests. To help you decide which test to book and for information on the test requirements for your 
-                                chosen destination, visit <a href="https://www.gov.uk/" target="_blank">Foreign Travel Advice</a>.
-                            </p>
-                            <h2 class="mt-lg-4 pt-lg-4">
-                                <span class="text-skyblue">
-                                    Traffic Light  
-                                </span>
-                                Arrivals            
-                            </h2>
-                            <p>
-                                Passengers must follow the UK Government's "Traffic Light" system in which countries are divided into Red, Amber or Green lists. What you must do 
-                                when you arrive in England from abroad depends on where you have been in the 10 days before you arrive and which colour list those countries you 
-                                visited fall into. The category each country is in will dictate the required testing and quarantine procedure. If you’re travelling into another 
-                                country in the UK i.e. Scotland, Wales, Northern Ireland please refer to the local government advice.
-                            </p>
-                            <p>
-                                Changes to Arrivals from Amber list countries will come into effect from 19th July 2021 and affect UK residents (including children) who are fully 
-                                vaccinated through the UK vaccine rollout only.
-                            </p>
-                        </div>
-                        <div class="col-xl-5 col-lg-6" data-aos="fade-left">
-                            <img src="/assets/images/departing.png" alt="departing" class="w-100" />
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="left-box">
+                            <div class="left boxes text-center">
+                                <div class="img ml-auto mr-auto mb-3">
+                                    <img src="/assets/images/calender-checked.png" alt="setting icon" class="" />
+                                </div>
+                                <div class="content mr-0">
+                                    <span class="number">
+                                        2
+                                    </span>
+                                    <p class="mb-0">
+                                        Choose the date & time that best suits you from our online booking portal
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="departing-sec">
-                <div class="container">
-                    <div class="row mt-5">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="before-arrival" data-aos="zoom-in-up">
-                                <h5 class="bg-skyblue d-block text-white p-3 text-center mb-0">
-                                    Before Arrival in England
-                                </h5>
-                                <div class="content bg-white pt-4 pl-4 pr-4 pb-2">
-                                    <table>
-                                        <!-- Top Title -->
-                                        <tr>
-                                            <th colspan="2"></th>
-                                            <th colspan="2" class="text-center">Amber List</th>
-                                            <th></th> 
-                                        </tr>
-
-                                        <!-- Middle Title -->
-                                        <tr class="main-title">
-                                            <th class="text-blue">
-                                                Actions
-                                            </th>
-                                            <th class="text-green text-center">
-                                                Green List
-                                            </th>
-                                            <th class="text-center">
-                                                <span>Fully Vaccinated</span>
-                                            </th>
-                                            <th class="text-center">
-                                                <span>Not Fully Vaccinated</span>
-                                            </th>
-                                            <th class="text-red text-center">
-                                                Red List
-                                            </th>
-                                        </tr>
-
-                                        <!-- Content 1 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Take a Pre-Departure Test
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 2 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Book England Arrivals Day 2 
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                         <!-- Content 3 -->
-                                         <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Book England Arrivals Day 8
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 4 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Complete Passenger Locator Form (Within 48hrs)
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 5 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Book Quarantine Hotel 
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                    </table>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="left-box">
+                            <div class="left boxes text-center">
+                                <div class="img ml-auto mr-auto mb-3">
+                                    <img src="/assets/images/people.png" alt="setting icon" class="" />
+                                </div>
+                                <div class="content mr-0">
+                                    <span class="number">
+                                        3
+                                    </span>
+                                    <p class="mb-0">
+                                        Arrive at our test Centre to have test
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="left-box">
+                            <div class="left boxes text-center">
+                                <div class="img ml-auto mr-auto mb-3">
+                                    <img src="/assets/images/map.png" alt="setting icon" class="" />
+                                </div>
+                                <div class="content mr-0">
+                                    <span class="number">
+                                        4
+                                    </span>
+                                    <p class="mb-0">
+                                        Receive your test result the next day via email by 11:00 am or 23:00 (11:00 pm)
+                                        depending on what time you booked your test
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-                    
-            <section class="departing-sec bg-offwhite">
-                <div class="container">
-                    <div class="row mt-5">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="before-arrival" data-aos="zoom-in-up">
-                                <h5 class="bg-blue d-block text-white p-3 text-center mb-0">
-                                    After Arrival in England 
-                                </h5>
-                                <div class="content bg-white pt-4 pl-4 pr-4 pb-2">
-                                    <table>
-                                        <!-- Top Title -->
-                                        <tr>
-                                            <th colspan="2"></th>
-                                            <th colspan="2" class="text-center">Amber List</th>
-                                            <th></th> 
-                                        </tr>
-
-                                        <!-- Middle Title -->
-                                        <tr class="main-title">
-                                            <th class="text-blue">
-                                                Actions
-                                            </th>
-                                            <th class="text-green text-center">
-                                                Green List
-                                            </th>
-                                            <th class="text-center">
-                                                <span>Fully Vaccinated</span>
-                                            </th>
-                                            <th class="text-center">
-                                                <span>Not Fully Vaccinated</span>
-                                            </th>
-                                            <th class="text-red text-center">
-                                                Red List
-                                            </th>
-                                        </tr>
-
-                                        <!-- Content 1 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Quarantine (Self Isolation) 
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 2 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Quarantine in Managed Hotel
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                         <!-- Content 3 -->
-                                         <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Day 2- PCR Test 
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 4 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Test to Release - PCR Test
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    Optional
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Content 5 -->
-                                        <tr>
-                                            <td>
-                                                <span class="bg-purple d-block text-white">
-                                                    Day 8- PCR Test 
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="unchecked">
-                                                    <i class="fas fa-times"></i>
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <span class="checked">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 text-center">
+                    <a href="#" class="btn-blue-border d-inline-block mt-lg-4 mt-4" data-aos="zoom-in-up">
+                        FIND OUT MORE
+                    </a>
                 </div>
-            </section>
-            <!-- ./departing-sec -->
+            </div>
+        </section>
+        <!-- ./howitwork-sec -->
 
-
-            <!-- .testimonial-sec -->
-            <section class="testimonial-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center" data-aos="zoom-in-up">
-                            <span class="sub-title">
-                                Our Customers
-                            </span>
-                            <h2>
-                                Reviews
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="row testimonial-slider" data-aos="zoom-in-up">
-                                <div class="col-xl-4">
-                                    <div class="testi-data text-center">
-                                        <div class="message">    
-                                            <img src="/assets/images/quote.png" alt="quote" class="quote-icon d-inline-block" />
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit
-                                            </p>
-                                        </div>
-                                        <div class="cilent-desc">
-                                            <img src="/assets/images/client1.png" alt="cliet1" class="client-icon ml-auto mr-auto" />
-                                            <h6>
-                                                Jose Coleman
-                                            </h6>
-                                            <span class="designation text-blue">
-                                                Creative Agency LLC
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4">
-                                    <div class="testi-data text-center">
-                                        <div class="message">    
-                                            <img src="/assets/images/quote.png" alt="quote" class="quote-icon d-inline-block" />
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit
-                                            </p>
-                                        </div>
-                                        <div class="cilent-desc">
-                                            <img src="/assets/images/client2.png" alt="cliet1" class="client-icon ml-auto mr-auto" />
-                                            <h6>
-                                                Jose Coleman
-                                            </h6>
-                                            <span class="designation text-blue">
-                                                Creative Agency LLC
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4">
-                                    <div class="testi-data text-center">
-                                        <div class="message">    
-                                            <img src="/assets/images/quote.png" alt="quote" class="quote-icon d-inline-block" />
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit
-                                            </p>
-                                        </div>
-                                        <div class="cilent-desc">
-                                            <img src="/assets/images/client3.png" alt="cliet1" class="client-icon ml-auto mr-auto" />
-                                            <h6>
-                                                Jose Coleman
-                                            </h6>
-                                            <span class="designation text-blue">
-                                                Creative Agency LLC
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4">
-                                    <div class="testi-data text-center">
-                                        <div class="message">    
-                                            <img src="/assets/images/quote.png" alt="quote" class="quote-icon d-inline-block" />
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit
-                                            </p>
-                                        </div>
-                                        <div class="cilent-desc">
-                                            <img src="/assets/images/client2.png" alt="cliet1" class="client-icon ml-auto mr-auto" />
-                                            <h6>
-                                                Jose Coleman
-                                            </h6>
-                                            <span class="designation text-blue">
-                                                Creative Agency LLC
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ./testimonial-sec -->
-
-
-            <!-- .faq-sec -->
-            <section class="faq-sec bg-offwhite">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center" data-aos="zoom-in-up">                            
-                            <h2>
-                                FAQ’s
-                            </h2>
-                        </div>
-                        <div class="col-12">
-                            <div id="accordion" class="accordion mt-4" data-aos="zoom-in-up">
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq1" aria-expanded="true">
-                                        <h6 class="mb-0">
-                                            Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id 
-                                        </h6>
-                                    </div>
-                                    <div id="faq1" class="collapse show" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq2" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in nibh faucibus, iaculis lorem vitae, 
-                                        </h6>
-                                    </div>
-                                    <div id="faq2" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq3" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut
-                                        </h6>
-                                    </div>
-                                    <div id="faq3" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq4" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Nulla eleifend pulvinar purus,  Nulla eleifend pulvinar purus, Nulla eleifend pulvinar purus.
-                                        </h6>
-                                    </div>
-                                    <div id="faq4" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq5" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus 
-                                        </h6>
-                                    </div>
-                                    <div id="faq5" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq6" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non massa sed
-                                        </h6>
-                                    </div>
-                                    <div id="faq6" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>   
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="#faq7" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Aenean sed lorem est. Sed quis neque ut nibh suscipit imperdiet ac non
-                                        </h6>
-                                    </div>
-                                    <div id="faq7" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                                quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                                                Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>                                 
-                            </div>
-                        </div>
-                        <div class="col-12 text-center mt-4">
-                            <a href="#" class="btn-blue-border d-inline-block" data-aos="zoom-in-up">
-                                LOAD MORE
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- .book-consultation -->
-            <section class="book-consultation bg-white">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6" data-aos="zoom-in-up">
-                            <h2>
-                                Book your test today at our private coronavirus testing clinic for travellers.
-                            </h2>
-                            <p>
-                                We have appointment slots available daily, including sunday.
-                            </p>
-                            <a href="#" class="btn-blue d-inline-block mt-4">
-                                BOOK NOW
-                            </a>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="nurse-img d-xl-block d-none text-lg-right">
-                                <img src="/assets/images/nurse.png" alt="nurse" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ./book-consultation -->
-
-
-        </main>
-
-
-        <!-- .site-footer -->
-        <footer class="site-footer">
+        <!-- .departing-sec -->
+        <section class="departing-sec bg-offwhite">
             <div class="container">
-                <div class="row align-items-center top-footer">
-                    <div class="col-lg-3 col-md-3">
-                        <div class="footer-logo mb-md-0 mb-3">
-                            <a href="/">
-                                <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <a href="/" class="mb-md-0 mb-3 d-block">
-                            <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo" class="site-logo"/>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-5">
-                        <p class="text-white mb-0">
-                            Blackburn Travel Clinic – 
-                            <span class="text-green">Rated EXCELLENT</span>
+                <div class="row align-items-center">
+                    <div class="col-xl-7 col-lg-6 mb-lg-0 mb-3" data-aos="fade-right">
+                        <h2>
+                            Departing
+                            <span class="text-skyblue">
+                                The UK
+                            </span>
+                        </h2>
+                        <p>
+                            Booking is essential for all Departures tests. To help you decide which test to book and for
+                            information on the test requirements for your
+                            chosen destination, visit <a href="https://www.gov.uk/" target="_blank">Foreign Travel
+                                Advice</a>.
+                        </p>
+                        <h2 class="mt-lg-4 pt-lg-4">
+                            <span class="text-skyblue">
+                                Traffic Light
+                            </span>
+                            Arrivals
+                        </h2>
+                        <p>
+                            Passengers must follow the UK Government's "Traffic Light" system in which countries are
+                            divided into Red, Amber or Green lists. What you must do
+                            when you arrive in England from abroad depends on where you have been in the 10 days before
+                            you arrive and which colour list those countries you
+                            visited fall into. The category each country is in will dictate the required testing and
+                            quarantine procedure. If you’re travelling into another
+                            country in the UK i.e. Scotland, Wales, Northern Ireland please refer to the local
+                            government advice.
+                        </p>
+                        <p>
+                            Changes to Arrivals from Amber list countries will come into effect from 19th July 2021 and
+                            affect UK residents (including children) who are fully
+                            vaccinated through the UK vaccine rollout only.
                         </p>
                     </div>
-                </div>
-                <div class="row footer-menus mt-4">
-                    <div class="col-lg-3">
-                        <h6 class="text-white">
-                            Contact Us
-                        </h6>
-                        <ul class="contact-info mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                    6 Preston Old Road, Blackburn, Lancashire, BB2 2SS
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="tel:01254933033" class="d-inline-block">
-                                    <i class="fas fa-phone-alt"></i>
-                                    01254 933033
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="mailto:youremail@gmail.com" class="d-inline-block">
-                                    <i class="fas fa-envelope"></i>
-                                    youremail@gmail.com
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="social-icons mb-4">
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-xl-5 col-lg-6" data-aos="fade-left">
+                        <img src="/assets/images/departing.png" alt="departing" class="w-100" />
                     </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Quick Links
-                        </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="about-us" class="d-inline-block">
-                                    About Us
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Preparing for your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    After your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="testimonials" class="d-inline-block">
-                                    Testimonials
-                                </a>
-                            </li>
-                            <liclass="d-block">
-                                <a href="faq" class="d-inline-block">
-                                    FAQs
-                                </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="departing-sec">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="before-arrival" data-aos="zoom-in-up">
+                            <h5 class="bg-skyblue d-block text-white p-3 text-center mb-0">
+                                Before Arrival in England
+                            </h5>
+                            <div class="content bg-white pt-4 pl-4 pr-4 pb-2">
+                                <table>
+                                    <!-- Top Title -->
+                                    <tr>
+                                        <th colspan="2"></th>
+                                        <th colspan="2" class="text-center">Amber List</th>
+                                        <th></th>
+                                    </tr>
+
+                                    <!-- Middle Title -->
+                                    <tr class="main-title">
+                                        <th class="text-blue">
+                                            Actions
+                                        </th>
+                                        <th class="text-green text-center">
+                                            Green List
+                                        </th>
+                                        <th class="text-center">
+                                            <span>Fully Vaccinated</span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span>Not Fully Vaccinated</span>
+                                        </th>
+                                        <th class="text-red text-center">
+                                            Red List
+                                        </th>
+                                    </tr>
+
+                                    <!-- Content 1 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Take a Pre-Departure Test
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 2 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Book England Arrivals Day 2
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 3 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Book England Arrivals Day 8
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 4 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Complete Passenger Locator Form (Within 48hrs)
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 5 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Book Quarantine Hotel
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="departing-sec bg-offwhite">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="before-arrival" data-aos="zoom-in-up">
+                            <h5 class="bg-blue d-block text-white p-3 text-center mb-0">
+                                After Arrival in England
+                            </h5>
+                            <div class="content bg-white pt-4 pl-4 pr-4 pb-2">
+                                <table>
+                                    <!-- Top Title -->
+                                    <tr>
+                                        <th colspan="2"></th>
+                                        <th colspan="2" class="text-center">Amber List</th>
+                                        <th></th>
+                                    </tr>
+
+                                    <!-- Middle Title -->
+                                    <tr class="main-title">
+                                        <th class="text-blue">
+                                            Actions
+                                        </th>
+                                        <th class="text-green text-center">
+                                            Green List
+                                        </th>
+                                        <th class="text-center">
+                                            <span>Fully Vaccinated</span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span>Not Fully Vaccinated</span>
+                                        </th>
+                                        <th class="text-red text-center">
+                                            Red List
+                                        </th>
+                                    </tr>
+
+                                    <!-- Content 1 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Quarantine (Self Isolation)
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 2 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Quarantine in Managed Hotel
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 3 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Day 2- PCR Test
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 4 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Test to Release - PCR Test
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                Optional
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Content 5 -->
+                                    <tr>
+                                        <td>
+                                            <span class="bg-purple d-block text-white">
+                                                Day 8- PCR Test
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="unchecked">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="checked">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./departing-sec -->
+
+
+        <!-- .testimonial-sec -->
+        <section class="testimonial-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center" data-aos="zoom-in-up">
+                        <span class="sub-title">
+                            Our Customers
+                        </span>
+                        <h2>
+                            Reviews
+                        </h2>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="row testimonial-slider" data-aos="zoom-in-up">
+                            <div class="col-xl-4">
+                                <div class="testi-data text-center">
+                                    <div class="message">
+                                        <img src="/assets/images/quote.png" alt="quote"
+                                            class="quote-icon d-inline-block" />
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit
+                                        </p>
+                                    </div>
+                                    <div class="cilent-desc">
+                                        <img src="/assets/images/client1.png" alt="cliet1"
+                                            class="client-icon ml-auto mr-auto" />
+                                        <h6>
+                                            Jose Coleman
+                                        </h6>
+                                        <span class="designation text-blue">
+                                            Creative Agency LLC
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="testi-data text-center">
+                                    <div class="message">
+                                        <img src="/assets/images/quote.png" alt="quote"
+                                            class="quote-icon d-inline-block" />
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit
+                                        </p>
+                                    </div>
+                                    <div class="cilent-desc">
+                                        <img src="/assets/images/client2.png" alt="cliet1"
+                                            class="client-icon ml-auto mr-auto" />
+                                        <h6>
+                                            Jose Coleman
+                                        </h6>
+                                        <span class="designation text-blue">
+                                            Creative Agency LLC
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="testi-data text-center">
+                                    <div class="message">
+                                        <img src="/assets/images/quote.png" alt="quote"
+                                            class="quote-icon d-inline-block" />
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit
+                                        </p>
+                                    </div>
+                                    <div class="cilent-desc">
+                                        <img src="/assets/images/client3.png" alt="cliet1"
+                                            class="client-icon ml-auto mr-auto" />
+                                        <h6>
+                                            Jose Coleman
+                                        </h6>
+                                        <span class="designation text-blue">
+                                            Creative Agency LLC
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="testi-data text-center">
+                                    <div class="message">
+                                        <img src="/assets/images/quote.png" alt="quote"
+                                            class="quote-icon d-inline-block" />
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit
+                                        </p>
+                                    </div>
+                                    <div class="cilent-desc">
+                                        <img src="/assets/images/client2.png" alt="cliet1"
+                                            class="client-icon ml-auto mr-auto" />
+                                        <h6>
+                                            Jose Coleman
+                                        </h6>
+                                        <span class="designation text-blue">
+                                            Creative Agency LLC
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./testimonial-sec -->
+
+
+        <!-- .faq-sec -->
+        <section class="faq-sec bg-offwhite">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center" data-aos="zoom-in-up">
+                        <h2>
+                            FAQ’s
+                        </h2>
+                    </div>
+                    <div class="col-12">
+                        <div id="accordion" class="accordion mt-4" data-aos="zoom-in-up">
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq1" aria-expanded="true">
+                                    <h6 class="mb-0">
+                                        Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex
+                                        id
+                                    </h6>
+                                </div>
+                                <div id="faq1" class="collapse show" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq2" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in
+                                        nibh faucibus, iaculis lorem vitae,
+                                    </h6>
+                                </div>
+                                <div id="faq2" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq3" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut
+                                    </h6>
+                                </div>
+                                <div id="faq3" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq4" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Nulla eleifend pulvinar purus, Nulla eleifend pulvinar purus, Nulla eleifend
+                                        pulvinar purus.
+                                    </h6>
+                                </div>
+                                <div id="faq4" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq5" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit
+                                        tellus sit amet aliquet. Vestibulum maximus
+                                    </h6>
+                                </div>
+                                <div id="faq5" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq6" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                                        turpis egestas. Ut arcu libero, pulvinar non massa sed
+                                    </h6>
+                                </div>
+                                <div id="faq6" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq7" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                        Aenean sed lorem est. Sed quis neque ut nibh suscipit imperdiet ac non
+                                    </h6>
+                                </div>
+                                <div id="faq7" class="collapse" data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
+                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia sequuntur magni
+                                            dolores eos qui ratione voluptatem sequi nesciunt.
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center mt-4">
+                        <a href="#" class="btn-blue-border d-inline-block" data-aos="zoom-in-up">
+                            LOAD MORE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- .book-consultation -->
+        <section class="book-consultation bg-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-6" data-aos="zoom-in-up">
+                        <h2>
+                            Book your test today at our private coronavirus testing clinic for travellers.
+                        </h2>
+                        <p>
+                            We have appointment slots available daily, including sunday.
+                        </p>
+                        <a href="#" class="btn-blue d-inline-block mt-4">
+                            BOOK NOW
+                        </a>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="nurse-img d-xl-block d-none text-lg-right">
+                            <img src="/assets/images/nurse.png" alt="nurse" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./book-consultation -->
+
+
+    </main>
+
+
+    <!-- .site-footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row align-items-center top-footer">
+                <div class="col-lg-3 col-md-3">
+                    <div class="footer-logo mb-md-0 mb-3">
+                        <a href="/">
+                            <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <a href="/" class="mb-md-0 mb-3 d-block">
+                        <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo"
+                            class="site-logo" />
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <p class="text-white mb-0">
+                        Blackburn Travel Clinic –
+                        <span class="text-green">Rated EXCELLENT</span>
+                    </p>
+                </div>
+            </div>
+            <div class="row footer-menus mt-4">
+                <div class="col-lg-3">
+                    <h6 class="text-white">
+                        Contact Us
+                    </h6>
+                    <ul class="contact-info mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                6 Preston Old Road, Blackburn, Lancashire, BB2 2SS
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="tel:01254933033" class="d-inline-block">
+                                <i class="fas fa-phone-alt"></i>
+                                01254 933033
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="mailto:youremail@gmail.com" class="d-inline-block">
+                                <i class="fas fa-envelope"></i>
+                                youremail@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="social-icons mb-4">
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Quick Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="about-us" class="d-inline-block">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Preparing for your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                After your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="testimonials" class="d-inline-block">
+                                Testimonials
+                            </a>
+                        </li>
+                        <liclass="d-block">
+                            <a href="faq" class="d-inline-block">
+                                FAQs
+                            </a>
                             </li>
                             <li class="d-block">
                                 <a href="contact-us" class="d-inline-block">
                                     Contact us
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Tests Links
-                        </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    PCR Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Rapid Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    After your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Your Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Covid Test
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Useful Links
-                        </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    What we offer
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Prices
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Book Online
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Support
-                        </h6>
-                        <ul class="menus mt-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Terms & Conditions 
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Privacy Policy
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Sitemap
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Get Support
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-md-12 text-center">
-                        <div class="copyright">
-                            <p class="text-white mb-0">
-                                Copyright © 2021, Blackburn Travel Clinic
-                            </p>
-                        </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Tests Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                PCR Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Rapid Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                After your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Your Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Covid Test
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Useful Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                What we offer
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Prices
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Book Online
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Support
+                    </h6>
+                    <ul class="menus mt-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Terms & Conditions
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Sitemap
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Get Support
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-12 text-center">
+                    <div class="copyright">
+                        <p class="text-white mb-0">
+                            Copyright © 2021, Blackburn Travel Clinic
+                        </p>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- ./site-footer -->
+        </div>
+    </footer>
+    <!-- ./site-footer -->
 
 
-        <!-- custom js -->
-        <script src="/assets/scripts/jquery.min.js"></script>
-        <script src="/assets/scripts/popper.min.js"></script>
-        <script src="/assets/bootstrap-4/bootstrap.min.js"></script>
-        <script src="/assets/scripts/slick.js"></script>
-        <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
-        <script src="/assets/scripts/aos.js"></script>
-        <script src="/assets/scripts/main.js"></script>
+    <!-- custom js -->
+    <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="/assets/scripts/popper.min.js"></script>
+    <script src="/assets/bootstrap-4/bootstrap.min.js"></script>
+    <script src="/assets/scripts/slick.js"></script>
+    <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
+    <script src="/assets/scripts/aos.js"></script>
+    <script src="/assets/scripts/main.js"></script>
 
-        <script>
-			AOS.init({
-				duration: 1200,
-			});
-		</script>
+    <script>
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
+    <script src="/assets/scripts/jquery.min.js"></script>
+    <script>
+        let str = ''
+        let covid_token = localStorage.getItem('covid')
+        let input = document.getElementById('token')
 
-    </body>
+        input.value = token
+        $('#booking-head').html(str);
+        function checkLogin(token) {
+            if (!token) {
+                str = ` <li class="nav-item cp-nav-item">
+                                        <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
+                                            LOGIN
+                                        </a>
+                                    </li>`
+            }
+            else {
+                str = ` <li class="nav-item cp-nav-item">
+                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
+                                            BOOK TEST
+                                        </a>
+                                    </li> `
+            }
+            $('#booking-head').html(str);
+            console.log(str)
+
+        }
+        checkLogin(covid_token)
+    </script>
+</body>
+
 </html>
