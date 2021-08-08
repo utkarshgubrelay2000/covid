@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="assets/styles/main.css">
         <link rel="stylesheet" href="assets/styles/responsive.css">  
     </head>
-
     <body>
 
         <!-- .site-header -->
@@ -244,11 +243,12 @@
 
 
                         <!-- Tabbing -->
-                        <div class="col-12">
+                        <div >
                             <div class="tabbing">
-                                <ul class="nav nav-pills d-md-flex d-block mb-4" data-aos="zoom-in-up">							
-                                    <li class="nav-item">
-                                        <div class="nav-link tab-boxes text-center active" data-toggle="pill" href="#tab1">
+                                <div class="nav nav-pills row d-md-flex d-block mb-4" data-aos="zoom-in-up">	
+                                    <% tests.map((test,index)=>{%>						
+                                    <div class="nav-item col-4">
+                                        <div class="nav-link tab-boxes text-center " data-toggle="pill" href="#tab<%=index%>">
                                             <img src="assets/images/fly.png" alt="fly" class="mb-4" />
                                             <h6>
                                                 I am travelling <strong>FROM</strong> the UK
@@ -259,435 +259,24 @@
                                                     (excludes Jersey)
                                                 </p>
                                             </div>
-                                            <a href="#tab1" class="btn-skyblue-border select-btn d-inline-block mt-3">                                            
+                                            <a href="#tab<%=index%>" onclick="selectTest('<%=test._id%>','<%=index%>')"
+                                                 class="btn-skyblue-border select-btn d-inline-block mt-3">                                            
                                                 <span>Select</span>
                                                 <i class="fas fa-check-circle"></i>
                                             </a>
                                         </div>
-                                    </li>						
-                                    <li class="nav-item">
-                                        <div class="nav-link tab-boxes text-center" data-toggle="pill" href="#tab2">
-                                            <img src="assets/images/landing.png" alt="fly" class="mb-4" />
-                                            <h6>
-                                                I am arriving <strong>IN</strong> England
-                                            </h6>
-                                            <div class="small-desc">
-                                                <p>
-                                                    Reduce quarantine time
-                                                </p>
-                                                <p>
-                                                    Book my Green or Amber Arrivals tests
-                                                </p>
-                                            </div>
-                                            <a href="#tab3" class="btn-skyblue-border select-btn d-inline-block mt-3">
-                                                
-                                                <span>Select</span>
-                                                <i class="fas fa-check-circle"></i>
-                                            </a>
-                                        </div>
-                                    </li>						
-                                    <li class="nav-item">
-                                        <div class="nav-link tab-boxes text-center" data-toggle="pill" href="#tab3">
-                                            <img src="assets/images/landing.png" alt="fly" class="mb-4" />
-                                            <h6>
-                                                I am <strong>NOT</strong> travelling
-                                            </h6>
-                                            <div class="small-desc">
-                                                <p>
-                                                    I just need to be tested <br/>
-                                                    (do not use for inbound or outbound travel)
-                                                </p>
-                                            </div>
-                                            <a href="#tab3" class="btn-skyblue-border select-btn d-inline-block mt-3">
-                                                <span>Select</span>
-                                                <i class="fas fa-check-circle"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    </div>						
+                                    <% })%>	
+                                </div>
 
 
                                 <div class="tab-content mt-4">
 
-                                    <div class="tab-pane container active p-0" id="tab1" data-aos="zoom-in-up">
-                                        <div class="row mt-5 pb-5">
-                                            <div class="col-12 text-center">
-                                                <h4>
-                                                    2 tests match your needs:
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test                                                       
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            PCR Fit to Fly Test
-                                                        </h6>
-                                                        <p>
-                                                            Results by 11pm next day*
-                                                        </p>
-                                                        <p>
-                                                            Accepted in most countries - check here 
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <p>
-                                                            Suitable for all forms of travel
-                                                        </p>
-                                                        <p>
-                                                            (excludes Jersey)
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£69</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK A PCR
-                                                        </a>
-                                                    </div> 
-                                                </div>
-                                            </div>                                            
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name"></div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            (Antigen) Lateral Flow Test
-                                                        </h6>
-                                                        <p>
-                                                            Results in 30 mins*
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <p>
-                                                            (Antigen) Lateral Flow Tests are NOT as widely accepted as PCR tests
-                                                        </p>
-                                                        <p>
-                                                            Check this test will be accepted by the country you are travelling to here
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£35</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK LATERAL FLOW
-                                                        </a>
-                                                    </div>  
-                                                </div>
-                                            </div>  
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane container p-0" id="tab2" data-aos="zoom-in-up">
-                                        <div class="row mt-5 pb-5">
-                                            <div class="col-12 text-center">
-                                                <h4>
-                                                    5 tests match your needs:
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test                                                          
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            Green Arrivals Test
-                                                        </h6>
-                                                        <p>
-                                                            For customers arriving from Green list countries 
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            A Single Arrivals PCR Test at a Test Centre
-                                                        </h6>
-                                                        <p>
-                                                            <span class="text-green">Green</span> List Arrivals: Mandatory Day 2 Test 
-                                                        </p>
-                                                        <p>
-                                                            <strong>Results by 11pm the next day*</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£69</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK TEST
-                                                        </a>
-                                                        <hr>
-                                                    </div>                                              
-                                                    <div class="sub-package-name">
-                                                        <h6 class="mr-3">
-                                                            Home Tests are a collection service, you MUST be available at home on your test day for collection of your sample.
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results 24hrs AFTER receipt at our laboratory</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£79</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple-border d-inline-block mt-4 mb-2">
-                                                            BOOK A HOME TEST
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>                                            
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            Amber Arrivals Test
-                                                        </h6>
-                                                        <p>
-                                                            For customers who are fully vaccinated under the UK vaccination programme only
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            Single Arrivals PCR Test for those who have been fully vaccinated under the UK Government vaccination programme at a Test Centre
-                                                        </h6>
-                                                        <p>
-                                                            <span class="text-green">Amber</span> List Arrivals: Mandatory Day 0-2 Test 
-                                                        </p>
-                                                        <p>
-                                                            (excludes arrivals from France) 
-                                                        </p>
-                                                        <p>
-                                                            <strong>Results by 11pm the next day*</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£69</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK TEST
-                                                        </a>
-                                                        <hr>
-                                                    </div>                                              
-                                                    <div class="sub-package-name">
-                                                        <h6 class="mr-3">
-                                                            Home Tests are a collection service, you MUST be available at home on your test day for collection of your sample.
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results 24hrs AFTER receipt at our laboratory</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£79</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple-border d-inline-block mt-4 mb-2">
-                                                            BOOK A HOME TEST
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>                                      
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            Amber Arrivals Test Package
-                                                        </h6>
-                                                        <p>
-                                                            For anyone <strong>NOT</strong> fully vaccinated under the UK vaccination programme
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            Our Two PCR Test Package at a Test Centre
-                                                        </h6>
-                                                        <p>
-                                                            <span class="text-green">Amber </span> List Arrivals: Mandatory Day 2 & Day 8 Tests 
-                                                        </p>
-                                                        <p>
-                                                            <strong>Results by 11pm the next day*</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£129</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK TEST
-                                                        </a>
-                                                        <hr>
-                                                    </div>                                              
-                                                    <div class="sub-package-name">
-                                                        <h6 class="mr-3">
-                                                            Home Tests are a collection service, you MUST be available at home on your test day for collection of your sample.
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results 24hrs AFTER receipt at our laboratory</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£139</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple-border d-inline-block mt-4 mb-2">
-                                                            BOOK A HOME TEST
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>                                      
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            PCR Test to Release Test
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results by 11pm next day*</strong>>
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            A Single PCR Test to Release Test at a Test Centre
-                                                        </h6>
-                                                        <p>
-                                                            <span class="text-green">Amber </span>List Arrivals: Reduce quarantine by having a test on Day 5 
-                                                        </p>
-                                                        <p>
-                                                            <strong>Results by 11pm the next day*</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£69</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK TEST
-                                                        </a>
-                                                    </div>     
-                                                </div>
-                                            </div>                                      
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            Amber Arrivals Test Package with Test To Release
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results by 11pm next day*</strong>>
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            Our Three PCR Test Package at a Test Centre
-                                                        </h6>
-                                                        <p>
-                                                            <span class="text-green">Amber </span> List Arrivals: Mandatory Day 2 & Day 8 with a Test to Release Test on Day 5 
-                                                        </p>
-                                                        <p>
-                                                            <strong>Results by 11pm the next day*</strong>
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p> 
-                                                                <span>£189</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK TEST
-                                                        </a>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="tab-pane test-div container active p-0" id="tab1" data-aos="zoom-in-up">
+                                     
                                     </div>
 
 
-                                    <div class="tab-pane container p-0" id="tab3" data-aos="zoom-in-up">
-                                        <div class="row mt-5 pb-5">
-                                            <div class="col-12 text-center">
-                                                <h4>
-                                                    1 tests match your needs:
-                                                </h4>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-xl-2 col-lg-4 col-md-6">
-                                                <div class="test-box">
-                                                    <div class="package-name">
-                                                        <span class="text-white">
-                                                            Gold Standard Test                                                            
-                                                        </span>
-                                                    </div>
-                                                    <div class="test-name">
-                                                        <h6>
-                                                            PCR Test Only
-                                                        </h6>
-                                                        <p>
-                                                            <strong>Results by 10pm next day*</strong>
-                                                        </p>
-                                                        <hr>
-                                                    </div>                                                    
-                                                    <div class="sub-package-name">
-                                                        <h6>
-                                                            E-mail results confirmation
-                                                        </h6>
-                                                        <p>
-                                                            Not suitable for travel
-                                                        </p>
-                                                        <div class="price mt-4">
-                                                            <p>
-                                                                <span>£99</span>
-                                                            </p>
-                                                        </div>
-                                                        <a href="choose-slots" class="btn-purple d-inline-block mt-4 mb-2">
-                                                            BOOK A PCR
-                                                        </a>
-                                                    </div>     
-                                                </div>
-                                            </div>  
-                                        </div>
-                                    </div>
 
 
                                 </div>
@@ -915,7 +504,8 @@
         <script src="assets/scripts/slick.js"></script>
         <script src="assets/scripts/jquery.matchHeight-min.js"></script>
         <script src="assets/scripts/aos.js"></script>
-        <script src="assets/scripts/main.js"></script>
+        <script src="assets/js/main.js"></script>
+      
 
         <script>
 			AOS.init({

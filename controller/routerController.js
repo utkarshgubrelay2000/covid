@@ -1,4 +1,5 @@
 const FAQ = require("../model/faqModel");
+const Test = require("../model/testModel");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -32,6 +33,7 @@ exports.appointment = (req, res) => {
   res.render("appointment-bookings");
 };
 exports.chooseslots = (req, res) => {
+
   res.render("choose-slots");
 };
 exports.contactdetails = (req, res) => {
@@ -64,6 +66,13 @@ exports.testTerms = (req, res) => {
 exports.testimonials = (req, res) => {
   res.render("testimonials");
 };
-exports.testslisting = (req, res) => {
-  res.render("tests-listing");
+exports.testslisting =async (req, res) => {
+  let tests=await Test.find({})
+ // console.log(tests)
+  res.render("tests-listing",{tests:tests});
+};
+exports.testsbyId =async (req, res) => {
+  let tests=await Test.findOne({_id:req.params.id})
+ // console.log(tests)
+  res.send({tests:tests});
 };
