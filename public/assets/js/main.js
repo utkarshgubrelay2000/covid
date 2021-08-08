@@ -1,8 +1,7 @@
 // mobile menu open close
 let str = "";
 let covid_token = localStorage.getItem("covid");
-let input = document.getElementById("token");
-input.value = token;
+
 window.onload(checkLogin(covid_token))
 function openNav() {
   document.getElementById("mySidenav").style.left = "0";
