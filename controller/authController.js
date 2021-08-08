@@ -30,8 +30,8 @@ exports.Signup = (req, res) => {
       if (user) {
         res.status(404).json({ error: "email Address is already taken" });
       } else {
-        bcryptjs.hash(password, 12).then((hashedpassword) => {
-          let newStudent = new userModel({ ...userDetails});
+        bcryptjs.hash(userDetails.password, 12).then((hashedpassword) => {
+          let newStudent = new userModel({ ...userDetails,password:hashedpassword});
         //  console.log('done');
           newStudent
             .save()
@@ -39,7 +39,7 @@ exports.Signup = (req, res) => {
         
         
           
-             res.render('/login')
+             res.render('login')
             })
             .catch((err) => {
               //   console.log(err.message)
@@ -53,6 +53,7 @@ exports.Signup = (req, res) => {
 /////////------ User SignIn ----////////////////
 exports.Signin = (req, res) => {
   const { email, password } = req.body;
+  console.log(email,password)
     userModel.findOne({ email: email }).then((user) => {
       if (user) {
         // console.log(password,user.password)

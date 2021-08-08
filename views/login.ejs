@@ -1,92 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Covid -19 PCR Testing - Dashboard</title>
-		
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/img/favicon.png">
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-		
-		<!-- Feathericon CSS -->
-		<link rel="stylesheet" href="assets/css/feather.css">
 
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="assets/css/style.css">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Covid -19 PCR Testing - Dashboard</title>
 
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="assets/css/custom.css">
-	</head>
-	<body>
-	
-		<!-- Main Wrapper -->
-		<div class="main-wrapper login-body">
-			<div class="login-wrapper">
-				<div class="container">
-				
-					<img class="img-fluid logo-dark mb-2" src="assets/img/logo.png" alt="Logo">
-					<div class="loginbox">
-						
-						<div class="login-right">
-							<div class="login-right-wrap">
-								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
-								
-								<form id="loginForm" action="/user/login" method="POST">
-									<div class="form-group">
-										<label class="form-control-label">Email Address</label>
-										<input type="email" class="form-control" id="email" name="email" value="">
-									</div>
-									<div class="form-group">
-										<label class="form-control-label">Password</label>
-										<div class="pass-group">
-											<input type="password" name="password" id="password" class="form-control pass-input" value="">
-											<span class="fas fa-eye toggle-password"></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-6">
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="cb1">
-													<label class="custom-control-label" for="cb1">Remember me</label>
-												</div>
-											</div>
-											<div class="col-6 text-right">
-												<a class="forgot-link" href="forgot-password">Forgot Password ?</a>
-											</div>
-										</div>
-									</div>
-									<button class="btn btn-lg btn-block btn-primary" type="submit">Login</button>
-								</form>
-								
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="css/feather.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper login-body">
+		<div class="login-wrapper">
+			<div class="container">
+
+				<img class="img-fluid logo-dark mb-2" src="assets/img/site-logo.png" alt="Logo">
+				<div class="loginbox">
+
+					<div class="login-right">
+						<div class="login-right-wrap">
+							<h1>Login</h1>
+							<p class="account-subtitle">Access to our dashboard</p>
+
+							<div class="form-group">
+								<label class="form-control-label">Email Address</label>
+								<input type="email" class="form-control" id="email" name="email" value="">
 							</div>
+							<div class="form-group">
+								<label class="form-control-label">Password</label>
+								<div class="pass-group">
+									<input type="password" name="password" id="password" class="form-control pass-input"
+										value="">
+									<span class="fas fa-eye toggle-password"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<div class="custom-control">
+
+											<a class="forgot-link" href="signup">
+										Sign-up
+											</a>
+										</div>
+									</div>
+									<div class="col-6 text-right">
+										<a class="forgot-link" href="forgot-password">Forgot Password ?</a>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-lg btn-block btn-primary" onclick="loginHandler()"
+								type="submit">Login</button>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- /Main Wrapper -->
-		
-		<!-- jQuery -->
-		<script src="assets/js/jquery-3.6.0.min.js"></script>
+	</div>
+	<!-- /Main Wrapper -->
 
-		<!-- Bootstrap Core JS -->
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		
-		<!-- Font Awsome Js -->
-		<script  src="assets/js/font-awesome-5-pro.js"></script>
+	<!-- jQuery -->
 
-		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
-		<!-- <script  src="assets/js/test.js"></script> -->
+	<script src="/assets/scripts/jquery.min.js"></script>
+	<script src="/assets/scripts/popper.min.js"></script>
+	<script src="/assets/bootstrap-4/bootstrap.min.js"></script>
+	<script src="/assets/scripts/slick.js"></script>
+	<script src="/assets/scripts/jquery.matchHeight-min.js"></script>
+	<script src="/assets/scripts/aos.js"></script>
+	<script src="/assets/scripts/main.js"></script>
+	<script src="/assets/js/main.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"
+		integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script>
 
-	</body>
+		async function loginHandler() {
+			let password = document.getElementById('password').value
+			let email = document.getElementById('email').value
+			console.log(password)
+			let data = { email: email, password: password }
+			axios.post('login', data, { headers: { 'Content-Type': 'application/json' } })
+				.then(data =>{
+					console.log(data)
+					localStorage.setItem('userDetails',data.data)
+					window.location.href='/'
+				}
+				).catch(err=>{
+					console.log(err)
+					alert("Something went Wrong")
+				});
+
+
+		}
+	</script>
+</body>
+
 </html>
