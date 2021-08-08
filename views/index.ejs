@@ -193,8 +193,6 @@
                                 </a>
                             </li>
                             <div id='booking-head'>
-
-
                             </div>
                         </ul>
                         <ul class="d-xl-none d-block text-center">
@@ -1380,7 +1378,7 @@
     <script src="/assets/scripts/slick.js"></script>
     <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
     <script src="/assets/scripts/aos.js"></script>
-    <script src="/assets/scripts/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 
     <script>
         AOS.init({
@@ -1388,34 +1386,7 @@
         });
     </script>
     <script src="/assets/scripts/jquery.min.js"></script>
-    <script>
-        let str = ''
-        let covid_token = localStorage.getItem('covid')
-        let input = document.getElementById('token')
-
-        input.value = token
-        $('#booking-head').html(str);
-        function checkLogin(token) {
-            if (!token) {
-                str = ` <li class="nav-item cp-nav-item">
-                                        <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
-                                            LOGIN
-                                        </a>
-                                    </li>`
-            }
-            else {
-                str = ` <li class="nav-item cp-nav-item">
-                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
-                                            BOOK TEST
-                                        </a>
-                                    </li> `
-            }
-            $('#booking-head').html(str);
-            console.log(str)
-
-        }
-        checkLogin(covid_token)
-    </script>
+  
 </body>
 
 </html>

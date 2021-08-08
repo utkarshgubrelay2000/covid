@@ -1,4 +1,9 @@
 // mobile menu open close
+let str = "";
+let covid_token = localStorage.getItem("covid");
+let input = document.getElementById("token");
+input.value = token;
+window.onload(checkLogin(covid_token))
 function openNav() {
   document.getElementById("mySidenav").style.left = "0";
 }
@@ -8,8 +13,8 @@ function closeNav() {
 }
 
 function openchat() {
-  var x= document.getElementById("sidepanel");
-  var y= document.getElementById("cht-btn");
+  var x = document.getElementById("sidepanel");
+  var y = document.getElementById("cht-btn");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
@@ -18,52 +23,53 @@ function openchat() {
 }
 
 function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview').hide();
-            $('#imagePreview').fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#imagePreview").css(
+        "background-image",
+        "url(" + e.target.result + ")"
+      );
+      $("#imagePreview").hide();
+      $("#imagePreview").fadeIn(650);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
 }
-$("#imageUpload").change(function() {
-    readURL(this);
+$("#imageUpload").change(function () {
+  readURL(this);
 });
 //console.log('hello')
-async function selectTest(id,index){
-   //console.log(index,id)
-   let str=''
-   $('.test-div').html(str);
-   let selectClasses=document.getElementsByClassName('btn-skyblue-border')
-   for (let i = 0; i < selectClasses.length; i++) {
-     //const element = array[index];
-     if(i!=index){
-       //console.log(selectClasses[i])
-       selectClasses[i].classList.remove('select-btn')
-      }
-      else{
-       selectClasses[i].classList.add('select-btn')
+async function selectTest(id, index) {
+  //console.log(index,id)
+  let str = "";
+  $(".test-div").html(str);
+  let selectClasses = document.getElementsByClassName("btn-skyblue-border");
+  for (let i = 0; i < selectClasses.length; i++) {
+    //const element = array[index];
+    if (i != index) {
+      //console.log(selectClasses[i])
+      selectClasses[i].classList.remove("select-btn");
+    } else {
+      selectClasses[i].classList.add("select-btn");
+    }
+  }
+  $.ajax({
+    url: "/getTestById/" + id,
+    method: "Get",
 
-      }
-   }
-   $.ajax ({
-    url: '/getTestById/'+id,
-    method: 'Get',
-    
-    success:function(res) {
+    success: function (res) {
       console.log(res.tests.test_list);
-      
-     let headstr=` <div class="col-12 text-center">
+
+      let headstr = ` <div class="col-12 text-center">
       <h4>
           ${res.tests.test_list.length} tests match your needs:
       </h4>
-  </div>`
-  let body;
-  res.tests.test_list.forEach(ele => {
-    var spot = ele;
- body=`
+  </div>`;
+      let body;
+      res.tests.test_list.forEach((ele) => {
+        var spot = ele;
+        body = `
  <div class="col-xl-2 col-lg-4 col-md-6">
      <div class="test-box">
          <div class="package-name">
@@ -109,26 +115,45 @@ async function selectTest(id,index){
  </div>                                            
  
    
-`
-  })
-  str=`${headstr}  <div class="row justify-content-center">  ${body} </div>`
-  $('.test-div').html(str);
-
-     },
-    error: function(){
-        Toast('error', 'Error!', 'Something happens in Server!');
-    }
-});
-  
-
- }
+`;
+      });
+      str = `${headstr}  <div class="row justify-content-center">  ${body} </div>`;
+      $(".test-div").html(str);
+    },
+    error: function () {
+      Toast("error", "Error!", "Something happens in Server!");
+    },
+  });
+}
 // Add active class to the current button (highlight it)
 var pln = document.getElementById("plans");
 var btn = pln.getElementsByClassName("btns");
 for (var i = 0; i < btn.length; i++) {
-  btn[i].addEventListener("click", function() {
-  var current = pln.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
+  btn[i].addEventListener("click", function () {
+    var current = pln.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
   });
 }
+
+
+$("#booking-head").html(str);
+function checkLogin(token) {
+  console.log('ehllo')
+  if (!token) {
+    str = ` <li class="nav-item cp-nav-item">
+                                        <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
+                                            LOGIN
+                                        </a>
+                                    </li>`;
+  } else {
+    str = ` <li class="nav-item cp-nav-item">
+                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
+                                            BOOK TEST
+                                        </a>
+                                    </li> `;
+  }
+  $("#booking-head").html(str);
+  console.log(str);
+}
+
