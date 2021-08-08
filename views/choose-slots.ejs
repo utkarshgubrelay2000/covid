@@ -30,7 +30,9 @@
         <link rel="stylesheet" href="/assets/styles/responsive.css">  
     </head>
     <script src="assets/js/main.js"></script>
-
+<script>
+    console.log('<%=_id%>')
+</script>
     <body>
 
         <!-- .site-header -->
@@ -303,7 +305,10 @@
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-xl-10">                                                
                                                 <div class="contact-form-box">
-                                                    <form>
+                                                    <form    method='POST' id="loginForm" action="/contact-details">
+                                                        
+                                                        <input value='<%=_id%>' name='_id'/>
+                                                        <input value='<%=testId%>' name='testId'/>
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <p class="text-lightpurple">
@@ -315,7 +320,9 @@
                                                                 <h6 class="text-purple mt-3 mb-4">
                                                                     Day 2: Arrivals Test
                                                                 </h6>
+
                                                                 <div class="row">
+                                                                  
                                                                     <div class="col-lg-4 col-md-6">
                                                                         <div class="form-group">
                                                                             <label>
@@ -329,7 +336,8 @@
                                                                             <label>
                                                                                 Time*
                                                                             </label>
-                                                                            <input type="time" name="time" id="time" class="w-100 field" placeholder="" required />
+                                                                            <input type="time" 
+                                                                            name="time" id="time" class="w-100 field" placeholder="" required />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -369,10 +377,13 @@
                                                                 </p>
                                                             </div>
                                                             <div class="col-12">
-                                                                <a href="contact-details" class="btn-purple d-inline-block mt-4">
-                                                                    CONTINUE
-                                                                </a>
-                                                            </div>
+
+                                                            
+                                                                    <button type='submit' class="btn-purple d-inline-block mt-4">
+                                                                        CONTINUE
+                                                                    </button>
+                                                                </div>
+                                                          
                                                         </div>
                                                     </form>
                                                 </div>
@@ -764,7 +775,9 @@
                         <h6 class="text-purple">
                             Please select one of the two statements below:
                         </h6>
-                        <form>
+                
+                            <input value='<%=_id%>' name='_id'/>
+                            <input value='<%=testId%>' name='testId'/>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group checkboxes-data mb-1">

@@ -33,10 +33,10 @@ exports.appointment = (req, res) => {
   res.render("appointment-bookings");
 };
 exports.chooseslots = (req, res) => {
-
-  res.render("choose-slots");
+  res.render("choose-slots",{_id:req.params.id,testId:req.params.testId});
 };
 exports.contactdetails = (req, res) => {
+  console.log(req.body)
   res.render("contact-details");
 };
 exports.contact = (req, res) => {
