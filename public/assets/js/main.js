@@ -68,13 +68,12 @@ async function selectTest(id, index) {
   </div>`;
       let body;
       res.tests.test_list.forEach((ele) => {
-        var spot = ele;
-        body += `
- <div class="col-xl-4 col-lg-4 col-md-6">
+        
+        body = `<div class=" col-lg-6 col-md-6">
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
-              ${ele.packageName}                                                  
+              ${ele.packageName}    gg                                              
              </span>
          </div>
          <div class="test-name">
@@ -107,7 +106,7 @@ async function selectTest(id, index) {
                      <span>£${ele.price2}</span>
                  </p>
              </div>
-             <a href="/choose-slots/${res.tests._id}/${ele.test_id}" class="btn-purple d-inline-block mt-4 mb-2">
+             <a href="/choose-slots/${res.tests._id}" class="btn-purple d-inline-block mt-4 mb-2">
                  BOOK A PCR
              </a>
          </div> 
@@ -117,7 +116,8 @@ async function selectTest(id, index) {
    
 `;
       });
-      str = `${headstr}  <div class="row justify-content-center">  ${body} </div>`;
+      let render=`<div class="row justify-content-center">${body} </div>`
+      str = `${headstr} ${render} `;
       $(".test-div").html(str);
     },
     error: function () {
@@ -185,7 +185,49 @@ data:data,
   },
   error: function () {
     Toast("error", "Error!", "Something happens in Server!");
-  }})}
- 
+  }
+}
+)
+}
+ function getData(length,slot){
+   length=Number(length)
+   let array=[]
+   for (let index = 0; index < length; index++) {
+     let object={
+       email:document.getElementById('email'+index).value,
+       firstName:document.getElementById('fname'+index).value,
+       lastName: document.getElementById('lname'+index).value,
+       phone: document.getElementById('phone'+index).value,
+       dob: document.getElementById('dob'+index).value,
+       gender: document.getElementById('sex'+index).value,
+       address: document.getElementById('address'+index).value,
+       arrival_vessel_number: document.getElementById('arrival_vessel_number'+index).value,
+       passport_id: document.getElementById('passport_id'+index).value,
+       ethnicity: document.getElementById('ethnicity'+index).value,
+       date_of_arrival: document.getElementById('date_of_arrival'+index).value,
+       NHS: document.getElementById('NHS'+index).value,
+       country_before_arrival: document.getElementById('country_before_arrival'+index).value,
+       vaccination_status: document.getElementById('vaccination_status'+index).value,
+       date_depart_out_cta: document.getElementById('date_depart_out_cta'+index).value,
+       date_arrival_out_cta: document.getElementById('date_arrival_out_cta'+index).value,
+     }
+     array.push(object)
+    }
+    console.log(array)
+    $.ajax({
+      url: "/get-avaiable-session",
+      method: "POST",
+    data:{slots:slot, personal_details:array},
+      success: function (res) {
+       console.log(res)
+       
+      },
+      error: function () {
+        Toast("error", "Error!", "Something happens in Server!");
+      }
+    }
+    )
+   //console.log(JSON.parse(personDetails),length)
+ }
     
 

@@ -176,8 +176,93 @@ console.log(date, newDate, typeof date, test)
       res.status(404).json({ status: false, message: error });
     });
 };
+const createBooking = async (req, res) => {
+  try {
+    const { slots, personal_details } = req.body;
+    // console.log(typeof req.body.personal_details, req.body)
+    const validation = validate(req.body, {
+     
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
 
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+
+    const promises = [];
+    personal_details.map((person, index) => {
+      const details = new Person({ ...person, slot: slots });
+      promises.push(details.save());
+    });
+
+    const detailsResult = await Promise.all(promises);
+    console.log({ detailsResult });
+
+    const promise2 = [];
+    detailsResult.map((person, index) => {
+      promise2.push(
+        TimeSlots.findOneAndUpdate(
+          { _id: person.slot },
+          { booked: true, user: person._id, ...req.body },
+          { new: true }
+        )
+      );
+    });
+
+    const details = await Promise.all(promise2);
+    console.log({ details });
+    if (details)
+      res
+        .status(200)
+        .json({ message: "Booking Saved!", data: details, status: true });
+    else
+      res.status(400).json({
+        status: false,
+        data: details,
+      });
+    // TimeSlots.findOneAndUpdate({})
+    // const booking = new Booking({
+    //   test_id: test_id,
+    //   persons: persons,
+    //   date: date,
+    //   time: time,
+    //   slots: slots,
+    //   personal_details: details,
+    //   transaction_id: transaction_id,
+    //   results: results,
+    // });
+
+    // booking
+    //   .save()
+    //   .then((result) => {
+    //     res
+    //       .status(200)
+    //       .json({ message: "Booking Saved!", data: result, status: true });
+    //   })
+    //   .catch((err) => {
+    //     res.status(200).json({
+    //       error: err,
+    //       status: false,
+    //     });
+    //   });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error,
+    });
+  }
+};
 module.exports = {
   generateTimeSlots,
   getSlots,
+  createBooking
 };

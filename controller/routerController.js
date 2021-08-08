@@ -12,22 +12,20 @@ exports.about = (req, res) => {
   res.render("about-us");
 };
 
-exports.faq =async (req, res) => {
+exports.faq = async (req, res) => {
   try {
-    
-    let faqs=await FAQ.find({}).limit(10)
-    res.render("faq",{faqs:faqs,curpage:1});
+    let faqs = await FAQ.find({}).limit(10);
+    res.render("faq", { faqs: faqs, curpage: 1 });
   } catch (error) {
-    res.send("Error")
+    res.send("Error");
   }
 };
-exports.loadMoreFaqs =async (req, res) => {
+exports.loadMoreFaqs = async (req, res) => {
   try {
-    
-    let faqs=await FAQ.find({}).limit(req.body.curpage*10)
-    res.render("faq",{faqs:faqs,curpage:1+req.body.curpage});
+    let faqs = await FAQ.find({}).limit(req.body.curpage * 10);
+    res.render("faq", { faqs: faqs, curpage: 1 + req.body.curpage });
   } catch (error) {
-    res.send("Error")
+    res.send("Error");
   }
 };
 exports.appointment = (req, res) => {
@@ -47,20 +45,42 @@ exports.chooseslots = async (req, res) => {
     booked: false,
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
-  res.render("choose-slots",{_id:req.params.id,slots:slots});
+  res.render("choose-slots", { _id: req.params.id, slots: slots });
 };
-exports.contactdetails =async (req, res) => {
-  console.log(req.body)
-  let test=await Test.findOne({_id:req.body._id})
-  let peopleArray=[]
-  let peoplesDetails={email:"",firstName:"",lastName:"",phone:"",dob:"",gender:"",address:"",
-   arrival_vessel_number:"",passport_id:'',ethnicity:"",NHS:"",date_of_arrival:"", residing_address:"",
-   country_before_arriva:"",vaccination_status:"", date_depart_out_cta:"",date_arrival_out_cta:""}
-   for (let index = 0; index < Number(req.body.people); index++) {
-     peopleArray.push(peoplesDetails); 
-   }
-   console.log(peopleArray.length)
-  res.render("contact-details",{testDetails:test,date:req.body.date,slot:req.body.slot,people:peopleArray});
+exports.contactdetails = async (req, res) => {
+  console.log(req.body);
+  let test = await Test.findOne({ _id: req.body._id });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    dob: "",
+    gender: "",
+    address: "",
+    arrival_vessel_number: "",
+    passport_id: "",
+    ethnicity: "",
+    NHS: "",
+    date_of_arrival: "",
+    residing_address: "",
+    country_before_arrival: "",
+    vaccination_status: "",
+    date_depart_out_cta: "",
+    date_arrival_out_cta: "",
+  };
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+  console.log(peopleArray.length);
+  res.render("contact-details", {
+    testDetails: test,
+    date: req.body.date,
+    slot: req.body.slot,
+    people: peopleArray,
+    length: peopleArray.length,
+  });
 };
 exports.contact = (req, res) => {
   res.render("contact");
@@ -89,13 +109,13 @@ exports.testTerms = (req, res) => {
 exports.testimonials = (req, res) => {
   res.render("testimonials");
 };
-exports.testslisting =async (req, res) => {
-  let tests=await Test.find({})
-  console.log(tests)
-  res.render("tests-listing",{tests:tests});
+exports.testslisting = async (req, res) => {
+  let tests = await Test.find({});
+  console.log(tests);
+  res.render("tests-listing", { tests: tests });
 };
-exports.testsbyId =async (req, res) => {
-  let tests=await Test.findOne({_id:req.params.id})
- // console.log(tests)
-  res.send({tests:tests});
+exports.testsbyId = async (req, res) => {
+  let tests = await Test.findOne({ _id: req.params.id });
+  // console.log(tests)
+  res.send({ tests: tests });
 };

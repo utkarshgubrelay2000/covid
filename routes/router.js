@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const registerController=require('../controller/routerController')
-const timeSlots=require('../controller/timeSlots')
+const bookingController=require('../controller/bookingController')
 var mutter=require('multer')
 var path=require('path')
 /* GET home page. */
@@ -11,7 +11,7 @@ router.get('/',registerController.homePage)
  router.get('/faq',registerController.faq)
  router.post('/faq',registerController.loadMoreFaqs)
  router.get('/appointment',registerController.appointment)
- router.get('/choose-slots/:id/:testId',registerController.chooseslots)
+ router.get('/choose-slots/:id',registerController.chooseslots)
  router.post('/contact-details',registerController.contactdetails)
  router.get('/diphtheria',registerController.diphteria)
  router.get('/find-test-center',registerController.findtestcenter)
@@ -23,7 +23,8 @@ router.get('/',registerController.homePage)
  router.get('/testimonials',registerController.testimonials)
  router.get('/test-Terms',registerController.testTerms)
  router.get('/appointment',registerController.appointment)
- router.post('/get-avaiable-session',timeSlots.getSlots)
+ router.post('/get-avaiable-session',bookingController.getSlots)
+ router.post("/create",bookingController.createBooking);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
@@ -33,7 +34,7 @@ router.get('/',registerController.homePage)
     let nextDate = addDays(newDate, 1);
   
     const tests = await Test.find();
-    const slots = await TimeSlots.find({
+    const slots = await bookingController.find({
       test: tests[0]._id,
       booked: false,
       bookedFor: { $gt: newDate, $lt: nextDate },
@@ -48,6 +49,7 @@ router.get('/',registerController.homePage)
       ),
     });
   });
+
   
 
 module.exports=router
