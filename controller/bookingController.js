@@ -239,7 +239,7 @@ const createBooking = async (req, res) => {
     console.log(users,promises)
     if (promises)
       res
-        .render('test-terms',{ message: "Booking Saved!",users:users , status: true });
+        .json({ message: "Booking Saved!",users:users , status: true });
     else
       res.status(400).json({
         status: false,

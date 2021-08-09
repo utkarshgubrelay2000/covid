@@ -1,6 +1,15 @@
-const TimeSlots = require("../model/timeSlots");
+
 const FAQ = require("../model/faqModel");
 const Test = require("../model/testModel");
+let { Scheduler } = require("@ssense/sscheduler");
+
+let testModal = require("../model/testModel");
+// let Restaurant = require("../model/restaurantModel");
+let moment = require("moment");
+
+const PersonalDetails = require("../model/personalDetailModel");
+const TimeSlots = require("../model/timeSlots");
+const { validate } = require("validate.js");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -118,4 +127,79 @@ exports.testsbyId = async (req, res) => {
   let tests = await Test.findOne({ _id: req.params.id });
   // console.log(tests)
   res.send({ tests: tests });
+};
+exports.createBooking = async (req, res) => {
+  try {
+    const { slots } = req.body;
+    console.log('hello')
+     personal_details=JSON.parse(req.body.personal_details)
+     
+    const validation = validate(req.body, {
+     
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
+
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+    console.log('here')
+    let users=[]
+     const promises =   personal_details.map((person, index) => {
+      const details = new PersonalDetails({ ...person, slot: slots });
+     details.save().then(saved=>{
+       users.push(saved._id)
+     let res= TimeSlots.findOneAndUpdate(
+        { _id: person.slot },
+        { booked: true, user: saved._id, ...req.body },
+        { new: true }
+      );
+     // console.log(res)
+     return saved._id
+    })
+    });
+ 
+  console.log('here 2')
+     
+    // const detailsResult = await Promise.all(promises);
+    // console.log({ detailsResult });
+
+    // const promise2 = [];
+    // detailsResult.map((person, index) => {
+    //   promise2.push(
+       
+    //   );
+    // });
+
+    // const details = await Promise.all(promise2);
+    // console.log({ details });
+    setTimeout(() => {
+      
+ 
+    console.log(users,promises)
+    if (promises)
+      res
+        .json({ message: "Booking Saved!",users:users , status: true });
+    else
+      res.status(400).json({
+        status: false,
+        data: 'Something wrong',
+      });
+    }, 600);
+
+   
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
 };

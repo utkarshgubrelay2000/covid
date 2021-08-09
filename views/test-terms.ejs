@@ -1,576 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Slots | Covid -19 PCR Testing</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>Slots | Covid -19 PCR Testing</title>
 
-        <!-- favicon -->
-        <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- bootstrape -->
-        <link rel="stylesheet" href="assets/bootstrap-4/bootstrap.min.css">
+    <!-- favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="16x16">
 
-        <!-- font-awesome -->
-        <script src="assets/scripts/font-awesome-5-pro.js"></script>
+    <!-- bootstrape -->
+    <link rel="stylesheet" href="assets/bootstrap-4/bootstrap.min.css">
 
-        
-        <!-- Font Family -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-        <!-- custom -->
-        <link rel="stylesheet" href="assets/styles/slick.css">
-        <link rel="stylesheet" href="assets/styles/aos.css">
-        <link rel="stylesheet" href="assets/styles/main.css">
-        <link rel="stylesheet" href="assets/styles/responsive.css">  
-    </head>
-
-    <body>
-
-        <!-- .site-header -->
-        <header class="site-header">
-            <div class="top-bar">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
-                            <div class="gov-uk">
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
-                                    <p class="text-white mb-0">
-                                        Listed on Government website / GOV.UK
-                                    </p>
-                                </div>
-                            </div>                            
-                        </div>
-                        <div class="col-xl-6 col-6 d-md-block d-none text-xl-center text-right">
-                            <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
-                        </div>
-                        <div class="col-xl-2 col-6 d-xl-block d-none text-lg-right">
-                            <a href="tel:01254933033" class="text-white mb-0 location-phone">
-                                <i class="fas fa-phone-alt"></i>
-                                01254 933033
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="site-menu">
-                <div class="container">
-                    <nav class="navbar navbar-expand-xl navbar-light cp-navbar-light w-100 p-0">
-                        <a class="navbar-brand cp-navbar-brand" href="/">
-                            <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
-                        </a>
-                        <button class="navbar-toggler cp-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon cp-navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse cp-navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav mt-lg-0 mt-3 ml-auto cp-navbar-nav">
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="/">                                        
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="about-us">
-                                        About Us
-                                    </a>
-                                </li>
-                                <li class="nav-item cp-nav-item parent-menu">
-                                    <a class="nav-link cp-nav-link" href="javascript:void(0)">
-                                        Your Test <i class="fal fa-angle-down"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Preparing for the test
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                After your test
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li> 
-                                <li class="nav-item cp-nav-item parent-menu">
-                                    <a class="nav-link cp-nav-link" href="javascript:void(0)">
-                                        Vaccinations <i class="fal fa-angle-down"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="diphtheria">
-                                                Diphtheria
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Cholera
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Yellow Fever
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Hepatitis A
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Hepatitis B
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Japanese Encephalitis
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Malaria
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Meningococcal Disease
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Polio
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Rabies
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Tetanus
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Tick-Borne
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link cp-nav-link" href="#">
-                                                Typhoid
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="#">
-                                        Price
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="testimonials">
-                                        Testimonials
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="faq">
-                                        FAQs
-                                    </a>
-                                </li> 
-                                <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="contact-us">
-                                        Contact us
-                                    </a>
-                                </li> 
-                                <div id='booking-head'>
-                                </div>
-                            </ul>
-                            <ul class="d-xl-none d-block text-center">
-                                <li class="nav-item cp-nav-item">
-                                    <a href="tel:01254933033" class="nav-link cp-nav-link location-phone">
-                                        <i class="fas fa-phone-alt"></i>
-                                        01254 933033
-                                    </a>
-                                </li> 
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="bottom-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <h6 class="text-white text-center mb-0">
-                                Results by 11am the next day including weekends and Bank Holidays.  
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- ./site-header -->
-
-        <main>
-
-            <!-- .pick-slots-sec -->
-            <section class="pick-slots-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="tabbing">
-                                <ul class="nav nav-pills justify-content-center">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-center active completed" href="#pick-slot">
-                                            <div class="check-icon">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            Pick Slot
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-center active completed">
-                                            <div class="check-icon">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            Contact Details
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-center active">
-                                            <div class="check-icon">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            T&Cs
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-center">
-                                            <div class="check-icon">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            Summary
-                                        </a>
-                                    </li>
-                                </ul>
+    <!-- font-awesome -->
+    <script src="assets/scripts/font-awesome-5-pro.js"></script>
 
 
-                                <div class="tab-content mt-5 mb-4">
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-                                    <!-- Tab panes 1 -->
-                                    <div class="tab-pane container active" id="pick-slot">
-                                        <div class="row align-items-center justify-content-center">
-                                            <div class="col-lg-6 text-center">
-                                                <span class="sub-title">
-                                                    Primary person
-                                                </span>
-                                                <h2>
-                                                    Terms &  
-                                                    <span class="text-skyblue">
-                                                        Conditions
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                        </div>
+    <!-- custom -->
+    <link rel="stylesheet" href="assets/styles/slick.css">
+    <link rel="stylesheet" href="assets/styles/aos.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">
+</head>
 
-                                        <div class="row justify-content-center mt-2">
-                                            <div class="col-xl-10">
-                                                <form>
-                                                    <div class="contact-form-box">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <h5 class="text-purple text-center mb-4">
-                                                                    Please tick the box below to accept that you have read and accept the following:
-                                                                </h5>
-                                                                <ul class="listing pl-3">
-                                                                    <li>
-                                                                        I have provided accurate information in this booking for every person in my party, failure to do so may invalidate my test results/certificates.
-                                                                    </li>
-                                                                    <li>
-                                                                        I will bring valid passport for each person in my party to the screening centre if travelling or photo ID if not travelling.
-                                                                        Failure to do so may require me to book another test slot.
-                                                                    </li>
-                                                                    <li>
-                                                                        I accept that bookings are non-refundable. if cancelling with more that 72hrs notice, a voucher will be issued. Within 72 hrs, vouchers will be 
-                                                                        granted unless due to an airline cancellation or change in country entry requirements.
-                                                                    </li>
-                                                                    <li>
-                                                                        I have read and understand the <a href="#">Privacy Policy</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        I have read and accept the <a href="#">Terms & Conditions</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        I have read and agree the <a href="#">Fair Processing Notice</a>
-                                                                    </li>
-                                                                </ul>
-                                                                <form>
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <div class="form-group checkboxes-data mb-1">
-                                                                                <input type="checkbox" id="acceptance" class="d-none" checked="">
-                                                                                <label for="acceptance">
-                                                                                    I have read and accept the Privacy Policy Terms and conditions
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 text-md-left text-center">
-                                                                            <a href="choose-slots" class="btn-purple-border border-0 d-inline-block mt-4 mb-md-0 mb-3">
-                                                                                GO BACK
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-md-6 text-md-right text-center">
-                                                                            <a href="test-summary" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
-                                                                                CONTINUE
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+<body>
 
-                                    </div>
-                                </div>
-
+    <!-- .site-header -->
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="gov-uk">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
+                                <p class="text-white mb-0">
+                                    Listed on Government website / GOV.UK
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <!-- ./pick-slots-sec -->
-
-        </main>
-
-
-        <!-- .site-footer -->
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row align-items-center top-footer">
-                    <div class="col-lg-3 col-md-3">
-                        <div class="footer-logo mb-md-0 mb-3">
-                            <a href="/">
-                                <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
-                            </a>
-                        </div>
+                    <div class="col-xl-6 col-6 d-md-block d-none text-xl-center text-right">
+                        <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
                     </div>
-                    <div class="col-lg-3 col-md-4">
-                        <a href="/" class="mb-md-0 mb-3 d-block">
-                            <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo" class="site-logo"/>
+                    <div class="col-xl-2 col-6 d-xl-block d-none text-lg-right">
+                        <a href="tel:01254933033" class="text-white mb-0 location-phone">
+                            <i class="fas fa-phone-alt"></i>
+                            01254 933033
                         </a>
                     </div>
-                    <div class="col-lg-4 col-md-5">
-                        <p class="text-white mb-0">
-                            Blackburn Travel Clinic – 
-                            <span class="text-green">Rated EXCELLENT</span>
-                        </p>
-                    </div>
                 </div>
-                <div class="row footer-menus mt-4">
-                    <div class="col-lg-3">
-                        <h6 class="text-white">
-                            Contact Us
-                        </h6>
-                        <ul class="contact-info mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                    6 Preston Old Road, Blackburn, Lancashire, BB2 2SS
+            </div>
+        </div>
+        <div class="site-menu">
+            <div class="container">
+                <nav class="navbar navbar-expand-xl navbar-light cp-navbar-light w-100 p-0">
+                    <a class="navbar-brand cp-navbar-brand" href="/">
+                        <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo" />
+                    </a>
+                    <button class="navbar-toggler cp-navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon cp-navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse cp-navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mt-lg-0 mt-3 ml-auto cp-navbar-nav">
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="/">
+                                    Home
                                 </a>
                             </li>
-                            <li class="d-block">
-                                <a href="tel:01254933033" class="d-inline-block">
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="about-us">
+                                    About Us
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item parent-menu">
+                                <a class="nav-link cp-nav-link" href="javascript:void(0)">
+                                    Your Test <i class="fal fa-angle-down"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Preparing for the test
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            After your test
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item cp-nav-item parent-menu">
+                                <a class="nav-link cp-nav-link" href="javascript:void(0)">
+                                    Vaccinations <i class="fal fa-angle-down"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="diphtheria">
+                                            Diphtheria
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Cholera
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Yellow Fever
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Hepatitis A
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Hepatitis B
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Japanese Encephalitis
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Malaria
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Meningococcal Disease
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Polio
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Rabies
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Tetanus
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Tick-Borne
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link cp-nav-link" href="#">
+                                            Typhoid
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="#">
+                                    Price
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="testimonials">
+                                    Testimonials
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="faq">
+                                    FAQs
+                                </a>
+                            </li>
+                            <li class="nav-item cp-nav-item">
+                                <a class="nav-link cp-nav-link" href="contact-us">
+                                    Contact us
+                                </a>
+                            </li>
+                            <div id='booking-head'>
+                            </div>
+                        </ul>
+                        <ul class="d-xl-none d-block text-center">
+                            <li class="nav-item cp-nav-item">
+                                <a href="tel:01254933033" class="nav-link cp-nav-link location-phone">
                                     <i class="fas fa-phone-alt"></i>
                                     01254 933033
                                 </a>
                             </li>
-                            <li class="d-block">
-                                <a href="mailto:youremail@gmail.com" class="d-inline-block">
-                                    <i class="fas fa-envelope"></i>
-                                    youremail@gmail.com
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="social-icons mb-4">
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="#" class="d-inline-block" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
                         </ul>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Quick Links
+                </nav>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h6 class="text-white text-center mb-0">
+                            Results by 11am the next day including weekends and Bank Holidays.
                         </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="about-us" class="d-inline-block">
-                                    About Us
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Preparing for your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    After your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="testimonials" class="d-inline-block">
-                                    Testimonials
-                                </a>
-                            </li>
-                            <liclass="d-block">
-                                <a href="faq" class="d-inline-block">
-                                    FAQs
-                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ./site-header -->
+
+    <main>
+
+        <!-- .pick-slots-sec -->
+        <section class="pick-slots-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tabbing">
+                            <ul class="nav nav-pills justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-center active completed" href="#pick-slot">
+                                        <div class="check-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        Pick Slot
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center active completed">
+                                        <div class="check-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        Contact Details
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center active">
+                                        <div class="check-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        T&Cs
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center">
+                                        <div class="check-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        Summary
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <div class="tab-content mt-5 mb-4">
+
+                                <!-- Tab panes 1 -->
+                                <div class="tab-pane container active" id="pick-slot">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col-lg-6 text-center">
+                                            <span class="sub-title">
+                                                Primary person
+                                            </span>
+                                            <h2>
+                                                Terms &
+                                                <span class="text-skyblue">
+                                                    Conditions
+                                                </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-center mt-2">
+                                        <div class="col-xl-10">
+                                            <form>
+                                                <div class="contact-form-box">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h5 class="text-purple text-center mb-4">
+                                                                Please tick the box below to accept that you have read
+                                                                and accept the following:
+                                                            </h5>
+                                                            <ul class="listing pl-3">
+                                                                <li>
+                                                                    I have provided accurate information in this booking
+                                                                    for every person in my party, failure to do so may
+                                                                    invalidate my test results/certificates.
+                                                                </li>
+                                                                <li>
+                                                                    I will bring valid passport for each person in my
+                                                                    party to the screening centre if travelling or photo
+                                                                    ID if not travelling.
+                                                                    Failure to do so may require me to book another test
+                                                                    slot.
+                                                                </li>
+                                                                <li>
+                                                                    I accept that bookings are non-refundable. if
+                                                                    cancelling with more that 72hrs notice, a voucher
+                                                                    will be issued. Within 72 hrs, vouchers will be
+                                                                    granted unless due to an airline cancellation or
+                                                                    change in country entry requirements.
+                                                                </li>
+                                                                <li>
+                                                                    I have read and understand the <a href="#">Privacy
+                                                                        Policy</a>
+                                                                </li>
+                                                                <li>
+                                                                    I have read and accept the <a href="#">Terms &
+                                                                        Conditions</a>
+                                                                </li>
+                                                                <li>
+                                                                    I have read and agree the <a href="#">Fair
+                                                                        Processing Notice</a>
+                                                                </li>
+                                                            </ul>
+                                                            <form>
+                                                                <div class="row">
+                                                                    <form>
+                                                                        <div class="col-12">
+                                                                            <div
+                                                                                class="form-group checkboxes-data mb-1">
+                                                                                <input required type="checkbox"
+                                                                                    id="acceptance" class="d-none"
+                                                                                    checked="">
+                                                                                <label for="acceptance">
+                                                                                    I have read and accept the Privacy
+                                                                                    Policy Terms and conditions
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <%users.map(user=>{%>
+                                                                            <input name='userIds' value='<%user%>' />
+                                                                            <%})%>
+                                                                                <div
+                                                                                    class="col-md-6 text-md-right text-center">
+                                                                                    <a
+                                                                                        class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
+                                                                                        CONTINUE
+                                                                                    </a>
+                                                                                </div>
+                                                                    </form>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./pick-slots-sec -->
+
+    </main>
+
+
+    <!-- .site-footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row align-items-center top-footer">
+                <div class="col-lg-3 col-md-3">
+                    <div class="footer-logo mb-md-0 mb-3">
+                        <a href="/">
+                            <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <a href="/" class="mb-md-0 mb-3 d-block">
+                        <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo"
+                            class="site-logo" />
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <p class="text-white mb-0">
+                        Blackburn Travel Clinic –
+                        <span class="text-green">Rated EXCELLENT</span>
+                    </p>
+                </div>
+            </div>
+            <div class="row footer-menus mt-4">
+                <div class="col-lg-3">
+                    <h6 class="text-white">
+                        Contact Us
+                    </h6>
+                    <ul class="contact-info mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                6 Preston Old Road, Blackburn, Lancashire, BB2 2SS
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="tel:01254933033" class="d-inline-block">
+                                <i class="fas fa-phone-alt"></i>
+                                01254 933033
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="mailto:youremail@gmail.com" class="d-inline-block">
+                                <i class="fas fa-envelope"></i>
+                                youremail@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="social-icons mb-4">
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="d-inline-block">
+                            <a href="#" class="d-inline-block" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Quick Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="about-us" class="d-inline-block">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Preparing for your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                After your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="testimonials" class="d-inline-block">
+                                Testimonials
+                            </a>
+                        </li>
+                        <liclass="d-block">
+                            <a href="faq" class="d-inline-block">
+                                FAQs
+                            </a>
                             </li>
                             <li class="d-block">
                                 <a href="contact-us" class="d-inline-block">
                                     Contact us
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Tests Links
-                        </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    PCR Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Rapid Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    After your test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Your Test
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Covid Test
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Useful Links
-                        </h6>
-                        <ul class="menus mt-3 mb-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    What we offer
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Prices
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Book Online
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-6">
-                        <h6 class="text-white">
-                            Support
-                        </h6>
-                        <ul class="menus mt-3">
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Terms & Conditions 
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Privacy Policy
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Sitemap
-                                </a>
-                            </li>
-                            <li class="d-block">
-                                <a href="#" class="d-inline-block">
-                                    Get Support
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-md-12 text-center">
-                        <div class="copyright">
-                            <p class="text-white mb-0">
-                                Copyright © 2021, Blackburn Travel Clinic
-                            </p>
-                        </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Tests Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                PCR Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Rapid Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                After your test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Your Test
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Covid Test
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Useful Links
+                    </h6>
+                    <ul class="menus mt-3 mb-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                What we offer
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Prices
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Book Online
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6">
+                    <h6 class="text-white">
+                        Support
+                    </h6>
+                    <ul class="menus mt-3">
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Terms & Conditions
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Sitemap
+                            </a>
+                        </li>
+                        <li class="d-block">
+                            <a href="#" class="d-inline-block">
+                                Get Support
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-12 text-center">
+                    <div class="copyright">
+                        <p class="text-white mb-0">
+                            Copyright © 2021, Blackburn Travel Clinic
+                        </p>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- ./site-footer -->
+        </div>
+    </footer>
+    <!-- ./site-footer -->
 
 
 
-        <!-- custom js -->
-        <script src="assets/scripts/jquery.min.js"></script>
-        <script src="assets/scripts/popper.min.js"></script>
-        <script src="assets/bootstrap-4/bootstrap.min.js"></script>
-        <script src="assets/scripts/slick.js"></script>
-        <script src="assets/scripts/jquery.matchHeight-min.js"></script>
-        <script src="assets/scripts/aos.js"></script>
-        <script src="assets/scripts/main.js"></script>
-        <script src="/assets/js/main.js"></script>
+    <!-- custom js -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/popper.min.js"></script>
+    <script src="assets/bootstrap-4/bootstrap.min.js"></script>
+    <script src="assets/scripts/slick.js"></script>
+    <script src="assets/scripts/jquery.matchHeight-min.js"></script>
+    <script src="assets/scripts/aos.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 
-        <script>
-			AOS.init({
-				duration: 1200,
-			});
-		</script>
+    <script>
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
 
-    </body>
+</body>
+
 </html>

@@ -24,7 +24,7 @@ router.get('/',registerController.homePage)
  router.get('/test-Terms',registerController.testTerms)
  router.get('/appointment',registerController.appointment)
  router.post('/get-avaiable-session',bookingController.getSlots)
- router.post("/create",bookingController.createBooking);
+ router.post("/create",registerController.createBooking);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);

@@ -224,7 +224,7 @@ data:data,
        Headers:{ contentType: "application/json"},
       success: function (res) {
        console.log(res)
-       
+       localStorage.setItem('users',JSON.stringify(res.users))
       },
       error: function () {
         alert("error", "Error!", "Something happens in Server!")
