@@ -162,7 +162,7 @@ let getSlots = (req, res) => {
   }
   // let today = new Date()
   let newDate = new Date(date);
-console.log(date, newDate, typeof date, test)
+//console.log(date, newDate, typeof date, test)
 
   let nextDate = addDays(newDate, limit);
   console.log({ nextDate });

@@ -133,8 +133,9 @@ exports.testsbyId = async (req, res) => {
 exports.createBooking = async (req, res) => {
   try {
     const { slots } = req.body;
-    console.log('hello')
-     personal_details=JSON.parse(req.body.personal_details)
+    sloted=slots.split(',')
+    console.log('hello',sloted)
+      personal_details=JSON.parse(req.body.personal_details)
      
     const validation = validate(req.body, {
      
@@ -156,11 +157,11 @@ exports.createBooking = async (req, res) => {
     console.log('here')
     let users=[]
      const promises =   personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, slot: slots });
+      const details = new PersonalDetails({ ...person, slot: sloted[index] });
      details.save().then(async saved=>{
        users.push(saved._id)
      let res=await TimeSlots.findOneAndUpdate(
-        { _id: slots },
+        { _id: sloted[index] },
         { booked: true, user: saved._id, ...req.body },
         { new: true }
       );
@@ -169,20 +170,20 @@ exports.createBooking = async (req, res) => {
     })
     });
  
-  console.log('here 2')
+ 
      
-    // const detailsResult = await Promise.all(promises);
-    // console.log({ detailsResult });
+    const detailsResult = await Promise.all(promises);
+    console.log({ detailsResult });
 
-    // const promise2 = [];
-    // detailsResult.map((person, index) => {
-    //   promise2.push(
+    const promise2 = [];
+    detailsResult.map((person, index) => {
+      promise2.push(
        
-    //   );
-    // });
+      );
+    });
 
-    // const details = await Promise.all(promise2);
-    // console.log({ details });
+    const details = await Promise.all(promise2);
+    console.log({ details });
     setTimeout(() => {
       
  
