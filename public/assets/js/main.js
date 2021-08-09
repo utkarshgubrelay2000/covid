@@ -213,17 +213,21 @@ data:data,
      }
      array.push(object)
     }
-    console.log(array)
+  ///  console.log(array)
+    let pd=JSON.stringify(array)
+    let data={slots:slot, personal_details:pd}
+   console.log(data)
     $.ajax({
-      url: "/get-avaiable-session",
+      url: "/create",
       method: "POST",
-    data:{slots:slot, personal_details:array},
+       data:data,
+       Headers:{ contentType: "application/json"},
       success: function (res) {
        console.log(res)
        
       },
       error: function () {
-        Toast("error", "Error!", "Something happens in Server!");
+        alert("error", "Error!", "Something happens in Server!")
       }
     }
     )

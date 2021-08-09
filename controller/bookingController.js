@@ -4,6 +4,10 @@ let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
 let moment = require("moment");
 
+const PersonalDetails = require("../model/personalDetailModel");
+const TimeSlots = require("../model/timeSlots");
+const { validate } = require("validate.js");
+
 // Create time slots for restaurant
 let generateTimeSlots = async (req, res) => {
   const { id } = req.body;
@@ -178,8 +182,10 @@ console.log(date, newDate, typeof date, test)
 };
 const createBooking = async (req, res) => {
   try {
-    const { slots, personal_details } = req.body;
-    // console.log(typeof req.body.personal_details, req.body)
+    const { slots } = req.body;
+    console.log('hello')
+     personal_details=JSON.parse(req.body.personal_details)
+     
     const validation = validate(req.body, {
      
       slots: {
@@ -197,65 +203,53 @@ const createBooking = async (req, res) => {
       });
       return console.log(validation);
     }
-
-    const promises = [];
-    personal_details.map((person, index) => {
-      const details = new Person({ ...person, slot: slots });
-      promises.push(details.save());
-    });
-
-    const detailsResult = await Promise.all(promises);
-    console.log({ detailsResult });
-
-    const promise2 = [];
-    detailsResult.map((person, index) => {
-      promise2.push(
-        TimeSlots.findOneAndUpdate(
-          { _id: person.slot },
-          { booked: true, user: person._id, ...req.body },
-          { new: true }
-        )
+    console.log('here')
+    let users=[]
+     const promises =   personal_details.map((person, index) => {
+      const details = new PersonalDetails({ ...person, slot: slots });
+     details.save().then(saved=>{
+       users.push(saved._id)
+     let res= TimeSlots.findOneAndUpdate(
+        { _id: person.slot },
+        { booked: true, user: saved._id, ...req.body },
+        { new: true }
       );
+     // console.log(res)
+     return saved._id
+    })
     });
+ 
+  console.log('here 2')
+     
+    // const detailsResult = await Promise.all(promises);
+    // console.log({ detailsResult });
 
-    const details = await Promise.all(promise2);
-    console.log({ details });
-    if (details)
+    // const promise2 = [];
+    // detailsResult.map((person, index) => {
+    //   promise2.push(
+       
+    //   );
+    // });
+
+    // const details = await Promise.all(promise2);
+    // console.log({ details });
+    setTimeout(() => {
+      
+ 
+    console.log(users,promises)
+    if (promises)
       res
-        .status(200)
-        .json({ message: "Booking Saved!", data: details, status: true });
+        .render('test-terms',{ message: "Booking Saved!",users:users , status: true });
     else
       res.status(400).json({
         status: false,
-        data: details,
+        data: 'Something wrong',
       });
-    // TimeSlots.findOneAndUpdate({})
-    // const booking = new Booking({
-    //   test_id: test_id,
-    //   persons: persons,
-    //   date: date,
-    //   time: time,
-    //   slots: slots,
-    //   personal_details: details,
-    //   transaction_id: transaction_id,
-    //   results: results,
-    // });
+    }, 600);
 
-    // booking
-    //   .save()
-    //   .then((result) => {
-    //     res
-    //       .status(200)
-    //       .json({ message: "Booking Saved!", data: result, status: true });
-    //   })
-    //   .catch((err) => {
-    //     res.status(200).json({
-    //       error: err,
-    //       status: false,
-    //     });
-    //   });
+   
   } catch (error) {
-    res.status(400).json({
+    res.status(503).json({
       status: false,
       data: error,
     });
