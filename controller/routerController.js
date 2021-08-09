@@ -11,6 +11,7 @@ const PersonalDetails = require("../model/personalDetailModel");
 const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
 const Page = require("../model/pages");
+const TestPackage = require("../model/testPackage");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -125,9 +126,9 @@ exports.testslisting = async (req, res) => {
   res.render("tests-listing", { tests: tests });
 };
 exports.testsbyId = async (req, res) => {
-  let tests = await Test.findOne({ _id: req.params.id });
+  let tests = await TestPackage.find({ testId: req.params.id });
   // console.log(tests)
-  res.send({ tests: tests });
+  res.send({ tests: tests,testId:req.params.id });
 };
 exports.createBooking = async (req, res) => {
   try {
@@ -156,14 +157,14 @@ exports.createBooking = async (req, res) => {
     let users=[]
      const promises =   personal_details.map((person, index) => {
       const details = new PersonalDetails({ ...person, slot: slots });
-     details.save().then(saved=>{
+     details.save().then(async saved=>{
        users.push(saved._id)
-     let res= TimeSlots.findOneAndUpdate(
-        { _id: person.slot },
+     let res=await TimeSlots.findOneAndUpdate(
+        { _id: slots },
         { booked: true, user: saved._id, ...req.body },
         { new: true }
       );
-     // console.log(res)
+      console.log(res)
      return saved._id
     })
     });
