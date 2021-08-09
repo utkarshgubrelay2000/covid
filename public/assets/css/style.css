@@ -492,3 +492,7 @@ footer {
 .password-forms .primary_btn {
     padding: 10px 30px;
 }
+.ck-editor__editable_inline {
+    min-height: 100px;
+    position: relative;
+  }

@@ -7,13 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- favicon -->
-        <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="16x16">
+        <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="16x16">
 
         <!-- bootstrape -->
-        <link rel="stylesheet" href="assets/bootstrap-4/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/bootstrap-4/bootstrap.min.css">
 
         <!-- font-awesome -->
-        <script src="assets/scripts/font-awesome-5-pro.js"></script>
+        <script src="/assets/scripts/font-awesome-5-pro.js"></script>
 
         
         <!-- Font Family -->
@@ -22,10 +22,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <!-- custom -->
-        <link rel="stylesheet" href="assets/styles/slick.css">
-        <link rel="stylesheet" href="assets/styles/aos.css">
-        <link rel="stylesheet" href="assets/styles/main.css">
-        <link rel="stylesheet" href="assets/styles/responsive.css">  
+        <link rel="stylesheet" href="/assets/styles/slick.css">
+        <link rel="stylesheet" href="/assets/styles/aos.css">
+        <link rel="stylesheet" href="/assets/styles/main.css">
+        <link rel="stylesheet" href="/assets/styles/responsive.css">  
     </head>
 
     <body>
@@ -38,7 +38,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div class="gov-uk">
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
+                                    <img src="/assets/images/gov-uk1.png" alt="gov uk" class="mr-md-2 mr-2" />
                                     <p class="text-white mb-0">
                                         Listed on Government website / GOV.UK
                                     </p>
@@ -46,7 +46,7 @@
                             </div>                            
                         </div>
                         <div class="col-xl-6 col-6 d-md-block d-none text-xl-center text-right">
-                            <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
+                            <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent" />
                         </div>
                         <div class="col-xl-2 col-6 d-xl-block d-none text-lg-right">
                             <a href="tel:01254933033" class="text-white mb-0 location-phone">
@@ -61,7 +61,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-xl navbar-light cp-navbar-light w-100 p-0">
                         <a class="navbar-brand cp-navbar-brand" href="/">
-                            <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
+                            <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
                         </a>
                         <button class="navbar-toggler cp-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon cp-navbar-toggler-icon"></span>
@@ -228,26 +228,12 @@
                                 <div class="row align-items-center">
                                     <div class="col-lg-6" data-aos="fade-right">
                                         <h2>
-                                            Diphtheria
+                                            <%=data.heading%>
                                         </h2>
-                                        <p>
-                                            Diphtheria is a potentially fatal contagious bacterial infection that mainly affects the nose and throat, and sometimes the skin.
-                                        </p>
-                                        <p>
-                                            Diphtheria is highly contagious. It’s spread by coughs and sneezes, or by contact with someone with diphtheria or items belonging to 
-                                            them, such as bedding or clothing.
-                                        </p>
-                                        <p>
-                                            The infection is usually caught after being in close or prolonged contact with someone who has the condition or is carrying the infection. 
-                                            For example, you may catch diphtheria from someone you live with.
-                                        </p>
-                                        <p>
-                                            However, diphtheria is very rare in England because most people have been vaccinated against it. It tends to be a problem in parts of the 
-                                            world where fewer people are vaccinated, such as Africa, South Asia and the former Soviet Union.
-                                        </p>
+                                        <%=data.content%>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
-                                        <img src="assets/images/diphtheria.png" alt="about img" class="right-img" />
+                                        <img src="/assets/images/diphtheria.png" alt="about img" class="right-img" />
                                     </div>
                                 </div>
                             </div>
@@ -264,39 +250,7 @@
                             <h5 class="text-purple">
                                 Symptoms
                             </h5>
-                            <p>
-                                The <span class="text-skyblue">symptoms of diphtheria</span> include:                                
-                            </p>
-                            <ul class="listing mb-3">
-                                <li>
-                                    A thick grey-white coating at the back of the throat
-                                </li>
-                                <li>
-                                    A high temperature (fever) of 38C (100.4F) or above
-                                </li>
-                                <li>
-                                    <span class="text-skyblue">Sore throat</span>
-                                </li>
-                                <li>
-                                    Breathing difficulties
-                                </li>
-                            </ul>
-                            <p>
-                                Older people and people with a weakened immune system are more at risk of the effects of diphtheria. The most serious cases can be fatal.
-                            </p>
-                            <p>
-                                An estimated 5-10% of people who get the infection will die from complications of diphtheria, such as breathing difficulties, inflammation of the 
-                                heart (myocarditis) or problems with the nervous system.
-                            </p>
-                            <h5 class="text-purple">
-                                Vaccination
-                            </h5>
-                            <p>
-                                All children should be vaccinated against diphtheria as part of the routine <span class="text-skyblue">childhood vaccination schedule</span>.
-                            </p>
-                            <p>
-                                Adults should consider having a booster vaccine when travelling to parts of the world where diphtheria is widespread.
-                            </p>
+                            <%=data.content2%>
                         </div>
                     </div>
                 </div>
@@ -316,13 +270,13 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="footer-logo mb-md-0 mb-3">
                             <a href="/">
-                                <img src="assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
+                                <img src="/assets/images/site-logo.png" alt="site-logo" class="site-logo"/>
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4">
                         <a href="/" class="mb-md-0 mb-3 d-block">
-                            <img src="assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo" class="site-logo"/>
+                            <img src="/assets/images/trust-pilot-excellent.png" alt="trust-pilot-excellent-logo" class="site-logo"/>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-5">
@@ -514,14 +468,14 @@
 
 
         <!-- custom js -->
-        <script src="assets/scripts/jquery.min.js"></script>
-        <script src="assets/scripts/popper.min.js"></script>
-        <script src="assets/bootstrap-4/bootstrap.min.js"></script>
-        <script src="assets/scripts/slick.js"></script>
-        <script src="assets/scripts/jquery.matchHeight-min.js"></script>
-        <script src="assets/scripts/aos.js"></script>
-        <script src="assets/scripts/main.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="/assets/scripts/jquery.min.js"></script>
+        <script src="/assets/scripts/popper.min.js"></script>
+        <script src="/assets/bootstrap-4/bootstrap.min.js"></script>
+        <script src="/assets/scripts/slick.js"></script>
+        <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
+        <script src="/assets/scripts/aos.js"></script>
+        <script src="/assets/scripts/main.js"></script>
+        <script src="/assets/js/main.js"></script>
 
         <script>
 			AOS.init({

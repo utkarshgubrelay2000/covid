@@ -220,3 +220,14 @@ exports.getAllPage = (req, res) => {
         .json({ error: true, msg: "Something Went Wrong", errMsg: err });
     });
 };
+exports.getPageById = (req, res) => {
+  //console.log(req.body);
+  Page.findById(req.params.id)
+    .then((found) => {
+      console.log(found)
+      res.render('diphtheria',{ error: false, data: found });
+    })
+    .catch((err) => {
+      res.status(503).json({ error: true, msg: "Something Went Wrong" });
+    });
+};
