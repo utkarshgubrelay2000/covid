@@ -10,6 +10,7 @@ let moment = require("moment");
 const PersonalDetails = require("../model/personalDetailModel");
 const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
+const Page = require("../model/pages");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -202,4 +203,20 @@ exports.createBooking = async (req, res) => {
       data: error,
     });
   }
+};
+exports.getAllPage = (req, res) => {
+  //console.log(req.body);
+  // categoryObject: { '$exists': false,}
+
+  Page.find({})
+    .then((found) => {
+      res
+        .status(201)
+        .json({ error: false, data: found, PageCount: found.length });
+    })
+    .catch((err) => {
+      res
+        .status(503)
+        .json({ error: true, msg: "Something Went Wrong", errMsg: err });
+    });
 };

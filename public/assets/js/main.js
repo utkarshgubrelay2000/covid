@@ -1,8 +1,9 @@
 
 // mobile menu open close
 let str = "";
+let nav = "";
 let covid_token = localStorage.getItem("covid");
-
+getPages()
 checkLogin(covid_token)
 function openNav() {
   document.getElementById("mySidenav").style.left = "0";
@@ -59,7 +60,7 @@ async function selectTest(id, index) {
     method: "Get",
 
     success: function (res) {
-      console.log(res.tests.test_list);
+   //   console.log(res.tests.test_list);
 
       let headstr = ` <div class="col-12 text-center">
       <h4>
@@ -154,7 +155,7 @@ function checkLogin(token) {
                                     </li> `;
   }
   $("#booking-head").html(str);
-  console.log(str);
+  //console.log(str);
 }
 function getSlots(){
 $("#slots").html(str);
@@ -162,13 +163,13 @@ $("#slots").html(str);
   let id=document.getElementById('test').value
   let date=document.getElementById('date').value
  let data={   test: id,limit: 1,date: date}
- console.log(data)
+ //console.log(data)
  $.ajax({
   url: "/get-avaiable-session",
   method: "POST",
 data:data,
   success: function (res) {
-    console.log(res);
+   // console.log(res);
     if(res.status){
       alert(res.message)
 
@@ -236,3 +237,33 @@ data:data,
  }
     
 
+$("#navbarpages").html(nav);
+ function getPages() {
+console.log('hello')
+  $.ajax({
+    url: "/pages",
+    method: "Get",
+    success: function (res) {
+      console.log(res);
+  
+    
+        res.data.forEach((ele) => {
+       
+          nav += `  <li>
+          <a class="nav-link cp-nav-link" href="/page/${ele._id}">
+             ${ele.title}
+          </a>
+      </li>`;
+        });
+        
+        $("#navbarpages").html(nav);
+   
+     
+    },
+    error: function () {
+      alert("error", "Error!", "Something happens in Server!");
+    }
+  }
+  )
+  //console.log(str);
+}
