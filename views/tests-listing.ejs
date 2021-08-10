@@ -175,7 +175,7 @@
                                     <% tests.map((test,index)=>{%>						
                                     <div class="nav-item col-4">
                                         <div class="nav-link tab-boxes text-center " data-toggle="pill" href="#tab<%=index%>">
-                                            <img src="assets/images/fly.png" alt="fly" class="mb-4" />
+                                            <img src="<%=test.country_icon%>" alt="fly" class="mb-4" />
                                             <h6>
                                                 <%=test.test_name%>
                                             </h6>
@@ -199,12 +199,17 @@
                                 
                                 </div>
 
-
+                                <div class="row justify-content-center">
                                 <div class="tab-content mt-4">
-
-                                    <div class="tab-pane test-div container active p-0" id="tab1" data-aos="zoom-in-up">
-                                     
+                                    <div class="col-12 text-center">
+                                        <h4 id='test-head-div'>
+                                       
+                                        </h4>
                                     </div>
+                                    <div  id='test-div' class=" row container active p-0" id="tab1" data-aos="zoom-in-up">
+                                   
+                                    </div>
+                                </div>`;
 
 
 

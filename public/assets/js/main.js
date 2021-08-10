@@ -43,6 +43,7 @@ $("#imageUpload").change(function () {
 async function selectTest(id, index) {
   //console.log(index,id)
   str = "";
+  let body = "";
   $(".test-div").html(str);
   let selectClasses = document.getElementsByClassName("btn-skyblue-border");
   for (let i = 0; i < selectClasses.length; i++) {
@@ -66,9 +67,9 @@ async function selectTest(id, index) {
           ${res.tests.length} tests match your needs:
       </h4>
   </div>`;
-      let body;
+     
       res.tests.forEach((ele) => {
-        body = `<div class=" col-lg-6 col-md-6">
+        body +=`<div class=" col-lg-4 col-md-6">
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
@@ -115,9 +116,9 @@ async function selectTest(id, index) {
    
 `;
       });
-      let render = `<div class="row justify-content-center">${body} </div>`;
-      str = `${headstr} ${render} `;
-      $(".test-div").html(str);
+     body='<div class="row">'+body+'</div>'
+      $("#test-div").html(body);
+      $("#test-head-div").html(headstr);
     },
     error: function () {
       Toast("error", "Error!", "Something happens in Server!");

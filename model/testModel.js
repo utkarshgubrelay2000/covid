@@ -19,6 +19,7 @@ const testSchema = new mongoose.Schema(
     featured: {
       type: Boolean,
     },
+    date:Boolean,
     featured_text: {
       type: String,
     },

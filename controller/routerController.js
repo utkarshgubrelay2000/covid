@@ -50,12 +50,13 @@ exports.chooseslots = async (req, res) => {
   let newDate = new Date();
   let nextDate = addDays(newDate, 1);
 
-  const tests = await Test.find();
+  const tests = await Test.findById(req.params.id);
   const slots = await TimeSlots.find({
-    test: tests[0]._id,
+    test: req.params.id,
     booked: false,
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
+  console.log(tests[0]._id,req.params.id)
   res.render("choose-slots", { _id: req.params.id, slots: slots });
 };
 exports.contactdetails = async (req, res) => {
@@ -122,7 +123,7 @@ exports.testimonials = (req, res) => {
 };
 exports.testslisting = async (req, res) => {
   let tests = await Test.find({});
-  console.log(tests);
+  
   res.render("tests-listing", { tests: tests });
 };
 exports.testsbyId = async (req, res) => {
