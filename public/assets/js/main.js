@@ -40,7 +40,7 @@ $("#imageUpload").change(function () {
   readURL(this);
 });
 //console.log('hello')
-async function selectTest(id, index) {
+async function selectTest(name,index,id) {
   //console.log(index,id)
   str = "";
   let body = "";
@@ -56,7 +56,7 @@ async function selectTest(id, index) {
     }
   }
   $.ajax({
-    url: "/getTestById/" + id,
+    url: "/getTestById/" + name+"/"+id,
     method: "Get",
 
     success: function (res) {
@@ -106,7 +106,7 @@ async function selectTest(id, index) {
                      <span>£${ele.price2}</span>
                  </p>
              </div>
-             <a href="/choose-slots/${res.testId}" class="btn-purple d-inline-block mt-4 mb-2">
+             <a href="/choose-slots/${res.name}/${ele._id}" class="btn-purple d-inline-block mt-4 mb-2">
                  BOOK A PCR
              </a>
          </div> 

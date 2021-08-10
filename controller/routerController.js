@@ -47,17 +47,18 @@ exports.chooseslots = async (req, res) => {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
   }
   // let today = new Date()
+  console.log(req.params)
   let newDate = new Date();
   let nextDate = addDays(newDate, 1);
 
-  const tests = await Test.findById(req.params.id);
+  const tests = await Test.findOne({test_name:req.params.name});
   const slots = await TimeSlots.find({
     test: req.params.id,
     booked: false,
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
-  console.log(tests[0]._id,req.params.id)
-  res.render("choose-slots", { _id: req.params.id, slots: slots });
+
+  res.render("choose-slots", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packid });
 };
 exports.contactdetails = async (req, res) => {
   console.log(req.body);
@@ -127,9 +128,9 @@ exports.testslisting = async (req, res) => {
   res.render("tests-listing", { tests: tests });
 };
 exports.testsbyId = async (req, res) => {
+  console.log(req.params)
   let tests = await TestPackage.find({ testId: req.params.id });
-  // console.log(tests)
-  res.send({ tests: tests,testId:req.params.id });
+  res.send({ tests: tests,testId:req.params.id ,name:req.params.name});
 };
 exports.createBooking = async (req, res) => {
   try {
