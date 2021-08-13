@@ -44,7 +44,7 @@ function getData(length, slot,slotAfterDay6,packageid) {
     success: function (res) {
       console.log(res);
       localStorage.setItem("users", JSON.stringify(res.users));
-   //   window.location.href = "/test-terms";
+      window.location.href = "/test-terms";
     },
     error: function () {
       alert("error", "Error!", "Something happens in Server!");

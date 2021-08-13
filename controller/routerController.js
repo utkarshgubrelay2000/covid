@@ -58,7 +58,7 @@ exports.chooseslots = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
 if(!tests.date){
-  res.render("choose-slots", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packId });
+  res.render("choose-slots", { _id: req.params.name, slots: slots,testDetails:tests,pachageId:req.params.packId });
 }
 else{
   res.render("choose-slots-days", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packId });
@@ -66,43 +66,34 @@ else{
 }
 };
 exports.contactdetails = async (req, res) => {
-  console.log(req.body);
+let {spots,people,packageid}=req.body
   let test = await Test.findOne({ _id: req.body._id });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
-    dob: "",
-    gender: "",
-    address: "",
-    arrival_vessel_number: "",
-    passport_id: "",
-    ethnicity: "",
-    NHS: "",
-    date_of_arrival: "",
-    residing_address: "",
-    country_before_arrival: "",
-    vaccination_status: "",
-    date_depart_out_cta: "",
-    date_arrival_out_cta: "",
+  
+    
   };
+  if(people==1){
+    spots=[spots]
+  
+  }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(peopleArray.length);
+  console.log(spots);
   res.render("contact-details", {
     testDetails: test,
     date: req.body.date,
-    slot: req.body.slot,
+    slot: req.body.spots,
+    packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
   });
 };
 exports.contactdetailsforArrivinginEngland=async (req, res) => {
  let {spotArrival,spotAfterDay6,date,people,packageid}=req.body
-  let test = await TestPackage.findOne({ _id: req.body.packageid });
+ let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
@@ -167,9 +158,9 @@ exports.testsbyId = async (req, res) => {
 };
 exports.createBooking = async (req, res) => {
   try {
-    const { slots } = req.body;
+    const { slots,packageid } = req.body;
  let   sloted=slots.split(',')
-    console.log('hello',sloted)
+   // console.log('hello',sloted)
       personal_details=JSON.parse(req.body.personal_details)
      
     const validation = validate(req.body, {
@@ -197,7 +188,7 @@ exports.createBooking = async (req, res) => {
        users.push(saved._id)
      let res=await TimeSlots.findOneAndUpdate(
         { _id: sloted[index] },
-        { booked: true, user: saved._id, ...req.body },
+        { booked: true, user: saved._id, ...req.body,packageid:packageid  },
         { new: true }
       );
       console.log(res)
@@ -206,19 +197,7 @@ exports.createBooking = async (req, res) => {
     });
  
  
-     
-    const detailsResult = await Promise.all(promises);
-    console.log({ detailsResult });
-
-    const promise2 = [];
-    detailsResult.map((person, index) => {
-      promise2.push(
-       
-      );
-    });
-
-    const details = await Promise.all(promise2);
-    console.log({ details });
+   
     setTimeout(() => {
       
  

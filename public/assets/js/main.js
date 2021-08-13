@@ -124,7 +124,7 @@ async function selectTest(name, index, id) {
       $("#test-head-div").html(headstr);
     },
     error: function () {
-      Toast("error", "Error!", "Something happens in Server!");
+      alert("error", "Error!", "Something happens in Server!");
     },
   });
 }
@@ -206,7 +206,7 @@ function getSlotsByArrival(type) {
       }
     },
     error: function () {
-      Toast("error", "Error!", "Something happens in Server!");
+      alert("error", "Error!", "Something happens in Server!");
     },
   });
 }
@@ -263,7 +263,6 @@ function getSlotsForPeople(type) {
     console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);
   }
 }
-
 function checkLogin(token) {
   if (!token) {
     str = ` <li class="nav-item cp-nav-item">
@@ -309,12 +308,11 @@ function getSlots(index) {
       }
     },
     error: function () {
-      Toast("error", "Error!", "Something happens in Server!");
+      alert("error", "Error!", "Something happens in Server!");
     },
   });
 }
-
-function getData(length, slot) {
+function getData(length, slot,packageid) {
   length = Number(length);
   let array = [];
   for (let index = 0; index < length; index++) {
@@ -349,7 +347,7 @@ function getData(length, slot) {
   }
   ///  console.log(array)
   let pd = JSON.stringify(array);
-  let data = { slots: slot, personal_details: pd };
+  let data = { slots: slot, personal_details: pd ,packageid:packageid};
   console.log(data);
   $.ajax({
     url: "/create",
@@ -431,4 +429,76 @@ function getPages() {
     },
   });
   //console.log(str);
+}
+function getSlotsSingleDay(){
+
+  let option2 = "";
+  
+  $("#slots").html(option2);
+
+  let id = document.getElementById("test").value;
+  
+    date = document.getElementById("date").value;
+  
+  let data = { test: id, limit: 1, date: date };
+  console.log(data);
+  $.ajax({
+    url: "/get-avaiable-session",
+    method: "POST",
+    data: data,
+    success: function (res) {
+       console.log(res);
+      if (res.status) {
+        alert(res.message);
+       
+          allSlots = res.data;
+
+          res.data.forEach((ele) => {
+            var spot = ele;
+            // console.log(ele.bookedFor)
+            option2 += `<option value="${ele._id}">${new Date(
+              ele.bookedFor
+            ).toLocaleTimeString()} </option>`;
+          });
+          $("select[name='inptProduct']")
+            .find("option2")
+            .remove()
+            .end()
+            .append($(option2));
+        
+      } else {
+        alert("Slots not found");
+      }
+    },
+    error: function () {
+      alert("error", "Error!", "Something happens in Server!");
+    },
+  });
+
+}
+function getSlotsForPeopleSingleDay(){
+  let option=''
+  let spotforDay2 = document.getElementById("spotsForSingleDay").value;
+  let numberOfPerson = document.getElementById("numberOfPerson").value;
+  let indexOfSlot;
+  allSlots.map((element, index) => {
+    if (element._id == spotforDay2) {
+      indexOfSlot = index;
+    }
+  });
+  let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+  let spotids = [];
+  spotsArray.map((item) => {
+    spotids.push(item._id);
+  });
+  arrivalSlots = spotids;
+
+  arrivalSlots.forEach((ele) => {
+    var spot = ele;
+    option += `<input name='spots' class="w-100 field" value=${ele}>`;
+  });
+
+  $("#slotsIdsFotSingleDayTest").html(option);
+  console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+
 }
