@@ -101,12 +101,11 @@ exports.contactdetails = async (req, res) => {
   });
 };
 exports.contactdetailsforArrivinginEngland=async (req, res) => {
- let {spotArrival,spotAfterDay6,date,people}=req.body
+ let {spotArrival,spotAfterDay6,date,people,packageid}=req.body
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
-   
   };
  
      
@@ -121,6 +120,7 @@ exports.contactdetailsforArrivinginEngland=async (req, res) => {
   console.log(spotArrival,spotAfterDay6);
   res.render("contact-for-arrival", {
     testDetails: test,
+    packageid: packageid,
     date: date,
     slot: spotArrival,
     slotAfterDay6: spotAfterDay6,
@@ -168,7 +168,7 @@ exports.testsbyId = async (req, res) => {
 exports.createBooking = async (req, res) => {
   try {
     const { slots } = req.body;
-    sloted=slots.split(',')
+ let   sloted=slots.split(',')
     console.log('hello',sloted)
       personal_details=JSON.parse(req.body.personal_details)
      
@@ -232,6 +232,68 @@ exports.createBooking = async (req, res) => {
         data: 'Something wrong',
       });
     }, 600);
+
+   
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createBookingArrival = async (req, res) => {
+  try {
+    const { slots,slotAfterDay6,packageid } = req.body;
+    let sloted=slots.split(',')
+    let slotedDay6=slotAfterDay6.split(',')
+    personal_details=JSON.parse(req.body.personal_details)
+    console.log('hello',sloted,personal_details)
+     
+    const validation = validate(req.body, {
+     
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
+
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+    console.log('here',personal_details)
+    let users=[]
+     const promises =   personal_details.map((person, index) => {
+      const details = new PersonalDetails({ ...person, slot: sloted[index],slotDay6:slotedDay6[index] });
+     details.save().then(async saved=>{
+       users.push(saved._id)
+     let res=await TimeSlots.findOneAndUpdate(
+        { _id: sloted[index] },
+        { booked: true, user: saved._id, ...req.body,packageid:packageid },
+        { new: true }
+      );
+      let res2=await TimeSlots.findOneAndUpdate(
+        { _id: slotedDay6[index] },
+        { booked: true, user: saved._id, ...req.body,packageid:packageid },
+        { new: true }
+      );
+     // console.log(res)
+     return saved._id
+    })
+    });
+ 
+
+    setTimeout(() => {
+  
+      res
+        .json({ message: "Booking Saved!",users:users , status: true });
+ 
+    }, 1000);
 
    
   } catch (error) {

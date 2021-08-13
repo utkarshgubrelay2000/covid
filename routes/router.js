@@ -26,6 +26,7 @@ router.get('/',registerController.homePage)
  router.get('/appointment',registerController.appointment)
  router.post('/get-avaiable-session',bookingController.getSlots)
  router.post("/create",registerController.createBooking);
+ router.post("/create-arrival",registerController.createBookingArrival);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/get-time-slots").get(async (req, res) => {

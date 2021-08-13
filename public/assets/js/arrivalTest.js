@@ -1,5 +1,5 @@
 // mobile menu open close
-function getData(length, slot) {
+function getData(length, slot,slotAfterDay6,packageid) {
   length = Number(length);
   let array = [];
   for (let index = 0; index < length; index++) {
@@ -34,10 +34,10 @@ function getData(length, slot) {
   }
   ///  console.log(array)
   let pd = JSON.stringify(array);
-  let data = { slots: slot, personal_details: pd };
+  let data = { slots: slot, personal_details: pd,slotAfterDay6:slotAfterDay6,packageid:packageid };
   console.log(data);
   $.ajax({
-    url: "/create-booking",
+    url: "/create-arrival",
     method: "POST",
     data: data,
     Headers: { contentType: "application/json" },

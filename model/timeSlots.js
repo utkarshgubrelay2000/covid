@@ -4,6 +4,7 @@ const timeSlotSchema = new mongoose.Schema(
   {
     User: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     test: { type: mongoose.Schema.Types.ObjectId, ref: "Test" },
+    packageid: { type: mongoose.Schema.Types.ObjectId, ref: "TestPackage" },
     available: { type: Boolean },
     bookedFor: { type: Date, default: Date.now() },
     paid: { type: Boolean, default: false },
