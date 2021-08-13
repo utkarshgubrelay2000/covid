@@ -2,6 +2,8 @@
 let str = "";
 let nav = "";
 let allSlots = [];
+let arrivalSlots = [];
+let day8Slots = [];
 let covid_token = localStorage.getItem("covid");
 getPages();
 checkLogin(covid_token);
@@ -166,37 +168,38 @@ function getSlotsByArrival(type) {
       // console.log(res);
       if (res.status) {
         alert(res.message);
-        if(type==1){
-        allSlots = res.data;
+        if (type == 1) {
+          allSlots = res.data;
 
-        res.data.forEach((ele) => {
-          var spot = ele;
-          // console.log(ele.bookedFor)
-          option += `<option value="${ele._id}">${new Date(
-            ele.bookedFor
-          ).toLocaleTimeString()} </option>`;
-        });
-        $("select[name='inptProduct']")
-          .find("option")
-          .remove()
-          .end()
-          .append($(option));}
+          res.data.forEach((ele) => {
+            var spot = ele;
+            // console.log(ele.bookedFor)
+            option += `<option value="${ele._id}">${new Date(
+              ele.bookedFor
+            ).toLocaleTimeString()} </option>`;
+          });
+          $("select[name='inptProduct']")
+            .find("option")
+            .remove()
+            .end()
+            .append($(option));
+        }
         //console.log(option,res.data)
-        else{
-           allSlots = res.data;
+        else {
+          allSlots = res.data;
 
-        res.data.forEach((ele) => {
-          var spot = ele;
-          // console.log(ele.bookedFor)
-          option2 += `<option value="${ele._id}">${new Date(
-            ele.bookedFor
-          ).toLocaleTimeString()} </option>`;
-        });
-        $("select[name='inptProduct2']")
-          .find("option2")
-          .remove()
-          .end()
-          .append($(option2));
+          res.data.forEach((ele) => {
+            var spot = ele;
+            // console.log(ele.bookedFor)
+            option2 += `<option value="${ele._id}">${new Date(
+              ele.bookedFor
+            ).toLocaleTimeString()} </option>`;
+          });
+          $("select[name='inptProduct2']")
+            .find("option2")
+            .remove()
+            .end()
+            .append($(option2));
         }
       } else {
         alert("Slots not found");
@@ -208,26 +211,36 @@ function getSlotsByArrival(type) {
   });
 }
 function getSlotsForPeople(type) {
-  if(type==1){
+  let option = "";
+  let option2 = "";
 
+  if (type == 1) {
+    let spotforDay2 = document.getElementById("spotsForDay2").value;
+    let numberOfPerson = document.getElementById("numberOfPerson").value;
+    let indexOfSlot;
+    allSlots.map((element, index) => {
+      if (element._id == spotforDay2) {
+        indexOfSlot = index;
+      }
+    });
+    let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+    let spotids = [];
+    spotsArray.map((item) => {
+      spotids.push(item._id);
+    });
+    arrivalSlots = spotids;
 
-  let spotforDay2 = document.getElementById("spotsForDay2").value;
-  let numberOfPerson = document.getElementById("numberOfPerson").value;
-  let indexOfSlot;
-  allSlots.map((element, index) => {
-    if (element._id == spotforDay2) {
-      indexOfSlot = index;
-    }
-  });
-  let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
-  spotsArray.map(item=>{
-    console.log(new Date(item.bookedFor))
-  })
-  console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);  }
-  else{
+    arrivalSlots.forEach((ele) => {
+      var spot = ele;
+      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+    });
+
+    $("#slotsIdsForArrival").html(option);
+    console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+  } else {
     let spotforDay8 = document.getElementById("spotsForDay8").value;
-  let spotforDay2 = document.getElementById("spotsForDay2");
-  spotforDay2.setAttribute('disabled', true)
+    let spotforDay2 = document.getElementById("spotsForDay2");
+    spotforDay2.setAttribute("disabled", true);
 
     let numberOfPerson = document.getElementById("numberOfPerson").value;
     let indexOfSlot;
@@ -237,11 +250,19 @@ function getSlotsForPeople(type) {
       }
     });
     let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
-    spotsArray.map(item=>{
-      console.log(new Date(item.bookedFor))
-    })
-    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);  }
+    let spotids = [];
+    spotsArray.map((item) => {
+      spotids.push(item._id);
+    });
+
+    spotids.forEach((ele) => {
+      option2 += `<input name='spotAfterDay6' class="w-100 field" value=${ele}>`;
+    });
+
+    $("#spotAfterDay6").html(option2);
+    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);
   }
+}
 
 function checkLogin(token) {
   if (!token) {

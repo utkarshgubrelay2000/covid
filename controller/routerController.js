@@ -58,10 +58,10 @@ exports.chooseslots = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
 if(!tests.date){
-  res.render("choose-slots", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packid });
+  res.render("choose-slots", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packId });
 }
 else{
-  res.render("choose-slots-days", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packid });
+  res.render("choose-slots-days", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packId });
 
 }
 };
@@ -100,6 +100,34 @@ exports.contactdetails = async (req, res) => {
     length: peopleArray.length,
   });
 };
+exports.contactdetailsforArrivinginEngland=async (req, res) => {
+ let {spotArrival,spotAfterDay6,date,people}=req.body
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+   
+  };
+ 
+     
+  
+  if(people==1){
+    spotAfterDay6=[spotAfterDay6]
+    spotArrival=[spotArrival]
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+  console.log(spotArrival,spotAfterDay6);
+  res.render("contact-for-arrival", {
+    testDetails: test,
+    date: date,
+    slot: spotArrival,
+    slotAfterDay6: spotAfterDay6,
+    people: peopleArray,
+    length: people,
+  });
+}
 exports.contact = (req, res) => {
   res.render("contact");
 };
