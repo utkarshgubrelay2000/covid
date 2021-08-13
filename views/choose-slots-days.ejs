@@ -291,7 +291,7 @@
                                                                     <i class="fas fa-users"></i>
                                                                     No. of people in booking
                                                                 </label>
-                                                                <select class="numbers">
+                                                                <select default-value='1' id='numberOfPerson' class="numbers">
                                                                     <option class="1">1</option>
                                                                     <option class="2">2</option>
                                                                     <option class="3">3</option>
@@ -336,7 +336,15 @@
                                                                             <label>
                                                                                 Time*
                                                                             </label>
-                                                                            <input type="time" name="time" id="time" class="w-100 field" placeholder="" required />
+                                                                            <div     id="spots">
+
+                                                                            <select onchange="getSlotsForPeople(1)"
+                                                                            id='spotsForDay2' class="w-100 field" name='inptProduct'>
+
+                                                                            </select>
+                                                                                
+                                                                            </select>
+                                                                        </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -354,7 +362,9 @@
                                                                             <label>
                                                                                 Date*
                                                                             </label>
-                                                                            <input             onchange="getSlotsByArrival(2)"   type="date" name="date" id="date2" class="w-100 field" placeholder="" required />
+                                                                            <input             onchange="getSlotsByArrival(2)"  
+                                                                             type="date" name="date" id="date2"
+                                                                              class="w-100 field" placeholder="" required />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-6">
@@ -362,7 +372,11 @@
                                                                             <label>
                                                                                 Time*
                                                                             </label>
-                                                                            <input type="time" name="time" id="time" class="w-100 field" placeholder="" required />
+                                                                            <select onchange="getSlotsForPeople(2)"
+                                                                            id='spotsForDay8' class="w-100 field"
+                                                                             name='inptProduct2'>
+
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -602,7 +616,7 @@
         </footer>
         <!-- ./site-footer -->
 
-        <input value='<%=_id%>' class='d-none' name='_id' id='test'/>
+        <input value='<%=testDetails._id%>' class='d-none' name='_id' id='test'/>
         <!--Login popup -->
         <div class="modal fade popup-modal slots-popup p-0" id="select_slot_popup" data-eligibility-check="" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="advice_area_finishTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

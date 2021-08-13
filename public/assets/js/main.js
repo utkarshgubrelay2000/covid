@@ -1,6 +1,7 @@
 // mobile menu open close
 let str = "";
 let nav = "";
+let allSlots = [];
 let covid_token = localStorage.getItem("covid");
 getPages();
 checkLogin(covid_token);
@@ -40,7 +41,7 @@ $("#imageUpload").change(function () {
   readURL(this);
 });
 //console.log('hello')
-async function selectTest(name,index,id) {
+async function selectTest(name, index, id) {
   //console.log(index,id)
   str = "";
   let body = "";
@@ -56,7 +57,7 @@ async function selectTest(name,index,id) {
     }
   }
   $.ajax({
-    url: "/getTestById/" + name+"/"+id,
+    url: "/getTestById/" + name + "/" + id,
     method: "Get",
 
     success: function (res) {
@@ -67,9 +68,9 @@ async function selectTest(name,index,id) {
           ${res.tests.length} tests match your needs:
       </h4>
   </div>`;
-     
+
       res.tests.forEach((ele) => {
-        body +=`<div class=" col-lg-4 col-md-6">
+        body += `<div class=" col-lg-4 col-md-6">
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
@@ -116,7 +117,7 @@ async function selectTest(name,index,id) {
    
 `;
       });
-     body='<div class="row">'+body+'</div>'
+      body = '<div class="row">' + body + "</div>";
       $("#test-div").html(body);
       $("#test-head-div").html(headstr);
     },
@@ -138,26 +139,25 @@ for (var i = 0; i < btn.length; i++) {
 
 $("#booking-head").html(str);
 function getSlotsByArrival(type) {
-  $("#slots").html(str);
-let date;
-let id = document.getElementById("test").value;
-if(type==1){
+  let option = "";
+  let option2 = "";
+  $("#slots").html(option);
+  let date;
+  let id = document.getElementById("test").value;
+  if (type == 1) {
+    let day8 = document.getElementById("date2");
+    date = document.getElementById("date").value;
+    let value = new Date(date);
+    console.log(date, value, date);
 
-  let day8 = document.getElementById("date2");
-   date = document.getElementById("date").value;
-  let value=new Date(date)
-  console.log(date,value,date)
-  
-  value.setDate(value.getDate()+6)
-  console.log(value.toISOString().substr(0, 10))
-  day8.setAttribute("min", value.toISOString().substr(0, 10))
-}
-else{
-  date = document.getElementById("date2").value;
-
-}
+    value.setDate(value.getDate() + 6);
+    console.log(value.toISOString().substr(0, 10));
+    day8.setAttribute("min", value.toISOString().substr(0, 10));
+  } else {
+    date = document.getElementById("date2").value;
+  }
   let data = { test: id, limit: 1, date: date };
-  console.log(data)
+  console.log(data);
   $.ajax({
     url: "/get-avaiable-session",
     method: "POST",
@@ -166,14 +166,38 @@ else{
       // console.log(res);
       if (res.status) {
         alert(res.message);
+        if(type==1){
+        allSlots = res.data;
 
         res.data.forEach((ele) => {
           var spot = ele;
-          str += `<option value="${ele._id}">${new Date(
+          // console.log(ele.bookedFor)
+          option += `<option value="${ele._id}">${new Date(
             ele.bookedFor
           ).toLocaleTimeString()} </option>`;
         });
-        $("#slots").html(str);
+        $("select[name='inptProduct']")
+          .find("option")
+          .remove()
+          .end()
+          .append($(option));}
+        //console.log(option,res.data)
+        else{
+           allSlots = res.data;
+
+        res.data.forEach((ele) => {
+          var spot = ele;
+          // console.log(ele.bookedFor)
+          option2 += `<option value="${ele._id}">${new Date(
+            ele.bookedFor
+          ).toLocaleTimeString()} </option>`;
+        });
+        $("select[name='inptProduct2']")
+          .find("option2")
+          .remove()
+          .end()
+          .append($(option2));
+        }
       } else {
         alert("Slots not found");
       }
@@ -183,6 +207,42 @@ else{
     },
   });
 }
+function getSlotsForPeople(type) {
+  if(type==1){
+
+
+  let spotforDay2 = document.getElementById("spotsForDay2").value;
+  let numberOfPerson = document.getElementById("numberOfPerson").value;
+  let indexOfSlot;
+  allSlots.map((element, index) => {
+    if (element._id == spotforDay2) {
+      indexOfSlot = index;
+    }
+  });
+  let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+  spotsArray.map(item=>{
+    console.log(new Date(item.bookedFor))
+  })
+  console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);  }
+  else{
+    let spotforDay8 = document.getElementById("spotsForDay8").value;
+  let spotforDay2 = document.getElementById("spotsForDay2");
+  spotforDay2.setAttribute('disabled', true)
+
+    let numberOfPerson = document.getElementById("numberOfPerson").value;
+    let indexOfSlot;
+    allSlots.map((element, index) => {
+      if (element._id == spotforDay8) {
+        indexOfSlot = index;
+      }
+    });
+    let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+    spotsArray.map(item=>{
+      console.log(new Date(item.bookedFor))
+    })
+    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);  }
+  }
+
 function checkLogin(token) {
   if (!token) {
     str = ` <li class="nav-item cp-nav-item">
@@ -206,7 +266,7 @@ function getSlots(index) {
   let id = document.getElementById("test").value;
   let date = document.getElementById("date" + index).value;
   let data = { test: id, limit: 1, date: date };
-  console.log(data)
+  console.log(data);
   $.ajax({
     url: "/get-avaiable-session",
     method: "POST",
@@ -292,7 +352,7 @@ function getDate() {
 
   let peopleCount = document.getElementById("people").value;
   peopleCount = parseInt(peopleCount);
-  console.log(peopleCount)
+  console.log(peopleCount);
   for (let index = 0; index < peopleCount; index++) {
     inputdiv += `<div class="col-lg-5 col-md-6">
   <div class="form-group" id='dateinputs'>
@@ -316,17 +376,15 @@ function getDate() {
 </div><br/>`;
   }
   $("#dateinputs").html(inputdiv);
-
 }
 function getArrivalDate() {
- 
-  let day8 = document.getElementById("arrivaldate")
-  let date = document.getElementById("date")
-  let value=new Date(day8.value)
-  
-  value.setDate(value.getDate()+2)
-  console.log(value.toISOString().substr(0, 10))
-  date.setAttribute("min", value.toISOString().substr(0, 10))
+  let day8 = document.getElementById("arrivaldate");
+  let date = document.getElementById("date");
+  let value = new Date(day8.value);
+
+  value.setDate(value.getDate() + 2);
+  console.log(value.toISOString().substr(0, 10));
+  date.setAttribute("min", value.toISOString().substr(0, 10));
 }
 $("#navbarpages").html(nav);
 function getPages() {
