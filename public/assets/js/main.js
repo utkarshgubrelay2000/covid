@@ -137,6 +137,52 @@ for (var i = 0; i < btn.length; i++) {
 }
 
 $("#booking-head").html(str);
+function getSlotsByArrival(type) {
+  $("#slots").html(str);
+let date;
+let id = document.getElementById("test").value;
+if(type==1){
+
+  let day8 = document.getElementById("date2");
+   date = document.getElementById("date").value;
+  let value=new Date(date)
+  console.log(date,value,date)
+  
+  value.setDate(value.getDate()+6)
+  console.log(value.toISOString().substr(0, 10))
+  day8.setAttribute("min", value.toISOString().substr(0, 10))
+}
+else{
+  date = document.getElementById("date2").value;
+
+}
+  let data = { test: id, limit: 1, date: date };
+  console.log(data)
+  $.ajax({
+    url: "/get-avaiable-session",
+    method: "POST",
+    data: data,
+    success: function (res) {
+      // console.log(res);
+      if (res.status) {
+        alert(res.message);
+
+        res.data.forEach((ele) => {
+          var spot = ele;
+          str += `<option value="${ele._id}">${new Date(
+            ele.bookedFor
+          ).toLocaleTimeString()} </option>`;
+        });
+        $("#slots").html(str);
+      } else {
+        alert("Slots not found");
+      }
+    },
+    error: function () {
+      Toast("error", "Error!", "Something happens in Server!");
+    },
+  });
+}
 function checkLogin(token) {
   if (!token) {
     str = ` <li class="nav-item cp-nav-item">
@@ -186,6 +232,7 @@ function getSlots(index) {
     },
   });
 }
+
 function getData(length, slot) {
   length = Number(length);
   let array = [];
@@ -271,7 +318,16 @@ function getDate() {
   $("#dateinputs").html(inputdiv);
 
 }
-
+function getArrivalDate() {
+ 
+  let day8 = document.getElementById("arrivaldate")
+  let date = document.getElementById("date")
+  let value=new Date(day8.value)
+  
+  value.setDate(value.getDate()+2)
+  console.log(value.toISOString().substr(0, 10))
+  date.setAttribute("min", value.toISOString().substr(0, 10))
+}
 $("#navbarpages").html(nav);
 function getPages() {
   console.log("hello");

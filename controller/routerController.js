@@ -57,8 +57,13 @@ exports.chooseslots = async (req, res) => {
     booked: false,
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
-
+if(!tests.date){
   res.render("choose-slots", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packid });
+}
+else{
+  res.render("choose-slots-days", { _id: req.params.id, slots: slots,testDetails:tests,pachageId:req.params.packid });
+
+}
 };
 exports.contactdetails = async (req, res) => {
   console.log(req.body);
