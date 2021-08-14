@@ -12,6 +12,7 @@ const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
 const Page = require("../model/pages");
 const TestPackage = require("../model/testPackage");
+const testimonial = require("../model/testimonialModel");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -143,9 +144,7 @@ exports.testsummary = (req, res) => {
 exports.testTerms = (req, res) => {
   res.render("test-terms");
 };
-exports.testimonials = (req, res) => {
-  res.render("testimonials");
-};
+
 exports.testslisting = async (req, res) => {
   let tests = await Test.find({});
   
@@ -307,5 +306,21 @@ exports.getPageById = (req, res) => {
     })
     .catch((err) => {
       res.status(503).json({ error: true, msg: "Something Went Wrong" });
+    });
+};
+exports.getAlltestimonials = (req, res) => {
+  //console.log(req.body);
+  // categoryObject: { '$exists': false,}
+
+  testimonial.find({})
+    .then((found) => {
+      res
+        .render('testimonials',{ error: false, data: found, 
+          PageCount: found.length });
+    })
+    .catch((err) => {
+      res
+        .status(503)
+        .json({ error: true, msg: "Something Went Wrong", errMsg: err });
     });
 };
