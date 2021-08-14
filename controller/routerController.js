@@ -13,6 +13,7 @@ const { validate } = require("validate.js");
 const Page = require("../model/pages");
 const TestPackage = require("../model/testPackage");
 const testimonial = require("../model/testimonialModel");
+const aboutmodel = require("../model/aboutModel");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -20,8 +21,10 @@ exports.homePage = (req, res) => {
 exports.contact = (req, res) => {
   res.render("contact");
 };
-exports.about = (req, res) => {
-  res.render("about-us");
+exports.about =async (req, res) => {
+  let  data = await aboutmodel.find({})
+ // console.log(data)
+    res.render("about-us",{data:data[0]});
 };
 
 exports.faq = async (req, res) => {

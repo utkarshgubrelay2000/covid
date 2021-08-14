@@ -171,19 +171,7 @@
                                         </h2>
                                         <p>
                                             Blackburn Travel Clinic offers travel health services for a wide range of travellers.
-                                        </p>
-                                        <p>
-                                            Our friendly, professional staff provide the full range of travel vaccination including Yellow Fever. With our help individual travellers, 
-                                            families and business travellers benefit from up-to-date advice and information about their travel journey and possible vaccinations requirements.
-                                        </p>
-                                        <p>
-                                            Whether it is short or long-term, single destination or even a round the world trip we provide an extensive service for all.
-                                        </p>
-                                        <p>
-                                            We even sell travel health essentials like insect repellent and first aid kits. We’re very aware that a lot of people find vaccinations frightening. 
-                                            Not to worry. We’ll treat you gently, with respect and consideration, and we’ll ensure the whole experience is as quick and painless as possible. With 
-                                            2 Locations within Blackburn both within close access to public transport and only minutes from the motorway.
-                                        </p>
+                                      <%=data.shortdescription%>  </p>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
                                         <img src="assets/images/about-us.png" alt="about img" class="right-img" />
@@ -199,46 +187,7 @@
             <section class="other-sec bg-offwhite">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-10 offset-lg-1" data-aos="zoom-in-up">
-                            <h5 class="text-purple">
-                                Primary person
-                            </h5>
-                            <p>
-                                Our experienced healthcare professionals have years of combined expertise in travel medicine and they’re all keen travellers themselves. 
-                                As well as general advice about your destination, vaccinations and information about anti-malarials, you will also be able to discuss any health 
-                                issues you might be worried about when travelling abroad.
-                            </p>
-                            <h5 class="text-purple">
-                                Last minute and walk-in travel vaccinations
-                            </h5>
-                            <p>
-                                Unlike GP surgeries, we provide appointments outside working hours, whether it’s early morning, evening, lunchtime or the weekend. We even 
-                                provide same day, last minute and walk-in appointments, perfect if you aren’t given much notice before you leave or are a fan of last minute 
-                                holiday bargains. We are open extended hours even at weekends and bank holidays.
-                            </p>
-                            <h5 class="text-purple">
-                                Travel health for individuals and families
-                            </h5>
-                            <p>
-                                Whatever your specific circumstances, state of health and destination, we’ll deliver current, reliable advice and information based on the 
-                                very latest health related risk assessments.
-                            </p>
-                            <h5 class="text-purple">
-                                Travel health for businesses
-                            </h5>
-                            <p>
-                                We work closely with large and small businesses to ensure their staff are properly protected when abroad on business. We offer a specialist 
-                                corporate package saving your business time, money and hassle.
-                            </p>
-                            <h5 class="text-purple">
-                                Registered Yellow Fever Clinic
-                            </h5>
-                            <p>
-                                We have a UK registered Yellow Fever Vaccination Centre within Blackburn at one of our locations. If the country you’re travelling to demands a 
-                                formal Certificate of Vaccination for the disease, that’s no problem – we have a designated yellow fever centre to provide you with exactly what 
-                                you need.
-                            </p>
-                        </div>
+                        <div class="col-lg-10 offset-lg-1" data-aos="zoom-in-up" id='blogContent'>  </div>
                     </div>
                 </div>
             </section>
@@ -467,6 +416,11 @@
 			AOS.init({
 				duration: 1200,
 			});
+            let postCol = document.getElementById('blogContent')
+        let a = $.parseHTML('<%=data.content%>');
+        let b = a[0].data
+        postCol.innerHTML = b
+        console.log(a[0].data)
 		</script>
 
     </body>

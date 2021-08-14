@@ -400,10 +400,12 @@ function getArrivalDate() {
   let day8 = document.getElementById("arrivaldate");
   let date = document.getElementById("date");
   let value = new Date(day8.value);
+  let mindate = new Date(day8.value);
 
   value.setDate(value.getDate() + 2);
   console.log(value.toISOString().substr(0, 10));
-  date.setAttribute("min", value.toISOString().substr(0, 10));
+  date.setAttribute("max", value.toISOString().substr(0, 10));
+  date.setAttribute("min", mindate.toISOString().substr(0, 10));
 }
 $("#navbarpages").html(nav);
 function getPages() {
