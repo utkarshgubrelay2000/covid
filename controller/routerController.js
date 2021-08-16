@@ -190,7 +190,7 @@ exports.createBooking = async (req, res) => {
        users.push(saved._id)
      let res=await TimeSlots.findOneAndUpdate(
         { _id: sloted[index] },
-        { booked: true, user: saved._id, ...req.body,packageid:packageid  },
+        { booked: true, user: saved._id,UserId:req.body.userId, ...req.body,packageid:packageid  },
         { new: true }
       );
       console.log(res)

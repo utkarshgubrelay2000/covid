@@ -3,7 +3,8 @@ var router = express.Router();
 const registerController=require('../controller/routerController')
 const bookingController=require('../controller/bookingController')
 var mutter=require('multer')
-var path=require('path')
+var path=require('path');
+const verifyAdmin = require('../middleware/verifyAdmin');
 /* GET home page. */
 router.get('/',registerController.homePage)
  router.get('/contact-us',registerController.contact)
@@ -25,8 +26,8 @@ router.get('/',registerController.homePage)
  router.get('/test-Terms',registerController.testTerms)
  router.get('/appointment',registerController.appointment)
  router.post('/get-avaiable-session',bookingController.getSlots)
- router.post("/create",registerController.createBooking);
- router.post("/create-arrival",registerController.createBookingArrival);
+ router.post("/create",verifyAdmin,registerController.createBooking);
+ router.post("/create-arrival",verifyAdmin,registerController.createBookingArrival);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/get-time-slots").get(async (req, res) => {

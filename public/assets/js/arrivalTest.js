@@ -42,7 +42,7 @@ function getData(length, slot,slotAfterDay6,packageid) {
     url: "/create-arrival",
     method: "POST",
     data: data,
-    Headers: { contentType: "application/json",Authorization:token },
+    headers: { contentType: "application/json",Authorization:token },
 
     success: function (res) {
       console.log(res);
