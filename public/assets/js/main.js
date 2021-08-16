@@ -267,6 +267,10 @@ function getSlotsForPeople(type) {
     console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);
   }
 }
+function logoutHandler(){
+  localStorage.removeItem('covid')
+  window.location.href='/'
+}
 function checkLogin(token) {
   if (!token) {
     str = ` <li class="nav-item cp-nav-item">

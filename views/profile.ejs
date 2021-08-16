@@ -54,7 +54,7 @@
                                 	<img src="/assets/img/user-img.png" alt="user" class="mr-2">
                                 </div>
                                 <div class="text-left">
-                                	<h6 class="m-0 username">John Doe</h6>
+                                	<h6 class="m-0 username"><%=data.firstName%> <%=data.lastName%></h6>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown">
@@ -64,10 +64,10 @@
                                 			<h6 class="theme-color font-weight-bold">Account</h6>
                                 		</div>
                                 		<a class="dropdown-item" href="profile-details">Profile</a>
-		                                <a class="dropdown-item" href="notification">My Notifications</a>
-										<a class="dropdown-item" href="appointment-bookings">Appointment Bookings</a>
-										<a class="dropdown-item" href="setting">Setting</a>
-										<a class="dropdown-item" href="#">Logout</a>
+		                                <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
+										<a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
+										<a class="dropdown-item" href="setting/<%=token%>">Setting</a>
+										<a class="dropdown-item" onclick="logoutHandler()">Logout</a>
                                 	</div>
                                 </div>
                            	</div>
@@ -95,13 +95,13 @@
 									<a href="profile" class="nav-link">My Profile</a>
 								</li>
 								<li class="nav-item">
-									<a href="notification" class="nav-link">My Notifications</a>
+									<a  href="/notification/<%=token%>" class="nav-link">My Notifications</a>
 								</li>
 								<li class="nav-item">
-									<a href="appointment-bookings" class="nav-link">Appointment Bookings</a>
+									<a href="/appointment-bookings/<%=token%>" class="nav-link">Appointment Bookings</a>
 								</li>
 								<li class="nav-item">
-									<a href="setting" class="nav-link">Setting</a>
+									<a href="/setting/<%=token%>" class="nav-link">Setting</a>
 								</li>
 							</ul>
 					  </div>
@@ -126,7 +126,7 @@
 								<div class="avatar d-md-flex align-items-center mb-4">
 									<div class="avatar-upload mb-4 mb-md-0">
 								        <div class="avatar-preview">
-								            <div id="imagePreview" style="background-image: url(assets/img/user-img.png);">
+								            <div id="imagePreview" style="background-image: url(https://images.pexels.com/photos/7763205/pexels-photo-7763205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);">
 								            </div>
 								        </div>
 										<div class="d-flex justify-content-center text-center mt-4">
@@ -147,11 +147,8 @@
 							</div>
 							<div class="col-xl-9 col-lg-7 col-md-6 col-12">
 								<div class="d-flex align-items-center">
-									<h5 class="mb-0 font-weight-bold">John Doe</h5>
-									<span class="location ml-3 d-inline-block text-gray">
-										<i class="fas fa-map-marker-alt ml-2 mr-2"></i>
-										New york, USA
-									</span>
+									<h5 class="mb-0 font-weight-bold"><%=data.firstName%> <%=data.lastName%></h5>
+								
 								</div>
 								<p class="email text-skyblue">General Manager</p>
 								
@@ -180,8 +177,8 @@
 											Address
 										</span>
 										<span class="desc text-purple font-weight-bold">
-											525 E 6th Street, Time Square Road <br/>
-											New York, NY 106512, USA
+											<%=data.address%> 
+
 										</span>
 									</div>
 									<hr class="lines" />
@@ -194,7 +191,8 @@
 												Phone number
 											</span>
 											<span class="desc text-purple font-weight-bold">
-												+91 - 912345 78910
+																					<%=data.phone%> 
+
 											</span>
 										</div>
 										<div class="d-lg-flex d-block mb-3">
@@ -202,38 +200,10 @@
 												Email Address
 											</span>
 											<span class="desc text-purple font-weight-bold">
-												johndoe@mail.com
+												<%=data.email%> 
 											</span>
 										</div>
-										<div class="d-lg-flex d-block mb-3">
-											<span class="title text-gray font-weight-bold">
-												Social Platforms
-											</span>
-											<span class="desc text-purple font-weight-bold">
-												<ul class="pl-0 ml-0 social-links">
-													<li class="d-inline-block">
-														<a href="#" target="_blank">
-															<i class="fab fa-facebook-f"></i>
-														</a>
-													</li>
-													<li class="d-inline-block">
-														<a href="#" target="_blank">
-															<i class="fab fa-instagram"></i>
-														</a>
-													</li>
-													<li class="d-inline-block">
-														<a href="#" target="_blank">
-															<i class="fab fa-linkedin"></i>
-														</a>
-													</li>
-													<li class="d-inline-block">
-														<a href="#" target="_blank">
-															<i class="fab fa-twitter"></i>
-														</a>
-													</li>
-												</ul>
-											</span>
-										</div>
+										
 									</div>
 								</div>
 							</div>

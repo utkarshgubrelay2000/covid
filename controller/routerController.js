@@ -14,6 +14,7 @@ const Page = require("../model/pages");
 const TestPackage = require("../model/testPackage");
 const testimonial = require("../model/testimonialModel");
 const aboutmodel = require("../model/aboutModel");
+const User = require("../model/userModel");
 
 exports.homePage = (req, res) => {
   res.render("index");
@@ -136,7 +137,12 @@ exports.notification = (req, res) => {
   res.render("notification");
 };
 exports.profile = (req, res) => {
-  res.render("profile");
+  User.findById(req.body.userId,{password:0,gender:0,createdAt:0,updatedAt:0}).then(found=>{
+    console.log(found,req.body.userId)
+    res.render("profile",{data:found,token:req.params.token});
+  }).catch((err) => {
+    res.send({msg: "Something Went Wrong " });
+  });
 };
 exports.settings = (req, res) => {
   res.render("settings");
