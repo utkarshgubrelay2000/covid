@@ -279,7 +279,11 @@ function checkLogin(token) {
                                         <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
                                             BOOK TEST
                                         </a>
-                                    </li> `;
+                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="/profile/${token}">
+                                        My Profile
+                                     </a>
+                                    </li>
+                                    `;
   }
   $("#booking-head").html(str);
   //console.log(str);

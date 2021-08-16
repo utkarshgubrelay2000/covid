@@ -5,6 +5,8 @@ const bookingController=require('../controller/bookingController')
 var mutter=require('multer')
 var path=require('path');
 const verifyAdmin = require('../middleware/verifyAdmin');
+const requireLogin  = require('../middleware/requireLogin');
+
 /* GET home page. */
 router.get('/',registerController.homePage)
  router.get('/contact-us',registerController.contact)
@@ -29,7 +31,8 @@ router.get('/',registerController.homePage)
  router.post("/create",verifyAdmin,registerController.createBooking);
  router.post("/create-arrival",verifyAdmin,registerController.createBookingArrival);
  router.get("/pages",registerController.getAllPage);
- router.get("/page/:id",registerController.getPageById);
+ router.get("/pages",registerController.getAllPage);
+ router.get("/profile/:token",requireLogin,registerController.profile);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
