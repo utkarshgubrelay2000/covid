@@ -45,12 +45,13 @@ exports.loadMoreFaqs = async (req, res) => {
   }
 };
 exports.appointment =async (req, res) => {
-let myslots= await  TimeSlots.find({UserId:req.body.userId}).populate("UserId")
+  let userDetails= await User.findById(req.body.userId,{password:0,gender:0,createdAt:0,updatedAt:0})
+let myslots= await  TimeSlots.find({UserId:req.body.userId})
 .populate("test")
 .populate("packageid")
 .populate("user").limit(10);
-console.log(myslots[0].user,req.body)
-  res.render("appointment-bookings",{myslots:myslots,token:req.params.token,curpage:1});
+//console.log(myslots[0],req.body)
+  res.render("appointment-bookings",{myslots:myslots,data:userDetails,token:req.params.token,curpage:1});
 };
 exports.paginationappointment =async (req, res) => {
   let myslots= await  TimeSlots.find({UserId:req.body.userId}).populate("UserId")
@@ -151,7 +152,7 @@ exports.notification = (req, res) => {
 };
 exports.profile = (req, res) => {
   User.findById(req.body.userId,{password:0,gender:0,createdAt:0,updatedAt:0}).then(found=>{
-    console.log(found,req.body.userId)
+   
     res.render("profile",{data:found,token:req.params.token});
   }).catch((err) => {
     res.send({msg: "Something Went Wrong " });
@@ -346,3 +347,10 @@ exports.getAlltestimonials = (req, res) => {
         .json({ error: true, msg: "Something Went Wrong", errMsg: err });
     });
 };
+exports.cancelMySlot=async(req,res)=>{
+  let response=await TimeSlots.findByIdAndUpdate(req.body.id,
+    { booked: false, user: null, UserId:null },
+  );
+  console.log(req.body.id)
+  res.json('Success')
+}

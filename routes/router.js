@@ -36,6 +36,7 @@ router.get('/',registerController.homePage)
  router.get("/notification/:token",requireLogin,registerController.notification);
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);
  router.post("/appointment-bookings/:token",requireLogin,registerController.appointment);
+ router.post("/cancel-booking",registerController.cancelMySlot);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);

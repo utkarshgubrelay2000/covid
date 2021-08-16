@@ -129,19 +129,18 @@ async function selectTest(name, index, id) {
   });
 }
 // Add active class to the current button (highlight it)
-var btn
+var btn;
 var pln = document.getElementById("plans");
-if(pln){
+if (pln) {
+  btn = pln.getElementsByClassName("btns");
 
-   btn = pln.getElementsByClassName("btns");
-
-for (var i = 0; i < btn.length; i++) {
-  btn[i].addEventListener("click", function () {
-    var current = pln.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
+  for (var i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function () {
+      var current = pln.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
 }
 $("#booking-head").html(str);
 function getSlotsByArrival(type) {
@@ -267,9 +266,9 @@ function getSlotsForPeople(type) {
     console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);
   }
 }
-function logoutHandler(){
-  localStorage.removeItem('covid')
-  window.location.href='/'
+function logoutHandler() {
+  localStorage.removeItem("covid");
+  window.location.href = "/";
 }
 function checkLogin(token) {
   if (!token) {
@@ -324,11 +323,11 @@ function getSlots(index) {
     },
   });
 }
-function getData(length, slot,packageid) {
+function getData(length, slot, packageid) {
   length = Number(length);
   let array = [];
-  let token=localStorage.getItem('covid')
-console.log(token)
+  let token = localStorage.getItem("covid");
+  console.log(token);
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
@@ -361,13 +360,13 @@ console.log(token)
   }
   ///  console.log(array)
   let pd = JSON.stringify(array);
-  let data = { slots: slot, personal_details: pd ,packageid:packageid};
+  let data = { slots: slot, personal_details: pd, packageid: packageid };
   console.log(data);
   $.ajax({
     url: "/create",
     method: "POST",
     data: data,
-    Headers: { contentType: "application/json",Authorization:token },
+    Headers: { contentType: "application/json", Authorization: token },
     success: function (res) {
       console.log(res);
       localStorage.setItem("users", JSON.stringify(res.users));
@@ -447,16 +446,15 @@ function getPages() {
   });
   //console.log(str);
 }
-function getSlotsSingleDay(){
-
+function getSlotsSingleDay() {
   let option2 = "";
-  
+
   $("#slots").html(option2);
 
   let id = document.getElementById("test").value;
-  
-    date = document.getElementById("date").value;
-  
+
+  date = document.getElementById("date").value;
+
   let data = { test: id, limit: 1, date: date };
   console.log(data);
   $.ajax({
@@ -464,25 +462,24 @@ function getSlotsSingleDay(){
     method: "POST",
     data: data,
     success: function (res) {
-       console.log(res);
+      console.log(res);
       if (res.status) {
         alert(res.message);
-       
-          allSlots = res.data;
 
-          res.data.forEach((ele) => {
-            var spot = ele;
-            // console.log(ele.bookedFor)
-            option2 += `<option value="${ele._id}">${new Date(
-              ele.bookedFor
-            ).toLocaleTimeString()} </option>`;
-          });
-          $("select[name='inptProduct']")
-            .find("option2")
-            .remove()
-            .end()
-            .append($(option2));
-        
+        allSlots = res.data;
+
+        res.data.forEach((ele) => {
+          var spot = ele;
+          // console.log(ele.bookedFor)
+          option2 += `<option value="${ele._id}">${new Date(
+            ele.bookedFor
+          ).toLocaleTimeString()} </option>`;
+        });
+        $("select[name='inptProduct']")
+          .find("option2")
+          .remove()
+          .end()
+          .append($(option2));
       } else {
         alert("Slots not found");
       }
@@ -491,10 +488,9 @@ function getSlotsSingleDay(){
       alert("error", "Error!", "Something happens in Server!");
     },
   });
-
 }
-function getSlotsForPeopleSingleDay(){
-  let option=''
+function getSlotsForPeopleSingleDay() {
+  let option = "";
   let spotforDay2 = document.getElementById("spotsForSingleDay").value;
   let numberOfPerson = document.getElementById("numberOfPerson").value;
   let indexOfSlot;
@@ -517,5 +513,21 @@ function getSlotsForPeopleSingleDay(){
 
   $("#slotsIdsFotSingleDayTest").html(option);
   console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
-
+}
+function cancelMySlot(id) {
+  let data={id:id}
+  $.ajax({
+    url: "/cancel-booking",
+    method: "POST",
+    data: data,
+    Headers: { contentType: "application/json"},
+    success: function (res) {
+      console.log(res);
+    
+    alert('Success')
+    },
+    error: function () {
+      alert("Something went Wrong Required");
+    },
+  });
 }

@@ -15,105 +15,106 @@
 </head>
 <body>
 
-<header class="pt-3 pb-3">
-	<div class="container">
-		<div class="row align-items-center position-relative">
-			<div class="col-xl-2 col-lg-3 col-md-5 mb-lg-0 mb-4">
-				<a href="/">
-					<img src="/assets/img/site-logo.png" width="200px">
-				</a>
-			</div>
-			<div class="col-xl-4 offset-xl-1 col-lg-4 col-md-7 mb-lg-0 mb-4">
-				<form class="search">
-					<div class="input-group">
-		               <input type="text" class="form-control bg-transparent border-0" placeholder="Search"> 
-					   <span class="input-group-append">
-						   <div class="input-group-text bg-transparent border-0"><i class="fal fa-search"></i></div>
-					   </span>
-		             </div>
-				</form>
-			</div>
-			<div class="col-lg-5 col-12 text-right mb-3 mb-lg-0">
-				<ul class="navbar-right mb-0 d-flex justify-content-center justify-content-md-end align-items-center">
-				 	<!-- message -->
-                    <li>
-                        <div class="notify-btn">
-                        	<a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </li>
-                    <!-- notification -->
-                    <li>
-                        <div class="notify-btn">
-                        	<a href="#"><i class="far fa-bell"></i></a>
-                        </div>
-                    </li>
-					<li class="dropdown">
-                        <div class="dropdown nav-pro-img">
-                            <a class="dropdown-toggle nav-link nav-user d-flex align-items-center p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <div>
-                                	<img src="/assets/img/user-img.png" alt="user" class="mr-2">
-                                </div>
-                                <div class="text-left">
-                                	<h6 class="m-0 username">John Doe</h6>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown">
-                                <div class="row m-0">
-                                	<div class="col-6 pl-0">
-                                		<div>
-                                			<h6 class="theme-color font-weight-bold">Account</h6>
-                                		</div>
-                                		<a class="dropdown-item" href="profile-details">Profile</a>
-		                                <a class="dropdown-item" href="notification">My Notifications</a>
-										<a class="dropdown-item" href="appointment-bookings">Appointment Bookings</a>
-										<a class="dropdown-item" href="setting">Setting</a>
-										<a class="dropdown-item" href="#">Logout</a>
-                                	</div>
-                                </div>
-                           	</div>
-                        </div>
-                    </li>
-				</ul>
-			</div>
-		</div>
-	</div>	
-</header>
 
-<div class="navigation">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-10 col-md-8 col-6">
-				<nav class="navbar navbar-expand-md p-0 m-0">
-					<div class="mobile-menu d-block d-lg-none" onclick="openNav()">
-						<i class="fal fa-bars"></i>
-					</div>
-					<div class="collapse navbar-collapse d-block" id="collapsibleNavbar">
-						<div id="mySidenav" class="sidenav">
-							<a href="javascript:void(0)" class="closebtn d-lg-none" onclick="closeNav()"><i class="fal fa-times"></i></a>
-							<ul class="navbar-nav">
-								<li class="nav-item">
-									<a href="profile" class="nav-link">My Profile</a>
-								</li>
-								<li class="nav-item">
-									<a href="notification" class="nav-link">My Notifications</a>
-								</li>
-								<li class="nav-item active">
-									<a href="appointment-bookings" class="nav-link">Appointment Bookings</a>
-								</li>
-								<li class="nav-item">
-									<a href="setting" class="nav-link">Setting</a>
-								</li>
-							</ul>
-					  </div>
-					</div>	 
-				</nav>
-			</div>
-			<div class="col-lg-2 col-md-4 col-6 text-right">
-				<a href="../tests-listing" class="theme-btn">BOOK TEST</a>
-			</div>
-		</div>
-	</div>
-</div>
+    <header class="pt-3 pb-3">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-xl-2 col-lg-3 col-md-5 mb-lg-0 mb-4">
+                    <a href="/">
+                        <img src="/assets/img/site-logo.png" width="200px">
+                    </a>
+                </div>
+                <div class="col-xl-4 offset-xl-1 col-lg-4 col-md-7 mb-lg-0 mb-4">
+                    <form class="search">
+                        <div class="input-group">
+                           <input type="text" class="form-control bg-transparent border-0" placeholder="Search"> 
+                           <span class="input-group-append">
+                               <div class="input-group-text bg-transparent border-0"><i class="fal fa-search"></i></div>
+                           </span>
+                         </div>
+                    </form>
+                </div>
+                <div class="col-lg-5 col-12 text-right mb-3 mb-lg-0">
+                    <ul class="navbar-right mb-0 d-flex justify-content-center justify-content-md-end align-items-center">
+                         <!-- message -->
+                        <li>
+                            <div class="notify-btn">
+                                <a href="#"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </li>
+                        <!-- notification -->
+                        <li>
+                            <div class="notify-btn">
+                                <a href="#"><i class="far fa-bell"></i></a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <div class="dropdown nav-pro-img">
+                                <a class="dropdown-toggle nav-link nav-user d-flex align-items-center p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <div>
+                                        <img src="/assets/img/user-img.png" alt="user" class="mr-2">
+                                    </div>
+                                    <div class="text-left">
+                                        <h6 class="m-0 username"><%=data.firstName%> <%=data.lastName%></h6>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                                    <div class="row m-0">
+                                        <div class="col-6 pl-0">
+                                            <div>
+                                                <h6 class="theme-color font-weight-bold">Account</h6>
+                                            </div>
+                                            <a class="dropdown-item" href="profile-details">Profile</a>
+                                            <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
+                                            <a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
+                                            <a class="dropdown-item" href="setting/<%=token%>">Setting</a>
+                                            <a class="dropdown-item" onclick="logoutHandler()">Logout</a>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>	
+    </header>
+    
+    <div class="navigation">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-10 col-md-8 col-6">
+                    <nav class="navbar navbar-expand-md p-0 m-0">
+                        <div class="mobile-menu d-block d-lg-none" onclick="openNav()">
+                            <i class="fal fa-bars"></i>
+                        </div>
+                        <div class="collapse navbar-collapse d-block" id="collapsibleNavbar">
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn d-lg-none" onclick="closeNav()"><i class="fal fa-times"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a href="profile" class="nav-link">My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a  href="/notification/<%=token%>" class="nav-link">My Notifications</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/appointment-bookings/<%=token%>" class="nav-link">Appointment Bookings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/setting/<%=token%>" class="nav-link">Setting</a>
+                                    </li>
+                                </ul>
+                          </div>
+                        </div>	 
+                    </nav>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-right">
+                    <a href="../tests-listing" class="theme-btn">BOOK TEST</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <section class="notifications-sec">
 	<div class="container">
@@ -190,13 +191,13 @@
                                                         <span class="text-white font-weight-bold">Test details</span>
                                                     </th>
                                                     <th>
-                                                        <span class="text-white font-weight-bold">Healthcare centre</span>
+                                                        <span class="text-white font-weight-bold">Name</span>
                                                     </th>
                                                     <th>
-                                                        <span class="text-white font-weight-bold">Location</span>
+                                                        <span class="text-white font-weight-bold">Email</span>
                                                     </th>
                                                     <th>
-                                                        <span class="text-white font-weight-bold">Family <br/> members</span>
+                                                        <span class="text-white font-weight-bold">Vaccination Status</span>
                                                     </th>
                                                     <th>
                                                         <span class="text-white font-weight-bold">Actions</span>
@@ -204,326 +205,58 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <%myslots.map(element=>{%>
                                                 <tr>
                                                     <td>
                                                         <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
+                                           
+                                                            <%=getDate(element.bookedFor)%>  
+                                                           
+                                                       /  <%=getTime(element.bookedFor)%>  
+                                                      
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span class="text-purple">
-                                                            PCR
+                                                            <%=element.test.test_name%>  
+
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span class="text-purple">
-                                                            Donec dapibus mauris id odio
+                                                            <%=element.packageid.packageName%>  
+
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span class="text-purple">
-                                                            Covid Centre
+                                                            <%=element.user.firstName%>  
+                                                              <%=element.user.lastName%>  
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span class="text-purple">
-                                                            London
+                                                            <%=element.user.email%>  
+
                                                         </span>
                                                     </td>
                                                     <td class="text-center">
                                                         <span class="text-purple">
-                                                            5
+                                                            <%=element.user.vaccination_status%>  
+
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span class="d-inline-block btn-gray">
                                                             Edit
                                                         </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
+                                                        <a style='cursor: pointer;' onclick="cancelMySlot('<%=element._id%>')" class="d-inline-block ml-3 btn-red">
                                                             Cancel
-                                                        </span>
+                                                        </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            12-July-2021 / 12:00 PM
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            PCR
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Donec dapibus mauris id odio
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            Covid Centre
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            London
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            5
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <span class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </span>
-                                                    </td>
-                                                </tr>
+                                                <%})%>
+                                             
                                             </tbody>
                                         </table>
                                     </div>

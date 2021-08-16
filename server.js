@@ -36,7 +36,14 @@ app.use(express.json())
 /// Server check
 
 // Auth Routers
-
+app.locals.getDate=(date)=>{
+  //console.log(date,"date")
+return new Date(date).toDateString()
+}
+app.locals.getTime=(date)=>{
+ // console.log(date,"date")
+return new Date(date).toLocaleTimeString()
+}
  app.use('/',Routes)
  app.use('/',auth)
 
