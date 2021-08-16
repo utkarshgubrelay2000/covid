@@ -13,12 +13,12 @@ const timeSlotSchema = new mongoose.Schema(
     approved: { type: Boolean, default: false },
     amount: { type: String },
     // booking_id: {
-    //   type: mongoose.Schema.Types.ObjectId,
+    //   type: mongoose.Schema.Types.ObjectId,611a431aed2e510ca06e52bd
     //   ref: "Booking",
     // },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "PersonalDetails",
+      ref: "PersonalDetail",
     },
     transaction_id: {
       type: mongoose.Schema.Types.ObjectId,

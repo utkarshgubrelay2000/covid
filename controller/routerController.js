@@ -44,9 +44,22 @@ exports.loadMoreFaqs = async (req, res) => {
     res.send("Error");
   }
 };
-exports.appointment = (req, res) => {
-  res.render("appointment-bookings");
+exports.appointment =async (req, res) => {
+let myslots= await  TimeSlots.find({UserId:req.body.userId}).populate("UserId")
+.populate("test")
+.populate("packageid")
+.populate("user").limit(10);
+console.log(myslots[0].user,req.body)
+  res.render("appointment-bookings",{myslots:myslots,token:req.params.token,curpage:1});
 };
+exports.paginationappointment =async (req, res) => {
+  let myslots= await  TimeSlots.find({UserId:req.body.userId}).populate("UserId")
+  .populate("test")
+  .populate("packageid")
+  .populate("user").limit(10).skip(req.body.curpage*10);
+  console.log(myslots[0].user,req.body)
+    res.render("appointment-bookings",{myslots:myslots,token:req.params.token,curpage:req.body.curpage+1});
+  };
 exports.chooseslots = async (req, res) => {
   function addDays(theDate, days) {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
