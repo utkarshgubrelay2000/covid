@@ -8,25 +8,19 @@ if(authorization){
 jwt.verify(authorization, process.env.JWT_SECRET, (err, payload) => {
     if (err || payload === undefined) {
       console.log(`some error in verifying jwt secret${err}`);
-      res.redirect('/')
+      res.status(404).json('some error in verifying jwt secret')
     }
 else{
   let  md5UserId=payload.secretId
 
-  userModel.find({}).then((users) => {
-      users.map((user) => {
-           // console.log(md5UserId,md5(user._id))
-          if (md5(user._id) === md5UserId) {
-            req.body.userId = user._id;
-              next();
-          }
-        });
-      });
+  req.body.userId = md5UserId;
+
 }
 })
 
 }
 else{
-    res.redirect('/')
+  res.status(404).json('You Need To Login first')
+
 }
 }

@@ -1,6 +1,8 @@
 // mobile menu open close
 function getData(length, slot,slotAfterDay6,packageid) {
   length = Number(length);
+  let token=localStorage.getItem('covid')
+  console.log(token)
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
@@ -40,14 +42,16 @@ function getData(length, slot,slotAfterDay6,packageid) {
     url: "/create-arrival",
     method: "POST",
     data: data,
-    Headers: { contentType: "application/json" },
+    Headers: { contentType: "application/json",Authorization:token },
+
     success: function (res) {
       console.log(res);
       localStorage.setItem("users", JSON.stringify(res.users));
       window.location.href = "/test-terms";
     },
     error: function () {
-      alert("error", "Error!", "Something happens in Server!");
+      alert("Login Required");
+
     },
   });
   //console.log(JSON.parse(personDetails),length)

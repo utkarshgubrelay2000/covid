@@ -129,8 +129,12 @@ async function selectTest(name, index, id) {
   });
 }
 // Add active class to the current button (highlight it)
+var btn
 var pln = document.getElementById("plans");
-var btn = pln.getElementsByClassName("btns");
+if(pln){
+
+   btn = pln.getElementsByClassName("btns");
+
 for (var i = 0; i < btn.length; i++) {
   btn[i].addEventListener("click", function () {
     var current = pln.getElementsByClassName("active");
@@ -138,7 +142,7 @@ for (var i = 0; i < btn.length; i++) {
     this.className += " active";
   });
 }
-
+}
 $("#booking-head").html(str);
 function getSlotsByArrival(type) {
   let option = "";
@@ -315,6 +319,8 @@ function getSlots(index) {
 function getData(length, slot,packageid) {
   length = Number(length);
   let array = [];
+  let token=localStorage.getItem('covid')
+console.log(token)
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
@@ -353,18 +359,19 @@ function getData(length, slot,packageid) {
     url: "/create",
     method: "POST",
     data: data,
-    Headers: { contentType: "application/json" },
+    Headers: { contentType: "application/json",Authorization:token },
     success: function (res) {
       console.log(res);
       localStorage.setItem("users", JSON.stringify(res.users));
       window.location.href = "/test-terms";
     },
     error: function () {
-      alert("error", "Error!", "Something happens in Server!");
+      alert("Login Required");
     },
   });
   //console.log(JSON.parse(personDetails),length)
 }
+
 function getDate() {
   let inputdiv = "";
   $("#dateinputs").html(inputdiv);

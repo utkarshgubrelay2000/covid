@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const timeSlotSchema = new mongoose.Schema(
   {
-    User: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    UserId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     test: { type: mongoose.Schema.Types.ObjectId, ref: "Test" },
     packageid: { type: mongoose.Schema.Types.ObjectId, ref: "TestPackage" },
     available: { type: Boolean },
