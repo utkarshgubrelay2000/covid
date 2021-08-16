@@ -46,12 +46,15 @@ exports.loadMoreFaqs = async (req, res) => {
 };
 exports.appointment =async (req, res) => {
   let userDetails= await User.findById(req.body.userId,{password:0,gender:0,createdAt:0,updatedAt:0})
-let myslots= await  TimeSlots.find({UserId:req.body.userId})
+let myslots= await  TimeSlots.find({UserId:req.body.userId,approved:false}).populate("test")
+.populate("packageid")
+.populate("user").limit(10);
+let completeslots= await  TimeSlots.find({UserId:req.body.userId,approved:true})
 .populate("test")
 .populate("packageid")
 .populate("user").limit(10);
 //console.log(myslots[0],req.body)
-  res.render("appointment-bookings",{myslots:myslots,data:userDetails,token:req.params.token,curpage:1});
+  res.render("appointment-bookings",{myslots:myslots,data:userDetails,token:req.params.token,curpage:1,completeslots:completeslots});
 };
 exports.paginationappointment =async (req, res) => {
   let myslots= await  TimeSlots.find({UserId:req.body.userId}).populate("UserId")
