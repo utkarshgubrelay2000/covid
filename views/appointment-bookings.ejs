@@ -290,61 +290,70 @@
                                                         <span class="text-white font-weight-bold">Vaccination Status</span>
                                                     </th>
                                                     <th>
+                                                        <span class="text-white font-weight-bold">Barcode</span>
+                                                    </th>
+                                                    <th>
                                                         <span class="text-white font-weight-bold">Actions</span>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <%reports.map(element=>{%>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text-purple">
-                                           
-                                                            <%=getDate(element.bookedFor)%>  
-                                                           
-                                                       /  <%=getTime(element.bookedFor)%>  
-                                                      
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            <%=element.test.test_name%>  
-
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            <%=element.packageid.packageName%>  
-
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            <%=element.user.firstName%>  
-                                                              <%=element.user.lastName%>  
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">
-                                                            <%=element.user.email%>  
-
-                                                        </span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="text-purple">
-                                                            <%=element.user.vaccination_status%>  
-
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="d-inline-block btn-gray">
-                                                            Edit
-                                                        </span>
-                                                        <a style='cursor: pointer;' onclick="cancelMySlot('<%=element._id%>')" class="d-inline-block ml-3 btn-red">
-                                                            Cancel
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span class="text-purple">
+                                               
+                                                                <%=getDate(element.bookedFor)%>  
+                                                               
+                                                           /  <%=getTime(element.bookedFor)%>  
+                                                          
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-purple">
+                                                                <%=element.test.test_name%>  
+    
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-purple">
+                                                                <%=element.packageid.packageName%>  
+    
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-purple">
+                                                                <%=element.user.firstName%>  
+                                                                  <%=element.user.lastName%>  
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-purple">
+                                                                <%=element.user.email%>  
+    
+                                                            </span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="text-purple">
+                                                                <%=element.user.vaccination_status%>  
+    
+                                                            </span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="text-purple">
+                                                                <%=element.barcode%>  
+    
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="d-inline-block btn-gray">
+                                                                Edit
+                                                            </span>
+                                                            <a style='cursor: pointer;' onclick="cancelMySlot('<%=element._id%>')" class="d-inline-block ml-3 btn-red">
+                                                                Cancel
+                                                            </a>
+                                                        </td>
+                                                    </tr>
                                                 <%})%>
                                              
                                             </tbody>
@@ -383,6 +392,9 @@
                                                     </th>
                                                     <th>
                                                         <span class="text-white font-weight-bold">Vaccination Status</span>
+                                                    </th>
+                                                    <th>
+                                                        <span class="text-white font-weight-bold">Barcode</span>
                                                     </th>
                                                     <th>
                                                         <span class="text-white font-weight-bold">Actions</span>
@@ -428,6 +440,12 @@
                                                     <td class="text-center">
                                                         <span class="text-purple">
                                                             <%=element.user.vaccination_status%>  
+
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span class="text-purple">
+                                                            <%=element.barcode%>  
 
                                                         </span>
                                                     </td>

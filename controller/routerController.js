@@ -68,7 +68,7 @@ exports.appointment = async (req, res) => {
     .populate("user")
     .limit(10);
   let reports = await TimeSlots.find({
-    booked: true,
+    approved: false,
     barcode: { $exists: true },
   })
     .populate("User")
@@ -76,7 +76,7 @@ exports.appointment = async (req, res) => {
     .populate("packageid")
     .populate("user")
     .limit(10);
-  //console.log(myslots[0],req.body)
+  console.log(completeslots[0],req.body)
   res.render("appointment-bookings", {
     myslots: myslots,
     data: userDetails,

@@ -12,6 +12,7 @@ const timeSlotSchema = new mongoose.Schema(
     booked: { type: Boolean, default: false },
     approved: { type: Boolean, default: false },
     amount: { type: String },
+    barcode: { type: String },
     // booking_id: {
     //   type: mongoose.Schema.Types.ObjectId,611a431aed2e510ca06e52bd
     //   ref: "Booking",
