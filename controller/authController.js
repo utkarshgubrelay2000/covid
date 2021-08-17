@@ -2,24 +2,24 @@ const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 const userModel = require("../model/userModel");
 //const cartModel=require('../model/CartModel')
+const nodemailer=require('nodemailer')
 
-const nodemailer = require("nodemailer");
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "riyft.mail@gmail.com",
+    pass: "Riyft@123",
+  },
+  from: "riyft.mail@gmail.com",
+});
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log("error in setting transporter", error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
 
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "welcometofinladder@gmail.com",
-//     pass: "newwebsite@1",
-//   },
-//   from:"welcometofinladder@gmail.com"
-// });
-// transporter.verify(function (error, success) {
-//   if (error) {
-//     console.log("error in setting transporter", error);
-//   } else {
-//     console.log("Server is ready to take our messages");
-//   }
-// });
 
 /////////------ User SignUp ----////////////////
 
@@ -39,6 +39,77 @@ exports.Signup = (req, res) => {
         newStudent
           .save()
           .then((user) => {
+            let toSubsciberMail = {
+              to: userDetails.email,
+              from: "riyft.mail@gmail.com",
+              subject: " Welcome to  Riyft! ",
+              html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <link
+                rel="stylesheet"
+                href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+                crossorigin="anonymous"
+              />
+              <link rel="preconnect" href="https://fonts.gstatic.com" />
+              <link
+                href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+                rel="stylesheet"
+              />
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+              <title>welcome to riyft</title>
+              <style>
+                body {
+                  background-color: #ffffff;
+                  padding: 0;
+                  margin: 0;
+                  font-family: "Open Sans", sans-serif;
+                  font-weight: 600;
+                  color: #780ef1;
+                }
+                tr .span {
+                  color: #780ef1;
+                  box-shadow: 0px 0px 4px 0px rgb(196, 193, 193);
+                }
+                tr .span span {
+                  color: #780ef1;
+                  font-size: 14px;
+                }
+             
+                tr .resetButton a {
+                  text-decoration: none;
+                  color: #030303;
+                }
+                tr .resetButton a:hover {
+                  color: #ffffff;
+                }
+              </style>
+            </head>
+            <body style="background-color: #ffffff;   margin: 0">
+              <span> </span>
+              <div style="padding-left:10px;">
+    Welcome To Covid
+           </div> </body>
+          </html>
+     `,
+            };
+  
+            transporter.sendMail(toSubsciberMail, (err) => {
+              if (err) {
+                console.log(
+                  "some error in sending mail to subscriber",
+                  err
+                );
+                return res
+                  .status(400)
+                  .json({
+                    error: "some error in sending mail to admin",
+                  });
+              }
+              console.log("message sent successfully");
+               res.json("Thanks for subscribing!");
+            });
             res.render("login");
           })
           .catch((err) => {
