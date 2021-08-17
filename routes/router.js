@@ -35,7 +35,7 @@ router.get('/',registerController.homePage)
  router.get("/profile/:token",requireLogin,registerController.profile);
  router.get("/notification/:token",requireLogin,registerController.notification);
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);
- router.post("/appointment-bookings/:token",requireLogin,registerController.appointment);
+ router.post("/post-appointment",requireLogin,registerController.paginationappointment);
  router.post("/cancel-booking",registerController.cancelMySlot);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
@@ -61,6 +61,7 @@ router.get('/',registerController.homePage)
       ),
     });
   });
+  router.get("/editprofileDetails/:id/:token",requireLogin,registerController.profileEdit);
 
   
 

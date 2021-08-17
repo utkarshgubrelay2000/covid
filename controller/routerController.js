@@ -87,18 +87,48 @@ exports.appointment = async (req, res) => {
   });
 };
 exports.paginationappointment = async (req, res) => {
-  let myslots = await TimeSlots.find({ UserId: req.body.userId })
-    .populate("UserId")
+  let number=req.body.number
+  let userDetails = await User.findById(req.body.userId, {
+    password: 0,
+    gender: 0,
+    createdAt: 0,
+    updatedAt: 0,
+  });
+  let myslots = await TimeSlots.find({
+    UserId: req.body.userId,
+    booked: true,
+    barcode: { $exists: false },
+  })
     .populate("test")
     .populate("packageid")
     .populate("user")
-    .limit(10)
-    .skip(req.body.curpage * 10);
-  console.log(myslots[0].user, req.body);
+    .limit(number);
+  let completeslots = await TimeSlots.find({
+    UserId: req.body.userId,
+    approved: true,
+  })
+    .populate("test")
+    .populate("packageid")
+    .populate("user")
+    .limit(number);
+  let reports = await TimeSlots.find({
+    booked: true,
+    barcode: { $exists: true },
+  })
+    .populate("User")
+    .populate("test")
+    .populate("packageid")
+    .populate("user")
+    .populate("user")
+    .limit(number);
+  //console.log(myslots[0],req.body)
   res.render("appointment-bookings", {
     myslots: myslots,
+    data: userDetails,
     token: req.params.token,
-    curpage: req.body.curpage + 1,
+    curpage: 1,
+    completeslots: completeslots,
+    reports: reports,
   });
 };
 exports.chooseslots = async (req, res) => {
@@ -209,6 +239,10 @@ exports.profile = (req, res) => {
 };
 exports.settings = (req, res) => {
   res.render("settings");
+};
+exports.profileEdit = (req, res) => {
+  console.log(req.params)
+  res.render("profileEdit");
 };
 exports.testsummary = (req, res) => {
   res.render("test-summary");
