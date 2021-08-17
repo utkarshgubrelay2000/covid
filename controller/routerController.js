@@ -240,9 +240,11 @@ exports.profile = (req, res) => {
 exports.settings = (req, res) => {
   res.render("settings");
 };
-exports.profileEdit = (req, res) => {
-  console.log(req.params)
-  res.render("profileEdit");
+exports.profileEdit = async(req, res) => {
+ // console.log(req.params)
+await PersonalDetails.findById(req.params.id).then(found=>{
+  res.render("profileEdit",{data:found,id:req.params.id});
+})
 };
 exports.testsummary = (req, res) => {
   res.render("test-summary");

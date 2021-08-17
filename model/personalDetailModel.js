@@ -27,16 +27,8 @@ const personalDetailsSchema = new mongoose.Schema(
       required: true,
       enum: ["male", "female", "others"],
     },
-    address: {
-      // type : String,
-      // required : true
-      street1: String,
-      street2: String,
-      street3: String,
-      city: String,
-      country: String,
-      postcode: Number,
-    },
+    address: String,
+      
     arrival_vessel_number: {
       type: Number,
       required: true,

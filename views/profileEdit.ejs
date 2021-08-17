@@ -152,74 +152,121 @@
 
         <div class="main-wrapper login-body">
 			<div class="login-wrapper">
-				<div class="container">
+				<div class="container row">
 				
-					<img class="img-fluid logo-dark mb-2" src="assets/img/site-logo.png" alt="Logo">
-					<div class="loginbox">
+				
+					<div class="loginbox col-8 m-auto">
 						
 						<div class="login-right">
 							<div class="login-right-wrap">
-								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
+								<h1><%=data.firstName%></h1>
+							
 								
-								<form id="loginForm" action="/signup" method="POST">
+								<form id="loginForm" action="/update-personal-details/<%=id%>" method="POST">
 									<div class="form-group">
 										<label class="form-control-label">Email Address</label>
-										<input type="email" class="form-control" id="email" name="email" value="">
+										<input type="email" class="form-control" id="email" name="email" value="<%=data.email%>">
 									</div>
-									<div class="form-group">
-										<label class="form-control-label">Password</label>
-										<div class="pass-group">
-											<input type="password" name="password" id="password" class="form-control pass-input" value="">
-											<span class="fas fa-eye toggle-password"></span>
-										</div>
-									</div>
+							
 									<div class="form-group">
 										<label class="form-control-label"> First Name </label>
 										<div class="pass-group">
 											<input type="text" name="firstName" 
-											id="firstName" class="form-control pass-input" value="">
+											id="firstName" class="form-control pass-input" value="<%=data.firstName%>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-control-label"> Last Name </label>
 										<div class="pass-group">
 											<input type="text" name="lastName" 
-											id="lastName" class="form-control pass-input" value="">
+											id="lastName" class="form-control pass-input" value="<%=data.lastName%>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-control-label"> Phone </label>
 										<div class="pass-group">
 											<input type="text" name="phone" 
-											id="phone" class="form-control pass-input" value="">
+											id="phone" class="form-control pass-input" value="<%=data.phone%>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-control-label"> Date Of Birth </label>
 										<div class="pass-group">
 											<input type="date" name="dob" 
-											id="dob" class="form-control pass-input" value="">
+											id="dob" class="form-control pass-input" value="<%=data.dob%>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-control-label"> Address </label>
 										<div class="pass-group">
 											<input type="text" name="address" 
-											id="address" class="form-control pass-input" value="">
+											id="address" class="form-control pass-input" value="<%=data.address%>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="form-control-label"> Gender </label>
 									
-									<select name='gender'
+									<select name='gender' value='<%=data.gender%>'
 									 id='gender' class="form-control pass-input"
 									  >
 										<option value='male'>male</option>
 										<option value='female'>female</option>
 										<option value='others'>others</option>
 									  </select>
-									<button class="btn btn-lg btn-block btn-primary mt-3" type="submit">Sign Up</button>
+                                      <div class="contact-form-box">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <h4 class="text-purple mb-5">
+                                                    Additional information required
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-end">
+                                            <div class="col-md-6 form-group">
+                                                <label>Ethnicity*</label>                                                                
+                                                <select id='ethnicity' class="w-100 field">
+                                                    <option value="Select ethnicity">Select ethnicity</option>
+                                                    <option value="Select ethnicity">Select ethnicity</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>NHS number (if known)</label>                                                                
+                                                <input type="text" name="number" 
+                                                id="NHS" class="w-100 field"  value='<%=data.NHS%>' placeholder="Enter details" required="" />
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>Date of Arrival in the UK*</label>                                                                
+                                                <input type="date" name="date" value='<%=data.date_depart_out_cta%>'
+                                                 id="date_of_arrival" class="w-100 field" value="2021-07-31" required="" />
+                                            </div>
+                                           
+                                            <div class="col-md-6 form-group">
+                                                <label>The date on which you arrived or will
+                                                     arrive in England from country or territory outside of the Common Travel Area*</label>                                                                
+                                                <input type="date" name="date" id="date_arrival_out_cta" 
+                                                class="w-100 field" value='<%=data.date_arrival_out_cta%>' required="" />
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>The country or territory you were,
+                                                     or will be travelling from when you arrived in the UK, 
+                                                     and any country or territory you transited through as part of that journey*</label>                                                                
+                                                <input type="text" name="number" value='<%=data.country_before_arrival%>'
+                                                 id="country_before_arrival" class="w-100 field" placeholder="Enter details" required="" />
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>COVID-19 Vaccination Status* </label>                                                                
+                                                <select value='<%=data.vaccination_status%>' name='vaccination_status' class="w-100 field">
+                                             
+                                                    <option value="fully">fully</option>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="partially">partially</option>
+                                                </select>
+                                            </div>
+                                   
+                                            
+                                        </div>
+                                    </div>
+									<button class="btn btn-lg btn-block btn-primary mt-3" type="submit">Edit</button>
 							</div>	</form>
 								
 							</div>
