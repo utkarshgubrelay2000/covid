@@ -243,9 +243,15 @@ exports.settings = (req, res) => {
 exports.profileEdit = async(req, res) => {
  // console.log(req.params)
 await PersonalDetails.findById(req.params.id).then(found=>{
-  res.render("profileEdit",{data:found,id:req.params.id});
+  res.render("profileEdit",{data:found,id:req.params.id,token:req.params.token});
 })
 };
+exports.editPersonDetails=async (req,res)=>{
+  console.log(req.body,req.params)
+  await PersonalDetails.findByIdAndUpdate(req.params.id,{...req.body})
+    res.redirect("/");
+  
+}
 exports.testsummary = (req, res) => {
   res.render("test-summary");
 };

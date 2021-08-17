@@ -62,7 +62,7 @@ router.get('/',registerController.homePage)
     });
   });
   router.get("/editprofileDetails/:id/:token",requireLogin,registerController.profileEdit);
+  router.post("/update-personal-details/:id",registerController.editPersonDetails);
 
-  
-
+ 
 module.exports=router
