@@ -7,10 +7,10 @@ const nodemailer=require('nodemailer')
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "riyft.mail@gmail.com",
-    pass: "Riyft@123",
+    user: "btravelclinic@gmail.com",
+    pass: "btcdeveloper3",
   },
-  from: "riyft.mail@gmail.com",
+  from: "btravelclinic@gmail.com",
 });
 transporter.verify(function (error, success) {
   if (error) {
@@ -41,7 +41,7 @@ exports.Signup = (req, res) => {
           .then((user) => {
             let toSubsciberMail = {
               to: userDetails.email,
-              from: "riyft.mail@gmail.com",
+              from: "btravelclinic@gmail.com",
               subject: " Welcome to  Covid! ",
               html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
           <html xmlns="http://www.w3.org/1999/xhtml">
