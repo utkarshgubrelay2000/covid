@@ -26,6 +26,7 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.6",
     "sha256": "^0.2.0",
+    "stripe": "^8.169.0",
     "validate.js": "^0.13.1"
   },
   "engines": {

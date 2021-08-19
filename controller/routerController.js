@@ -5,7 +5,7 @@ let { Scheduler } = require("@ssense/sscheduler");
 let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
 let moment = require("moment");
-
+const stripe=require('stripe')('sk_test_51JQBYwSJfp4W2sZCo5GswBuw5qOdnodSC8b9EpWKBPeya4CrfixE3EXdmoGogE8zUceJNrL0puWcoMwBOSK0vx0000ZzhYVO0H')
 const PersonalDetails = require("../model/personalDetailModel");
 const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
@@ -459,3 +459,20 @@ exports.cancelMySlot = async (req, res) => {
   console.log(req.body.id);
   res.json("Success");
 };
+exports.getSlotsDetails = async (req, res) => {
+  let body=JSON.stringify(req.body)
+  let data=body.replace("slots[]",'slots')
+  let slots=JSON.parse(data)
+  console.log(slots.slots)
+  TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
+  .populate("packageid")
+  .populate("user")
+  .populate("UserId").then(found=>{
+    res.json({message:"Success",data:found});
+
+  })
+};
+exports.PaymentStripe=async (req,res)=>{
+  console.log(req.body)
+  res.render('payment')
+}

@@ -6,6 +6,7 @@ var mutter=require('multer')
 var path=require('path');
 const verifyAdmin = require('../middleware/verifyAdmin');
 const requireLogin  = require('../middleware/requireLogin');
+const stripe=require('stripe')('sk_test_51JQBYwSJfp4W2sZCo5GswBuw5qOdnodSC8b9EpWKBPeya4CrfixE3EXdmoGogE8zUceJNrL0puWcoMwBOSK0vx0000ZzhYVO0H')
 
 /* GET home page. */
 router.get('/',registerController.homePage)
@@ -23,6 +24,7 @@ router.get('/',registerController.homePage)
  router.get('/settings',registerController.settings)
  router.get('/tests-listing',registerController.testslisting)
  router.get('/getTestById/:name/:id',registerController.testsbyId)
+ router.patch('/get-slot-details',registerController.getSlotsDetails)
  router.get('/test-summary',registerController.testsummary)
  router.get('/testimonials',registerController.getAlltestimonials)
  router.get('/test-Terms',registerController.testTerms)
@@ -37,6 +39,7 @@ router.get('/',registerController.homePage)
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);
  router.post("/post-appointment",requireLogin,registerController.paginationappointment);
  router.post("/cancel-booking",registerController.cancelMySlot);
+ router.post("/payment-stripe",registerController.PaymentStripe);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
@@ -64,5 +67,25 @@ router.get('/',registerController.homePage)
   router.get("/editprofileDetails/:id/:token",requireLogin,registerController.profileEdit);
   router.post("/update-personal-details/:id",registerController.editPersonDetails);
 
- 
+  router.post("/charge", (req, res) => {
+    try {
+      stripe.customers
+        .create({
+          name: req.body.name,
+          email: req.body.email,
+          source: req.body.stripeToken
+        })
+        .then(customer =>
+          stripe.charges.create({
+            amount: req.body.amount * 100,
+            currency: "usd",
+            customer: customer.id
+          })
+        )
+        .then(() => res.render("completed"))
+        .catch(err => console.log(err));
+    } catch (err) {
+      res.send(err,"erro");
+    }
+  });
 module.exports=router
