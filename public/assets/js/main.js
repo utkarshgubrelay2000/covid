@@ -369,10 +369,11 @@ function getData(length, slot, packageid) {
     Headers: { contentType: "application/json", Authorization: token },
     success: function (res) {
       console.log(res);
-      localStorage.setItem("users", JSON.stringify(res.users));
+      localStorage.setItem("slots", JSON.stringify(res.users));
       window.location.href = "/test-terms";
     },
-    error: function () {
+    error: function (err) {
+      console.log(err,token)
       alert("Login Required");
     },
   });
