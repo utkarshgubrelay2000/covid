@@ -358,7 +358,7 @@ function getData(length, slot, packageid) {
     };
     array.push(object);
   }
-  ///  console.log(array)
+   console.log(slot)
   let pd = JSON.stringify(array);
   let data = { slots: slot, personal_details: pd, packageid: packageid };
   console.log(data);
@@ -369,7 +369,7 @@ function getData(length, slot, packageid) {
     Headers: { contentType: "application/json", Authorization: token },
     success: function (res) {
       console.log(res);
-      localStorage.setItem("slots", JSON.stringify(res.users));
+      localStorage.setItem("slots", JSON.stringify(res.allslots));
       window.location.href = "/test-terms";
     },
     error: function (err) {

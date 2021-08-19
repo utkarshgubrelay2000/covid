@@ -317,7 +317,7 @@ exports.createBooking = async (req, res) => {
     setTimeout(() => {
       console.log(users, promises);
       if (promises)
-        res.json({ message: "Booking Saved!", users: users, status: true });
+        res.json({ message: "Booking Saved!", allslots: slots, status: true });
       else
         res.status(400).json({
           status: false,
@@ -337,8 +337,10 @@ exports.createBookingArrival = async (req, res) => {
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-    console.log("hello", sloted, personal_details);
-
+    console.log("hello", slots,personal_details.length);
+   
+    let allslots=slotedDay6.concat(sloted)
+console.log(allslots)
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -355,7 +357,7 @@ exports.createBookingArrival = async (req, res) => {
       });
       return console.log(validation);
     }
-    console.log("here", personal_details);
+  //  console.log("here", personal_details);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
@@ -387,13 +389,13 @@ exports.createBookingArrival = async (req, res) => {
           },
           { new: true }
         );
-        // console.log(res)
+      //   console.log(res)
         return saved._id;
       });
     });
 
     setTimeout(() => {
-      res.json({ message: "Booking Saved!", users: users, status: true });
+      res.json({ message: "Booking Saved!",allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
