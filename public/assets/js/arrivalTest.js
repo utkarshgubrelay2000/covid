@@ -45,10 +45,11 @@ function getData(length, slot,slotAfterDay6,packageid) {
     headers: { contentType: "application/json",Authorization:token },
 
     success: function (res) {
-      console.log(res);
+ 
       localStorage.setItem("slots", JSON.stringify(res.allslots));
+      console.log(res.allslots);
    
-      window.location.href = "/test-terms";
+     // window.location.href = "/test-terms";
     },
     error: function () {
       alert("Login Required");

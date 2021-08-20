@@ -170,16 +170,17 @@ exports.contactdetails = async (req, res) => {
     email: "",
   };
   if (people == 1) {
+    console.log('hello')
     spots = [spots];
   }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots);
+  console.log(spots,req.body.spots);
   res.render("contact-details", {
     testDetails: test,
     date: req.body.date,
-    slot: req.body.spots,
+    spots: spots,
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
@@ -275,6 +276,7 @@ exports.createBooking = async (req, res) => {
     let sloted = slots.split(",");
     // console.log('hello',sloted)
     personal_details = JSON.parse(req.body.personal_details);
+    
 
     const validation = validate(req.body, {
       slots: {
@@ -317,7 +319,7 @@ exports.createBooking = async (req, res) => {
     setTimeout(() => {
       console.log(users, promises);
       if (promises)
-        res.json({ message: "Booking Saved!", allslots: slots, status: true });
+        res.json({ message: "Booking Saved!", allslots: sloted, status: true });
       else
         res.status(400).json({
           status: false,
@@ -463,7 +465,7 @@ exports.getSlotsDetails = async (req, res) => {
   let body=JSON.stringify(req.body)
   let data=body.replace("slots[]",'slots')
   let slots=JSON.parse(data)
-  console.log(slots.slots)
+  console.log(slots.slots,req.body)
   TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
   .populate("packageid")
   .populate("user")

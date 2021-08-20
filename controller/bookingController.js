@@ -236,7 +236,7 @@ const createBooking = async (req, res) => {
     setTimeout(() => {
       
  
-    console.log(users,promises)
+    console.log(users)
     if (promises)
       res
         .json({ message: "Booking Saved!",users:users , status: true });
