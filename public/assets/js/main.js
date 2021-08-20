@@ -232,14 +232,18 @@ function getSlotsForPeople(type) {
       spotids.push(item._id);
     });
     arrivalSlots = spotids;
-
+    if (arrivalSlots.length != numberOfPerson) {
+      alert(
+        "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+      );
+    } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
       option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
     });
 
     $("#slotsIdsForArrival").html(option);
-    console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+    console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);}
   } else {
     let spotforDay8 = document.getElementById("spotsForDay8").value;
     let spotforDay2 = document.getElementById("spotsForDay2");
@@ -257,13 +261,17 @@ function getSlotsForPeople(type) {
     spotsArray.map((item) => {
       spotids.push(item._id);
     });
-
+    if (spotsArray.length != numberOfPerson) {
+      alert(
+        "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+      );
+    } else {
     spotids.forEach((ele) => {
       option2 += `<input name='spotAfterDay6' class="w-100 field" value=${ele}>`;
     });
 
     $("#spotAfterDay6").html(option2);
-    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);
+    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);}
   }
 }
 function logoutHandler() {
@@ -298,6 +306,7 @@ function getSlots(index) {
   let date = document.getElementById("date" + index).value;
   let data = { test: id, limit: 1, date: date };
   console.log(data);
+  let optionBox=""
   $.ajax({
     url: "/get-avaiable-session",
     method: "POST",
@@ -309,11 +318,11 @@ function getSlots(index) {
 
         res.data.forEach((ele) => {
           var spot = ele;
-          str += `<option value="${ele._id}">${new Date(
+          optionBox += `<option value="${ele._id}">${new Date(
             ele.bookedFor
           ).toLocaleTimeString()} </option>`;
         });
-        $("#slots" + index).html(str);
+        $("#slots" + index).html(optionBox);
       } else {
         alert("Slots not found");
       }

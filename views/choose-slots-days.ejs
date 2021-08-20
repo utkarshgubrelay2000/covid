@@ -287,7 +287,7 @@
 
                                                                         <div id="spots">
 
-                                                                            <select onchange="getSlotsForPeople(1)" min='<%=getTodayDate()%>'
+                                                                            <select onchange="getSlotsForPeople(1)" 
                                                                                 id='spotsForDay2' class="w-100 field"
                                                                                 name='inptProduct'>
 
@@ -778,7 +778,7 @@
                                             Date restrictions:
                                         </h5>
                                         <div class="d-inline-block">
-                                            <input onchange="getArrivalDate()" type="date" name="dates" id="arrivaldate"
+                                            <input onchange="getArrivalDate()" type="date" min='<%=getTodayDate()%>' name="dates" id="arrivaldate"
                                                 class="field" required />
                                             <span class="d-block mt-1">Date of Arrival in England*</span>
                                         </div>

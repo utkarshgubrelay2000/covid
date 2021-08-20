@@ -3,6 +3,7 @@ function getData(length, slot,slotAfterDay6,packageid) {
   length = Number(length);
   let token=localStorage.getItem('covid')
   console.log(token)
+  let isValid=true
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
@@ -35,6 +36,73 @@ function getData(length, slot,slotAfterDay6,packageid) {
     array.push(object);
   }
   ///  console.log(array)
+  const re =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const mobileRegex=/^(\+\d{1,3}[- ]?)?\d{10}$/
+   for (let index = 0; index < length; index++) {
+     if (
+       !array[index].email ||
+       !re.test(String(array[index].email).toLowerCase())
+     ) {
+       isValid = false;
+       console.log( re.test(String(array[index].email).toLowerCase()))
+       alert("Email Not Valid For Person  " + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].phone ||
+       !mobileRegex.test(String(array[index].phone).toLowerCase())
+     ) {
+       isValid = false;
+       alert("Phone Not Valid For Person  " + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].firstName ||
+       !array[index].lastName
+     ) {
+       isValid = false;
+       alert("Value For Name Not Found  For Person" + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].dob 
+     
+     ) {
+       isValid = false;
+       alert("Date Of Birth is Empty For Person" + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].address 
+     ) {
+       isValid = false;
+       alert("Address is Empty For Person" + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].arrival_vessel_number 
+     ) {
+       isValid = false;
+       alert("arrival vessel number  is Empty For Person" + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].passport_id 
+     ) {
+       isValid = false;
+       alert("passport Id is Empty For Person" + Number(index + 1));
+       break;
+     }
+     else  if (
+       !array[index].vaccination_status
+     ) {
+       isValid = false;
+       alert("vaccination Status is Empty For Person" + Number(index + 1));
+       break;
+     }
+ 
+   }
+ if(isValid){
   let pd = JSON.stringify(array);
   let data = { slots: slot, personal_details: pd,slotAfterDay6:slotAfterDay6,packageid:packageid };
   console.log(data);
@@ -55,6 +123,6 @@ function getData(length, slot,slotAfterDay6,packageid) {
       alert("Login Required");
 
     },
-  });
+  });}
   //console.log(JSON.parse(personDetails),length)
 }
