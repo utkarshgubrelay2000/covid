@@ -388,7 +388,7 @@ console.log(allslots)
           {
             booked: true,
             user: saved._id,
-            UserId: req.body.userId,
+         
             ...req.body,
             packageid: packageid,
           },
@@ -399,7 +399,7 @@ console.log(allslots)
           {
             booked: true,
             user: saved._id,
-            UserId: req.body.userId,
+      
             ...req.body,
             packageid: packageid,
           },
