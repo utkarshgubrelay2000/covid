@@ -44,6 +44,10 @@ app.locals.getTime=(date)=>{
  // console.log(date,"date")
 return new Date(date).toLocaleTimeString()
 }
+app.locals.getTodayDate=(date)=>{
+  // console.log(date,"date")
+ return new Date().toISOString().substr(0, 10)
+ }
  app.use('/',Routes)
  app.use('/',auth)
 
