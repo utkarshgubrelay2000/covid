@@ -373,7 +373,7 @@ function getData(length, slot, packageid) {
       window.location.href = "/test-terms";
     },
     error: function (err) {
-      console.log(err,token)
+      console.log(err, token);
       alert("Login Required");
     },
   });
@@ -506,26 +506,32 @@ function getSlotsForPeopleSingleDay() {
     spotids.push(item._id);
   });
   arrivalSlots = spotids;
+  console.log(arrivalSlots.length, numberOfPerson);
+  if (arrivalSlots.length != numberOfPerson) {
+    alert(
+      "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+    );
+  } else {
+    arrivalSlots.forEach((ele) => {
+      var spot = ele;
+      option += `<input name='spots' class="w-100 field d-none"  value=${ele}>`;
+    });
 
-  arrivalSlots.forEach((ele) => {
-    var spot = ele;
-    option += `<input name='spots' class="w-100 field" value=${ele}>`;
-  });
-
-  $("#slotsIdsFotSingleDayTest").html(option);
-  console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+    $("#slotsIdsFotSingleDayTest").html(option);
+    console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+  }
 }
 function cancelMySlot(id) {
-  let data={id:id}
+  let data = { id: id };
   $.ajax({
     url: "/cancel-booking",
     method: "POST",
     data: data,
-    Headers: { contentType: "application/json"},
+    Headers: { contentType: "application/json" },
     success: function (res) {
       console.log(res);
-    
-    alert('Success')
+
+      alert("Success");
     },
     error: function () {
       alert("Something went Wrong Required");
