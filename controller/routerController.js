@@ -165,6 +165,7 @@ exports.chooseslots = async (req, res) => {
 exports.contactdetails = async (req, res) => {
   let { spots, people, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
+  console.log(test)
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
@@ -177,6 +178,19 @@ exports.contactdetails = async (req, res) => {
     peopleArray.push(peoplesDetails);
   }
   console.log(spots,req.body.spots);
+  if(test._id=="6112728aae2efa3f4000d667" || test.test_name=="I am NOT travelling "){
+    res.render("not-traveling-form", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+    });
+  }
+  else{
+
+ 
   res.render("contact-details", {
     testDetails: test,
     date: req.body.date,
@@ -184,7 +198,7 @@ exports.contactdetails = async (req, res) => {
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
-  });
+  }); }
 };
 exports.contactdetailsforArrivinginEngland = async (req, res) => {
   let { spotArrival, spotAfterDay6, date, people, packageid } = req.body;

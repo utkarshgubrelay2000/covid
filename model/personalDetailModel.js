@@ -31,11 +31,11 @@ const personalDetailsSchema = new mongoose.Schema(
       
     arrival_vessel_number: {
       type: Number,
-      required: true,
+ 
     },
     passport_id: {
       type: String,
-      required: true,
+  
     },
     ethnicity: {
       type: String,
@@ -45,7 +45,7 @@ const personalDetailsSchema = new mongoose.Schema(
     },
     date_of_arrival: {
       type: String,
-      required: true,
+
     },
     date_depart_out_cta: {
       type: String,
