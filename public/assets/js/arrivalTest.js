@@ -49,7 +49,7 @@ function getData(length, slot,slotAfterDay6,packageid) {
       localStorage.setItem("slots", JSON.stringify(res.allslots));
       console.log(res.allslots);
    
-     // window.location.href = "/test-terms";
+      window.location.href = "/test-terms";
     },
     error: function () {
       alert("Login Required");

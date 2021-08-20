@@ -370,7 +370,7 @@ function getData(length, slot, packageid) {
     success: function (res) {
       console.log(res.allslots);
       localStorage.setItem("slots", JSON.stringify(res.allslots));
-     // window.location.href = "/test-terms";
+      window.location.href = "/test-terms";
     },
     error: function (err) {
       console.log(err,token)
