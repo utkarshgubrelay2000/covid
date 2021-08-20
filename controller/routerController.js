@@ -1,6 +1,7 @@
 const FAQ = require("../model/faqModel");
 const Test = require("../model/testModel");
 let { Scheduler } = require("@ssense/sscheduler");
+const jwt = require("jsonwebtoken");
 
 let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
@@ -479,14 +480,41 @@ exports.getSlotsDetails = async (req, res) => {
   let body=JSON.stringify(req.body)
   let data=body.replace("slots[]",'slots')
   let slots=JSON.parse(data)
-  console.log(slots.slots,req.body)
-  TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
-  .populate("packageid")
-  .populate("user")
-  .populate("UserId").then(found=>{
-    res.json({message:"Success",data:found});
+  console.log(req.body)
+ 
+  if(req.body.token){
+    jwt.verify(req.body.token, process.env.JWT_SECRET, (err, payload) => {
+      if (err || payload === undefined) {
+        console.log(`some error in verifying jwt secret${err}`);
+      res.send("InValid Token")
+      }
+  else{
+    let  md5UserId=payload.secretId
 
+    TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
+    .populate("packageid")
+    .populate("user")
+    .populate("UserId").then(found=>{
+      res.json({message:"Success",data:found});
+    })
+    TimeSlots.updateMany({_id:{$in:slots.slots}},{UserId:md5UserId}).populate("test")
+    .populate("packageid")
+    .populate("user")
+    .populate("UserId").then(found=>{
+     console.log('Update')
+    })
+  }
   })
+  }
+  else{
+
+    TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
+    .populate("packageid")
+    .populate("user")
+    .populate("UserId").then(found=>{
+      res.json({message:"Success",data:found});
+    })
+  }
 };
 exports.PaymentStripe=async (req,res)=>{
   console.log(req.body)

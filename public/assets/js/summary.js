@@ -2,7 +2,7 @@ function getSlotDetails() {
   let slots = JSON.parse(localStorage.getItem("slots"));
   let token = localStorage.getItem("covid");
   console.log(slots);
-  let data = { slots: slots };
+  let data = { slots: slots,token:token };
   $.ajax({
     url: "/get-slot-details",
     method: "PATCH",
