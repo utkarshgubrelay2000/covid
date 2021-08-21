@@ -156,6 +156,7 @@ function getSlotDetails() {
           ${
             token
               ? `<form action='/payment-stripe' method="POST"> 
+              <input name='charge' value='${res.data[0].packageid.price1 * res.data.length}.00' class='d-none'/>
               ${res.data
                 .map(function (work) {
                   return `<div class='border'>

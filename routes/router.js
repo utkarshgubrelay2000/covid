@@ -68,6 +68,7 @@ router.get('/',registerController.homePage)
   router.post("/update-personal-details/:id",registerController.editPersonDetails);
 
   router.post("/charge", (req, res) => {
+    console.log(req.body)
     try {
       stripe.customers
         .create({
@@ -77,7 +78,7 @@ router.get('/',registerController.homePage)
         })
         .then(customer =>
           stripe.charges.create({
-            amount: req.body.amount * 100,
+            amount: Number(req.body.amount) * 100,
             currency: "usd",
             customer: customer.id
           })

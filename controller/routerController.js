@@ -523,5 +523,5 @@ exports.PaymentStripe=async (req,res)=>{
     slots=[slots]
   }
   console.log(slots)
-  res.render('payment',{slots:slots})
+  res.render('payment',{slots:slots,charge:req.body.charge})
 }
