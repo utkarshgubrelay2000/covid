@@ -6,6 +6,7 @@ var mutter=require('multer')
 var path=require('path');
 const verifyAdmin = require('../middleware/verifyAdmin');
 const requireLogin  = require('../middleware/requireLogin');
+const TimeSlots = require('../model/timeSlots');
 const stripe=require('stripe')('sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw')
 
 /* GET home page. */
@@ -83,7 +84,14 @@ router.get('/',registerController.homePage)
             customer: customer.id
           })
         )
-        .then(() => res.send("PaymentSuccess"))
+        .then(async () => {
+          let slots=req.body.slots
+          if( typeof req.body.slots==="string"){
+            slots=[slots]
+          }
+        await  TimeSlots.updateMany({_id:{$in:slots}},{paid:true})
+          res.send("PaymentSuccess")
+        })
         .catch(err => console.log(err));
     } catch (err) {
       res.send(err,"erro");
