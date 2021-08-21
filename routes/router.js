@@ -90,7 +90,7 @@ router.get('/',registerController.homePage)
             slots=[slots]
           }
         await  TimeSlots.updateMany({_id:{$in:slots}},{paid:true})
-          res.send("PaymentSuccess")
+          res.render("paymentsucess")
         })
         .catch(err => console.log(err));
     } catch (err) {
