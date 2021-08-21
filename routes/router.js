@@ -6,7 +6,7 @@ var mutter=require('multer')
 var path=require('path');
 const verifyAdmin = require('../middleware/verifyAdmin');
 const requireLogin  = require('../middleware/requireLogin');
-const stripe=require('stripe')('sk_test_51JQBYwSJfp4W2sZCo5GswBuw5qOdnodSC8b9EpWKBPeya4CrfixE3EXdmoGogE8zUceJNrL0puWcoMwBOSK0vx0000ZzhYVO0H')
+const stripe=require('stripe')('sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw')
 
 /* GET home page. */
 router.get('/',registerController.homePage)
@@ -82,7 +82,7 @@ router.get('/',registerController.homePage)
             customer: customer.id
           })
         )
-        .then(() => res.render("completed"))
+        .then(() => res.send("PaymentSuccess"))
         .catch(err => console.log(err));
     } catch (err) {
       res.send(err,"erro");

@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
 let moment = require("moment");
-const stripe=require('stripe')('sk_test_51JQBYwSJfp4W2sZCo5GswBuw5qOdnodSC8b9EpWKBPeya4CrfixE3EXdmoGogE8zUceJNrL0puWcoMwBOSK0vx0000ZzhYVO0H')
+const stripe=require('stripe')('sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw')
 const PersonalDetails = require("../model/personalDetailModel");
 const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
@@ -517,6 +517,11 @@ exports.getSlotsDetails = async (req, res) => {
   }
 };
 exports.PaymentStripe=async (req,res)=>{
-  console.log(req.body)
-  res.render('payment')
+  console.log(req.body,"slots")
+  let slots=req.body.slots
+  if( typeof req.body.slots==="string"){
+    slots=[slots]
+  }
+  console.log(slots)
+  res.render('payment',{slots:slots})
 }
