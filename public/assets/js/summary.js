@@ -2,6 +2,7 @@ function getSlotDetails() {
   let slots = JSON.parse(localStorage.getItem("slots"));
   let token = localStorage.getItem("covid");
   console.log(slots);
+  if(slots){
   let data = { slots: slots,token:token };
   $.ajax({
     url: "/get-slot-details",
@@ -200,5 +201,9 @@ function getSlotDetails() {
       alert("Login Required");
     },
   });
+}else{
+  alert('No Slots Found')
+  window.location.href='/'
+}
 }
 getSlotDetails();
