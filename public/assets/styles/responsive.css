@@ -60,6 +60,9 @@
         height: 70%;
     }
 
+    .login-signup-sec .forms {
+        padding: 30px 25px;
+    }
 
 }
 
@@ -111,6 +114,10 @@
     .pick-slots-sec .contact-form-box .days-content {
         border-bottom: 1px solid #3E4266;
         margin-bottom: 15px;
+    }
+
+    .login-signup-sec .forms {
+        padding: 30px;
     }
 
 }

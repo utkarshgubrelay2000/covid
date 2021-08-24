@@ -52,26 +52,27 @@
                                         We offer a range of covid-19 tests including PCR filt to fly, Day 2 & Day 8 Tests and Test to release.
                                     </p>
                                 </div>
+                                <form id="loginForm" action="/signup" method="POST">
                                 <div class="row pt-xl-4">
-                                    <form id="loginForm" action="/signup" method="POST">
-                                        <div class="form-group">
-                                            <label class="form-control-label"> First Name </label>
-                                            <div class="pass-group">
+                                      <div class="col-md-12 form-group mb-4">
+                                            <label > First Name </label>
+                                            <div >
                                                 <input type="text" name="firstName" 
-                                                id="firstName" class="form-control pass-input" value="">
+                                                id="firstName"  class="w-100 field" placeholder="Enter Your First Name">
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label"> Last Name </label>
-                                            <div class="pass-group">
-                                                <input type="text" name="lastName" 
-                                                id="lastName" class="form-control pass-input" value="">
-                                            </div>
+                                      <div class="col-md-12 form-group mb-4">
+                                            <label >Last Name </label>
+                                            <input type="lastName" name="lastName" id="lastName" placeholder="Last Name " 
+                                            class="w-100 field" required />
+                                            <i class="fas fa-check"></i>
+                                         
                                         </div>
                                     <div class="col-md-12 form-group mb-4">
                                         <label>Email Address</label>
                                         <div>
-                                            <input type="email" name="email" id="email" placeholder="Enter email address" class="w-100 field" required />
+                                            <input type="email" name="email" id="email" 
+                                            placeholder="Enter email address" class="w-100 field" required />
                                             <i class="fas fa-check"></i>
                                         </div>
                                     </div>
@@ -82,32 +83,32 @@
                                             <i class="fas fa-check"></i>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-										<label class="form-control-label"> Phone </label>
-										<div class="pass-group">
+                                  <div class="col-md-12 form-group mb-4">
+										<label > Phone </label>
+									
 											<input type="text" name="phone" 
-											id="phone" class="form-control pass-input" value="">
+											id="phone"  class="w-100 field" value="">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="form-control-label"> Date Of Birth </label>
-										<div class="pass-group">
+										<label > Date Of Birth </label>
+									
 											<input type="date" name="dob" 
-											id="dob" class="form-control pass-input" value="">
-										</div>
+											id="dob"  class="w-100 field" value="">
+									
 									</div>
 									<div class="form-group">
-										<label class="form-control-label"> Address </label>
-										<div class="pass-group">
+										<label > Address </label>
+									
 											<input type="text" name="address" 
-											id="address" class="form-control pass-input" value="">
-										</div>
+											id="address"  class="w-100 field" value="">
+									
 									</div>
 									<div class="form-group">
-										<label class="form-control-label"> Gender </label>
+										<label > Gender </label>
 									
 									<select name='gender'
-									 id='gender' class="form-control pass-input"
+									 id='gender'  class="w-100 field"
 									  >
 										<option value='male'>male</option>
 										<option value='female'>female</option>
@@ -115,45 +116,15 @@
 									  </select>
 									<button class="btn btn-lg btn-block btn-primary mt-3" type="submit">Sign Up</button>
 							</div>
-                                </form>
-                                    <div class="col-md-12 form-group mt-4 mb-4">
-                                        <button class="btn-purple d-block text-uppercase w-100">
-                                            SIGN IN
-                                        </button>
-                                    </div>
-                                </div>
+                            
+                        </div>
+                    </form>
                                 <div class="text-center mb-4">
                                     <p>
                                         Do you have already account? 
                                         <a href="/login" class="text-purple font-weight-bold">Sign in</a>
                                     </p>
-                                    <h6 class="mt-4 mb-4">
-                                        OR
-                                    </h6>
-                                    <div class="social-icons">
-                                        <ul class="social-icons mb-4">
-                                            <li class="d-inline-block">
-                                                <a href="/#" class="d-inline-block" target="_blank">
-                                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="d-inline-block">
-                                                <a href="/#" class="d-inline-block" target="_blank">
-                                                    <i class="fab fa-google"></i>
-                                                </a>
-                                            </li>
-                                            <li class="d-inline-block">
-                                                <a href="/#" class="d-inline-block" target="_blank">
-                                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="d-inline-block">
-                                                <a href="/#" class="d-inline-block" target="_blank">
-                                                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                               
                                 </div>
                             </div>
 

@@ -1244,3 +1244,121 @@ input[type=number] { /* Firefox */
 .pick-slots-sec .accordion .ques[aria-expanded="true"]:before {
     content: "\f068";
 }
+
+
+
+/* Sign Up */
+.login-signup-sec {
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    padding: 50px 0 35px;
+}
+.signup-sec {
+    background-image: url('../images/signup-banner.jpg');
+}
+.login-sec {
+    background-image: url('../images/login-banner.jpg');
+}
+.forgot-password-sec {
+    background-image: url('../images/forgot-password-banner.jpg');
+}
+.login-signup-sec .forms {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 0px rgb(0 0 0 / 10%);
+    padding: 30px 45px;
+}
+.login-signup-sec label {
+    color: #949494;
+    margin-bottom: 1px;
+}
+.login-signup-sec .field {
+    border: 0;
+    border-bottom: 2px solid #bebebe;
+    border-radius: 0;
+    color: #424451;
+    padding: 5px 0 10px;
+}
+.login-signup-sec .form-group i {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.login-signup-sec .form-group .completed {
+    position: relative;
+}
+.login-signup-sec .form-group .completed i {
+    display: block;
+    color: #3e7f95;
+}
+.login-signup-sec .completed .field {
+    border-bottom: 2px solid #3e7f95;
+}
+.login-signup-sec .field::-webkit-input-placeholder { /* Edge */
+    color: #424451;
+}
+.login-signup-sec .field:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #424451;
+}  
+.login-signup-sec .field::placeholder {
+    color: #424451;
+}
+.login-signup-sec .checkboxes-data label {
+    cursor: pointer;
+    color: #3E4266;
+    padding-left: 25px;
+}
+.login-signup-sec .checkboxes-data label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 1px solid #3E4266;
+    border-radius: 3px;
+    padding: 7px;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.login-signup-sec .checkboxes-data input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 21px;
+    width: 5px;
+    height: 11px;
+    border: solid #3E4266;
+    border-radius: 3px;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+/* Prices */
+.prices-sec table th {
+    background-color: #0094CC;
+    color: #ffffff;
+}
+
+/* Prepare Your test */
+.your-tests-sec .nav-pills li {
+    flex: auto;
+    text-align: center;
+}
+.your-tests-sec .nav-pills li a {
+    border: 1px solid #3E4266;
+    color: #3E4266;
+    margin: 0 5px 10px;
+    transition: 0.5s;
+}
+.your-tests-sec .nav-pills li a:hover,
+.your-tests-sec .nav-pills li a.active {
+    background-color: #3E4266;
+    color: #ffffff;
+    transition: 0.5s;
+}
