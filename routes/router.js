@@ -51,7 +51,7 @@ router.get('/',registerController.homePage)
  router.post("/create",registerController.createBooking);
  router.post("/create-arrival",registerController.createBookingArrival);
  router.get("/pages",registerController.getAllPage);
- router.get("/pages",registerController.getAllPage);
+ router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);
  router.get("/notification/:token",requireLogin,registerController.notification);
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);

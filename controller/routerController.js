@@ -438,7 +438,7 @@ exports.getAllPage = (req, res) => {
     });
 };
 exports.getPageById = (req, res) => {
-  //console.log(req.body);
+  console.log(req.params);
   Page.findById(req.params.id)
     .then((found) => {
       console.log(found);
