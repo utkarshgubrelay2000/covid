@@ -25,8 +25,9 @@ exports.prices = (req, res) => {
 exports.afterYourTest = (req, res) => {
   res.render("after-your-test");
 };
-exports.preparingforyourtest = (req, res) => {
-  res.render("preparing-for-your-test");
+exports.preparingforyourtest = async (req, res) => {
+  let faqs = await FAQ.find({}).limit(10);
+  res.render("preparing-for-your-test",{faqs:faqs});
 };
 
 exports.contact = (req, res) => {

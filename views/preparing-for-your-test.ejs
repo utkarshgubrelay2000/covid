@@ -938,153 +938,25 @@
                             </p>
                         </div>
                         <div class="col-12">
-                            <div id="accordion" class="accordion mt-4 aos-init aos-animate">
+                            <div id="accordion" class="accordion mt-4" data-aos="zoom-in-up">
+                                <% faqs.map((faq,index)=>{ %>
+                                 
                                 <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="/#faq1" aria-expanded="true">
+                                    <div class="ques collapsed" data-toggle="collapse" href="#faq<%= index %>" aria-expanded="true">
                                         <h6 class="mb-0">
-                                            How do I book a test?
+                                          <%=faq.question%>
                                         </h6>
                                     </div>
-                                    <div id="faq1" class="collapse show" data-parent="#accordion">
+                                    <div id="faq<%= index %>" class="collapse show" data-parent="#accordion">
                                         <div class="answers">
                                             <p>
-                                                Book online via our 'Book a Test' page. You can choose your preferred testing centre, time and also pay online.
-                                            </p>
-                                            <p>
-                                                You will then be sent a Booking Confirmation email containing your Booking Reference (a number beginning CPT 
-                                                or SCPT) and a QR code attached. This could take up to 30 minutes to receive after you’ve made your booking. 
-                                                We suggest you also check your spam/junk folder for the email, as some email providers may place it there.
-                                            </p>
-                                            <p>
-                                                You must bring the QR code with you when you arrive for your test. Please also bring your valid Passport, 
-                                                National ID or Travel Document if you have booked 'PCR Fit to Fly' Test or 'PCR Test to Release' Test.
-                                            </p>
-                                            <p>
-                                                <strong>Can I book over the phone?</strong>
-                                            </p>
-                                            <p>
-                                                Bookings can only be made via our website and not by phone. Our website currently shows all our available slots 
-                                                and you will not gain access to additional slots by calling our customer care centre.
-                                            </p>
-                                            <p>
-                                                <strong>If you need more than one product</strong>
-                                            </p>
-                                            <p>
-                                                You should make separate bookings. e.g. if you want a PCR Fit to Fly Test for departure and also an arrivals package 
-                                                for your return, you should make two separate bookings.
-                                            </p>
-                                            <p>
-                                                Note: not all products are available at every site due to different laboratory processes.
-                                            </p>
-                                            <p>
-                                                <strong>Maximum Group Size</strong>
-                                            </p>
-                                            <p>
-                                                You can book for up to 5 people in one booking. If your group is larger than this you will need to make 2 or more bookings and arrive in 2 or more vehicles.
-                                            </p>
-                                            <p>
-                                                Don't forget to bring all of your QR codes to the appointments.
+                                                <%=faq.answer%>
                                             </p>
                                         </div>
                                     </div>
-                                </div>  
-                                
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="/#faq2" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Can I get a test if I have symptoms?
-                                        </h6>
-                                    </div>
-                                    <div id="faq2" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                No - please don't come to our sites if you have any COVID-19 symptoms. We advise you to contact NHS 111 to get further advice.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>  
-
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="/#faq3" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            Where are your testing centres?
-                                        </h6>
-                                    </div>
-                                    <div id="faq3" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                We currently have testing centres at Heathrow, Gatwick, Birmingham and Edinburgh, as well as regional testing centres across 
-                                                the country - please see our 'Directions' page to find the test centre nearest to you. 
-                                            </p>
-                                            <p>
-                                                <strong>Walk throughs and Drive throughs</strong>
-                                            </p>
-                                            <p>
-                                                Please note that some centres are 'Drive through', some are 'Walk through' and some are both of these. 
-                                                Please check the test centre accommodates the method of transport you intend to use.
-                                            </p>
-                                            <p>
-                                                <strong>Park to Test</strong>                                                                        
-                                            </p>
-                                            <p>
-                                                Our Park to Test facility is at our Heathrow Drive through site. It is for Antigen Lateral Flow tests only, 
-                                                and allows you to park outside the door while you go in and get your test done. It is very suitable for 
-                                                families and groups from the same bubble who are all getting Antigen Lateral Flow tests at the same time.
-                                            </p>
-                                            <p>
-                                                There are dedicated parking areas for coaches, minibuses and taxis at our Heathrow Park to Test centre.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>  
-
-
-                                <div class="accordion-ques">
-                                    <div class="ques collapsed" data-toggle="collapse" href="/#faq4" aria-expanded="false">
-                                        <h6 class="mb-0">
-                                            When will I get my results?
-                                        </h6>
-                                    </div>
-                                    <div id="faq4" class="collapse" data-parent="#accordion">
-                                        <div class="answers">
-                                            <p>
-                                                <strong>PCR Tests</strong>
-                                            </p>
-                                            <p>
-                                                Please note that we aim to deliver your PCR test results by 10pm the day AFTER your test, however, in some cases 
-                                                these could take up to 48 hours, especially if your sample needs to be re-tested. (Home tests are different).
-                                            </p>
-                                            <p>
-                                                <strong>LAMP Tests</strong>
-                                            </p>
-                                            <p>
-                                                LAMP test results will be delivered 2 hours after testing. But please check that LAMP is accepted by your destination country.                                                                   
-                                            </p>
-                                            <p>
-                                                <strong>Home Tests</strong>
-                                            </p>
-                                            <p>
-                                                Home test results will be delivered 24 hours after the sample arrives at our laboratory.
-                                            </p>
-                                            <p>
-                                                <strong>Lateral</strong>
-                                            </p>
-                                            <p>
-                                                We aim to deliver your Lateral Flow results in 30mins from your sample being taken, but please allow sufficient time especially 
-                                                if the test is required to check-in for your flight.
-                                            </p>
-                                            <p>
-                                                <strong>
-                                                    Remote Lateral Flow
-                                                </strong>
-                                            </p>
-                                            <p>
-                                                The Remote Lateral Flow test results are delivered in 1 hour providing that all the information is uploaded correctly and in a readable format.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>  
-
+                                </div>
+                                <% })%>                         
+                                                             
                             </div>
                         </div>
                     </div>
