@@ -22,8 +22,10 @@ exports.homePage = (req, res) => {
 exports.prices = (req, res) => {
   res.render("prices");
 };
-exports.afterYourTest = (req, res) => {
-  res.render("after-your-test");
+exports.afterYourTest =async (req, res) => {
+  let faqs = await FAQ.find({}).limit(10);
+
+  res.render("after-your-test",{faqs:faqs});
 };
 exports.preparingforyourtest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
