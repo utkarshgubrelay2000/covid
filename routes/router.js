@@ -57,6 +57,7 @@ router.get('/',registerController.homePage)
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);
  router.post("/post-appointment",requireLogin,registerController.paginationappointment);
  router.post("/cancel-booking",registerController.cancelMySlot);
+ router.get("/after-your-test",registerController.afterYourTest);
  router.post("/payment-stripe",registerController.PaymentStripe);
  router.get("/get-time-slots").get(async (req, res) => {
     function addDays(theDate, days) {

@@ -19,6 +19,13 @@ const User = require("../model/userModel");
 exports.homePage = (req, res) => {
   res.render("index");
 };
+exports.afterYourTest = (req, res) => {
+  res.render("after-your-test");
+};
+exports.preparingforyourtest = (req, res) => {
+  res.render("preparing-for-your-test");
+};
+
 exports.contact = (req, res) => {
   res.render("contact");
 };

@@ -1,71 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Covid -19 PCR Testing - Dashboard</title>
-		
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/img/favicon.png">
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-		
-		<!-- Feathericon CSS -->
-		<link rel="stylesheet" href="css/feather.css">
+    <head>
+        <title>Sign Up | Covid -19 PCR Testing</title>
 
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="css/style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/custom.css">
-	</head>
-	<body>
-	
-		<!-- Main Wrapper -->
-		<div class="main-wrapper login-body">
-			<div class="login-wrapper">
-				<div class="container">
-				
-					<img class="img-fluid logo-dark mb-2" src="assets/img/site-logo.png" alt="Logo">
-					<div class="loginbox">
-						
-						<div class="login-right">
-							<div class="login-right-wrap">
-								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
-								
-								<form id="loginForm" action="/signup" method="POST">
-									<div class="form-group">
-										<label class="form-control-label">Email Address</label>
-										<input type="email" class="form-control" id="email" name="email" value="">
-									</div>
-									<div class="form-group">
-										<label class="form-control-label">Password</label>
-										<div class="pass-group">
-											<input type="password" name="password" id="password" class="form-control pass-input" value="">
-											<span class="fas fa-eye toggle-password"></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="form-control-label"> First Name </label>
-										<div class="pass-group">
-											<input type="text" name="firstName" 
-											id="firstName" class="form-control pass-input" value="">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="form-control-label"> Last Name </label>
-										<div class="pass-group">
-											<input type="text" name="lastName" 
-											id="lastName" class="form-control pass-input" value="">
-										</div>
-									</div>
-									<div class="form-group">
+        <!-- favicon -->
+        <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="16x16">
+
+        <!-- bootstrape -->
+        <link rel="stylesheet" href="/assets/bootstrap-4/bootstrap.min.css">
+
+        <!-- font-awesome -->
+        <script src="assets/scripts/font-awesome-5-pro.js"></script>
+
+        <!-- Font Family -->
+        <link rel="preconnect" href="/https://fonts.googleapis.com">
+        <link rel="preconnect" href="/https://fonts.gstatic.com" crossorigin>
+        <link href="/https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <!-- custom -->
+        <link rel="stylesheet" href="/assets/styles/slick.css">
+        <link rel="stylesheet" href="/assets/styles/aos.css">
+        <link rel="stylesheet" href="/assets/styles/main.css">
+        <link rel="stylesheet" href="/assets/styles/responsive.css">  
+    </head>
+
+    <body>
+
+        <main>
+
+            
+            <section class="signup-sec login-signup-sec">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-lg-8 col-md-10">
+                            <div class="logo text-center">
+                                <a href="/">
+                                    <img src="assets/images/sitelogo-white.png" alt="logo" />
+                                </a>
+                            </div>
+
+                            <div class="forms mt-5">
+
+                                <div class="text-center mb-4">
+                                    <h2 class="text-purple mb-4">
+                                        Sign Up
+                                    </h2>
+                                    <p>
+                                        We offer a range of covid-19 tests including PCR filt to fly, Day 2 & Day 8 Tests and Test to release.
+                                    </p>
+                                </div>
+                                <div class="row pt-xl-4">
+                                    <form id="loginForm" action="/signup" method="POST">
+                                        <div class="form-group">
+                                            <label class="form-control-label"> First Name </label>
+                                            <div class="pass-group">
+                                                <input type="text" name="firstName" 
+                                                id="firstName" class="form-control pass-input" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label"> Last Name </label>
+                                            <div class="pass-group">
+                                                <input type="text" name="lastName" 
+                                                id="lastName" class="form-control pass-input" value="">
+                                            </div>
+                                        </div>
+                                    <div class="col-md-12 form-group mb-4">
+                                        <label>Email Address</label>
+                                        <div>
+                                            <input type="email" name="email" id="email" placeholder="Enter email address" class="w-100 field" required />
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 form-group mb-4">
+                                        <label>Password</label>
+                                        <div>
+                                            <input type="password" name="password" id="password" placeholder="**********" class="w-100 field" required />
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
 										<label class="form-control-label"> Phone </label>
 										<div class="pass-group">
 											<input type="text" name="phone" 
@@ -97,28 +114,72 @@
 										<option value='others'>others</option>
 									  </select>
 									<button class="btn btn-lg btn-block btn-primary mt-3" type="submit">Sign Up</button>
-							</div>	</form>
-								
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /Main Wrapper -->
-		
-		<!-- jQuery -->
-		<script src="assets/js/jquery-3.6.0.min.js"></script>
+                                </form>
+                                    <div class="col-md-12 form-group mt-4 mb-4">
+                                        <button class="btn-purple d-block text-uppercase w-100">
+                                            SIGN IN
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="text-center mb-4">
+                                    <p>
+                                        Do you have already account? 
+                                        <a href="/login" class="text-purple font-weight-bold">Sign in</a>
+                                    </p>
+                                    <h6 class="mt-4 mb-4">
+                                        OR
+                                    </h6>
+                                    <div class="social-icons">
+                                        <ul class="social-icons mb-4">
+                                            <li class="d-inline-block">
+                                                <a href="/#" class="d-inline-block" target="_blank">
+                                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="d-inline-block">
+                                                <a href="/#" class="d-inline-block" target="_blank">
+                                                    <i class="fab fa-google"></i>
+                                                </a>
+                                            </li>
+                                            <li class="d-inline-block">
+                                                <a href="/#" class="d-inline-block" target="_blank">
+                                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="d-inline-block">
+                                                <a href="/#" class="d-inline-block" target="_blank">
+                                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-		<!-- Bootstrap Core JS -->
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		
-		<!-- Font Awsome Js -->
-		<script  src="assets/js/font-awesome-5-pro.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
-		<!-- <script  src="assets/js/test.js"></script> -->
 
-	</body>
+        </main>
+
+
+        <!-- custom js -->
+        <script src="assets/scripts/jquery.min.js"></script>
+        <script src="assets/scripts/popper.min.js"></script>
+        <script src="assets/bootstrap-4/bootstrap.min.js"></script>
+        <script src="assets/scripts/slick.js"></script>
+        <script src="assets/scripts/jquery.matchHeight-min.js"></script>
+        <script src="assets/scripts/aos.js"></script>
+        <script src="assets/scripts/main.js"></script>
+
+        <script>
+			AOS.init({
+				duration: 1200,
+			});
+		</script>
+
+    </body>
 </html>
