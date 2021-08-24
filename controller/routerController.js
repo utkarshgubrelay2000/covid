@@ -19,6 +19,9 @@ const User = require("../model/userModel");
 exports.homePage = (req, res) => {
   res.render("index");
 };
+exports.prices = (req, res) => {
+  res.render("prices");
+};
 exports.afterYourTest = (req, res) => {
   res.render("after-your-test");
 };
