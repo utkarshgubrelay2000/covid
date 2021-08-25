@@ -37,14 +37,9 @@ const userSchema = new mongoose.Schema(
       type: String,
     
     },
-    resetPasswordToken: {
-      type: String,
-     
-    },
-    resetPasswordExpires: {
-      type: Date,
-  
-    },
+    otp: String,
+    ResetToken: String,
+    expireToken: Date,
     role : {
       type : String,
       default : "user",

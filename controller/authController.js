@@ -169,6 +169,10 @@ exports.Signin = (req, res) => {
 exports.SignupPage = (req, res) => {
   res.render("signup");
 };
+exports.newPasswordPage = (req, res) => {
+  console.log(req.params.token)
+  res.render("newpassword",{token:req.params.token});
+};
 exports.LoginPage = (req, res) => {
   res.render("login");
 };
@@ -205,7 +209,7 @@ exports.ForgetPassword = (req, res) => {
                     rel="stylesheet"
                   />
                   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                  <title>welcome to Asli Chandi</title>
+                  <title>welcome to BTC Black Burn</title>
                   <style>
                     body {
                       background-color: #ffffff;
@@ -273,7 +277,7 @@ exports.ForgetPassword = (req, res) => {
                               "
                             >
                               <span style="font-size: 15px; font-weight: 600"
-                                >Welcome To Asli Chandi</span
+                                >Welcome To BTC Black Burn</span
                               >
                             </td>
                           </tr>
@@ -288,7 +292,7 @@ exports.ForgetPassword = (req, res) => {
 
                                   <span style=" line-height: 1.5;">
                                       We have sent you this email in response to your request to
-                                      reset your password on Asli Chandi. After you reset your password, any credit card information stored in My Account will be deleted as a security measure.
+                                      reset your password on BTC Black Burn. After you reset your password, any credit card information stored in My Account will be deleted as a security measure.
                                       <br/><br/>
                                       To reset your password for please follow the link below:
                                       <br/><br/>
@@ -300,7 +304,7 @@ exports.ForgetPassword = (req, res) => {
                                   <td>Looking forward to a lot of interaction with you :)</td>
                                 </tr>
                                 <tr>
-                                  <td>Asli Chandi wishes you the best for your journey!</td>
+                                  <td>BTC Black Burn wishes you the best for your journey!</td>
                                 </tr>
                                 <tr>
                                   <td>
@@ -311,17 +315,12 @@ exports.ForgetPassword = (req, res) => {
                                 <tr>
                                 <td>
 
-                                <br/>
-                                1. Ishaan Arora - 9650746842
-                           <br/> 2. Murrad Beigh - 7006559176
-                                <br/>
                                 Regards <br/>
-                                Team Asli Chandi
+                                Team BTC Black Burn
                                 <br/>
-                                 <a target='_blank' href='https://Asli Chandi.co/'>www.Asli Chandi.co</a>
+                                 <a target='_blank' href='mailto:btravelclinic@gmail.com'>btravelclinic@gmail.com</a>
                                   <br/>
-                                Email -
-                                team@Asli Chandi.co
+                       
                               </td>
 
                             </td>
@@ -359,7 +358,7 @@ exports.verifyOTP = (req, res) => {
       res.json({error:true,data:"something went wrong" ,errMsg:err});
     } else {
       const token = buffer.toString("hex");
-      // console.log(token);
+      console.log(req.body);
       userModel.findOne({ otp:req.body.otp,email:req.body.email }).then((user) => {
         if (!user) {
           return res.status(404).json({ error: true,data:'OTP Mismatched'});
@@ -379,7 +378,7 @@ exports.verifyOTP = (req, res) => {
 };
 
 exports.newPassword = (req, res) => {
-  //console.log(req.body);
+  console.log(req.body);
   try {
   userModel.findOne({
       ResetToken: req.body.resetToken,
@@ -389,7 +388,7 @@ exports.newPassword = (req, res) => {
         res.status(404).json("token expires");
       //  console.log("jjj", user.expireToken, Date.now());
       } else {
-        console.log(req.body.password)
+   
         bcryptjs.hash(req.body.password, 12).then((newpassword) => {
           user.password = newpassword;
           user.save().then((u) => {

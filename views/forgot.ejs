@@ -83,7 +83,7 @@
                                     <div class="col-md-12 form-group mb-4">
                                         <label>Email Address</label>
                                         <div class="completed">
-                                            <input type="email" name="email" id="email" value="johndue@gmail.com" class="w-100 field" required />
+                                            <input type="email" name="email" id="email" placeholder="johndue@gmail.com" class="w-100 field" required />
                                             <i class="fas fa-check"></i>
                                         </div>
                                     </div>
@@ -126,7 +126,7 @@
 
             async function forgotHandler() {
                 let email = document.getElementById('email').value
-                console.log(password)
+     
                 let data = { email: email }
                 axios.post('/forgot', data, { headers: { 'Content-Type': 'application/json' } })
                     .then(data =>{
@@ -137,7 +137,7 @@
                     }
                     ).catch(err=>{
                         console.log(err)
-                        alert("Something went Wrong")
+                        alert("Email Not Found")
                     });
     
     
@@ -146,17 +146,17 @@
             async function otpHandler() {
                 let email = document.getElementById('email').value
                 let otp = document.getElementById('otp').value
-                console.log(password)
+       
                 let data = { email: email,otp:otp }
                 axios.post('/verify-otp', data, { headers: { 'Content-Type': 'application/json' } })
                     .then(data =>{
                         console.log(data)
-              
+              window.location.href='/newpassword/'+data.data.ResetToken
                     
                     }
                     ).catch(err=>{
                         console.log(err)
-                        alert("Something went Wrong")
+                        alert("OTP mismatched")
                     });
     
     

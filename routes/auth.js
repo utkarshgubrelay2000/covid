@@ -20,7 +20,8 @@ router.post('/login',userAuthentication.Signin,err=>{
  router.post('/forgot', userAuthentication.ForgetPassword)
  router.get('/forgot-password', userAuthentication.ForgetPasswordPage)
  router.post('/verify-otp', userAuthentication.verifyOTP)
-// router.post('/reset-password', userAuthentication.newPassword)
+ router.post('/new-password', userAuthentication.newPassword)
+ router.get('/newpassword/:token', userAuthentication.newPasswordPage)
 
 
 module.exports=router
