@@ -2,26 +2,26 @@ function getSlotDetails() {
   let slots = JSON.parse(localStorage.getItem("slots"));
   let token = localStorage.getItem("covid");
   console.log(slots);
-  if(slots){
-  let data = { slots: slots,token:token };
-  $.ajax({
-    url: "/get-slot-details",
-    method: "PATCH",
-    data: data,
-    Headers: { contentType: "application/json" },
-    success: function (res) {
-      console.log(res);
+  if (slots) {
+    let data = { slots: slots, token: token };
+    $.ajax({
+      url: "/get-slot-details",
+      method: "PATCH",
+      data: data,
+      Headers: { contentType: "application/json" },
+      success: function (res) {
+        console.log(res);
 
-      let contact = `  
+        let contact = `  
       <div class="row">
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
           <h1>Login</h1>
-          <p class="account-subtitle">Access to our dashboard</p>
+  
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" id='close-login'  data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -51,6 +51,13 @@ function getSlotDetails() {
       </div>
           </div>
           <div class="modal-footer">
+          <a   class="btn-purple  d-inline-block mt-4 mb-md-0 mb-3" onclick='closeLogin()' >
+          Signup
+      </a>
+           <a href='#' data-toggle="modal" id='openSignup' data-target="#exampleModal1"
+            class="btn-purple d-none mt-4 mb-md-0 mb-3">
+          Signup
+      </a>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id='loginForm'>Login</button>
           </div>
@@ -58,11 +65,72 @@ function getSlotDetails() {
         </div>
       </div>
     </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h1>Signup</h1>
+          <button type="button" class="close" data-dismiss="modal" id='close-signup'aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="login-right">
+        <div class="login-right-wrap">
+           
+        <div class="row pt-xl-4">
+        <div class="col-md-12 form-group mb-4">
+              <label > First Name </label>
+              <div >
+                  <input type="text" name="firstName" 
+                  id="firstName"  class="w-100 field" placeholder="Enter Your First Name">
+              </div>
+          </div>
+        <div class="col-md-12 form-group mb-4">
+              <label >Last Name </label>
+              <input type="lastName" name="lastName" id="lastName" placeholder="Last Name " 
+              class="w-100 field" required />
+              <i class="fas fa-check"></i>
+           
+          </div>
+      <div class="col-md-12 form-group mb-4">
+          <label>Email Address</label>
+          <div>
+              <input type="email" name="email" id="signupemail" 
+              placeholder="Enter email address" class="w-100 field" required />
+              <i class="fas fa-check"></i>
+          </div>
+      </div>
+      <div class="col-md-12 form-group mb-4">
+          <label>Password</label>
+          <div>
+              <input type="password" name="password" id="signuppassword" placeholder="**********" class="w-100 field" required />
+              <i class="fas fa-check"></i>
+          </div>
+      </div>
+    <div class="col-md-12 form-group mb-4">
+<label > Phone </label>
+
+<input type="text" name="phone" 
+id="phone"  class="w-100 field" value="">
+</div>
+</div>
+         
+    </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" id='SignupForm'>Login</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
           <div class="col-xl-10 col-lg-9 col-md-9">
               <h5 class="text-purple mb-4 mr-4">
                  ${res.data[0].test.test_name} -  ${
-        res.data[0].packageid.packageName
-      }
+          res.data[0].packageid.packageName
+        }
                   <a href="#" class="edit-btn">
                       <i class="fas fa-pencil-alt"></i>
                   </a>
@@ -157,7 +225,9 @@ function getSlotDetails() {
           ${
             token
               ? `<form action='/payment-stripe' method="POST"> 
-              <input name='charge' value='${res.data[0].packageid.price1 * res.data.length}.00' class='d-none'/>
+              <input name='charge' value='${
+                res.data[0].packageid.price1 * res.data.length
+              }.00' class='d-none'/>
               ${res.data
                 .map(function (work) {
                   return `<div class='border'>
@@ -167,7 +237,7 @@ function getSlotDetails() {
               <button  class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
           CONTINUE
       </button><form> `
-              : ` <button  data-toggle="modal" data-target="#exampleModal" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
+              : ` <button  data-toggle="modal" id='openLogin' data-target="#exampleModal" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
       Login
   </button>`
           }
@@ -175,35 +245,59 @@ function getSlotDetails() {
           </div>
       </div>
   `;
-      $("#contactform").html(contact);
-      $("#loginForm").click(function () {
-        let password = document.getElementById("password").value;
-        let email = document.getElementById("email").value;
-        $.ajax({
-          url: "/login",
-          method: "Post",
-          data: { email: email, password: password },
-          success: function (res) {
-            console.log(res);
-      localStorage.setItem("covid", res.token);
-      window.location.reload()
-
-          },
-          error: function () {
-            alert("error", "Error!", "Something happens in Server!");
-          },
+      
+        $("#contactform").html(contact);
+        $("#loginForm").click(function () {
+          let password = document.getElementById("password").value;
+          let email = document.getElementById("email").value;
+          $.ajax({
+            url: "/login",
+            method: "Post",
+            data: { email: email, password: password },
+            success: function (res) {
+              console.log(res);
+              localStorage.setItem("covid", res.token);
+              window.location.reload();
+            },
+            error: function () {
+              alert("error", "Error!", "Something happens in Server!");
+            },
+          });
         });
-      });
-    
-    },
-    error: function (err) {
-      console.log(err, token);
-      alert("Login Required");
-    },
-  });
-}else{
-  alert('No Slots Found')
-  window.location.href='/'
-}
+        $("#SignupForm").click(function () {
+          let password = document.getElementById("signuppassword").value;
+          let lastName = document.getElementById("lastName").value;
+          let firstName = document.getElementById("firstName").value;
+          let phone = document.getElementById("phone").value;
+          let email = document.getElementById("signupemail").value;
+          $.ajax({
+            url: "/signup",
+            method: "Post",
+            data: { email: email, password: password,firstName:firstName,lastName:lastName,phone:phone },
+            success: function (res) {
+              console.log(res);
+              document.getElementById('close-signup').click()
+  document.getElementById('openLogin').click()
+            },
+            error: function () {
+              alert("error", "Error!", "Something happens in Server!");
+            },
+          });
+        });
+      },
+      error: function (err) {
+        console.log(err, token);
+        alert("Login Required");
+      },
+    });
+  } else {
+    alert("No Slots Found");
+    window.location.href = "/";
+  }
 }
 getSlotDetails();
+function closeLogin(){
+  document.getElementById('close-login').click()
+  document.getElementById('openSignup').click()
+  
+}

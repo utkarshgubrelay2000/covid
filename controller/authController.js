@@ -108,7 +108,7 @@ exports.Signup = (req, res) => {
                   });
               }
               console.log("message sent successfully");
-               res.json("Thanks for subscribing!");
+             //  res.json("Thanks for subscribing!");
             });
             res.render("login");
           })
