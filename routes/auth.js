@@ -17,8 +17,9 @@ router.post('/login',userAuthentication.Signin,err=>{
 
 
 /// FORGOT PASSWORD APIS  //////
-// router.post('/forgot', userAuthentication.ForgetPassword)
-// router.post('/verify-otp', userAuthentication.verifyOTP)
+ router.post('/forgot', userAuthentication.ForgetPassword)
+ router.get('/forgot-password', userAuthentication.ForgetPasswordPage)
+ router.post('/verify-otp', userAuthentication.verifyOTP)
 // router.post('/reset-password', userAuthentication.newPassword)
 
 
