@@ -219,20 +219,9 @@ const createBooking = async (req, res) => {
     })
     });
  
-  console.log('here 2')
+
      
-    // const detailsResult = await Promise.all(promises);
-    // console.log({ detailsResult });
-
-    // const promise2 = [];
-    // detailsResult.map((person, index) => {
-    //   promise2.push(
-       
-    //   );
-    // });
-
-    // const details = await Promise.all(promise2);
-    // console.log({ details });
+    
     setTimeout(() => {
       
  

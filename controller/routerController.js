@@ -361,6 +361,7 @@ exports.createBooking = async (req, res) => {
     });
   }
 };
+
 exports.createBookingArrival = async (req, res) => {
   try {
     const { slots, slotAfterDay6, packageid } = req.body;
