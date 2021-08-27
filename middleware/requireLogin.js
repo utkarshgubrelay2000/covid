@@ -19,7 +19,7 @@ next()
 
 }
 else{
-  res.redirect('/')
+  res.status(404).json('Error')
 
 
 }

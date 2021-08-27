@@ -48,8 +48,8 @@ router.get('/',registerController.homePage)
  router.get('/test-Terms',registerController.testTerms)
  router.get('/appointment',registerController.appointment)
  router.post('/get-avaiable-session',bookingController.getSlots)
- router.post("/create",requireLogin,registerController.createBooking);
- router.post("/create-arrival",requireLogin,registerController.createBookingArrival);
+ router.post("/create",verifyAdmin,registerController.createBooking);
+ router.post("/create-arrival",verifyAdmin,registerController.createBookingArrival);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);

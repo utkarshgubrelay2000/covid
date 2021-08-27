@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 module.exports=(req,res,next)=>{
-  let authorization=req.headers.token
- 
+  let authorization=req.headers.authorization
+ //console.log(req.headers)
 if(authorization){
 jwt.verify(authorization, process.env.JWT_SECRET, (err, payload) => {
     if (err || payload === undefined) {
@@ -13,7 +13,7 @@ else{
   let  md5UserId=payload.secretId
 
   req.body.userId = md5UserId;
-
+next()
 }
 })
 

@@ -114,8 +114,8 @@ function getData(length, slot,slotAfterDay6,packageid) {
 
     success: function (res) {
  
+      console.log(res);
       localStorage.setItem("slots", JSON.stringify(res.allslots));
-      console.log(res.allslots);
    
       window.location.href = "/test-terms";
     },

@@ -167,7 +167,7 @@ let getSlots = (req, res) => {
   let nextDate = addDays(newDate, limit);
   console.log({ nextDate });
   timeSlotModal
-    .find({ test, booked: false, bookedFor: { $gt: newDate, $lt: nextDate } })
+    .find({ test, paid: false, bookedFor: { $gt: newDate, $lt: nextDate } })
     .sort({ bookedFor: 1 })
     .then((appointments) => {
       res.status(200).json({

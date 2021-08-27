@@ -302,7 +302,7 @@ exports.createBooking = async (req, res) => {
   try {
     const { slots, packageid } = req.body;
     let sloted = slots.split(",");
-    // console.log('hello',sloted)
+     console.log('hello',sloted)
     personal_details = JSON.parse(req.body.personal_details);
     
 
@@ -368,10 +368,10 @@ exports.createBookingArrival = async (req, res) => {
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-    console.log("hello", slots,personal_details.length);
+  //  console.log("hello", slots,personal_details.length);
    
     let allslots=slotedDay6.concat(sloted)
-console.log(allslots)
+//console.log(allslots)
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -424,9 +424,9 @@ console.log(allslots)
         return saved._id;
       });
     });
-
+console.log(allslots)
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots, status: true });
+      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({

@@ -173,7 +173,7 @@ function getSlotsByArrival(type) {
         alert(res.message);
         if (type == 1) {
           allSlots = res.data;
-
+          option += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {
             var spot = ele;
             // console.log(ele.bookedFor)
@@ -190,7 +190,7 @@ function getSlotsByArrival(type) {
         //console.log(option,res.data)
         else {
           allSlots = res.data;
-
+          option2 += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {
             var spot = ele;
             // console.log(ele.bookedFor)
@@ -547,7 +547,7 @@ function getSlotsSingleDay() {
         alert(res.message);
 
         allSlots = res.data;
-
+        option2 += `<option value="">Select Slot </option>`
         res.data.forEach((ele) => {
           var spot = ele;
           // console.log(ele.bookedFor)
