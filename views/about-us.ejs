@@ -169,9 +169,8 @@
                                                 Us
                                             </span>
                                         </h2>
-                                        <p>
-                                            Blackburn Travel Clinic offers travel health services for a wide range of travellers.
-                                      <%=data.shortdescription%>  </p>
+                                        <p id='shortdescription'>
+                                       </p>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
                                         <img src="assets/images/about-us.png" alt="about img" class="right-img" />
@@ -432,10 +431,15 @@
 				duration: 1200,
 			});
             let postCol = document.getElementById('blogContent')
+            let shortdescription = document.getElementById('shortdescription')
         let a = $.parseHTML('<%=data.content%>');
+        let shortdescriptiondata = $.parseHTML('<%=data.shortdescription%>');
         let b = a[0].data
+        let c = shortdescriptiondata[0].data
         postCol.innerHTML = b
-        console.log(a[0].data)
+        shortdescription.innerHTML = c
+
+        
 		</script>
 
     </body>
