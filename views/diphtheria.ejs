@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="about-us">
+                                    <a class="nav-link cp-nav-link" href="/about-us">
                                         About Us
                                     </a>
                                 </li>
@@ -107,17 +107,17 @@
                                     </a>
                                 </li> 
                                 <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="testimonials">
+                                    <a class="nav-link cp-nav-link" href="/testimonials">
                                         Testimonials
                                     </a>
                                 </li> 
                                 <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="faq">
+                                    <a class="nav-link cp-nav-link" href="/faq">
                                         FAQs
                                     </a>
                                 </li> 
                                 <li class="nav-item cp-nav-item">
-                                    <a class="nav-link cp-nav-link" href="contact-us">
+                                    <a class="nav-link cp-nav-link" href="/contact-us">
                                         Contact us
                                     </a>
                                 </li> 
@@ -164,7 +164,9 @@
                                         <h2>
                                             <%=data.heading%>
                                         </h2>
-                                        <%=data.content%>
+                                        <p id='blogContent'>
+
+                                        </p>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
                                         <img src="/assets/images/diphtheria.png" alt="about img" class="right-img" />
@@ -184,7 +186,9 @@
                             <h5 class="text-purple">
                                 Symptoms
                             </h5>
-                            <%=data.content2%>
+                            <p id='shortdescription'>
+
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -429,6 +433,14 @@
 			AOS.init({
 				duration: 1200,
 			});
+            let postCol = document.getElementById('blogContent')
+            let shortdescription = document.getElementById('shortdescription')
+        let a = $.parseHTML('<%=data.content%>');
+        let shortdescriptiondata = $.parseHTML('<%=data.content2%>');
+        let b = a[0].data
+        let c = shortdescriptiondata[0].data
+        postCol.innerHTML = b
+        shortdescription.innerHTML = c
 		</script>
 
     </body>
