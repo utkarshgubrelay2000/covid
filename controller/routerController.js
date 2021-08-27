@@ -66,7 +66,7 @@ exports.appointment = async (req, res) => {
   });
   let myslots = await TimeSlots.find({
     UserId: req.body.userId,
-    booked: true,
+    paid: true,
     barcode: { $exists: false },
   })
     .populate("test")
@@ -75,14 +75,14 @@ exports.appointment = async (req, res) => {
     .limit(10);
   let completeslots = await TimeSlots.find({
     UserId: req.body.userId,
-    approved: true,
+    approved: true, paid: true,
   })
     .populate("test")
     .populate("packageid")
     .populate("user")
     .limit(10);
   let reports = await TimeSlots.find({
-    approved: false,
+    approved: false, paid: true,
     barcode: { $exists: true },
   })
     .populate("User")
