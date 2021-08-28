@@ -11,6 +11,7 @@ const testPackageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    img:String,
     packageTitle: {
       type: String,
     },
