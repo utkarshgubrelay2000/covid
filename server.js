@@ -6,8 +6,7 @@ const mongoose=require('mongoose')
 require("dotenv").config({path:"./config/config.env"});
 const Routes=require('./routes/router')
 const auth=require('./routes/auth')
-
-
+var HTMLParser = require('node-html-parser');
 const bodyParser = require('body-parser');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -40,6 +39,7 @@ app.locals.getDate=(date)=>{
   //console.log(date,"date")
 return new Date(date).toDateString()
 }
+
 app.locals.getTime=(date)=>{
  // console.log(date,"date")
 return new Date(date).toLocaleTimeString()
