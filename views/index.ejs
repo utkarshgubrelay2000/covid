@@ -794,106 +794,35 @@
                 <div class="row mt-4">
                     <div class="col-xl-10 offset-xl-1">
                         <div class="row testimonial-slider" data-aos="zoom-in-up">
-                            <div class="col-xl-4">
+                            <%testimonials.map(item=>{%>
+                                                        <div class="col-xl-4">
                                 <div class="testi-data text-center">
-                                    <div class="message">
-                                        <img src="/assets/images/quote.png" alt="quote"
-                                            class="quote-icon d-inline-block" />
+                                    <div class="message">    
+                                        <img src="assets/images/quote.png" alt="quote" class="quote-icon d-inline-block" />
+                                        <h4 class="text-purplee mb-lg-0 mb-2">
+                                            <%=item.title%>
+                                        </h4>
                                         <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
-                                            quia voluptas sit
+                                            <%=item.content%>
                                         </p>
                                     </div>
                                     <div class="cilent-desc">
-                                        <img src="/assets/images/client1.png" alt="cliet1"
-                                            class="client-icon ml-auto mr-auto" />
                                         <h6>
-                                            Jose Coleman
+                                            <%=item.name%>
                                         </h6>
+                                        <div class="date">
+                                            <%=item.date%>
+
+                                        </div>
                                         <span class="designation text-blue">
-                                            Creative Agency LLC
+                                            <% for(var i=1; i<=item.rating; i++) {%>
+                                                <i class="fas fa-star fill" aria-hidden="true"></i>
+                                                <% }%>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4">
-                                <div class="testi-data text-center">
-                                    <div class="message">
-                                        <img src="/assets/images/quote.png" alt="quote"
-                                            class="quote-icon d-inline-block" />
-                                        <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
-                                            quia voluptas sit
-                                        </p>
-                                    </div>
-                                    <div class="cilent-desc">
-                                        <img src="/assets/images/client2.png" alt="cliet1"
-                                            class="client-icon ml-auto mr-auto" />
-                                        <h6>
-                                            Jose Coleman
-                                        </h6>
-                                        <span class="designation text-blue">
-                                            Creative Agency LLC
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="testi-data text-center">
-                                    <div class="message">
-                                        <img src="/assets/images/quote.png" alt="quote"
-                                            class="quote-icon d-inline-block" />
-                                        <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
-                                            quia voluptas sit
-                                        </p>
-                                    </div>
-                                    <div class="cilent-desc">
-                                        <img src="/assets/images/client3.png" alt="cliet1"
-                                            class="client-icon ml-auto mr-auto" />
-                                        <h6>
-                                            Jose Coleman
-                                        </h6>
-                                        <span class="designation text-blue">
-                                            Creative Agency LLC
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="testi-data text-center">
-                                    <div class="message">
-                                        <img src="/assets/images/quote.png" alt="quote"
-                                            class="quote-icon d-inline-block" />
-                                        <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                                            dicta sunt explicabo. Nemo enim ipsam voluptatem
-                                            quia voluptas sit
-                                        </p>
-                                    </div>
-                                    <div class="cilent-desc">
-                                        <img src="/assets/images/client2.png" alt="cliet1"
-                                            class="client-icon ml-auto mr-auto" />
-                                        <h6>
-                                            Jose Coleman
-                                        </h6>
-                                        <span class="designation text-blue">
-                                            Creative Agency LLC
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            <%})%>
                         </div>
                     </div>
                 </div>
@@ -1195,17 +1124,17 @@
     <script src="/assets/scripts/popper.min.js"></script>
     <script src="/assets/bootstrap-4/bootstrap.min.js"></script>
   
+    <script src="/assets/scripts/slick.js"></script>
     <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
     <script src="/assets/scripts/aos.js"></script>
+    <script src="/assets/scripts/main.js"></script>
     <script src="/assets/js/main.js"></script>
-    <script src="assets/scripts/main.js"></script>
-    <script src="/assets/scripts/slick.js"></script>
     <script>
         AOS.init({
             duration: 1200,
         });
     </script>
-    <script src="/assets/scripts/jquery.min.js"></script>
+    
   
 </body>
 
