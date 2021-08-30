@@ -647,6 +647,7 @@ input[type=number] { /* Firefox */
     border-radius: 20px;
     padding: 10px 25px 55px;
     text-align: center;
+    min-height: 400px;
 }
 .testimonial-slider .testi-data .message .quote-icon {
     margin-top: -50px;
