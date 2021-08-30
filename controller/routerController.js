@@ -16,8 +16,10 @@ const testimonial = require("../model/testimonialModel");
 const aboutmodel = require("../model/aboutModel");
 const User = require("../model/userModel");
 
-exports.homePage = (req, res) => {
-  res.render("index");
+exports.homePage = async(req, res) => {
+  let faqs = await FAQ.find({}).limit(10);
+ let testimonials= await testimonial.find({})
+  res.render("index",{faqs:faqs,testimonials:testimonials});
 };
 exports.prices = (req, res) => {
   res.render("prices");

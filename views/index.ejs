@@ -24,10 +24,10 @@
         rel="stylesheet">
 
     <!-- custom -->
-    <link rel="stylesheet" href="/assets/styles/slick.css">
-    <link rel="stylesheet" href="/assets/styles/aos.css">
+    <link rel="stylesheet" href="assets/styles/slick.css">
+    <link rel="stylesheet" href="assets/styles/aos.css">
     <link rel="stylesheet" href="/assets/styles/main.css">
-    <link rel="stylesheet" href="/assets/styles/responsive.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">  
 </head>
 
 <body>
@@ -931,7 +931,59 @@
 
 
     </main>
-
+    <section class="faq-sec bg-offwhite">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" data-aos="zoom-in-up">                            
+                    <h2>
+                        FAQ’s
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <div id="accordion" class="accordion mt-4" data-aos="zoom-in-up">
+                <%faqs.map((faq,index)=>{%>
+                    <%if(index==0){%>
+                        <div class="accordion-ques">
+                            <div class="ques collapsed" data-toggle="collapse" href="#faq<%= index %>" aria-expanded="true">
+                                <h6 class="mb-0">
+                                  <%=faq.question%>
+                                </h6>
+                            </div>
+                            <div id="faq<%= index %>"" class="collapse show" data-parent="#accordion">
+                                <div class="answers">
+                                    <p>
+                                        <%=faq.answer%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <%}else{%>
+                            <div class="accordion-ques">
+                                <div class="ques collapsed" data-toggle="collapse" href="#faq<%= index %>" aria-expanded="false">
+                                    <h6 class="mb-0">
+                                      <%=faq.question%>
+                                    </h6>
+                                </div>
+                                <div id="faq<%= index %>"" class="collapse " data-parent="#accordion">
+                                    <div class="answers">
+                                        <p>
+                                            <%=faq.answer%>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}})%>
+                                                  
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-4">
+                    <a href="/faqs" class="btn-blue-border d-inline-block" data-aos="zoom-in-up">
+                        LOAD MORE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- .site-footer -->
     <footer class="site-footer">
@@ -1142,11 +1194,12 @@
     <script src="/assets/scripts/jquery.min.js"></script>
     <script src="/assets/scripts/popper.min.js"></script>
     <script src="/assets/bootstrap-4/bootstrap.min.js"></script>
-    <script src="/assets/scripts/slick.js"></script>
+  
     <script src="/assets/scripts/jquery.matchHeight-min.js"></script>
     <script src="/assets/scripts/aos.js"></script>
     <script src="/assets/js/main.js"></script>
-
+    <script src="assets/scripts/main.js"></script>
+    <script src="/assets/scripts/slick.js"></script>
     <script>
         AOS.init({
             duration: 1200,
