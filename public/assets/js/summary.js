@@ -129,7 +129,7 @@ id="phone"  class="w-100 field" value="">
           <div class="col-xl-10 col-lg-9 col-md-9">
               <h5 class="text-purple mb-4 mr-4">
                  ${res.data[0].test.test_name} -  ${
-          res.data[0].packageid.packageName
+          res.data[0].packageid.packageTitle
         }
                   <a href="#" class="edit-btn">
                       <i class="fas fa-pencil-alt"></i>
