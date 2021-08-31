@@ -654,7 +654,7 @@ input[type=number] { /* Firefox */
     margin-bottom: 0;
 }
 .testimonial-slider .testi-data .message p {
-    font-size: 16px;
+    font-size: .7rem;
     line-height: 22px;
 }
 .testimonial-slider .testi-data .cilent-desc {
@@ -834,7 +834,7 @@ input[type=number] { /* Firefox */
     color: #ED8733;
 }
 .testimonial-sec .testi-box p {
-    font-size: 17px;
+    font-size: .7rem;
     line-height: 22px;
     margin-bottom: 0;
 }

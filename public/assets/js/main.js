@@ -76,20 +76,18 @@ async function selectTest(name, index, id) {
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
-              ${ele.packageName}    gg                                              
+              ${ele.packageName}                                                 
              </span>
          </div>
          <div class="test-name">
              <h6>
-             ${ele.packageDescription}                                                  
-
+             
+             ${ele.packageTitle}  
              </h6>
              <p>
-                 Results by ${ele.testResult} next day*
+             ${ele.packageDescription}                                                  
              </p>
-             <p>
-                 Accepted in most countries - check here 
-             </p>
+           
              <hr>
          </div>                                                    
          <div class="sub-package-name">
@@ -106,7 +104,7 @@ async function selectTest(name, index, id) {
                      <br/>
                      <br/>
                      <br/>
-                     <span>£${ele.price2}</span>
+                     <span>${ele.price2?`£${ele.price2}`:""}</span>
                  </p>
              </div>
              <a href="/choose-slots/${res.name}/${ele._id}" class="btn-purple d-inline-block mt-4 mb-2">
