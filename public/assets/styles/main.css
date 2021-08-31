@@ -647,7 +647,7 @@ input[type=number] { /* Firefox */
     border-radius: 20px;
     padding: 10px 25px 55px;
     text-align: center;
-    min-height: 400px;
+ 
 }
 .testimonial-slider .testi-data .message .quote-icon {
     margin-top: -50px;
@@ -658,34 +658,45 @@ input[type=number] { /* Firefox */
     line-height: 22px;
 }
 .testimonial-slider .testi-data .cilent-desc {
-    margin-top: -50px;
+    margin-top: -76px;
 }
 .testimonial-slider .testi-data .cilent-desc .client-icon {
     height: 80px;
     width: 80px;
     border-radius: 50px;
 }
+
 .testimonial-slider .slick-slide.slick-current {
     z-index: 99;
 }
 .testimonial-slider .slick-current .testi-data .message {
     background-color: #094496;
-    border: 3px solid #094496;
+   
     padding: 20px 15px 90px;
     margin: 0 auto;
 }
 .testimonial-slider .slick-current .testi-data .message p {
-    color: #ffffff;
+    color: white;
+}
+.testimonial-slider .slick-current .testi-data .message h4 {
+    color: white;
+}
+.testimonial-slider .slick-current .testi-data .cilent-desc  {
+    color: white;
 }
 .testimonial-slider .slick-current .testi-data .message .quote-icon {
     margin-top: 0;
     margin-bottom: 25px;
     filter: brightness(100);
+    
 }
 .testimonial-slider .slick-current .testi-data .cilent-desc .client-icon {
     border: 2px solid #ffffff;
 }
 
+.testimonial-slider .slick-current .testi-data .cilent-desc .designation {
+    color: white;
+}
 
 
 /* Book Test */
