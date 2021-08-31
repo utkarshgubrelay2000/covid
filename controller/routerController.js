@@ -157,6 +157,7 @@ exports.chooseslots = async (req, res) => {
   let nextDate = addDays(newDate, 1);
 
   const tests = await Test.findOne({ test_name: req.params.name });
+  const packAgeDetails = await TestPackage.findOne({ _id: req.params.packId });
   const slots = await TimeSlots.find({
     test: req.params.id,
     booked: false,
@@ -168,6 +169,7 @@ exports.chooseslots = async (req, res) => {
       slots: slots,
       testDetails: tests,
       pachageId: req.params.packId,
+      packAgeDetails:packAgeDetails
     });
   } else {
     res.render("choose-slots-days", {
@@ -175,6 +177,7 @@ exports.chooseslots = async (req, res) => {
       slots: slots,
       testDetails: tests,
       pachageId: req.params.packId,
+      packAgeDetails:packAgeDetails
     });
   }
 };
@@ -217,7 +220,7 @@ exports.contactdetails = async (req, res) => {
   }); }
 };
 exports.contactdetailsforArrivinginEngland = async (req, res) => {
-  let { spotArrival, spotAfterDay6, date, people, packageid } = req.body;
+  let { spotArrival, spotAfterDay6, date, people, packageid,arrivaldateinput } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -240,6 +243,7 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
     slotAfterDay6: spotAfterDay6,
     people: peopleArray,
     length: people,
+    arrivaldateinput:arrivaldateinput
   });
 };
 exports.contact = (req, res) => {

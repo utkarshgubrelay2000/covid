@@ -3,6 +3,7 @@ let str = "";
 let nav = "";
 let allSlots = [];
 let arrivalSlots = [];
+let arrivalDate = "";
 let day8Slots = [];
 let covid_token = localStorage.getItem("covid");
 getPages();
@@ -84,13 +85,14 @@ async function selectTest(name, index, id) {
              
              ${ele.packageTitle}  
              </h6>
-             <p>
-             ${ele.packageDescription}                                                  
-             </p>
+           
            
              <hr>
          </div>                                                    
          <div class="sub-package-name">
+         <p>
+         ${ele.packageDescription}                                                  
+         </p>
              <p>
              ${ele.subPackageName}
              </p>
@@ -150,7 +152,9 @@ function getSlotsByArrival(type) {
   if (type == 1) {
     let day8 = document.getElementById("date2");
     date = document.getElementById("date").value;
+     
     let value = new Date(date);
+    
     console.log(date, value, date);
 
     value.setDate(value.getDate() + 6);
@@ -493,7 +497,7 @@ function getArrivalDate() {
   let date = document.getElementById("date");
   let value = new Date(day8.value);
   let mindate = new Date(day8.value);
-
+  document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
   value.setDate(value.getDate() + 2);
   console.log(value.toISOString().substr(0, 10));
   date.setAttribute("max", value.toISOString().substr(0, 10));
