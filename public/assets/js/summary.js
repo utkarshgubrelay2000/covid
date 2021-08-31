@@ -65,7 +65,7 @@ function getSlotDetails() {
         </div>
       </div>
     </div>
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div style='overflow-y:scroll;max-height:500px' class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,12 +115,48 @@ function getSlotDetails() {
 id="phone"  class="w-100 field" value="">
 </div>
 </div>
+<div class="col-md-12 form-group mb-4">
+<div class="form-group">
+<label > Date Of Birth </label>
+
+  <input type="date" name="dob" 
+  id="dob"  class="w-100 field" value="">
+
+</div>
+</div>
+<div class="col-md-12 form-group mb-4">
+
+<div class="form-group">
+<label > Address </label>
+
+  <input type="text" name="address" 
+  id="address"  class="w-100 field" value="">
+
+</div>
+</div>
+<div class="col-md-12 form-group mb-4">
+
+<div class="form-group">
+<label > Gender </label>
+
+<select name='gender'
+id='gender'  class="w-100 field"
+>
+<option value='male'>male</option>
+<option value='female'>female</option>
+<option value='others'>others</option>
+</select>
+</div>
+
+
+</div>
+</div>
          
     </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-          <button type="button" class="btn btn-primary" id='SignupForm'>Login</button>
+          <button type="button" class="btn btn-primary" id='SignupForm'>Sign Up</button>
         </div>
         </div>
       </div>
@@ -270,10 +306,13 @@ id="phone"  class="w-100 field" value="">
           let firstName = document.getElementById("firstName").value;
           let phone = document.getElementById("phone").value;
           let email = document.getElementById("signupemail").value;
+          let gender = document.getElementById("gender").value;
+          let dob = document.getElementById("dob").value;
+          let address = document.getElementById("address").value;
           $.ajax({
             url: "/signup",
             method: "Post",
-            data: { email: email, password: password,firstName:firstName,lastName:lastName,phone:phone },
+            data: { email: email, password: password,firstName:firstName,lastName:lastName,phone:phone,gender:gender,dob:dob,address:address },
             success: function (res) {
               console.log(res);
               document.getElementById('close-signup').click()
