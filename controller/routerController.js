@@ -197,7 +197,7 @@ exports.contactdetails = async (req, res) => {
     peopleArray.push(peoplesDetails);
   }
   console.log(spots,req.body.spots);
-  if(test._id=="6112728aae2efa3f4000d667" || test.test_name=="I am NOT travelling "){
+  if(test._id=="6112728aae2efa3f4000d667" || test.test_name=="I am NOT travelling"){
     res.render("not-traveling-form", {
       testDetails: test,
       date: req.body.date,
