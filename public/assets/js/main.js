@@ -73,7 +73,7 @@ async function selectTest(name, index, id) {
   </div>`;
 
       res.tests.forEach((ele) => {
-        body += `<div class="col-md-4 col-10 m-auto ">
+        body += `<div class="col-md-4 col-10  ">
      <div class="test-box">
          <div class="package-name">
              <span class="text-white">
