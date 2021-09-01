@@ -282,7 +282,7 @@ function logoutHandler() {
 }
 function checkLogin(token) {
   if (!token) {
-    str = ` <li class="nav-item cp-nav-item"><a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
+    str = ` <li class="nav-item cp-nav-item"><a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="/tests-listing">
                                             BOOK TEST
                                         </a>
                                         <a class="nav-link cp-nav-link btn-purple-border mr-lg-3 mb-xl-0 mb-3" href="/login">
@@ -291,7 +291,7 @@ function checkLogin(token) {
                                     </li>`;
   } else {
     str = ` <li class="nav-item cp-nav-item">
-                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="tests-listing">
+                                        <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="/tests-listing">
                                             BOOK TEST
                                         </a>
                                         <a class="nav-link cp-nav-link btn-purple mb-xl-0 mb-3" href="/profile/${token}">
