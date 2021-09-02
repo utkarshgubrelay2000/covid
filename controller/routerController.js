@@ -260,6 +260,34 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
     arrivaldateinput:arrivaldateinput
   });
 };
+exports.contactdetails258 = async (req, res) => {
+  let { spots, spots5,spots8, date, people, packageid,arrivaldateinput } = req.body;
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+
+  if (people == 1) {
+    spots = [spots];
+    spots8 = [spots8];
+    spots5 = [spots5];
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+ //console.log(spots5, spots,spots8);
+  res.render("contact-for-258", {
+    testDetails: test,
+    packageid: packageid,
+    date: date,
+    spots: spots,
+    spots8: spots8,spots5:spots5,
+    people: peopleArray,
+    length: people,
+    arrivaldateinput:arrivaldateinput
+  });
+};
 exports.contact = (req, res) => {
   res.render("contact");
 };
@@ -448,6 +476,78 @@ console.log(allslots)
     setTimeout(() => {
       res.json({ message: "Booking Saved!",allslots:allslots, status: true });
     }, 1000);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createBooking258 = async (req, res) => {
+  try {
+    const { spots5, spots,spots8, packageid } = req.body;
+    let sloted = spots.split(",");
+    let slotedDay6 = spots8.split(",");
+    let sloted5 = spots5.split(",");
+    personal_details = JSON.parse(req.body.personal_details);
+console.log("helllo")
+   
+    let allslots=slotedDay6.concat(sloted)
+console.log(packageid)
+allslots=allslots.concat(sloted5)
+    
+  //  console.log("here", personal_details);
+    let users = [];
+    const promises = personal_details.map((person, index) => {
+      const details = new PersonalDetails({
+        ...person,
+        slot: sloted[index],
+        slotDay6: slotedDay6[index],
+        slot5: sloted5[index],
+      });
+      details.save().then(async (saved) => {
+        users.push(saved._id);
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res2 = await TimeSlots.findOneAndUpdate(
+          { _id: slotedDay6[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res3 = await TimeSlots.findOneAndUpdate(
+          { _id: sloted5[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+      //   console.log(res)
+        return saved._id;
+      });
+    });
+console.log(allslots)
+    setTimeout(() => {
+      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+    }, 2000);
   } catch (error) {
     res.status(503).json({
       status: false,

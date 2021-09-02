@@ -35,6 +35,7 @@ router.get('/',registerController.homePage)
  router.get('/appointment',registerController.appointment)
  router.get('/choose-slots/:name/:packId',registerController.chooseslots)
  router.post('/contact-details',registerController.contactdetails)
+ router.post('/contact-form-for-258',registerController.contactdetails258)
  router.post('/Arriving-in-England-booking',registerController.contactdetailsforArrivinginEngland)
  router.get('/diphtheria',registerController.diphteria)
  router.get('/privacy-policy',(req,res)=>{
@@ -56,6 +57,7 @@ router.get('/',registerController.homePage)
  router.post('/get-avaiable-session',bookingController.getSlots)
  router.post("/create",registerController.createBooking);
  router.post("/create-arrival",registerController.createBookingArrival);
+ router.post("/create-booking-258",registerController.createBooking258);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);
@@ -95,7 +97,7 @@ router.get('/',registerController.homePage)
   router.post("/update-personal-details/:id",registerController.editPersonDetails);
 
   router.post("/charge", (req, res) => {
-    console.log(req.body)
+  //  console.log(req.body)
     try {
       stripe.customers
         .create({
@@ -111,7 +113,7 @@ router.get('/',registerController.homePage)
           })
         )
         .then(async (data) => {
-          console.log(data)
+         // console.log(data)
           let slots=req.body.slots
           if( typeof req.body.slots==="string"){
             slots=[slots]
@@ -122,7 +124,7 @@ router.get('/',registerController.homePage)
     .populate("packageid")
     .populate("user")
     .populate("UserId").then(async found=>{
-      console.log(found)
+      //console.log(found)
 found.map(element=>{
   let toSubsciberMail = {
     to: element.user.email,

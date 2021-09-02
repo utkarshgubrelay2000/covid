@@ -159,22 +159,42 @@ function getSlotsByArrival(type) {
   let id = document.getElementById("test").value;
   if (type == 1) {
     let day8 = document.getElementById("date2");
-    let day5 = document.getElementById("date5");
     date = document.getElementById("date").value;
      
     let value = new Date(date);
-    let day5Value = new Date(date);
     
     console.log(date, value, date);
 
     value.setDate(value.getDate() + 6);
-    value.setDate(value.getDate() + 4);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
-    day5.setAttribute("min", day5Value.toISOString().substr(0, 10));
   } 
   else if(type==3) {
     date = document.getElementById("date5").value;
+  }
+  else if(type==5) {
+    let day8 = document.getElementById("date5");
+    date = document.getElementById("date").value;
+
+    let value = new Date(date);
+    
+    console.log(date, value, date);
+
+    value.setDate(value.getDate() + 5);
+    console.log(value.toISOString().substr(0, 10));
+    day8.setAttribute("min", value.toISOString().substr(0, 10));
+  }
+  else if(type==6) {
+    let day8 = document.getElementById("date2");
+    date = document.getElementById("date5").value;
+
+    let value = new Date(date);
+    
+    console.log(date, value);
+
+    value.setDate(value.getDate() + 7);
+    console.log(value.toISOString().substr(0, 10));
+    day8.setAttribute("min", value.toISOString().substr(0, 10));
   }
   else if(type==4) {
     date = document.getElementById("date2").value;
@@ -209,7 +229,7 @@ function getSlotsByArrival(type) {
             .end()
             .append($(option));
         }
-      else  if (type == 3 || type ==4) {
+      else  if (type == 3 || type ==4 || type==5 ) {
           allSlots = res.data;
           option += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {
@@ -221,6 +241,23 @@ function getSlotsByArrival(type) {
           });
         //  console.log(option)
           $("select[name='inptProduct']")
+            .find("option")
+            .remove()
+            .end()
+            .append($(option));
+        }
+        else  if (type == 6) {
+          allSlots = res.data;
+          option += `<option value="">Select Slot </option>`
+          res.data.forEach((ele) => {
+            var spot = ele;
+            // console.log(ele.bookedFor)
+            option += `<option value="${ele._id}">${new Date(
+              ele.bookedFor
+            ).toLocaleTimeString()} </option>`;
+          });
+        //  console.log(option)
+          $("select[name='inptProduct5']")
             .find("option")
             .remove()
             .end()
@@ -561,6 +598,16 @@ function getArrivalDate(dayCombo) {
     console.log(value.toISOString().substr(0, 10));
     date.setAttribute("min", value.toISOString().substr(0, 10));
     date.setAttribute("min", mindate.toISOString().substr(0, 10));
+  }else{
+    let date = document.getElementById("date");
+    let value = new Date(arrivalDate.value);
+
+    let mindate = new Date(arrivalDate.value);
+    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
+    value.setDate(value.getDate() + 2);
+    console.log(value.toISOString().substr(0, 10));
+    date.setAttribute("max", value.toISOString().substr(0, 10));
+    date.setAttribute("min", mindate.toISOString().substr(0, 10));
   }
 }
 $("#navbarpages").html(nav);
@@ -727,6 +774,102 @@ function getSlotsDay(type) {
           //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
         }
       }
+      else if(type==4){
+
+        let option = "";
+        let spotforDay2 = document.getElementById("spotsForDay2").value;
+        let numberOfPerson = document.getElementById("numberOfPerson").value;
+        let indexOfSlot;
+        allSlots.map((element, index) => {
+          if (element._id == spotforDay2) {
+            indexOfSlot = index;
+          }
+        });
+        let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+        let spotids = [];
+        spotsArray.map((item) => {
+          spotids.push(item._id);
+        });
+        arrivalSlots = spotids;
+        console.log(arrivalSlots.length, numberOfPerson);
+        if (arrivalSlots.length != numberOfPerson) {
+          alert(
+            "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+            );
+          } else {
+            arrivalSlots.forEach((ele) => {
+              var spot = ele;
+              option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+            });
+            
+            $("#BookingForDay2Only").html(option);
+            //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+          }
+        }
+        else if(type==5){
+
+          let option = "";
+          let spotforDay2 = document.getElementById("slotForDay5").value;
+          let numberOfPerson = document.getElementById("numberOfPerson").value;
+          let indexOfSlot;
+          allSlots.map((element, index) => {
+            if (element._id == spotforDay2) {
+              indexOfSlot = index;
+            }
+          });
+          let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+          let spotids = [];
+          spotsArray.map((item) => {
+            spotids.push(item._id);
+          });
+          arrivalSlots = spotids;
+          console.log(arrivalSlots.length, numberOfPerson);
+          if (arrivalSlots.length != numberOfPerson) {
+            alert(
+              "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+              );
+            } else {
+              arrivalSlots.forEach((ele) => {
+                var spot = ele;
+                option += `<input name='spots5' class="w-100 field "  value=${ele}>`;
+              });
+              
+              $("#personSpotsForDay5").html(option);
+              //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+            }
+          }
+          else if(type==6){
+
+            let option = "";
+            let spotforDay2 = document.getElementById("spotsForDay8").value;
+            let numberOfPerson = document.getElementById("numberOfPerson").value;
+            let indexOfSlot;
+            allSlots.map((element, index) => {
+              if (element._id == spotforDay2) {
+                indexOfSlot = index;
+              }
+            });
+            let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+            let spotids = [];
+            spotsArray.map((item) => {
+              spotids.push(item._id);
+            });
+            arrivalSlots = spotids;
+            console.log(arrivalSlots.length, numberOfPerson);
+            if (arrivalSlots.length != numberOfPerson) {
+              alert(
+                "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+                );
+              } else {
+                arrivalSlots.forEach((ele) => {
+                  var spot = ele;
+                  option += `<input name='spots8' class="w-100 field "  value=${ele}>`;
+                });
+                
+                $("#spotAfterDay6").html(option);
+                //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+              }
+            }
 }
 function cancelMySlot(id) {
   let data = { id: id };
