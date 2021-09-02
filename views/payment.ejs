@@ -14,8 +14,12 @@
 <script src="/assets/scripts/font-awesome-5-pro.js"></script>
 
 <body class="bg-gray-900">
-  <nav class="bg-purple-900 h-20 flex justify-center">
-    <h1 class="text-white text-5xl">Black Burn Payment Page</h1>
+  <nav class="bg-dark h-20 flex justify-center">
+    <div class="logo text-center" >
+      <a >
+          <img src="/assets/images/sitelogo-white.png" alt="logo" />
+      </a>
+  </div>
   </nav>
 
   <div class="flex justify-center mt-32">
@@ -34,7 +38,7 @@
      
       <div id="card-element" class="bg-transparent text-white p-2 h-10 mb-4"></div>
       <div id="card-errors" role="alert"></div>
-      <button class="text-white bg-purple-900 p-4 rounded">Submit Payment</button>
+      <button class="text-dark bg-light p-4 rounded">Submit Payment</button>
       <%slots.map(element=>{%>
        <input name='slots' value='<%=element%>' class='d-none'/> </div>;
        <%})%>

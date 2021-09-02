@@ -37,6 +37,12 @@ router.get('/',registerController.homePage)
  router.post('/contact-details',registerController.contactdetails)
  router.post('/Arriving-in-England-booking',registerController.contactdetailsforArrivinginEngland)
  router.get('/diphtheria',registerController.diphteria)
+ router.get('/privacy-policy',(req,res)=>{
+   res.render('privacy-policy')
+ })
+ router.get('/terms-conditions',(req,res)=>{
+  res.render('terms-conditions')
+})
  router.get('/find-test-center',registerController.findtestcenter)
  router.get('/notification',registerController.notification)
  router.get('/settings',registerController.settings)
