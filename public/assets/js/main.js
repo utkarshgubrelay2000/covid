@@ -370,10 +370,11 @@ function getData(length, slot, packageid) {
         "date_arrival_out_cta" + index
       ).value,
     };
+    console.log(object.phone)
     array.push(object);
   }
   const re =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
- const mobileRegex=/^(\+\d{1,3}[- ]?)?\d{10}$/
+
   for (let index = 0; index < length; index++) {
     if (
       !array[index].email ||
@@ -385,8 +386,7 @@ function getData(length, slot, packageid) {
       break;
     }
     else  if (
-      !array[index].phone ||
-      !mobileRegex.test(String(array[index].phone).toLowerCase())
+      !array[index].phone 
     ) {
       isValid = false;
       alert("Phone Not Valid For Person  " + Number(index + 1));

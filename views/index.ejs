@@ -1081,9 +1081,18 @@
             </div>
         </div>
     </footer>
+    <input id="phone" name="phone" type="tel">
+    <button type="submit">Submit</button>
     <!-- ./site-footer -->
 
-
+    <script src="/js/intlTelInput.js"></script>
+    <script>
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+      
+        utilsScript: "/js/utils.js",
+      });
+    </script>
     <!-- custom js -->
     <script src="/assets/scripts/jquery.min.js"></script>
     <script src="/assets/scripts/popper.min.js"></script>

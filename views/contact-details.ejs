@@ -295,7 +295,7 @@
                                                                   
                                                                     <div class="col-lg-9 col-md-8 col-12">
                                                                         <input type="tel" name="number" id='phone<%=index%>'
-                                                                        class="w-100 field"
+                                                                        class="w-100 field txtPhone"
                                                                          placeholder="Enter your phone" required="">
                                                                     </div>
                                                                 </div>
@@ -344,7 +344,7 @@
                                                                 id="NHS<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
                                                             </div>
                                                             <div class="col-md-6 form-group">
-                                                                <label>Date of Arrival in the UK*</label>                                                                
+                                                                <label>Date of departure in the UK*</label>                                                                
                                                                 <input type="date" name="date" id="date_of_arrival<%=index%>" class="w-100 field" value="2021-07-31" required="" />
                                                             </div>
                                                             <div class="col-md-6 form-group">
@@ -591,7 +591,33 @@
         <script src="assets/scripts/aos.js"></script>
         <script src="assets/scripts/main.js"></script>
         <script src="assets/js/main.js"></script>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/css/intlTelInput.css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var code = "+91"; // Assigning value from model.
+                $('.txtPhone').val(code);
+                $('.txtPhone').intlTelInput({
+                    autoHideDialCode: true,
+                    autoPlaceholder: "ON",
+                    dropdownContainer: document.body,
+                    formatOnDisplay: true,
+                    hiddenInput: "full_number",
+                    initialCountry: "auto",
+                    nationalMode: true,
+                    placeholderNumberType: "MOBILE",
+                    preferredCountries: ['US'],
+                    separateDialCode: true
+                });
+                $('#btnSubmit').on('click', function () {
+                    var code = $(".txtPhone").intlTelInput("getSelectedCountryData").dialCode;
+                    var phoneNumber = $('.txtPhone').val();
+                    var name = $(".txtPhone").intlTelInput("getSelectedCountryData").name;
+                    alert('Country Code : ' + code + '\nPhone Number : ' + phoneNumber + '\nCountry Name : ' + name);
+                });
+            });
+        </script>
         <script>
 			AOS.init({
 				duration: 1200,
