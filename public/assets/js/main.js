@@ -199,6 +199,9 @@ function getSlotsByArrival(type) {
   else if(type==4) {
     date = document.getElementById("date2").value;
   }
+  else if(type==7) {
+    date = document.getElementById("date").value;
+  }
   else {
     date = document.getElementById("date2").value;
   }
@@ -229,7 +232,7 @@ function getSlotsByArrival(type) {
             .end()
             .append($(option));
         }
-      else  if (type == 3 || type ==4 || type==5 ) {
+      else  if (type == 3 || type ==4 || type==5  || type==7) {
           allSlots = res.data;
           option += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {

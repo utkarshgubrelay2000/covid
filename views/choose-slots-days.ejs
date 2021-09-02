@@ -710,6 +710,100 @@
                                                                 </div>
                                                             </form>
                                                             <%}%>
+                                                            <%if(packAgeDetails.daysCombo=='02'){%>
+                                                                <form method='POST'  action="/contact-details">
+                                                                    <div class="row mt-5">
+                                                                        <div class="col-12 text-center">
+                                                                            <input type='date' name='arrivaldateinput' id='arrivaldateinput'/>
+                                                                            <div class="form-group select-people">
+                                                                                <label>
+                                                                                    <i class="fas fa-users"></i>
+                                                                                    No. of people in booking
+                                                                                </label>
+                                                                                <select default-value='1' id='numberOfPerson' name='people'
+                                                                                    class="numbers">
+                                                                                    <option class="1">1</option>
+                                                                                    <option class="2">2</option>
+                                                                                    <option class="3">3</option>
+                                                                                    <option class="4">4</option>
+                                                                                    <option class="5">5</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <p class="text-lightpurple">
+                                                                                Please note* Only dates compliant with Arrivals Tests &
+                                                                                Test to Release restrictions will be shown based on the
+                                                                                information
+                                                                                you have provided. Availability is updating constantly,
+                                                                                If you can’t find a suitable slot, please choose another
+                                                                                location.
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <h6 class="text-purple mt-3 mb-4">
+                                                                                Day 0-2: Arrivals Test
+                                                                            </h6>
+                                                                            <div class="row" id='dateinputs'>
+                                                                                <div class="col-lg-4 col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>
+                                                                                            Date*
+                                                                                        </label>
+                                                                                        <input type="date"
+                                                                                            onchange="getSlotsByArrival(7)" name="date" min='<%=getTodayDate()%>'
+                                                                                            id="date" class="w-100 field" placeholder=""
+                                                                                            required />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-4 col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>
+                                                                                            Time*
+                                                                                        </label>
+                                                                                        <input value='<%=testDetails._id%>'
+                                                                                            class='d-none' name='_id' id='test' />
+                                                                                            <input value='<%=pachageId%>'
+                                                                                          name='packageid' id='testpackage' />
+                
+                                                                                        <div id="spots">
+                
+                                                                                            <select onchange="getSlotsDay(2)" 
+                                                                                                id='spotsForDay2' class="w-100 field"
+                                                                                                name='inptProduct'>
+                
+                                                                                            </select>
+                
+                                                                                            <div id='BookingForDay2Only'>
+                
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+                                                                        <div class="col-12">
+                                                                            <p class="text-lightpurple">
+                                                                                If you are experiencing any COVID-19 symptoms, please do
+                                                                                not visit our screening centre but contact the NHS on
+                                                                                111 to arrange a test.
+                                                                            </p>
+                                                                            <p class="text-lightpurple">
+                                                                                Please check the box below to proceed
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <button type='submit'
+                                                                                class="btn-purple d-inline-block mt-4">
+                                                                                CONTINUE
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <%}%>
                                             </div>
                                         </div>
                                     </div>
