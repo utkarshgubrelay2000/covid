@@ -556,7 +556,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>arri
                                                                 </div>
                                                                 <div class="col-12">
                                                                     <p class="text-lightpurple">
@@ -581,6 +581,7 @@
                                                             <form method='POST'  action="/contact-details">
                                                                 <div class="row mt-5">
                                                                     <div class="col-12 text-center">
+                                                                        <input type='date' name='arrivaldateinput' id='arrivaldateinput'/>
                                                                         <div class="form-group select-people">
                                                                             <label>
                                                                                 <i class="fas fa-users"></i>
@@ -619,8 +620,8 @@
                                                                                         Date*
                                                                                     </label>
                                                                                     <input type="date"
-                                                                                        onchange="getSlotsByArrival(1)" name="date" min='<%=getTodayDate()%>'
-                                                                                        id="date" class="w-100 field" placeholder=""
+                                                                                        onchange="getSlotsByArrival(4)" name="date" min='<%=getTodayDate()%>'
+                                                                                        id="date2" class="w-100 field" placeholder=""
                                                                                         required />
                                                                                 </div>
                                                                             </div>
@@ -636,13 +637,13 @@
             
                                                                                     <div id="spots">
             
-                                                                                        <select onchange="getSlotsForPeople(1)" 
+                                                                                        <select onchange="getSlotsDay(2)" 
                                                                                             id='spotsForDay2' class="w-100 field"
                                                                                             name='inptProduct'>
             
                                                                                         </select>
             
-                                                                                        <div id='slotsIdsForArrival'>
+                                                                                        <div id='BookingForDay2Only'>
             
                                                                                         </div>
                                                                                     </div>

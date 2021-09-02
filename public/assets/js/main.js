@@ -176,6 +176,9 @@ function getSlotsByArrival(type) {
   else if(type==3) {
     date = document.getElementById("date5").value;
   }
+  else if(type==4) {
+    date = document.getElementById("date2").value;
+  }
   else {
     date = document.getElementById("date2").value;
   }
@@ -206,7 +209,7 @@ function getSlotsByArrival(type) {
             .end()
             .append($(option));
         }
-      else  if (type == 3) {
+      else  if (type == 3 || type ==4) {
           allSlots = res.data;
           option += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {
@@ -539,7 +542,7 @@ function getArrivalDate(dayCombo) {
     date.setAttribute("max", value.toISOString().substr(0, 10));
     date.setAttribute("min", mindate.toISOString().substr(0, 10));
   }
-  if(dayCombo=='5'){
+ else if(dayCombo=='5'){
     let date = document.getElementById("date5");
     let value = new Date(arrivalDate.value);
     let mindate = new Date(arrivalDate.value);
@@ -548,6 +551,16 @@ function getArrivalDate(dayCombo) {
     console.log(value.toISOString().substr(0, 10));
     date.setAttribute("min", value.toISOString().substr(0, 10));
     //date.setAttribute("min", mindate.toISOString().substr(0, 10));
+  }
+  else if(dayCombo=='2'){
+    let date = document.getElementById("date2");
+    let value = new Date(arrivalDate.value);
+    let mindate = new Date(arrivalDate.value);
+    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
+    value.setDate(value.getDate() + 2);
+    console.log(value.toISOString().substr(0, 10));
+    date.setAttribute("min", value.toISOString().substr(0, 10));
+    date.setAttribute("min", mindate.toISOString().substr(0, 10));
   }
 }
 $("#navbarpages").html(nav);
@@ -682,6 +695,38 @@ function getSlotsDay(type) {
         //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
       }
     }
+   else if(type==2){
+
+      let option = "";
+      let spotforDay2 = document.getElementById("spotsForDay2").value;
+      let numberOfPerson = document.getElementById("numberOfPerson").value;
+      let indexOfSlot;
+      allSlots.map((element, index) => {
+        if (element._id == spotforDay2) {
+          indexOfSlot = index;
+        }
+      });
+      let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+      let spotids = [];
+      spotsArray.map((item) => {
+        spotids.push(item._id);
+      });
+      arrivalSlots = spotids;
+      console.log(arrivalSlots.length, numberOfPerson);
+      if (arrivalSlots.length != numberOfPerson) {
+        alert(
+          "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+          );
+        } else {
+          arrivalSlots.forEach((ele) => {
+            var spot = ele;
+            option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+          });
+          
+          $("#BookingForDay2Only").html(option);
+          //console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);
+        }
+      }
 }
 function cancelMySlot(id) {
   let data = { id: id };
