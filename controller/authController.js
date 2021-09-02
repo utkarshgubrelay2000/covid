@@ -42,58 +42,143 @@ exports.Signup = (req, res) => {
             let toSubsciberMail = {
               to: userDetails.email,
               from: "btravelclinic@gmail.com",
-              subject: " Welcome to  Covid! ",
-              html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-          <html xmlns="http://www.w3.org/1999/xhtml">
-            <head>
-              <link
-                rel="stylesheet"
-                href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-                crossorigin="anonymous"
-              />
-              <link rel="preconnect" href="https://fonts.gstatic.com" />
-              <link
-                href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
-                rel="stylesheet"
-              />
-              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-              <title>welcome to riyft</title>
-              <style>
-                body {
-                  background-color: #ffffff;
-                  padding: 0;
-                  margin: 0;
-                  font-family: "Open Sans", sans-serif;
-                  font-weight: 600;
-                  color: #780ef1;
-                }
-                tr .span {
-                  color: #780ef1;
-                  box-shadow: 0px 0px 4px 0px rgb(196, 193, 193);
-                }
-                tr .span span {
-                  color: #780ef1;
-                  font-size: 14px;
-                }
-             
-                tr .resetButton a {
-                  text-decoration: none;
-                  color: #030303;
-                }
-                tr .resetButton a:hover {
-                  color: #ffffff;
-                }
-              </style>
-            </head>
-            <body style="background-color: #ffffff;   margin: 0">
-              <span> </span>
-              <div style="padding-left:10px;">
-    Welcome To Covid
-           </div> </body>
-          </html>
-     `,
-            };
+              subject: " Welcome to  BT Travels Clinic ",
+              html: `<html>
+              <head>    
+                <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+                <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+                <meta content="date=no" name="format-detection"/>
+                <meta content="address=no" name="format-detection"/>
+                <meta content="telephone=no" name="format-detection"/>
+                <meta name="x-apple-disable-message-reformatting"/>
+                <title>
+                  Emailer
+                </title>
+              </head>
+              <body> 
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" style="padding:10px">      
+                  <tr>        
+                    <td align="center" valign="top">          
+                      <!-- Main -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="650">            
+                        <tr>              
+                          <td class="td" style="width:650px; min-width:650px;font-size:14px; line-height:16px;padding:0; margin:0; font-weight:normal;background:#fff;font-family: Helvetica, Arial;">  
+                            <!-- Header -->
+                            <div style="background:#0750a4;padding:30px">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="top">                    
+                                      <td>
+                                        <div style="display:inline-flex;padding-bottom: 20px;">
+                                          <div style="text-align: left;padding-right: 30px;" width="70%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/zdpdmcvrst1nl6uk3p28.png">
+                                        
+                                          </div>
+                                          <div style="text-align: left;" width="30%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/gkj22fxycplxvb0a9cum.png" width="100%">
+                                          </div>
+                                        </div>
+                                      </td>
+                                  </tr>   
+                                  <tr>
+                                    <td>
+                                      <div style="color:#fff;font-size: 13px;">
+                                        <b>BLACKBURN TRAVEL CLINIC</b> in partnership with <b>BIOGRAD DIAGNOSTIC LABORATORIES LTD.</b>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                       
+                            <div style="padding:0 30px 20px 30px;background:#fff;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div style="padding-bottom: 20px;font-size: 20px;"><b>Dear ${userDetails.firstName} ${userDetails.lastName}</b></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <p style="margin-bottom: 15px;">
+                                To view and make changes to your booking, or to access your results,
+                                 you  must first activate your account. Click the link below to activate.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <a href="https://covid-user.herokuapp.com/">
+                                https://covid-user.herokuapp.com/
+                                </a>
+                            </p>
+                            <br/>
+                            <p style="margin-bottom: 15px;">
+                                Your New account has been successfully created. You can visit this link.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <a href="https://covid-user.herokuapp.com/">
+                                https://covid-user.herokuapp.com/
+                                </a>
+                            </p>
+                            <br/>
+                            <p style="margin-bottom: 15px;">
+                               This is an automatically generate email, please do not reply.
+                            </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                            </div>
+            
+            
+                             <!-- Footer -->
+                            <div style="padding: 0 30px 0 30px;background: url(https://mrinvito.com/html/covid19_pcr/emailer/img/footer-bg.png);background-size: contain;background-repeat: no-repeat;background-position: bottom;">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="bottom">  
+                                      <td  width="75%">
+                                          <div style="text-align: left;padding-right: 30px;padding-bottom: 16px;color: #fff;">
+                                            <div style="padding-bottom:7px;font-size: 17px;">
+                                              <b>Blackburn Travel Clinic</b>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Email: <a href="mailto:blackburntravelclinic@gmail.com" style="color: #fff;text-decoration: none;">blackburntravelclinic@gmail.com</a>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Tel: 01254 690496
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Fax: 01254 692995
+                                            </div>
+                                            <div style="font-size: 18px;">
+                                              <a href="https://www.blackburntravelclinic.co.uk/" style="color: #fff;text-decoration: none;"><b>www.blackburntravelclinic.co.uk</b></a>
+                                            </div>
+                                          </div>
+                                      </td>    
+                                      <td>
+                                           <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/avjrsbl8yhsowo0jtkn9.png" width="200px">
+                                      </td>              
+                                  </tr>   
+                                </tbody>
+                              </table>
+                            </div>
+            
+                          </td>
+                        </tr>
+                      </table>
+                        <!-- END Main -->
+                    </td>
+                  </tr>
+                </table>
+              </body>
+            </html> `,
+            // attachments: [
+            //   {
+            //       filename:"certificate.png",                                         
+            //       path:`http:localhost:3000/certificate/${timeSlots.user.firstName}.png`,                                         
+            //       contentType: 'application/image'
+            //   }]
+          
+            }
   
             transporter.sendMail(toSubsciberMail, (err) => {
               if (err) {

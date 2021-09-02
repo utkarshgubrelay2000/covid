@@ -41,6 +41,9 @@ router.get('/',registerController.homePage)
  router.get('/privacy-policy',(req,res)=>{
    res.render('privacy-policy')
  })
+ router.get('/what-we-offer',(req,res)=>{
+  res.render('what-we-offer')
+})
  router.get('/terms-conditions',(req,res)=>{
   res.render('terms-conditions')
 })
