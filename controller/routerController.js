@@ -171,6 +171,7 @@ exports.chooseslots = async (req, res) => {
       pachageId: req.params.packId,
       packAgeDetails:packAgeDetails
     });
+   
   } else {
     res.render("choose-slots-days", {
       _id: req.params.id,
@@ -179,6 +180,7 @@ exports.chooseslots = async (req, res) => {
       pachageId: req.params.packId,
       packAgeDetails:packAgeDetails
     });
+    console.log(packAgeDetails.daysCombo)
   }
 };
 exports.contactdetails = async (req, res) => {
@@ -197,7 +199,7 @@ exports.contactdetails = async (req, res) => {
     peopleArray.push(peoplesDetails);
   }
   console.log(spots,req.body.spots);
-  if(test._id=="6112728aae2efa3f4000d667" || test.test_name=="I am NOT travelling"){
+  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
     res.render("not-traveling-form", {
       testDetails: test,
       date: req.body.date,
@@ -205,6 +207,16 @@ exports.contactdetails = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
+    });
+  } else if(test._id=="612cbc00e9242568af80cf56" ){
+    res.render("contact-details", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+    departure:false,arrivaldateinput:req.body.arrivaldateinput
     });
   }
   else{
@@ -217,6 +229,8 @@ exports.contactdetails = async (req, res) => {
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
+    departure:true
+  
   }); }
 };
 exports.contactdetailsforArrivinginEngland = async (req, res) => {
@@ -234,7 +248,7 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spotArrival, spotAfterDay6);
+ // console.log(spotArrival, spotAfterDay6);
   res.render("contact-for-arrival", {
     testDetails: test,
     packageid: packageid,

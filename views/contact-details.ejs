@@ -334,8 +334,27 @@
                                                             <div class="col-md-6 form-group">
                                                                 <label>Ethnicity*</label>                                                                
                                                                 <select id='ethnicity<%=index%>' class="w-100 field">
-                                                                    <option value="Select ethnicity">Select ethnicity</option>
-                                                                    <option value="Select ethnicity">Select ethnicity</option>
+                                                                    <option value="Any Other Ethnic Category">Any Other Ethnic Category</option>
+                                                                    <option value="Any other Mixed Group">Any other Mixed Group</option>
+                                                                    <option value=" Black - Other"> Black - Other</option>
+                                                                    <option value="Bangladeshi">Bangladeshi</option>
+                                                                    <option value="Pakistani">Pakistani</option>
+                                                                    <option value="Indian">Indian</option>
+                                                                    <option value="White Other">White Other</option>
+                                                                    <option value="White">White & Black African</option>
+                                                                    <option value="White & Black Caribbean">White & Black Caribbean</option>
+                                                                    <option value="White British">White British</option>
+                                                                    <option value="White Irish">White Irish</option>
+                                                                    <option value="White">White</option>
+                                                                    <option value="Unknown">Unknown</option>
+                                                                    <option value="White And Asian">White And Asian</option>
+
+                                                                    <option value="Other / Mixed">Other / Mixed</option>
+                                                                    <option value="ISC - Unspecified">ISC - Unspecified</option>
+                                                                    <option value="Black - African">Black - African</option>
+                                                                    <option value="Black - Caribbean">Black - Caribbean</option>
+
+                                                                    
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 form-group">
@@ -344,9 +363,15 @@
                                                                 id="NHS<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
                                                             </div>
                                                             <div class="col-md-6 form-group">
-                                                                <label>Date of departure in the UK*</label>                                                                
-                                                                <input type="date" name="date" id="date_of_arrival<%=index%>" class="w-100 field" value="2021-07-31" required="" />
-                                                            </div>
+                                                                <label>Date of 
+                                                                    <%if(departure){%>
+                                                                    departure 
+                                                                    <%} else {%>
+                                                                       Arrival <%} %>
+                                                                    in the UK*</label>                                                                
+                                                                    <input type="date" name="date" 
+                                                                    id="date_of_arrival<%=index%>" value='<%=arrivaldateinput%>' class="w-100 field" value="2021-07-31" required="" />
+                                                                    </div>
                                                             <div class="col-md-6 form-group">
                                                                 <label>The date on which you last departed from or transited through a country or territory outside of the Common Travel Area*</label>                                                                
                                                                 <input type="date"  name="number" id="date_depart_out_cta<%=index%>"

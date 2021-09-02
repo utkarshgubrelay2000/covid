@@ -11,7 +11,7 @@ const testPackageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    img:String,
+    daysCombo:{type:String,default:"2"},
     packageTitle: {
       type: String,
     },
