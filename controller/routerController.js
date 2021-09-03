@@ -267,7 +267,7 @@ exports.contactdetails258 = async (req, res) => {
   let peoplesDetails = {
     email: "",
   };
-
+console.log(date)
   if (people == 1) {
     spots = [spots];
     spots8 = [spots8];
