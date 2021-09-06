@@ -15,6 +15,7 @@ const TestPackage = require("../model/testPackage");
 const testimonial = require("../model/testimonialModel");
 const aboutmodel = require("../model/aboutModel");
 const User = require("../model/userModel");
+const Notification = require("../model/Notification");
 
 exports.homePage = async(req, res) => {
   let faqs = await FAQ.find({}).limit(10);
@@ -298,7 +299,16 @@ exports.findtestcenter = (req, res) => {
   res.render("find-test-center");
 };
 exports.notification = (req, res) => {
-  res.render("notification");
+  Notification.find({UserId:req.body.userId}).sort({_id:-1}).populate('slotId').populate({   path: "slotId",
+  model: "TimeSlots",populate:{
+    path: "packageid",
+    model: "TestPackage"
+  }})
+
+  .populate('user').then(myNotification=>{
+    console.log(myNotification[0])
+    res.render("notification",{notification:myNotification,token: req.params.token});
+  })
 };
 exports.profile = (req, res) => {
   User.findById(req.body.userId, {
@@ -602,11 +612,15 @@ exports.getAlltestimonials = (req, res) => {
     });
 };
 exports.cancelMySlot = async (req, res) => {
-  let response = await TimeSlots.findByIdAndUpdate(req.body.id, {
-    booked: false,
-    user: null,
-    UserId: null,
-  });
+  let response = await TimeSlots.findById(req.body.id);
+  console.log(req.body.userId)
+ let resNot=await Notification.findOne({slotId:req.body.id})
+ if(!resNot){
+   let newNotification=new Notification({
+     status:"Pending",slotId:req.body.id,user:response.user,UserId:response.UserId
+    })
+    await newNotification.save()
+  }
   console.log(req.body.id);
   res.json("Success");
 };

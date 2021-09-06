@@ -91,17 +91,17 @@
 						<div id="mySidenav" class="sidenav">
 							<a href="javascript:void(0)" class="closebtn d-lg-none" onclick="closeNav()"><i class="fal fa-times"></i></a>
 							<ul class="navbar-nav">
-								<li class="nav-item">
+								<li class="nav-item active">
 									<a href="profile" class="nav-link">My Profile</a>
 								</li>
-								<li class="nav-item active">
-									<a href="notification" class="nav-link">My Notifications</a>
+								<li class="nav-item">
+									<a  href="/notification/<%=token%>" class="nav-link">My Notifications</a>
 								</li>
 								<li class="nav-item">
-									<a href="appointment-bookings" class="nav-link">Appointment Bookings</a>
+									<a href="/appointment-bookings/<%=token%>" class="nav-link">Appointment Bookings</a>
 								</li>
 								<li class="nav-item">
-									<a href="setting" class="nav-link">Setting</a>
+									<a href="/setting/<%=token%>" class="nav-link">Setting</a>
 								</li>
 							</ul>
 					  </div>
@@ -123,7 +123,7 @@
 					My Notifications
 				</h5>
 			</div>
-			<div class="col-md-6 text-md-right">		
+			<!-- <div class="col-md-6 text-md-right">		
 				<form>
 					<div class="d-flex justify-content-md-end">
 						<div class="form-group d-flex justify-content-md-end align-items-center mb-md-0">
@@ -145,129 +145,32 @@
 						</div>
 					</div>
 				</form>
-			</div>
+			</div> -->
 		</div>
 		<div class="row notifications-box mt-4">
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
+			<%notification.map(element=>{%>
+				<%if(element.slotId.packageid && element.slotId.test ){%>
+				<div class="col-md-6">
+					<div class="notification">
+						<div class="d-xl-flex">
+						
+							<div class="content">
+								<h6 class=".text-darkgreen font-weight-bold">
+								<%=element.slotId.packageid.packageName%>
+								</h6>
+								<p>
+								For:	<%=element.user.firstName%>  <%=element.user.lastName%>
+							
+								</p>
+								<span class="date text-blue font-weight-bold">
+									<%=getDate(element.slotId.bookedFor)%> :
+									<%=getTime(element.slotId.bookedFor)%>
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="notification">
-					<div class="d-xl-flex">
-						<div class="img mr-3">
-							<img src="/assets/img/notification.png" />
-						</div>
-						<div class="content">
-							<h6 class=".text-darkgreen font-weight-bold">
-								Vestibulum blandit viverra
-							</h6>
-							<p>
-								Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus 
-							</p>
-							<span class="date text-blue font-weight-bold">
-								10-06-2021
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
+		<%}})%>
 		</div>
 	</div>
 </section>

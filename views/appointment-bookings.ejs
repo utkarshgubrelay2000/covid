@@ -198,6 +198,8 @@
                                             </thead>
                                             <tbody>
                                                 <%myslots.map(element=>{%>
+                                                    <%if(element.packageid && element.test && element.user ){%>
+
                                                 <tr>
                                                     <td>
                                                         <span class="text-purple">
@@ -250,7 +252,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <%})%>
+                                                <%}})%>
                                              
                                             </tbody>
                                         </table>
@@ -297,6 +299,8 @@
                                             </thead>
                                             <tbody>
                                                 <%reports.map(element=>{%>
+                                                    <%if(element.packageid && element.test && element.user ){%>
+
                                                     <tr>
                                                         <td>
                                                             <span class="text-purple">
@@ -345,7 +349,7 @@
                                                         </td>
                                                        
                                                     </tr>
-                                                <%})%>
+                                                <%}})%>
                                              
                                             </tbody>
                                         </table>
@@ -392,6 +396,7 @@
                                             </thead>
                                             <tbody>
                                                 <%completeslots.map(element=>{%>
+                                                    <%if(element.packageid && element.test && element.user ){%>
                                                 <tr>
                                                     <td>
                                                         <span class="text-purple">
@@ -440,7 +445,7 @@
                                                     </td>
                                                    
                                                 </tr>
-                                                <%})%>
+                                                <%}})%>
                                              
                                             </tbody>
                                         </table>
