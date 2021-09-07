@@ -156,8 +156,11 @@
 						
 							<div class="content">
 								<h6 class=".text-darkgreen font-weight-bold">
-								<%=element.slotId.packageid.packageName%>
+								<%=element.slotId.packageid.packageName%> 
 								</h6>
+								<h6 class="text-info font-weight-bold">
+									<%=element.status%> 
+									</h6>
 								<p>
 								For:	<%=element.user.firstName%>  <%=element.user.lastName%>
 							
@@ -166,6 +169,7 @@
 									<%=getDate(element.slotId.bookedFor)%> :
 									<%=getTime(element.slotId.bookedFor)%>
 								</span>
+
 							</div>
 						</div>
 					</div>
