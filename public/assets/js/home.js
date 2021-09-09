@@ -106,17 +106,7 @@ async function selectTest(name, index, id) {
              <a href="/choose-slots/${res.name}/${ele._id}" class="btn-purple d-inline-block mt-4 mb-2">
              BOOK A PCR
          </a>
-         <br>
-         ${ele.daysCombo=='p2'?` 
-          <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-         Book A Home  Tit appointment
-     </a>`:ele.daysCombo=='p28'?` 
-     <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-    BOOK A PCR
-</a>`:ele.daysCombo=='p258'?` 
-<a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-BOOK A PCR
-</a>`:""}
+         
              ${/*ele.price2?` <div class="sub-package-name">
                  <p>
                  ${ele?.subPackageNameHome}
@@ -168,35 +158,40 @@ function getSlotsByArrival(type) {
   let date;
   let id = document.getElementById("test").value;
   if (type == 1) {
-    let day8 = document.getElementById("date2");
-    date = document.getElementById("date").value;
-     
+    date = document.getElementById("pcrdate").value;
+  } 
+  else if(type==2) {
+    date = document.getElementById("pcrdate2").value;
+  }
+  else if(type==3) {
+    date = document.getElementById("pcrdate5").value;
+  }
+  else if(type==8) {
+    date = document.getElementById("pcrdate8").value;
+  }
+  else if(type==4) {
+    date = document.getElementById("pcrdate2").value;
+    let day8 = document.getElementById("pcrdate8");
     let value = new Date(date);
     
     console.log(date, value, date);
 
-    value.setDate(value.getDate() + 6);
+    value.setDate(value.getDate() + 7);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
-  } 
-  else if(type==3) {
-    date = document.getElementById("date5").value;
   }
   else if(type==5) {
-    let day8 = document.getElementById("date5");
-    date = document.getElementById("date").value;
-
+    let day8 = document.getElementById("pcrdate5");
+    date = document.getElementById("pcrdate2").value;
     let value = new Date(date);
-    
     console.log(date, value, date);
-
-    value.setDate(value.getDate() + 5);
+    value.setDate(value.getDate() + 4);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   }
   else if(type==6) {
-    let day8 = document.getElementById("date2");
-    date = document.getElementById("date5").value;
+    let day8 = document.getElementById("pcrdate8");
+    date = document.getElementById("pcrdate5").value;
 
     let value = new Date(date);
     
@@ -206,15 +201,7 @@ function getSlotsByArrival(type) {
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   }
-  else if(type==4) {
-    date = document.getElementById("date2").value;
-  }
-  else if(type==7) {
-    date = document.getElementById("date").value;
-  }
-  else {
-    date = document.getElementById("date2").value;
-  }
+
   let data = { test: id, limit: 1, date: date };
   console.log(data);
   $.ajax({
@@ -223,7 +210,7 @@ function getSlotsByArrival(type) {
     data: data,
     success: function (res) {
       // console.log(res);
-      if (res.status) {
+      if (res.data.length>0) {
         alert(res.message);
         if (type == 1) {
           allSlots = res.data;
@@ -242,7 +229,24 @@ function getSlotsByArrival(type) {
             .end()
             .append($(option));
         }
-      else  if (type == 3 || type ==4 || type==5  || type==7) {
+        else if (type == 2 || type == 3 ||type==4 || type==5) {
+          allSlots = res.data;
+          option += `<option value="">Select Slot </option>`
+          res.data.forEach((ele) => {
+            var spot = ele;
+            // console.log(ele.bookedFor)
+            option += `<option value="${ele._id}">${new Date(
+              ele.bookedFor
+            ).toLocaleTimeString()} </option>`;
+          });
+       //   console.log(options)
+          $("select[name='inptProduct2']")
+            .find("option")
+            .remove()
+            .end()
+            .append($(option));
+        }
+      else  if ( type==8  || type==7) {
           allSlots = res.data;
           option += `<option value="">Select Slot </option>`
           res.data.forEach((ele) => {
@@ -253,7 +257,7 @@ function getSlotsByArrival(type) {
             ).toLocaleTimeString()} </option>`;
           });
         //  console.log(option)
-          $("select[name='inptProduct']")
+          $("select[name='inptProduct3']")
             .find("option")
             .remove()
             .end()
@@ -307,7 +311,9 @@ function getSlotsForPeople(type) {
   let option2 = "";
 
   if (type == 1) {
-    let spotforDay2 = document.getElementById("spotsForDay2").value;
+    $("#pcrSlots").html("");
+
+    let spotforDay2 = document.getElementById("PCRspot").value;
     let numberOfPerson = document.getElementById("numberOfPerson").value;
     let indexOfSlot;
     allSlots.map((element, index) => {
@@ -328,40 +334,107 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
-    $("#slotsIdsForArrival").html(option);
+    $("#pcrSlots").html(option);
     console.log(numberOfPerson, indexOfSlot, spotforDay2, spotsArray);}
-  } else {
-    let spotforDay8 = document.getElementById("spotsForDay8").value;
-    let spotforDay2 = document.getElementById("spotsForDay2");
-    spotforDay2.setAttribute("disabled", true);
+  }
+  else if (type == 2 || type == 3) {
+    $("#pcrSlotsDay2").html("");
 
+    let spotforDay2 = document.getElementById("pcrtime").value;
     let numberOfPerson = document.getElementById("numberOfPerson").value;
     let indexOfSlot;
+    
     allSlots.map((element, index) => {
-      if (element._id == spotforDay8) {
+      if (element._id == spotforDay2) {
         indexOfSlot = index;
       }
     });
+    console.log(spotforDay2)
     let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
     let spotids = [];
     spotsArray.map((item) => {
       spotids.push(item._id);
     });
-    if (spotsArray.length != numberOfPerson) {
+    arrivalSlots = spotids;
+    if (arrivalSlots.length != numberOfPerson) {
       alert(
         "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
       );
     } else {
-    spotids.forEach((ele) => {
-      option2 += `<input name='spotAfterDay6' class="w-100 field" value=${ele}>`;
+    arrivalSlots.forEach((ele) => {
+      var spot = ele;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
-    $("#spotAfterDay6").html(option2);
-    console.log(numberOfPerson, indexOfSlot, spotforDay8, spotsArray);}
+    $("#pcrSlotsDay2").html(option);
+    console.log( indexOfSlot, spotforDay2, spotsArray);}
+  } 
+  else if (type == 4) {
+    $("#pcrSlotsDay8").html("");
+    let spotforDay2 = document.getElementById("pcrtime8").value;
+    let numberOfPerson = document.getElementById("numberOfPerson").value;
+    let indexOfSlot;
+    
+    allSlots.map((element, index) => {
+      if (element._id == spotforDay2) {
+        indexOfSlot = index;
+      }
+    });
+    console.log(spotforDay2)
+    let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+    let spotids = [];
+    spotsArray.map((item) => {
+      spotids.push(item._id);
+    });
+    arrivalSlots = spotids;
+    if (arrivalSlots.length != numberOfPerson) {
+      alert(
+        "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+      );
+    } else {
+    arrivalSlots.forEach((ele) => {
+      var spot = ele;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
+    });
+
+    $("#pcrSlotsDay8").html(option);
   }
+  } 
+  else if (type == 5) {
+    $("#pcrSlotsDay5").html("");
+    let spotforDay2 = document.getElementById("pcrtime5").value;
+    let numberOfPerson = document.getElementById("numberOfPerson").value;
+    let indexOfSlot;
+    
+    allSlots.map((element, index) => {
+      if (element._id == spotforDay2) {
+        indexOfSlot = index;
+      }
+    });
+    console.log(spotforDay2)
+    let spotsArray = allSlots.splice(indexOfSlot, numberOfPerson);
+    let spotids = [];
+    spotsArray.map((item) => {
+      spotids.push(item._id);
+    });
+    arrivalSlots = spotids;
+    if (arrivalSlots.length != numberOfPerson) {
+      alert(
+        "Looks Like You have Choice more number of people then avaiable slots for the day.. Select Again"
+      );
+    } else {
+    arrivalSlots.forEach((ele) => {
+      var spot = ele;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
+    });
+
+    $("#pcrSlotsDay5").html(option);
+  }
+  } 
+  
 }
 function logoutHandler() {
   localStorage.removeItem("covid");
@@ -405,6 +478,7 @@ function getSlots(index) {
     success: function (res) {
       // console.log(res);
       if (res.status) {
+
         alert(res.message);
 
         res.data.forEach((ele) => {
@@ -530,7 +604,7 @@ if(isValid){
   let data = { slots: slot, personal_details: pd, packageid: packageid };
   console.log(data);
   $.ajax({
-    url: "/create",
+    url: "/create-home",
     method: "POST",
     data: data,
     Headers: { contentType: "application/json", Authorization: token },
@@ -582,46 +656,22 @@ function getDate() {
 function getArrivalDate(dayCombo) {
   console.log(dayCombo)
   let arrivalDate = document.getElementById("arrivaldate");
-  if(dayCombo=='28'){
-    let date = document.getElementById("date");
+  if( dayCombo=='p258'){
+    let date = document.getElementById("pcrdate5");
     let value = new Date(arrivalDate.value);
     let mindate = new Date(arrivalDate.value);
-    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
-    value.setDate(value.getDate() + 2);
-    console.log(value.toISOString().substr(0, 10));
-    date.setAttribute("max", value.toISOString().substr(0, 10));
-    date.setAttribute("min", mindate.toISOString().substr(0, 10));
-  }
- else if(dayCombo=='5'){
-    let date = document.getElementById("date5");
-    let value = new Date(arrivalDate.value);
-    let mindate = new Date(arrivalDate.value);
-    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
     value.setDate(value.getDate() + 5);
     console.log(value.toISOString().substr(0, 10));
-    date.setAttribute("min", value.toISOString().substr(0, 10));
-    //date.setAttribute("min", mindate.toISOString().substr(0, 10));
-  }
-  else if(dayCombo=='2'){
-    let date = document.getElementById("date2");
-    let value = new Date(arrivalDate.value);
-    let mindate = new Date(arrivalDate.value);
-    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
-    value.setDate(value.getDate() + 2);
-    console.log(value.toISOString().substr(0, 10));
-    date.setAttribute("min", value.toISOString().substr(0, 10));
-    date.setAttribute("min", mindate.toISOString().substr(0, 10));
-  }else{
-    let date = document.getElementById("date");
-    let value = new Date(arrivalDate.value);
-
-    let mindate = new Date(arrivalDate.value);
-    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
-    value.setDate(value.getDate() + 2);
-    console.log(value.toISOString().substr(0, 10));
     date.setAttribute("max", value.toISOString().substr(0, 10));
-    date.setAttribute("min", mindate.toISOString().substr(0, 10));
+    document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
+ 
   }
+  else{
+    let a=   document.getElementById("arrivaldateinput").value=arrivalDate.value
+    console.log()
+
+  }
+
 }
 $("#navbarpages").html(nav);
 function getPages() {

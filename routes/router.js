@@ -34,8 +34,10 @@ router.get('/',registerController.homePage)
  router.post('/faq',registerController.loadMoreFaqs)
  router.get('/appointment',registerController.appointment)
  router.get('/choose-slots/:name/:packId',registerController.chooseslots)
+ router.get('/choose-slots-home/:name/:packId',registerController.chooseslotsHome)
  router.post('/contact-details',registerController.contactdetails)
- router.post('/contact-details-pcr',registerController.contactdetails)
+ router.post('/contact-details-pcr',registerController.contactdetailsPCr)
+ router.post('/contact-details-home',registerController.contactdetailsHome)
  router.post('/contact-form-for-258',registerController.contactdetails258)
  router.post('/Arriving-in-England-booking',registerController.contactdetailsforArrivinginEngland)
  router.get('/diphtheria',registerController.diphteria)
@@ -60,6 +62,7 @@ router.get('/',registerController.homePage)
  router.get('/appointment',registerController.appointment)
  router.post('/get-avaiable-session',bookingController.getSlots)
  router.post("/create",registerController.createBooking);
+ router.post("/create-home",registerController.createBookingHome);
  router.post("/create-arrival",registerController.createBookingArrival);
  router.post("/create-booking-258",registerController.createBooking258);
  router.get("/pages",registerController.getAllPage);
