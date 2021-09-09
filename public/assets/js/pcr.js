@@ -334,7 +334,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlots").html(option);
@@ -366,7 +366,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlotsDay2").html(option);
@@ -397,7 +397,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlotsDay8").html(option);
@@ -428,7 +428,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlotsDay5").html(option);

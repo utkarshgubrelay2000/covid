@@ -206,10 +206,7 @@ exports.contactdetails = async (req, res) => {
   let peoplesDetails = {
     email: "",
   };
-  if (people == 1) {
-    console.log('hello')
-    spots = [spots];
-  }
+ 
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
@@ -231,13 +228,14 @@ exports.contactdetails = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-    departure:false,arrivaldateinput:req.body.arrivaldateinput
+    departure:false,
+    arrivaldateinput:req.body.arrivaldateinput
     });
   }
   else{
 
- 
-  res.render("contact-details", {
+ console.log('slots',req.body.date)
+  res.render("contact-details-pcr", {
     testDetails: test,
     date: req.body.date,
     spots: spots,
@@ -417,7 +415,7 @@ exports.createBooking = async (req, res) => {
     });
 
     setTimeout(() => {
-      console.log(users, promises);
+      console.log(users);
       if (promises)
         res.json({ message: "Booking Saved!", allslots: sloted, status: true });
       else
