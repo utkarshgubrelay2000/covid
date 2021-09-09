@@ -165,13 +165,27 @@ exports.chooseslots = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
   if (!tests.date) {
-    res.render("choose-slots", {
-      _id: req.params.name,
-      slots: slots,
-      testDetails: tests,
-      pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
-    });
+    if(packAgeDetails.daysCombo=='fittofly'){
+
+      res.render("choose-slots", {
+        _id: req.params.name,
+        slots: slots,
+        testDetails: tests,
+        pachageId: req.params.packId,
+        packAgeDetails:packAgeDetails
+      });
+      console.log("hello2") 
+    }
+    else{
+      console.log("hello")
+      res.render("choose-slots-form-for-pcr", {
+        _id: req.params.name,
+        slots: slots,
+        testDetails: tests,
+        pachageId: req.params.packId,
+        packAgeDetails:packAgeDetails
+      });
+    }
    
   } else {
     res.render("choose-slots-days", {
