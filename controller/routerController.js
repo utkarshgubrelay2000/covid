@@ -492,6 +492,33 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
     arrivaldateinput:arrivaldateinput
   });
 };
+exports.contactdetails28Home = async (req, res) => {
+  let { spotArrival, spotAfterDay6, date, people, packageid,arrivaldateinput } = req.body;
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+
+  if (people == 1) {
+    spotAfterDay6 = [spotAfterDay6];
+    spotArrival = [spotArrival];
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+ // console.log(spotArrival, spotAfterDay6);
+  res.render("contact-for-arrival-home", {
+    testDetails: test,
+    packageid: packageid,
+    date: date,
+    slot: spotArrival,
+    slotAfterDay6: spotAfterDay6,
+    people: peopleArray,
+    length: people,
+    arrivaldateinput:arrivaldateinput
+  });
+};
 exports.contactdetails258 = async (req, res) => {
   let { spots, spots5,spots8, date, people, packageid,arrivaldateinput } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
@@ -808,6 +835,79 @@ exports.createBookingArrival = async (req, res) => {
             UserId: req.body.userId,
             ...req.body,
             packageid: packageid,
+          },
+          { new: true }
+        );
+      //   console.log(res)
+        return saved._id;
+      });
+    });
+console.log(allslots)
+    setTimeout(() => {
+      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+    }, 1000);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createBookingArrivalHome = async (req, res) => {
+  try {
+    const { slots, slotAfterDay6, packageid } = req.body;
+    console.log("hello", slots);
+    let sloted = slots.split(",");
+    let slotedDay6 = slotAfterDay6.split(",");
+    personal_details = JSON.parse(req.body.personal_details);
+   
+    let allslots=slotedDay6.concat(sloted)
+//console.log(allslots)
+    const validation = validate(req.body, {
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
+
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+  //  console.log("here", personal_details);
+    let users = [];
+    const promises = personal_details.map((person, index) => {
+      const details = new PersonalDetails({
+        ...person,
+        slot: sloted[index],
+        slotDay6: slotedDay6[index],
+      });
+      details.save().then(async (saved) => {
+        users.push(saved._id);
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,home:true
+          },
+          { new: true }
+        );
+        let res2 = await TimeSlots.findOneAndUpdate(
+          { _id: slotedDay6[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,home:true
           },
           { new: true }
         );

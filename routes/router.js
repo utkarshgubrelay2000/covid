@@ -44,6 +44,7 @@ router.get('/',registerController.homePage)
  router.post('/contact-form-for-258',registerController.contactdetails258)
  router.post('/contact-form-for-258-home',registerController.contactdetails258Home)
  router.post('/Arriving-in-England-booking',registerController.contactdetailsforArrivinginEngland)
+ router.post('/contact-form-for-28-home',registerController.contactdetails28Home)
  router.get('/diphtheria',registerController.diphteria)
  router.get('/privacy-policy',(req,res)=>{
    res.render('privacy-policy')
@@ -74,6 +75,7 @@ router.get('/',registerController.homePage)
  router.post("/create-arrival",registerController.createBookingArrival);
  router.post("/create-booking-258",registerController.createBooking258);
  router.post("/create-booking-258-home",registerController.createBooking258Home);
+ router.post("/create-booking-28-home",registerController.createBookingArrivalHome);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);
