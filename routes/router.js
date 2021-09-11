@@ -38,6 +38,7 @@ router.get('/',registerController.homePage)
  router.get('/choose-slots-home/:name/:packId',registerController.chooseslotsHome)
  router.post('/contact-details',registerController.contactdetails)
  router.post('/contact-details-pcr',registerController.contactdetailsPCr)
+ router.post('/contact-details-pcr-28',registerController.contactdetailsPcr28)
  router.post('/contact-details-home',registerController.contactdetailsHome)
  router.post('/contact-form-for-258',registerController.contactdetails258)
  router.post('/Arriving-in-England-booking',registerController.contactdetailsforArrivinginEngland)
@@ -64,6 +65,7 @@ router.get('/',registerController.homePage)
  router.post('/get-avaiable-session',bookingController.getSlots)
  router.post("/create",registerController.createBooking);
  router.post("/create-pcr-pcr-and-single",registerController.createpcrandsingle);
+ router.post("/create-pcr-pcr-and-28",registerController.createpcrandtwo);
  
  router.post("/create-home",registerController.createBookingHome);
  router.post("/create-arrival",registerController.createBookingArrival);
