@@ -385,6 +385,36 @@ exports.contactdetailsPcr28 = async (req, res) => {
     arrivaldateinput:arrivaldateinput,departure:true
   });
 };
+exports.contactdetailsPcr258 = async (req, res) => {
+
+  let { spots, pcrSlot,slotsDay8,slotsDay5, date, people, packageid,arrivaldateinput } = req.body;
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+
+  if (people == 1) {
+    pcrSlot = [pcrSlot];
+    spots = [spots];
+    slotsDay8=[slotsDay8]
+    slotsDay5=[slotsDay5]
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+  console.log(pcrSlot, spots);
+  res.render("contact-details-pcr-258", {
+    testDetails: test,
+    packageid: packageid,
+    date: date,
+    spots: spots,slotsDay8:slotsDay8,slotsDay5:slotsDay5,
+    pcrSlot: pcrSlot,
+    people: peopleArray,
+    length: people,
+    arrivaldateinput:arrivaldateinput,departure:true
+  });
+};
 exports.contactdetailsHome = async (req, res) => {
   let { spots, people, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
@@ -869,6 +899,96 @@ console.log(allslots,'AllSlots')
         );
         let res3 = await TimeSlots.findOneAndUpdate(
           { _id: day8Sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+      //   console.log(res)
+        return saved._id;
+      });
+    });
+
+    setTimeout(() => {
+      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+    }, 1000);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createpcrandthree = async (req, res) => {
+  try {
+    let { slots, pcrSlot,day8Slot,day5Slot, packageid,personal_details } = req.body;
+    console.log("hello", req.body);
+    let sloted = slots.split(",");
+    let pcrSloted = pcrSlot.split(",");
+    let day8Sloted = day8Slot.split(",");
+    let day5Sloted = day5Slot.split(",");
+
+    try {
+      
+      personal_details = JSON.parse(req.body.personal_details);
+    } catch (error) {
+      console.log(error)
+    }
+    console.log('here') 
+    let allslots=pcrSloted.concat(sloted)
+    allslots=allslots.concat(day8Sloted)
+    allslots=allslots.concat(day5Sloted)
+    
+console.log(allslots,'AllSlots')
+
+    let users = [];
+    const promises = personal_details.map((person, index) => {
+      const details = new PersonalDetails({
+        ...person,
+        slot: sloted[index],
+        pcrSlot: pcrSloted[index],slotDay6:day8Sloted[index],slot5:day5Sloted[index]
+      });
+      details.save().then(async (saved) => {
+        users.push(saved._id);
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res2 = await TimeSlots.findOneAndUpdate(
+          { _id: pcrSloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res3 = await TimeSlots.findOneAndUpdate(
+          { _id: day8Sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res4 = await TimeSlots.findOneAndUpdate(
+          { _id: day5Sloted[index] },
           {
             booked: true,
             user: saved._id,
