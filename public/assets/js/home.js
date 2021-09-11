@@ -334,7 +334,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spots' class="w-100 field" value=${ele}>`;
+      option += `<input name='pcrSlot' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlots").html(option);
@@ -497,7 +497,7 @@ function getSlots(index) {
     },
   });
 }
-function getData(length, slot, packageid) {
+function getData(length, slot,pcrSlots, packageid) {
   length = Number(length);
   let isValid = true;
   let array = [];
@@ -601,7 +601,7 @@ function getData(length, slot, packageid) {
   }
 if(isValid){
   let pd = JSON.stringify(array);
-  let data = { slots: slot, personal_details: pd, packageid: packageid };
+  let data = { slots: slot,pcrSlots:pcrSlots, personal_details: pd, packageid: packageid };
   console.log(data);
   $.ajax({
     url: "/create-home",

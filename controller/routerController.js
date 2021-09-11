@@ -416,7 +416,7 @@ exports.contactdetailsPcr258 = async (req, res) => {
   });
 };
 exports.contactdetailsHome = async (req, res) => {
-  let { spots, people, packageid } = req.body;
+  let { spots, pcrSlot, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
   console.log(test)
   let peopleArray = [];
@@ -455,7 +455,7 @@ exports.contactdetailsHome = async (req, res) => {
   res.render("contact-details-home", {
     testDetails: test,
     date: req.body.date,
-    spots: spots,
+    spots: spots,pcrSlot:pcrSlot,
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
@@ -650,8 +650,9 @@ exports.createBooking = async (req, res) => {
 };
 exports.createBookingHome = async (req, res) => {
   try {
-    const { slots, packageid } = req.body;
+    const { slots,pcrSlots, packageid } = req.body;
     let sloted = slots.split(",");
+    let pcrSlotsed = pcrSlots.split(",");
      console.log('hello',sloted)
     personal_details = JSON.parse(req.body.personal_details);
     
@@ -675,11 +676,22 @@ exports.createBookingHome = async (req, res) => {
     console.log("here");
     let users = [];
     const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index] });
+      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index],day5Slot:pcrSlots[index] });
       details.save().then(async (saved) => {
         users.push(saved._id);
         let res = await TimeSlots.findOneAndUpdate(
           { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,home:true
+          },
+          { new: true }
+        );
+        let res2 = await TimeSlots.findOneAndUpdate(
+          { _id: pcrSlots[index] },
           {
             booked: true,
             user: saved._id,
