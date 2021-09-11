@@ -109,10 +109,10 @@ async function selectTest(name, index, id) {
          <br>
          ${ele.daysCombo=='p2'?` 
           <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-         Book A Home  Tit appointment
+         Book A Home  Kit appointment
      </a>`:ele.daysCombo=='p28'?` 
      <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-     Book A Home  Tit appointment
+     Book A Home  Kit appointment
 </a>`:ele.daysCombo=='p258'?` 
 <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
 Book A Home  Tit appointment
