@@ -345,16 +345,16 @@ exports.contactdetailsPCr = async (req, res) => {
     peopleArray.push(peoplesDetails);
   }
   console.log(pcrSlot, spots);
-  // res.render("contact-details", {
-  //   testDetails: test,
-  //   packageid: packageid,
-  //   date: date,
-  //   slot: spots,
-  //   pcrSlot: pcrSlot,
-  //   people: peopleArray,
-  //   length: people,
-  //   arrivaldateinput:arrivaldateinput,departure:true
-  // });
+  res.render("contact-details-pcr-single", {
+    testDetails: test,
+    packageid: packageid,
+    date: date,
+    spots: spots,
+    pcrSlot: pcrSlot,
+    people: peopleArray,
+    length: people,
+    arrivaldateinput:arrivaldateinput,departure:true
+  });
 };
 exports.contactdetailsHome = async (req, res) => {
   let { spots, people, packageid } = req.body;
@@ -734,7 +734,7 @@ exports.createpcrandsingle = async (req, res) => {
   //  console.log("hello", slots,personal_details.length);
    
     let allslots=slotedDay6.concat(sloted)
-//console.log(allslots)
+console.log(allslots,'AllSlots')
     const validation = validate(req.body, {
       slots: {
         presence: true,
