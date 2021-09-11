@@ -658,7 +658,7 @@ exports.createBookingArrival = async (req, res) => {
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-  //  console.log("hello", slots,personal_details.length);
+    console.log("hello", slots,personal_details.length);
    
     let allslots=slotedDay6.concat(sloted)
 //console.log(allslots)
@@ -727,31 +727,21 @@ console.log(allslots)
 };
 exports.createpcrandsingle = async (req, res) => {
   try {
-    const { slots, pcrSlot, packageid } = req.body;
+    let { slots, pcrSlot, packageid,personal_details } = req.body;
+    console.log("hello", req.body);
     let sloted = slots.split(",");
     let pcrSloted = pcrSlot.split(",");
-    personal_details = JSON.parse(req.body.personal_details);
-  //  console.log("hello", slots,personal_details.length);
-   
-    let allslots=slotedDay6.concat(sloted)
-console.log(allslots,'AllSlots')
-    const validation = validate(req.body, {
-      slots: {
-        presence: true,
-      },
-      personal_details: {
-        presence: true,
-      },
-    });
-
-    if (validation) {
-      res.status(400).json({
-        error: validation,
-        status: false,
-      });
-      return console.log(validation);
+    try {
+      
+      personal_details = JSON.parse(req.body.personal_details);
+    } catch (error) {
+      console.log(error)
     }
-  //  console.log("here", personal_details);
+    console.log('here') 
+    let allslots=pcrSloted.concat(sloted)
+console.log(allslots,'AllSlots')
+  
+    console.log("here", personal_details);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({

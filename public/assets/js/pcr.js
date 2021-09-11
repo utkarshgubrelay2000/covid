@@ -626,7 +626,7 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
   let isValid = true;
   let array = [];
   let token = localStorage.getItem("covid");
-  console.log(token);
+  console.log(pcrSlot,slot);
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
