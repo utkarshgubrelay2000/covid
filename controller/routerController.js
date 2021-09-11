@@ -329,6 +329,35 @@ if(response.daysCombo=='fittofly'){
     }); }
   }
 };
+exports.contactdetailsHomeArrival = async (req, res) => {
+  let { spots, people, packageid } = req.body;
+  let test = await Test.findOne({ _id: req.body._id });
+  console.log(test)
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+  if (people == 1) {
+    console.log('hello')
+    spots = [spots];
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+ 
+    res.render("contact-details-arrival-home", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+    departure:false,
+    arrivaldateinput:req.body.arrivaldateinput
+    });
+  
+  
+};
 exports.contactdetailsPCr = async (req, res) => {
 
   let { spots, pcrSlot, date, people, packageid,arrivaldateinput } = req.body;
@@ -458,6 +487,54 @@ exports.contactdetailsHome = async (req, res) => {
     testDetails: test,
     date: req.body.date,
     spots: spots,pcrSlot:pcrSlot,
+    packageid: packageid,
+    people: peopleArray,
+    length: peopleArray.length,
+    departure:true
+  
+  }); }
+};
+exports.contactdetailsHome = async (req, res) => {
+  let { spots, packageid } = req.body;
+  let test = await Test.findOne({ _id: req.body._id });
+  console.log(test)
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+ 
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+  console.log(spots,req.body.spots);
+  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
+    res.render("not-traveling-form", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+    });
+  } else if(test._id=="612cbc00e9242568af80cf56" ){
+    res.render("contact-details", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+    departure:false,
+    arrivaldateinput:req.body.arrivaldateinput
+    });
+  }
+  else{
+
+ console.log('slots',req.body.date)
+  res.render("contact-details-arrival-home", {
+    testDetails: test,
+    date: req.body.date,
+    spots: spots,
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
@@ -705,6 +782,69 @@ exports.createBooking = async (req, res) => {
     });
   }
 };
+exports.createHomeBooking = async (req, res) => {
+  try {
+    const { slots, packageid } = req.body;
+    let sloted = slots.split(",");
+     console.log('hello',sloted)
+    personal_details = JSON.parse(req.body.personal_details);
+    
+
+    const validation = validate(req.body, {
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
+
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+    console.log("here");
+    let users = [];
+    const promises = personal_details.map((person, index) => {
+      const details = new PersonalDetails({ ...person, slot: sloted[index] });
+      details.save().then(async (saved) => {
+        users.push(saved._id);
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,home:true
+          },
+          { new: true }
+        );
+        console.log(res);
+        return saved._id;
+      });
+    });
+
+    setTimeout(() => {
+      console.log(users);
+      if (promises)
+        res.json({ message: "Booking Saved!", allslots: sloted, status: true });
+      else
+        res.status(400).json({
+          status: false,
+          data: "Something wrong",
+        });
+    }, 600);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
 exports.createBookingHome = async (req, res) => {
   try {
     const { slots,pcrSlots, packageid } = req.body;
@@ -733,7 +873,7 @@ exports.createBookingHome = async (req, res) => {
     console.log("here");
     let users = [];
     const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index],day5Slot:pcrSlots[index] });
+      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index],day5Slot:pcrSlotsed[index] });
       details.save().then(async (saved) => {
         users.push(saved._id);
         let res = await TimeSlots.findOneAndUpdate(
@@ -748,7 +888,7 @@ exports.createBookingHome = async (req, res) => {
           { new: true }
         );
         let res2 = await TimeSlots.findOneAndUpdate(
-          { _id: pcrSlots[index] },
+          { _id: pcrSlotsed[index] },
           {
             booked: true,
             user: saved._id,
