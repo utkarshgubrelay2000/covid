@@ -277,7 +277,7 @@ exports.contactdetails = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots,req.body.spots);
+  console.log(spots,req.body.spots,"hhh");
   if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
     res.render("not-traveling-form", {
       testDetails: test,
@@ -300,9 +300,10 @@ exports.contactdetails = async (req, res) => {
     });
   }
   else{
-
- console.log('slots',req.body.date)
-  res.render("contact-details-pcr", {
+let response=await TestPackage.findById(packageid)
+console.log(response)
+if(response.daysCombo=='fittofly'){
+  res.render("contact-details", {
     testDetails: test,
     date: req.body.date,
     spots: spots,
@@ -310,8 +311,22 @@ exports.contactdetails = async (req, res) => {
     people: peopleArray,
     length: peopleArray.length,
     departure:true
-  
-  }); }
+    
+   });
+}
+ else{
+
+   res.render("contact-details-pcr", {
+     testDetails: test,
+     date: req.body.date,
+     spots: spots,
+     packageid: packageid,
+     people: peopleArray,
+     length: peopleArray.length,
+     departure:true
+     
+    }); }
+  }
 };
 exports.contactdetailsPCr = async (req, res) => {
 
