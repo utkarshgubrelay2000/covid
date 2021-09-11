@@ -675,7 +675,7 @@ exports.createBookingHome = async (req, res) => {
     console.log("here");
     let users = [];
     const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, slot: sloted[index] });
+      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index] });
       details.save().then(async (saved) => {
         users.push(saved._id);
         let res = await TimeSlots.findOneAndUpdate(
