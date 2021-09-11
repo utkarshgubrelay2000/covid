@@ -122,6 +122,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
+      Postal: document.getElementById("Postal" + index).value,
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
@@ -161,7 +162,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       console.log(re.test(String(array[index].email).toLowerCase()));
       alert("Email Not Valid For Person  " + Number(index + 1));
       break;
-    } else if (!array[index].email || !array[index].confirmemail) {
+    } else if (!array[index].email == !array[index].confirmemail) {
       isValid = false;
       // console.log( re.test(String(array[index].email).toLowerCase()))
       alert("Email And Confirm Email Does not Match  " + Number(index + 1));
@@ -207,7 +208,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
     };
     console.log(data);
     $.ajax({
-      url: "/create-booking-258",
+      url: "/create-booking-258-home",
       method: "POST",
       data: data,
       headers: { contentType: "application/json", Authorization: token },

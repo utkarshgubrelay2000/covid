@@ -73,6 +73,7 @@ router.get('/',registerController.homePage)
  router.post("/create-home",registerController.createBookingHome);
  router.post("/create-arrival",registerController.createBookingArrival);
  router.post("/create-booking-258",registerController.createBooking258);
+ router.post("/create-booking-258-home",registerController.createBooking258Home);
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);
