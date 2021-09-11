@@ -28,6 +28,10 @@ const personalDetailsSchema = new mongoose.Schema(
       enum: ["male", "female", "others"],
     },
     address: String,
+    city: String,
+    state: String,
+    transportMode: String,
+    brand_vaccine: String,
       
     arrival_vessel_number: {
       type: Number,

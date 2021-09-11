@@ -202,7 +202,7 @@ exports.chooseslotsHome = async (req, res) => {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
   }
   // let today = new Date()
-  console.log(req.params);
+  console.log(req.params,'id');
   let newDate = new Date();
   let nextDate = addDays(newDate, 1);
 
@@ -215,7 +215,7 @@ exports.chooseslotsHome = async (req, res) => {
   });
   if (!tests.date) {
   
-      console.log("hello")
+    
       res.render("choose-slots-home", {
         _id: req.params.name,
         slots: slots,
@@ -225,7 +225,8 @@ exports.chooseslotsHome = async (req, res) => {
       });
        
   } else {
-    res.render("choose-slots-home-days", {
+    console.log("hello",'Ghar')
+    res.render("choose-slots-days-home", {
       _id: req.params.id,
       slots: slots,
       testDetails: tests,
@@ -415,6 +416,7 @@ exports.contactdetailsPcr258 = async (req, res) => {
     arrivaldateinput:arrivaldateinput,departure:true
   });
 };
+
 exports.contactdetailsHome = async (req, res) => {
   let { spots, pcrSlot, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
@@ -508,6 +510,34 @@ console.log(date)
   }
  //console.log(spots5, spots,spots8);
   res.render("contact-for-258", {
+    testDetails: test,
+    packageid: packageid,
+    date: date,
+    spots: spots,
+    spots8: spots8,spots5:spots5,
+    people: peopleArray,
+    length: people,
+    arrivaldateinput:arrivaldateinput
+  });
+};
+exports.contactdetails258Home = async (req, res) => {
+  let { spots, spots5,spots8, date, people, packageid,arrivaldateinput } = req.body;
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
+  let peopleArray = [];
+  let peoplesDetails = {
+    email: "",
+  };
+console.log(date,'527')
+  if (people == 1) {
+    spots = [spots];
+    spots8 = [spots8];
+    spots5 = [spots5];
+  }
+  for (let index = 0; index < Number(req.body.people); index++) {
+    peopleArray.push(peoplesDetails);
+  }
+ //console.log(spots5, spots,spots8);
+  res.render("contact-for-258-home", {
     testDetails: test,
     packageid: packageid,
     date: date,
