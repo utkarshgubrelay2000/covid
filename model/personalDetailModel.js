@@ -70,7 +70,9 @@ const personalDetailsSchema = new mongoose.Schema(
       city: String,
       country: String,
       postcode: Number,
-    },
+    }
+  ,  
+    pcrSlot: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },
     slot: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },
     slotDay6: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },
     slot5: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },

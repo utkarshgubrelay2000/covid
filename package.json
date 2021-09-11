@@ -1,6 +1,6 @@
 {
-  "name": "immigration",
-  "version": "0.0.0",
+  "name": "covid",
+  "version": "2.21.0",
   "private": true,
   "scripts": {
     "start": "nodemon server.js"

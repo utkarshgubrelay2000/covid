@@ -366,7 +366,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spots' class="w-100 field" value=${ele}>`;
+      option += `<input name='pcrSlot' class="w-100 field" value=${ele}>`;
     });
 
     $("#pcrSlotsDay2").html(option);
@@ -604,7 +604,7 @@ if(isValid){
   let data = { slots: slot, personal_details: pd, packageid: packageid };
   console.log(data);
   $.ajax({
-    url: "/create",
+    url: "/create-pcr-pcr-and-single",
     method: "POST",
     data: data,
     Headers: { contentType: "application/json", Authorization: token },

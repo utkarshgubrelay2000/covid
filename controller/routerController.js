@@ -165,16 +165,27 @@ exports.chooseslots = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
   if (!tests.date) {
-  
-      console.log("hello")
-      res.render("choose-slots-form-for-pcr", {
-        _id: req.params.name,
-        slots: slots,
-        testDetails: tests,
-        pachageId: req.params.packId,
-        packAgeDetails:packAgeDetails
-      });
-       
+  if(packAgeDetails.daysCombo=='fittofly'){
+
+    res.render("choose-slots", {
+      _id: req.params.name,
+      slots: slots,
+      testDetails: tests,
+      pachageId: req.params.packId,
+      packAgeDetails:packAgeDetails
+    });
+  }
+  else{
+
+    res.render("choose-slots-form-for-pcr", {
+      _id: req.params.name,
+      slots: slots,
+      testDetails: tests,
+      pachageId: req.params.packId,
+      packAgeDetails:packAgeDetails
+    });
+  }
+    
   } else {
     res.render("choose-slots-days", {
       _id: req.params.id,
@@ -214,7 +225,7 @@ exports.chooseslotsHome = async (req, res) => {
       });
        
   } else {
-    res.render("choose-slots-days", {
+    res.render("choose-slots-home-days", {
       _id: req.params.id,
       slots: slots,
       testDetails: tests,
@@ -223,6 +234,33 @@ exports.chooseslotsHome = async (req, res) => {
     });
     console.log(packAgeDetails.daysCombo)
   }
+};
+exports.chooseslotsHomeDays= async (req, res) => {
+  function addDays(theDate, days) {
+    return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
+  }
+  // let today = new Date()
+  console.log(req.params);
+  let newDate = new Date();
+  let nextDate = addDays(newDate, 1);
+
+  const tests = await Test.findOne({ test_name: req.params.name });
+  const packAgeDetails = await TestPackage.findOne({ _id: req.params.packId });
+  const slots = await TimeSlots.find({
+    test: req.params.id,
+    booked: false,
+    bookedFor: { $gt: newDate, $lt: nextDate },
+  });
+  
+    res.render("choose-slots-home-days", {
+      _id: req.params.id,
+      slots: slots,
+      testDetails: tests,
+      pachageId: req.params.packId,
+      packAgeDetails:packAgeDetails
+    });
+    console.log(packAgeDetails.daysCombo)
+  
 };
 exports.contactdetails = async (req, res) => {
   let { spots, people, packageid } = req.body;
@@ -276,52 +314,32 @@ exports.contactdetails = async (req, res) => {
   }); }
 };
 exports.contactdetailsPCr = async (req, res) => {
-  let { spots, people, packageid } = req.body;
-  let test = await Test.findOne({ _id: req.body._id });
-  console.log(test)
+
+  let { spots, pcrSlot, date, people, packageid,arrivaldateinput } = req.body;
+  let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
- 
+
+  if (people == 1) {
+    pcrSlot = [pcrSlot];
+    spots = [spots];
+  }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots,req.body.spots);
-  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
-    res.render("not-traveling-form", {
-      testDetails: test,
-      date: req.body.date,
-      spots: spots,
-      packageid: packageid,
-      people: peopleArray,
-      length: peopleArray.length,
-    });
-  } else if(test._id=="612cbc00e9242568af80cf56" ){
-    res.render("contact-details", {
-      testDetails: test,
-      date: req.body.date,
-      spots: spots,
-      packageid: packageid,
-      people: peopleArray,
-      length: peopleArray.length,
-    departure:false,
-    arrivaldateinput:req.body.arrivaldateinput
-    });
-  }
-  else{
-
- console.log('slots',req.body.date)
-  res.render("contact-details-pcr", {
-    testDetails: test,
-    date: req.body.date,
-    spots: spots,
-    packageid: packageid,
-    people: peopleArray,
-    length: peopleArray.length,
-    departure:true
-  
-  }); }
+  console.log(pcrSlot, spots);
+  // res.render("contact-details", {
+  //   testDetails: test,
+  //   packageid: packageid,
+  //   date: date,
+  //   slot: spots,
+  //   pcrSlot: pcrSlot,
+  //   people: peopleArray,
+  //   length: people,
+  //   arrivaldateinput:arrivaldateinput,departure:true
+  // });
 };
 exports.contactdetailsHome = async (req, res) => {
   let { spots, people, packageid } = req.body;
@@ -520,7 +538,7 @@ exports.createBooking = async (req, res) => {
     console.log("here");
     let users = [];
     const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, slot: sloted[index] });
+      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index] });
       details.save().then(async (saved) => {
         users.push(saved._id);
         let res = await TimeSlots.findOneAndUpdate(
@@ -668,6 +686,79 @@ exports.createBookingArrival = async (req, res) => {
         );
         let res2 = await TimeSlots.findOneAndUpdate(
           { _id: slotedDay6[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+      //   console.log(res)
+        return saved._id;
+      });
+    });
+console.log(allslots)
+    setTimeout(() => {
+      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+    }, 1000);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createpcrandsingle = async (req, res) => {
+  try {
+    const { slots, pcrSlot, packageid } = req.body;
+    let sloted = slots.split(",");
+    let pcrSloted = pcrSlot.split(",");
+    personal_details = JSON.parse(req.body.personal_details);
+  //  console.log("hello", slots,personal_details.length);
+   
+    let allslots=slotedDay6.concat(sloted)
+//console.log(allslots)
+    const validation = validate(req.body, {
+      slots: {
+        presence: true,
+      },
+      personal_details: {
+        presence: true,
+      },
+    });
+
+    if (validation) {
+      res.status(400).json({
+        error: validation,
+        status: false,
+      });
+      return console.log(validation);
+    }
+  //  console.log("here", personal_details);
+    let users = [];
+    const promises = personal_details.map((person, index) => {
+      const details = new PersonalDetails({
+        ...person,
+        slot: sloted[index],
+        pcrSlot: pcrSloted[index],
+      });
+      details.save().then(async (saved) => {
+        users.push(saved._id);
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+          },
+          { new: true }
+        );
+        let res2 = await TimeSlots.findOneAndUpdate(
+          { _id: pcrSloted[index] },
           {
             booked: true,
             user: saved._id,
