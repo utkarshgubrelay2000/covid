@@ -115,20 +115,20 @@ async function selectTest(name, index, id) {
      Book A Home  Kit appointment
 </a>`:ele.daysCombo=='p258'?` 
 <a href="/choose-slots-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Tit appointment
+Book A Home  Kit appointment
 </a>`:""}
 ${ele.daysCombo=='2'?` 
 <a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Tit appointment
+Book A Home  Kit appointment
 </a>`:ele.daysCombo=='28'?` 
 <a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Tit appointment
+Book A Home  Kit appointment
 </a>`:ele.daysCombo=='258'?` 
 <a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Tit appointment
+Book A Home  Kit appointment
 </a>`:ele.daysCombo=='5'?` 
 <a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Tit appointment
+Book A Home  Kit appointment
 </a>`:""}
              ${/*ele.price2?` <div class="sub-package-name">
                  <p>
