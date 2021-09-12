@@ -177,6 +177,7 @@ $("#booking-head").html(str);
 function getSlotsByArrival(type) {
   let option = "";
   let option2 = "";
+  let arrivalDate = document.getElementById("arrivaldate").value;
   $("#slots").html(option);
   let date;
   let id = document.getElementById("test").value;
@@ -184,7 +185,7 @@ function getSlotsByArrival(type) {
     let day8 = document.getElementById("date2");
     date = document.getElementById("date").value;
      
-    let value = new Date(date);
+    let value = new Date(arrivalDate);
     
     console.log(date, value, date);
 
@@ -199,7 +200,7 @@ function getSlotsByArrival(type) {
     let day8 = document.getElementById("date5");
     date = document.getElementById("date").value;
 
-    let value = new Date(date);
+    let value = new Date(arrivalDate);
     
     console.log(date, value, date);
 
@@ -211,7 +212,7 @@ function getSlotsByArrival(type) {
     let day8 = document.getElementById("date2");
     date = document.getElementById("date5").value;
 
-    let value = new Date(date);
+    let value = new Date(arrivalDate);
     
     console.log(date, value);
 
@@ -708,6 +709,7 @@ function getDate() {
 }
 function getArrivalDate(dayCombo) {
   console.log(dayCombo)
+  let arrival= document.getElementById("arrivaldateinput").value
   let arrivalDate = document.getElementById("arrivaldate");
   if(dayCombo=='28'){
     let date = document.getElementById("date");
@@ -723,8 +725,9 @@ function getArrivalDate(dayCombo) {
     let date = document.getElementById("date5");
     let value = new Date(arrivalDate.value);
     let mindate = new Date(arrivalDate.value);
+   
     document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
-    value.setDate(value.getDate() + 5);
+    value.setDate(arrival.getDate() + 5);
     console.log(value.toISOString().substr(0, 10));
     date.setAttribute("min", value.toISOString().substr(0, 10));
     //date.setAttribute("min", mindate.toISOString().substr(0, 10));

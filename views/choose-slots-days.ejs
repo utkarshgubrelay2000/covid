@@ -221,12 +221,12 @@
                                     <div class="row justify-content-center mt-4">
                                         <div class="col-xl-10">
                                             <div class="contact-form-box">
-                                                <%console.log(packAgeDetails.daysCombo)%>
+                                               
                                                 <%if(packAgeDetails.daysCombo=='28'){%>
                                                 <form method='POST'  action="/Arriving-in-England-booking">
                                                     <div class="row mt-5">
                                                         <div class="col-12 text-center">
-                                                            <div class="form-group select-people">
+                                                            <div class="form-group select-people" style='opacity: 0;'>
                                                                 <label>
                                                                     <i class="fas fa-users"></i>
                                                                     No. of people in booking
@@ -355,7 +355,7 @@
                                                     <form method='POST'  action="/contact-details">
                                                         <div class="row mt-5">
                                                             <div class="col-12 text-center">
-                                                                <div class="form-group select-people">
+                                                                <div class="form-group select-people" style='opacity: 0;'>
                                                                     <label>
                                                                         <i class="fas fa-users"></i>
                                                                         No. of people in booking
@@ -452,12 +452,13 @@
                                                         <form method='POST'  action="/contact-form-for-258">
                                                             <div class="row mt-5">
                                                                 <div class="col-12 text-center">
-                                                                    <div class="form-group select-people">
+                                                                    <div class="form-group select-people" style='opacity: 0;'>
                                                                         <label>
                                                                             <i class="fas fa-users"></i>
                                                                             No. of people in booking
                                                                         </label>
-                                                                        <select default-value='1' id='numberOfPerson' name='people'
+                                                                        <select default-value='1'
+                                                                         id='numberOfPerson' name='people'
                                                                             class="numbers">
                                                                             <option class="1">1</option>
                                                                             <option class="2">2</option>
@@ -621,7 +622,7 @@
                                                                 <div class="row mt-5">
                                                                     <div class="col-12 text-center">
                                                                         <input type='date' name='arrivaldateinput' id='arrivaldateinput'/>
-                                                                        <div class="form-group select-people">
+                                                                        <div class="form-group select-people" style='opacity: 0;'>
                                                                             <label>
                                                                                 <i class="fas fa-users"></i>
                                                                                 No. of people in booking
@@ -714,8 +715,9 @@
                                                                 <form method='POST'  action="/contact-details">
                                                                     <div class="row mt-5">
                                                                         <div class="col-12 text-center">
-                                                                            <input type='date' name='arrivaldateinput' id='arrivaldateinput'/>
-                                                                            <div class="form-group select-people">
+                                                                            <input type='date' name='arrivaldateinput'
+                                                                             id='arrivaldateinput'/>
+                                                                            <div class="form-group select-people" style='opacity: 0;'>
                                                                                 <label>
                                                                                     <i class="fas fa-users"></i>
                                                                                     No. of people in booking

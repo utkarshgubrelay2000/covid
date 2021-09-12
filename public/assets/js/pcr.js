@@ -153,6 +153,8 @@ if (pln) {
 $("#booking-head").html(str);
 function getSlotsByArrival(type) {
   let option = "";
+    let arrivalDate = document.getElementById("arrivaldate").value;
+
   let option2 = "";
   $("#slots").html(option);
   let date;
@@ -172,8 +174,7 @@ function getSlotsByArrival(type) {
   else if(type==4) {
     date = document.getElementById("pcrdate2").value;
     let day8 = document.getElementById("pcrdate8");
-    let value = new Date(date);
-    
+    let value = new Date(arrivalDate);
     console.log(date, value, date);
 
     value.setDate(value.getDate() + 7);
@@ -183,7 +184,7 @@ function getSlotsByArrival(type) {
   else if(type==5) {
     let day8 = document.getElementById("pcrdate5");
     date = document.getElementById("pcrdate2").value;
-    let value = new Date(date);
+    let value = new Date(arrivalDate);
     console.log(date, value, date);
     value.setDate(value.getDate() + 4);
     console.log(value.toISOString().substr(0, 10));
@@ -193,7 +194,7 @@ function getSlotsByArrival(type) {
     let day8 = document.getElementById("pcrdate8");
     date = document.getElementById("pcrdate5").value;
 
-    let value = new Date(date);
+    let value = new Date(arrivalDate);
     
     console.log(date, value);
 

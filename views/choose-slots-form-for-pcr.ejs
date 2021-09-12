@@ -227,7 +227,7 @@
                                                 <form method='POST'  action="/contact-details-pcr">
                                                     <div class="row mt-5">
                                                         <div class="col-12 text-center">
-                                                            <div class="form-group select-people">
+                                                            <div class="form-group select-people" style='opacity: 0;'>
                                                                 <label>
                                                                     <i class="fas fa-users"></i>
                                                                     No. of people in booking
@@ -356,7 +356,7 @@
                                                     <form method='POST'  action="/contact-details-pcr-28">
                                                         <div class="row mt-5">
                                                             <div class="col-12 text-center">
-                                                                <div class="form-group select-people">
+                                                                <div class="form-group select-people" style='opacity: 0;'>
                                                                     <label>
                                                                         <i class="fas fa-users"></i>
                                                                         No. of people in booking
@@ -517,12 +517,13 @@
                                                         <form method='POST'  action="/contact-details-pcr-258">
                                                             <div class="row mt-5">
                                                                 <div class="col-12 text-center">
-                                                                    <div class="form-group select-people">
+                                                                    <div class="form-group select-people" style='opacity: 0;'>
                                                                         <label>
                                                                             <i class="fas fa-users"></i>
                                                                             No. of people in booking
                                                                         </label>
-                                                                        <select default-value='1' id='numberOfPerson' name='people'
+                                                                        <select default-value='1' 
+                                                                         id='numberOfPerson' name='people'
                                                                             class="numbers">
                                                                             <option class="1">1</option>
                                                                             <option class="2">2</option>
@@ -586,7 +587,7 @@
                                                                                 <label>
                                                                                     Date For Day 2
                                                                                 </label>
-                                                                                <input type="date"
+                                                                                 <input type="date"
                                                                                 onchange="getSlotsByArrival(5)" name="date" min='<%=getTodayDate()%>'
                                                                                     id="pcrdate2" class="w-100 field" placeholder=""
                                                                                     required />
