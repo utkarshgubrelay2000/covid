@@ -1050,12 +1050,14 @@ function getArrivalDate(dayCombo) {
   }
   else if(dayCombo=='p2'){
     let date = document.getElementById("pcrdate2");
+
     let value = new Date(arrivalDate.value);
     let mindate = new Date(arrivalDate.value);
     document.getElementById("arrivaldateinput").value=value.toISOString().substr(0, 10)
     value.setDate(value.getDate() + 2);
-   
-    date.setAttribute("min", value.toISOString().substr(0, 10));
+    console.log(value.toISOString().substr(0, 10));
+    date.setAttribute("max", value.toISOString().substr(0, 10));
+    date.setAttribute("min", mindate.toISOString().substr(0, 10));
   
   }else{
     let date = document.getElementById("date");
