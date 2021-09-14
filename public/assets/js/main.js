@@ -647,13 +647,15 @@ function getHomeData(length, slot, packageid) {
       break;
     }
   }
-if(isValid){
   let address= document.getElementById("address"  ).value
   let city=   document.getElementById("city" ).value
  let state= document.getElementById("state" ).value
  let transportMode= document.getElementById("transportMode").value
+if(address && city && state && transportMode){
+alert("Fill All Details OF Address Form")
+}
+else if(isValid){
 
- 
   let pd = JSON.stringify(array);
 
   let data = { slots: slot, personal_details: pd, packageid: packageid,address:address,transportMode:transportMode,city:city,state:state };
