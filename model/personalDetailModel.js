@@ -76,7 +76,7 @@ const personalDetailsSchema = new mongoose.Schema(
       country: String,
       postcode: Number,
     }
-  ,  
+  ,  uniqueCode:Number,
     pcrSlot: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },
     slot: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },
     slotDay6: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlots" },

@@ -147,7 +147,197 @@ router.get('/',registerController.homePage)
     .populate("UserId").then(async found=>{
       //console.log(found)
 found.map(element=>{
-  let toSubsciberMail = {
+  if(element.packageid.daysCombo==='p2' || element.packageid.daysCombo==='2' ||
+   element.packageid.daysCombo==='28' || element.packageid.daysCombo==='p28'){
+    let toSubsciberMail = {
+      to: element.user.email,
+      from: "btravelclinic@gmail.com",
+      subject: " Welcome to  BT Travels Clinic ",
+      html: `<html>
+      <head>    
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="date=no" name="format-detection"/>
+        <meta content="address=no" name="format-detection"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <meta name="x-apple-disable-message-reformatting"/>
+        <title>
+          Emailer
+        </title>
+      </head>
+      <body> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" style="padding:10px">      
+          <tr>        
+            <td align="center" valign="top">          
+              <!-- Main -->
+              <table border="0" cellpadding="0" cellspacing="0" width="650">            
+                <tr>              
+                  <td class="td" style="width:650px; min-width:650px;font-size:14px; line-height:16px;padding:0; margin:0; font-weight:normal;background:#fff;font-family: Helvetica, Arial;">  
+                    <!-- Header -->
+                    <div style="background:#0750a4;padding:30px">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody>
+                          <tr valign="top">                    
+                              <td>
+                                <div style="display:inline-flex;padding-bottom: 20px;">
+                                  <div style="text-align: left;padding-right: 30px;" width="70%">
+                                    <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/zdpdmcvrst1nl6uk3p28.png">
+                                  
+                                  </div>
+                                  <div style="text-align: left;" width="30%">
+                                    <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/gkj22fxycplxvb0a9cum.png" width="100%">
+                                 
+                                  </div>
+                                </div>
+                              </td>
+                          </tr>   
+                          <tr>
+                            <td>
+                              <div style="color:#fff;font-size: 13px;">
+                                <b>BLACKBURN TRAVEL CLINIC</b> in partnership with <b>BIOGRAD DIAGNOSTIC LABORATORIES LTD.</b>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  
+                    <div style="padding:40px 30px;background:#fff;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div style="color:#fff;background: #0750a4;font-size: 24px;text-align: center;padding: 25px 0;">
+                                <b>PURCHASE CONFIRMATION RECEIPT</b>
+                              </div>
+                              <div style="color:#fff;background: #00a0d2;font-size: 20px;text-align: center;padding: 15px 0;">
+                                ${element.test.test_name} ${element.packageid.packageName}
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+    
+                    <div style="padding:0 30px 20px 30px;background:#fff;">
+                      <table border="0" cellpadding="0" cellspacing="2" width="100%" style="font-size:15px;"> 
+                        <tbody>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">
+                              ${element.user.firstName} ${element.user.lastName}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">${element.user.dob}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">PASSPORT NUMBER</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">${element.user.passport_id}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">FLIGHT NO.</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">${element.user.arrival_vessel_number}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL DATE</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">${new Date(element.bookedFor).toLocaleDateString()}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL TIME</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;"> ${new Date(element.bookedFor).toLocaleTimeString()}</td>
+                          </tr>
+                          <tr>
+                            <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ISOLATION ADDRESS</td>
+                            <td style="background: #e1e4f3;padding: 0 20px;">
+                              ${element.user.address}    ${element.user.city}   ${element.user.state} </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+    
+                    <div style="padding:0 30px 30px 30px;background:#fff;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div style="color:#fff;background: #0750a4;font-size: 20px;text-align: center;padding: 15px 0;">
+                                UNIQUE PASSENGER LOCATOR CODE
+                              </div>
+                              <div style="color:#333;background: #e1e4f3;font-size: 20px;text-align: center;padding: 20px 0;">
+                                <span>BIOWR ${element.user.uniqueCode}</span>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+    
+                     <!-- Footer -->
+                    <div style="padding: 0 30px 0 30px;background: url(https://mrinvito.com/html/covid19_pcr/emailer/img/footer-bg.png);background-size: contain;background-repeat: no-repeat;background-position: bottom;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody>
+                          <tr valign="bottom">  
+                              <td  width="75%">
+                                  <div style="text-align: left;padding-right: 30px;padding-bottom: 16px;color: #fff;">
+                                    <div style="padding-bottom:7px;font-size: 17px;">
+                                      <b>Blackburn Travel Clinic</b>
+                                    </div>
+                                    <div style="padding-bottom:6px;font-size: 14px;">
+                                      Email: <a href="mailto:blackburntravelclinic@gmail.com"
+                                       style="color: #fff;text-decoration: none;">blackburntravelclinic@gmail.com</a>
+                                    </div>
+                                    <div style="padding-bottom:6px;font-size: 14px;">
+                                      Tel: 01254 690496
+                                    </div>
+                                    <div style="padding-bottom:6px;font-size: 14px;">
+                                      Fax: 01254 692995
+                                    </div>
+                                    <div style="font-size: 18px;">
+                                      <a href="https://www.blackburntravelclinic.co.uk/" 
+                                      style="color: #fff;text-decoration: none;"><b>www.blackburntravelclinic.co.uk</b></a>
+                                    </div>
+                                  </div>
+                              </td>    
+                              <td>
+                                <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/avjrsbl8yhsowo0jtkn9.png" width="200px">
+                             
+                              </td>              
+                          </tr>   
+                        </tbody>
+                      </table>
+                    </div>
+    
+                  </td>
+                </tr>
+              </table>
+                <!-- END Main -->
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>`,
+   
+  
+    }
+  
+    transporter.sendMail(toSubsciberMail, (err) => {
+      if (err) {
+        console.log(
+          "some error in sending mail to subscriber",
+          err
+        );
+        return res
+          .status(400)
+          .json({
+            error: "some error in sending mail to admin",
+          });
+      }
+      console.log("message sent successfully");
+  
+      
+    });
+}else{ let toSubsciberMail = {
     to: element.user.email,
     from: "btravelclinic@gmail.com",
     subject: " Welcome to  BT Travels Clinic ",
@@ -221,7 +411,8 @@ found.map(element=>{
                       <tbody>
                         <tr>
                           <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
-                          <td style="background: #e1e4f3;padding: 0 20px;"> ${element.user.firstName} ${element.user.lastName} </td>
+                          <td style="background: #e1e4f3;padding: 0 20px;">
+                           ${element.user.firstName} ${element.user.lastName} </td>
                         </tr>
                         <tr>
                           <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
@@ -329,7 +520,7 @@ found.map(element=>{
     console.log("message sent successfully");
 
     
-  });
+  });}
 })
    
 let userData=found[0].UserId
@@ -434,7 +625,7 @@ let toSubsciberMail2 = {
             							</div>
 	                    </td>
                         <td style="width: 15%">${found.length}</td>
-                        <td style="width: 15%">${data.charge} per slot</td>
+                        <td style="width: 15%">${req.body.amount} per slot</td>
                       </tr>
                     </tbody>
                   </table>

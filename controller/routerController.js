@@ -726,7 +726,8 @@ exports.createBooking = async (req, res) => {
      console.log('hello',sloted)
     personal_details = JSON.parse(req.body.personal_details);
     
-
+    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
+    
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -745,6 +746,29 @@ exports.createBooking = async (req, res) => {
     }
     console.log("here");
     let users = [];
+    let packAgeDetails=await TestPackage.findById(packageId)
+    if(packAgeDetails.daysCombo=='2'){
+      const promises = personal_details.map((person, index) => {
+        const details = new PersonalDetails({ ...person, slot: sloted[index],last_order:last_order.uniqueCode+1 });
+        details.save().then(async (saved) => {
+          users.push(saved._id);
+          let res = await TimeSlots.findOneAndUpdate(
+            { _id: sloted[index] },
+            {
+              booked: true,
+              user: saved._id,
+              UserId: req.body.userId,
+              ...req.body,
+              packageid: packageid,
+            },
+            { new: true }
+          );
+          console.log(res);
+          return saved._id;
+        });
+      });
+    }
+    else{
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({ ...person, pcrSlot: sloted[index] });
       details.save().then(async (saved) => {
@@ -764,7 +788,7 @@ exports.createBooking = async (req, res) => {
         return saved._id;
       });
     });
-
+  }
     setTimeout(() => {
       console.log(users);
       if (promises)
@@ -948,11 +972,13 @@ exports.createBookingArrival = async (req, res) => {
     }
   //  console.log("here", personal_details);
     let users = [];
+    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
+console.log(last_order.uniqueCode,"lastOrder")
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        slotDay6: slotedDay6[index],
+        slotDay6: slotedDay6[index],uniqueCode:last_order.uniqueCode+1
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1081,6 +1107,7 @@ exports.createpcrandsingle = async (req, res) => {
     console.log('here') 
     let allslots=pcrSloted.concat(sloted)
 console.log(allslots,'AllSlots')
+let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
   
     console.log("here", personal_details);
     let users = [];
@@ -1088,7 +1115,7 @@ console.log(allslots,'AllSlots')
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],
+        pcrSlot: pcrSloted[index],last_order:last_order.uniqueCode+1
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1136,6 +1163,7 @@ exports.createpcrandtwo = async (req, res) => {
     let sloted = slots.split(",");
     let pcrSloted = pcrSlot.split(",");
     let day8Sloted = day8Slot.split(",");
+    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
 
     try {
       
@@ -1153,7 +1181,7 @@ console.log(allslots,'AllSlots')
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],slotDay6:day8Sloted[index]
+        pcrSlot: pcrSloted[index],slotDay6:day8Sloted[index],uniqueCode:last_order.uniqueCode+1
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
