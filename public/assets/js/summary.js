@@ -264,6 +264,7 @@ id='gender'  class="w-100 field"
               <input name='charge' value='${
                 res.data[0].packageid.price1 * res.data.length
               }.00' class='d-none'/>
+              <input name='userid' value='${res.token}' class='d-none'/>
               ${res.data
                 .map(function (work) {
                   return `<div class='border'>
@@ -272,7 +273,7 @@ id='gender'  class="w-100 field"
                 .join("")}
               <button  class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
           CONTINUE
-      </button><form> `
+      </button></form> `
               : ` <button  data-toggle="modal" id='openLogin' data-target="#exampleModal" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
       Login
   </button>`
