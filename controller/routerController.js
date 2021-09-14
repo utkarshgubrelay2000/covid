@@ -808,10 +808,12 @@ exports.createBooking = async (req, res) => {
 };
 exports.createHomeBooking = async (req, res) => {
   try {
-    const { slots, packageid } = req.body;
+    const { slots, packageid,address,state,city,transportMode } = req.body;
+    console.log(req.body)
     let sloted = slots.split(",");
-     console.log('hello',sloted)
-    personal_details = JSON.parse(req.body.personal_details);
+  
+        personal_details = JSON.parse(req.body.personal_details);
+  
     
 
     const validation = validate(req.body, {
@@ -830,7 +832,7 @@ exports.createHomeBooking = async (req, res) => {
       });
       return console.log(validation);
     }
-    console.log("here");
+    console.log("here",address);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({ ...person, slot: sloted[index] });
@@ -843,7 +845,7 @@ exports.createHomeBooking = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
           },
           { new: true }
         );

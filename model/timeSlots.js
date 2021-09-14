@@ -13,6 +13,7 @@ const timeSlotSchema = new mongoose.Schema(
     approved: { type: Boolean, default: false },
     amount: { type: String },
     barcode: { type: String },
+    trackingId: { type: String },
     // booking_id: {
     //   type: mongoose.Schema.Types.ObjectId,611a431aed2e510ca06e52bd
     //   ref: "Booking",
@@ -35,6 +36,7 @@ const timeSlotSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    homeAddress:Object
   },
   { timestamps: true }
 );
