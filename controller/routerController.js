@@ -1023,8 +1023,8 @@ console.log(allslots)
 };
 exports.createBookingArrivalHome = async (req, res) => {
   try {
-    const { slots, slotAfterDay6, packageid } = req.body;
-    console.log("hello", slots);
+    const { slots, slotAfterDay6, packageid,address,transportMode,city,state } = req.body;
+ console.log(address)
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
@@ -1056,18 +1056,7 @@ exports.createBookingArrivalHome = async (req, res) => {
         slotDay6: slotedDay6[index],
       });
       details.save().then(async (saved) => {
-        users.push(saved._id);
-        let res = await TimeSlots.findOneAndUpdate(
-          { _id: sloted[index] },
-          {
-            booked: true,
-            user: saved._id,
-            UserId: req.body.userId,
-            ...req.body,
-            packageid: packageid,home:true
-          },
-          { new: true }
-        );
+        console.log(sloted[index])
         let res2 = await TimeSlots.findOneAndUpdate(
           { _id: slotedDay6[index] },
           {
@@ -1075,11 +1064,22 @@ exports.createBookingArrivalHome = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
           },
           { new: true }
         );
-      //   console.log(res)
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
+          },
+          { new: true }
+        );
+      
         return saved._id;
       });
     });

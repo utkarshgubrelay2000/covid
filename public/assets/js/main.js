@@ -651,7 +651,7 @@ function getHomeData(length, slot, packageid) {
   let city=   document.getElementById("city" ).value
  let state= document.getElementById("state" ).value
  let transportMode= document.getElementById("transportMode").value
-if(address && city && state && transportMode){
+if(!address && !city && !state && !transportMode){
 alert("Fill All Details OF Address Form")
 }
 else if(isValid){

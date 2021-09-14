@@ -112,6 +112,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
   console.log(packageid);
   console.log(token);
   let isValid = true;
+ 
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
@@ -159,7 +160,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       !re.test(String(array[index].email).toLowerCase())
     ) {
       isValid = false;
-     
+
       alert("Email Not Valid For Person  " + Number(index + 1));
       break;
     } else if (array[index].email == array[index].confirmemail) {
@@ -225,11 +226,10 @@ function get258Data(length, spots5, spots, spots8, packageid) {
   }
   //console.log(JSON.parse(personDetails),length)
 }
-function get28HomeData(length, spots5, spots, spots8, packageid) {
+function get28HomeData(length, spots, spots8, packageid) {
   length = Number(length);
   let token = localStorage.getItem("covid");
-  console.log(packageid);
-  console.log(token);
+  console.log(spots8)
   let isValid = true;
   let array = [];
   for (let index = 0; index < length; index++) {
@@ -241,15 +241,14 @@ function get28HomeData(length, spots5, spots, spots8, packageid) {
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
-      Postal: document.getElementById("Postal" + index).value,
+    
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
       brand_vaccine: document.getElementById("brand_vaccine" + index).value,
-      transportMode: document.getElementById("transportMode" + index).value,
+
       confirmemail: document.getElementById("confirmemail" + index).value,
-      city: document.getElementById("city" + index).value,
-      state: document.getElementById("state" + index).value,
+
       passport_id: document.getElementById("passport_id" + index).value,
       ethnicity: document.getElementById("ethnicity" + index).value,
       date_of_arrival: document.getElementById("date_of_arrival" + index).value,
@@ -305,7 +304,7 @@ function get28HomeData(length, spots5, spots, spots8, packageid) {
       break;
     } else if (!array[index].arrival_vessel_number) {
       isValid = false;
-      console.log(array[index].confirmemail,array[index].email)
+      console.log(array[index].confirmemail, array[index].email);
       alert("arrival vessel number  is Empty For Person" + Number(index + 1));
       break;
     } else if (!array[index].passport_id) {
@@ -318,14 +317,26 @@ function get28HomeData(length, spots5, spots, spots8, packageid) {
       break;
     }
   }
-  if (isValid) {
+  let address = document.getElementById("address").value;
+  let city = document.getElementById("city").value;
+  let state = document.getElementById("state").value;
+  let transportMode = document.getElementById("transportMode").value;
+  console.log(address)
+  if (!address && !city && !state ) {
+    alert("Fill All Details OF Address Form");
+  } else if (isValid) {
     let pd = JSON.stringify(array);
+
+
     let data = {
-    
       personal_details: pd,
       slots: spots,
       slotAfterDay6: spots8,
       packageid: packageid,
+      address: address,
+      transportMode: transportMode,
+      city: city,
+      state: state,
     };
     console.log(data);
     $.ajax({
