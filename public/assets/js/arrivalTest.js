@@ -123,15 +123,11 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
-      Postal: document.getElementById("Postal" + index).value,
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
       brand_vaccine: document.getElementById("brand_vaccine" + index).value,
-      transportMode: document.getElementById("transportMode" + index).value,
-      confirmemail: document.getElementById("confirmemail" + index).value,
-      city: document.getElementById("city" + index).value,
-      state: document.getElementById("state" + index).value,
+      confirmemail: document.getElementById("confirmemail" + index).value,  
       passport_id: document.getElementById("passport_id" + index).value,
       ethnicity: document.getElementById("ethnicity" + index).value,
       date_of_arrival: document.getElementById("date_of_arrival" + index).value,
@@ -163,7 +159,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
 
       alert("Email Not Valid For Person  " + Number(index + 1));
       break;
-    } else if (array[index].email == array[index].confirmemail) {
+    } else if (array[index].email !== array[index].confirmemail) {
       isValid = false;
       // console.log( re.test(String(array[index].email).toLowerCase()))
       alert("Email And Confirm Email Does not Match  " + Number(index + 1));
@@ -198,7 +194,13 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       break;
     }
   }
-  if (isValid) {
+  let address = document.getElementById("address").value;
+  let city = document.getElementById("city").value;
+  let state = document.getElementById("state").value;
+  let transportMode = document.getElementById("transportMode").value;
+  if (!address && !city && !state && !transportMode) {
+    alert("Fill All Details OF Address Form");
+  } else if (isValid) {
     let pd = JSON.stringify(array);
     let data = {
       spots5: spots5,

@@ -1399,7 +1399,7 @@ console.log(allslots)
 };
 exports.createBooking258Home = async (req, res) => {
   try {
-    const { spots5, spots,spots8, packageid } = req.body;
+    const { spots5, spots,spots8, packageid,address,transportMode,city,state } = req.body;
     let sloted = spots.split(",");
     let slotedDay6 = spots8.split(",");
     let sloted5 = spots5.split(",");
@@ -1429,7 +1429,7 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
           },
           { new: true }
         );
@@ -1440,7 +1440,7 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
 
           },
           { new: true }
@@ -1452,7 +1452,7 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
 
           },
           { new: true }
