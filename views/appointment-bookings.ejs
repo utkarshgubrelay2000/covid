@@ -292,7 +292,7 @@
                                                         <span class="text-white font-weight-bold">Vaccination Status</span>
                                                     </th>
                                                     <th>
-                                                        <span class="text-white font-weight-bold">Barcode</span>
+                                                        <span class="text-white font-weight-bold">Id</span>
                                                     </th>
                                                   
                                                 </tr>
@@ -343,8 +343,12 @@
                                                         </td>
                                                         <td class="text-center">
                                                             <span class="text-purple">
-                                                                <%=element.barcode%>  
-    
+                                                               <%if(element.barcode){%>         
+                                                                                <%=element.barcode%>  
+    <%}%> 
+    <%if(element.transportId){%>         
+    tId-    <%=element.transportId%>  
+<%}%>
                                                             </span>
                                                         </td>
                                                        
@@ -439,8 +443,12 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <span class="text-purple">
-                                                            <%=element.barcode%>  
-
+                                                            <%if(element.barcode){%>         
+                                                                <%=element.barcode%>  
+<%}%> 
+<%if(element.transportId){%>         
+tId-    <%=element.transportId%>  
+<%}%>
                                                         </span>
                                                     </td>
                                                    
