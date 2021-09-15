@@ -900,7 +900,11 @@ exports.createHomeBooking = async (req, res) => {
     let users = [];
    
     const promises =await personal_details.map(async (person, index) => {
-      const details = new PersonalDetails({ ...person });
+      let last_order = await PersonalDetails.findOne(
+        {},
+        { _id: 0, uniqueCode: 1 }
+      ).sort({ uniqueCode: -1 });
+      const details = new PersonalDetails({ ...person,uniqueCode:last_order.uniqueCode+1 });
       details.save().then(async (saved) => {
  
         let newUser = new HomeTestBooking({
@@ -957,6 +961,7 @@ exports.createBookingHome = async (req, res) => {
     }
     console.log("here");
     let users = [];
+    
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
