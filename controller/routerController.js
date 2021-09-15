@@ -1146,7 +1146,7 @@ let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniq
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],last_order:last_order.uniqueCode+1
+        pcrSlot: pcrSloted[index],uniqueCode:last_order.uniqueCode+1
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
