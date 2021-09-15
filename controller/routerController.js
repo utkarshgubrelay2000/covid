@@ -6,7 +6,9 @@ const jwt = require("jsonwebtoken");
 let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
 let moment = require("moment");
-const stripe=require('stripe')('sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw')
+const stripe = require("stripe")(
+  "sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw"
+);
 const PersonalDetails = require("../model/personalDetailModel");
 const TimeSlots = require("../model/timeSlots");
 const { validate } = require("validate.js");
@@ -16,7 +18,8 @@ const testimonial = require("../model/testimonialModel");
 const aboutmodel = require("../model/aboutModel");
 const User = require("../model/userModel");
 const Notification = require("../model/Notification");
-const nodemailer=require('nodemailer');
+const nodemailer = require("nodemailer");
+const HomeTestBooking = require("../model/HomeSlot");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -33,22 +36,22 @@ transporter.verify(function (error, success) {
     console.log("Server is ready to take our messages");
   }
 });
-exports.homePage = async(req, res) => {
+exports.homePage = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
- let testimonials= await testimonial.find({})
-  res.render("index",{faqs:faqs,testimonials:testimonials});
+  let testimonials = await testimonial.find({});
+  res.render("index", { faqs: faqs, testimonials: testimonials });
 };
 exports.prices = (req, res) => {
   res.render("prices");
 };
-exports.afterYourTest =async (req, res) => {
+exports.afterYourTest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
 
-  res.render("after-your-test",{faqs:faqs});
+  res.render("after-your-test", { faqs: faqs });
 };
 exports.preparingforyourtest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
-  res.render("preparing-for-your-test",{faqs:faqs});
+  res.render("preparing-for-your-test", { faqs: faqs });
 };
 
 exports.contact = (req, res) => {
@@ -94,14 +97,16 @@ exports.appointment = async (req, res) => {
     .limit(10);
   let completeslots = await TimeSlots.find({
     UserId: req.body.userId,
-    approved: true, paid: true,
+    approved: true,
+    paid: true,
   })
     .populate("test")
     .populate("packageid")
     .populate("user")
     .limit(10);
   let reports = await TimeSlots.find({
-    approved: false, paid: true,
+    approved: false,
+    paid: true,
     barcode: { $exists: true },
   })
     .populate("User")
@@ -109,7 +114,7 @@ exports.appointment = async (req, res) => {
     .populate("packageid")
     .populate("user")
     .limit(10);
-  console.log(completeslots[0],req.body)
+  console.log(completeslots[0], req.body);
   res.render("appointment-bookings", {
     myslots: myslots,
     data: userDetails,
@@ -120,7 +125,7 @@ exports.appointment = async (req, res) => {
   });
 };
 exports.paginationappointment = async (req, res) => {
-  let number=req.body.number
+  let number = req.body.number;
   let userDetails = await User.findById(req.body.userId, {
     password: 0,
     gender: 0,
@@ -181,36 +186,32 @@ exports.chooseslots = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
   if (!tests.date) {
-  if(packAgeDetails.daysCombo=='fittofly'){
-
-    res.render("choose-slots", {
-      _id: req.params.name,
-      slots: slots,
-      testDetails: tests,
-      pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
-    });
-  }
-  else{
-
-    res.render("choose-slots-form-for-pcr", {
-      _id: req.params.name,
-      slots: slots,
-      testDetails: tests,
-      pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
-    });
-  }
-    
+    if (packAgeDetails.daysCombo == "fittofly") {
+      res.render("choose-slots", {
+        _id: req.params.name,
+        slots: slots,
+        testDetails: tests,
+        pachageId: req.params.packId,
+        packAgeDetails: packAgeDetails,
+      });
+    } else {
+      res.render("choose-slots-form-for-pcr", {
+        _id: req.params.name,
+        slots: slots,
+        testDetails: tests,
+        pachageId: req.params.packId,
+        packAgeDetails: packAgeDetails,
+      });
+    }
   } else {
     res.render("choose-slots-days", {
       _id: req.params.id,
       slots: slots,
       testDetails: tests,
       pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
+      packAgeDetails: packAgeDetails,
     });
-    console.log(packAgeDetails.daysCombo)
+    console.log(packAgeDetails.daysCombo);
   }
 };
 exports.chooseslotsHome = async (req, res) => {
@@ -218,7 +219,7 @@ exports.chooseslotsHome = async (req, res) => {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
   }
   // let today = new Date()
-  console.log(req.params,'id');
+  console.log(req.params, "id");
   let newDate = new Date();
   let nextDate = addDays(newDate, 1);
 
@@ -230,29 +231,25 @@ exports.chooseslotsHome = async (req, res) => {
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
   if (!tests.date) {
-  
-    
-      res.render("choose-slots-home", {
-        _id: req.params.name,
-        slots: slots,
-        testDetails: tests,
-        pachageId: req.params.packId,
-        packAgeDetails:packAgeDetails
-      });
-       
+    res.render("choose-slots-home", {
+      _id: req.params.name,
+      slots: slots,
+      testDetails: tests,
+      pachageId: req.params.packId,
+      packAgeDetails: packAgeDetails,
+    });
   } else {
-    console.log("hello",'Ghar')
+    console.log("hello", "Ghar");
     res.render("choose-slots-days-home", {
       _id: req.params.id,
       slots: slots,
       testDetails: tests,
       pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
+      packAgeDetails: packAgeDetails,
     });
-    console.log(packAgeDetails.daysCombo)
   }
 };
-exports.chooseslotsHomeDays= async (req, res) => {
+exports.chooseslotsHomeDays = async (req, res) => {
   function addDays(theDate, days) {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
   }
@@ -268,34 +265,36 @@ exports.chooseslotsHomeDays= async (req, res) => {
     booked: false,
     bookedFor: { $gt: newDate, $lt: nextDate },
   });
-  
-    res.render("choose-slots-home-days", {
-      _id: req.params.id,
-      slots: slots,
-      testDetails: tests,
-      pachageId: req.params.packId,
-      packAgeDetails:packAgeDetails
-    });
-    console.log(packAgeDetails.daysCombo)
-  
+
+  res.render("choose-slots-home-days", {
+    _id: req.params.id,
+    slots: slots,
+    testDetails: tests,
+    pachageId: req.params.packId,
+    packAgeDetails: packAgeDetails,
+  });
+  console.log(packAgeDetails.daysCombo);
 };
 exports.contactdetails = async (req, res) => {
   let { spots, people, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
-  console.log(test)
+  console.log(test);
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
   if (people == 1) {
-    console.log('hello')
+    console.log("hello");
     spots = [spots];
   }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots,req.body.spots,"hhh");
-  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
+  console.log(spots, req.body.spots, "hhh");
+  if (
+    test._id == "612cbc06e9242568af80cf57" ||
+    test.test_name == "I am NOT travelling"
+  ) {
     res.render("not-traveling-form", {
       testDetails: test,
       date: req.body.date,
@@ -304,7 +303,7 @@ exports.contactdetails = async (req, res) => {
       people: peopleArray,
       length: peopleArray.length,
     });
-  } else if(test._id=="612cbc00e9242568af80cf56" ){
+  } else if (test._id == "612cbc00e9242568af80cf56") {
     res.render("contact-details", {
       testDetails: test,
       date: req.body.date,
@@ -312,71 +311,59 @@ exports.contactdetails = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-    departure:false,
-    arrivaldateinput:req.body.arrivaldateinput
+      departure: false,
+      arrivaldateinput: req.body.arrivaldateinput,
     });
-  }
-  else{
-let response=await TestPackage.findById(packageid)
-console.log(response)
-if(response.daysCombo=='fittofly'){
-  res.render("contact-details", {
-    testDetails: test,
-    date: req.body.date,
-    spots: spots,
-    packageid: packageid,
-    people: peopleArray,
-    length: peopleArray.length,
-    departure:true
-    
-   });
-}
- else{
-
-   res.render("contact-details-pcr", {
-     testDetails: test,
-     date: req.body.date,
-     spots: spots,
-     packageid: packageid,
-     people: peopleArray,
-     length: peopleArray.length,
-     departure:true
-     
-    }); }
+  } else {
+    let response = await TestPackage.findById(packageid);
+    console.log(response);
+    if (response.daysCombo == "fittofly") {
+      res.render("contact-details", {
+        testDetails: test,
+        date: req.body.date,
+        spots: spots,
+        packageid: packageid,
+        people: peopleArray,
+        length: peopleArray.length,
+        departure: true,
+      });
+    } else {
+      res.render("contact-details-pcr", {
+        testDetails: test,
+        date: req.body.date,
+        spots: spots,
+        packageid: packageid,
+        people: peopleArray,
+        length: peopleArray.length,
+        departure: true,
+      });
+    }
   }
 };
 exports.contactdetailsHomeArrival = async (req, res) => {
-  let { spots, people, packageid } = req.body;
+  let { people, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
-  console.log(test)
+//  console.log(test);
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
-  if (people == 1) {
-    console.log('hello')
-    spots = [spots];
-  }
+ 
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
- 
-    res.render("contact-details-arrival-home", {
-      testDetails: test,
-      date: req.body.date,
-      spots: spots,
-      packageid: packageid,
-      people: peopleArray,
-      length: peopleArray.length,
-    departure:false,
-    arrivaldateinput:req.body.arrivaldateinput
-    });
-  
-  
+console.log(packageid)
+  res.render("contact-details-arrival-home", {
+    testDetails: test,
+    packageid: packageid,
+    people: peopleArray,
+    length: peopleArray.length,
+    departure: false,
+    arrivaldateinput: req.body.arrivaldateinput,
+  });
 };
 exports.contactdetailsPCr = async (req, res) => {
-
-  let { spots, pcrSlot, date, people, packageid,arrivaldateinput } = req.body;
+  let { spots, pcrSlot, date, people, packageid, arrivaldateinput } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -399,12 +386,13 @@ exports.contactdetailsPCr = async (req, res) => {
     pcrSlot: pcrSlot,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput,departure:true
+    arrivaldateinput: arrivaldateinput,
+    departure: true,
   });
 };
 exports.contactdetailsPcr28 = async (req, res) => {
-
-  let { spots, pcrSlot,slotsDay8, date, people, packageid,arrivaldateinput } = req.body;
+  let { spots, pcrSlot, slotsDay8, date, people, packageid, arrivaldateinput } =
+    req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -414,7 +402,7 @@ exports.contactdetailsPcr28 = async (req, res) => {
   if (people == 1) {
     pcrSlot = [pcrSlot];
     spots = [spots];
-    slotsDay8=[slotsDay8]
+    slotsDay8 = [slotsDay8];
   }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
@@ -424,16 +412,26 @@ exports.contactdetailsPcr28 = async (req, res) => {
     testDetails: test,
     packageid: packageid,
     date: date,
-    spots: spots,slotsDay8:slotsDay8,
+    spots: spots,
+    slotsDay8: slotsDay8,
     pcrSlot: pcrSlot,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput,departure:true
+    arrivaldateinput: arrivaldateinput,
+    departure: true,
   });
 };
 exports.contactdetailsPcr258 = async (req, res) => {
-
-  let { spots, pcrSlot,slotsDay8,slotsDay5, date, people, packageid,arrivaldateinput } = req.body;
+  let {
+    spots,
+    pcrSlot,
+    slotsDay8,
+    slotsDay5,
+    date,
+    people,
+    packageid,
+    arrivaldateinput,
+  } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -443,8 +441,8 @@ exports.contactdetailsPcr258 = async (req, res) => {
   if (people == 1) {
     pcrSlot = [pcrSlot];
     spots = [spots];
-    slotsDay8=[slotsDay8]
-    slotsDay5=[slotsDay5]
+    slotsDay8 = [slotsDay8];
+    slotsDay5 = [slotsDay5];
   }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
@@ -454,28 +452,34 @@ exports.contactdetailsPcr258 = async (req, res) => {
     testDetails: test,
     packageid: packageid,
     date: date,
-    spots: spots,slotsDay8:slotsDay8,slotsDay5:slotsDay5,
+    spots: spots,
+    slotsDay8: slotsDay8,
+    slotsDay5: slotsDay5,
     pcrSlot: pcrSlot,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput,departure:true
+    arrivaldateinput: arrivaldateinput,
+    departure: true,
   });
 };
 
 exports.contactdetailsHome = async (req, res) => {
   let { spots, pcrSlot, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
-  console.log(test)
+  console.log(test);
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
- 
+
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots,req.body.spots);
-  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
+  console.log(spots, req.body.spots);
+  if (
+    test._id == "612cbc06e9242568af80cf57" ||
+    test.test_name == "I am NOT travelling"
+  ) {
     res.render("not-traveling-form", {
       testDetails: test,
       date: req.body.date,
@@ -484,7 +488,7 @@ exports.contactdetailsHome = async (req, res) => {
       people: peopleArray,
       length: peopleArray.length,
     });
-  } else if(test._id=="612cbc00e9242568af80cf56" ){
+  } else if (test._id == "612cbc00e9242568af80cf56") {
     res.render("contact-details", {
       testDetails: test,
       date: req.body.date,
@@ -492,38 +496,40 @@ exports.contactdetailsHome = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-    departure:false,
-    arrivaldateinput:req.body.arrivaldateinput
+      departure: false,
+      arrivaldateinput: req.body.arrivaldateinput,
+    });
+  } else {
+    console.log("slots", req.body.date);
+    res.render("contact-details-home", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      pcrSlot: pcrSlot,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+      departure: true,
     });
   }
-  else{
-
- console.log('slots',req.body.date)
-  res.render("contact-details-home", {
-    testDetails: test,
-    date: req.body.date,
-    spots: spots,pcrSlot:pcrSlot,
-    packageid: packageid,
-    people: peopleArray,
-    length: peopleArray.length,
-    departure:true
-  
-  }); }
 };
 exports.contactdetailsHome = async (req, res) => {
   let { spots, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
-  console.log(test)
+  console.log(test);
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
- 
+
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots,req.body.spots);
-  if(test._id=="612cbc06e9242568af80cf57" || test.test_name=="I am NOT travelling"){
+  console.log(spots, req.body.spots);
+  if (
+    test._id == "612cbc06e9242568af80cf57" ||
+    test.test_name == "I am NOT travelling"
+  ) {
     res.render("not-traveling-form", {
       testDetails: test,
       date: req.body.date,
@@ -532,7 +538,7 @@ exports.contactdetailsHome = async (req, res) => {
       people: peopleArray,
       length: peopleArray.length,
     });
-  } else if(test._id=="612cbc00e9242568af80cf56" ){
+  } else if (test._id == "612cbc00e9242568af80cf56") {
     res.render("contact-details", {
       testDetails: test,
       date: req.body.date,
@@ -540,26 +546,31 @@ exports.contactdetailsHome = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-    departure:false,
-    arrivaldateinput:req.body.arrivaldateinput
+      departure: false,
+      arrivaldateinput: req.body.arrivaldateinput,
+    });
+  } else {
+    console.log("slots", req.body.date);
+    res.render("contact-details-arrival-home", {
+      testDetails: test,
+      date: req.body.date,
+      spots: spots,
+      packageid: packageid,
+      people: peopleArray,
+      length: peopleArray.length,
+      departure: true,
     });
   }
-  else{
-
- console.log('slots',req.body.date)
-  res.render("contact-details-arrival-home", {
-    testDetails: test,
-    date: req.body.date,
-    spots: spots,
-    packageid: packageid,
-    people: peopleArray,
-    length: peopleArray.length,
-    departure:true
-  
-  }); }
 };
 exports.contactdetailsforArrivinginEngland = async (req, res) => {
-  let { spotArrival, spotAfterDay6, date, people, packageid,arrivaldateinput } = req.body;
+  let {
+    spotArrival,
+    spotAfterDay6,
+    date,
+    people,
+    packageid,
+    arrivaldateinput,
+  } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -573,7 +584,7 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
- // console.log(spotArrival, spotAfterDay6);
+  // console.log(spotArrival, spotAfterDay6);
   res.render("contact-for-arrival", {
     testDetails: test,
     packageid: packageid,
@@ -582,11 +593,18 @@ exports.contactdetailsforArrivinginEngland = async (req, res) => {
     slotAfterDay6: spotAfterDay6,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput
+    arrivaldateinput: arrivaldateinput,
   });
 };
 exports.contactdetails28Home = async (req, res) => {
-  let { spotArrival, spotAfterDay6, date, people, packageid,arrivaldateinput } = req.body;
+  let {
+    spotArrival,
+    spotAfterDay6,
+    date,
+    people,
+    packageid,
+    arrivaldateinput,
+  } = req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
@@ -600,7 +618,7 @@ exports.contactdetails28Home = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
- // console.log(spotArrival, spotAfterDay6);
+  // console.log(spotArrival, spotAfterDay6);
   res.render("contact-for-arrival-home", {
     testDetails: test,
     packageid: packageid,
@@ -609,17 +627,18 @@ exports.contactdetails28Home = async (req, res) => {
     slotAfterDay6: spotAfterDay6,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput
+    arrivaldateinput: arrivaldateinput,
   });
 };
 exports.contactdetails258 = async (req, res) => {
-  let { spots, spots5,spots8, date, people, packageid,arrivaldateinput } = req.body;
+  let { spots, spots5, spots8, date, people, packageid, arrivaldateinput } =
+    req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
-console.log(date)
+  console.log(date);
   if (people == 1) {
     spots = [spots];
     spots8 = [spots8];
@@ -628,26 +647,28 @@ console.log(date)
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
- //console.log(spots5, spots,spots8);
+  //console.log(spots5, spots,spots8);
   res.render("contact-for-258", {
     testDetails: test,
     packageid: packageid,
     date: date,
     spots: spots,
-    spots8: spots8,spots5:spots5,
+    spots8: spots8,
+    spots5: spots5,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput
+    arrivaldateinput: arrivaldateinput,
   });
 };
 exports.contactdetails258Home = async (req, res) => {
-  let { spots, spots5,spots8, date, people, packageid,arrivaldateinput } = req.body;
+  let { spots, spots5, spots8, date, people, packageid, arrivaldateinput } =
+    req.body;
   let test = await TestPackage.findOne({ _id: req.body.packageid });
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
   };
-console.log(date,'527')
+  console.log(date, "527");
   if (people == 1) {
     spots = [spots];
     spots8 = [spots8];
@@ -656,16 +677,17 @@ console.log(date,'527')
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
- //console.log(spots5, spots,spots8);
+  //console.log(spots5, spots,spots8);
   res.render("contact-for-258-home", {
     testDetails: test,
     packageid: packageid,
     date: date,
     spots: spots,
-    spots8: spots8,spots5:spots5,
+    spots8: spots8,
+    spots5: spots5,
     people: peopleArray,
     length: people,
-    arrivaldateinput:arrivaldateinput
+    arrivaldateinput: arrivaldateinput,
   });
 };
 exports.contact = (req, res) => {
@@ -678,16 +700,26 @@ exports.findtestcenter = (req, res) => {
   res.render("find-test-center");
 };
 exports.notification = (req, res) => {
-  Notification.find({UserId:req.body.userId}).sort({_id:-1}).populate('slotId').populate({   path: "slotId",
-  model: "TimeSlots",populate:{
-    path: "packageid",
-    model: "TestPackage"
-  }})
+  Notification.find({ UserId: req.body.userId })
+    .sort({ _id: -1 })
+    .populate("slotId")
+    .populate({
+      path: "slotId",
+      model: "TimeSlots",
+      populate: {
+        path: "packageid",
+        model: "TestPackage",
+      },
+    })
 
-  .populate('user').then(myNotification=>{
-    console.log(myNotification[0])
-    res.render("notification",{notification:myNotification,token: req.params.token});
-  })
+    .populate("user")
+    .then((myNotification) => {
+      console.log(myNotification[0]);
+      res.render("notification", {
+        notification: myNotification,
+        token: req.params.token,
+      });
+    });
 };
 exports.profile = (req, res) => {
   User.findById(req.body.userId, {
@@ -706,24 +738,34 @@ exports.profile = (req, res) => {
 exports.settings = (req, res) => {
   res.render("settings");
 };
-exports.profileEdit = async(req, res) => {
- // console.log(req.params)
-await PersonalDetails.findById(req.params.id).then(found=>{
-  res.render("profileEdit",{data:found,id:req.params.id,token:req.params.token});
-})
+exports.profileEdit = async (req, res) => {
+  // console.log(req.params)
+  await PersonalDetails.findById(req.params.id).then((found) => {
+    res.render("profileEdit", {
+      data: found,
+      id: req.params.id,
+      token: req.params.token,
+    });
+  });
 };
-exports.editPersonDetails=async (req,res)=>{
-  console.log(req.body,req.params)
-  await PersonalDetails.findByIdAndUpdate(req.params.id,{...req.body})
-    res.redirect("/");
-  
-}
+exports.editPersonDetails = async (req, res) => {
+  console.log(req.body, req.params);
+  await PersonalDetails.findByIdAndUpdate(req.params.id, { ...req.body });
+  res.redirect("/");
+};
 exports.testsummary = (req, res) => {
   res.render("test-summary");
+};
+exports.testsummaryHome = (req, res) => {
+  res.render("test-summary-home");
 };
 exports.testTerms = (req, res) => {
   res.render("test-terms");
 };
+exports.testtermshomekit = (req, res) => {
+  res.render("test-terms-home-kit");
+};
+
 
 exports.testslisting = async (req, res) => {
   let tests = await Test.find({});
@@ -739,11 +781,14 @@ exports.createBooking = async (req, res) => {
   try {
     const { slots, packageid } = req.body;
     let sloted = slots.split(",");
-     console.log('hello',sloted)
+    console.log("hello", sloted);
     personal_details = JSON.parse(req.body.personal_details);
-    
-    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
-    
+
+    let last_order = await PersonalDetails.findOne(
+      {},
+      { _id: 0, uniqueCode: 1 }
+    ).sort({ uniqueCode: -1 });
+
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -760,14 +805,18 @@ exports.createBooking = async (req, res) => {
       });
       return console.log(validation);
     }
-  
-    console.log("here2",packageid);
+
+    console.log("here2", packageid);
     let users = [];
-    let packAgeDetails=await TestPackage.findById(packageid)
-    if(packAgeDetails.daysCombo=='2'){
-      console.log('locator')
+    let packAgeDetails = await TestPackage.findById(packageid);
+    if (packAgeDetails.daysCombo == "2") {
+      console.log("locator");
       const promises = personal_details.map((person, index) => {
-        const details = new PersonalDetails({ ...person, slot: sloted[index],uniqueCode:last_order.uniqueCode+1 });
+        const details = new PersonalDetails({
+          ...person,
+          slot: sloted[index],
+          uniqueCode: last_order.uniqueCode + 1,
+        });
         details.save().then(async (saved) => {
           users.push(saved._id);
           let res = await TimeSlots.findOneAndUpdate(
@@ -788,7 +837,48 @@ exports.createBooking = async (req, res) => {
       setTimeout(() => {
         console.log(users);
         if (promises)
-          res.json({ message: "Booking Saved!", allslots: sloted, status: true });
+          res.json({
+            message: "Booking Saved!",
+            allslots: sloted,
+            status: true,
+          });
+        else
+          res.status(400).json({
+            status: false,
+            data: "Something wrong",
+          });
+      }, 600);
+    } else {
+      const promises = personal_details.map((person, index) => {
+        const details = new PersonalDetails({
+          ...person,
+          pcrSlot: sloted[index],
+        });
+        details.save().then(async (saved) => {
+          users.push(saved._id);
+          let res = await TimeSlots.findOneAndUpdate(
+            { _id: sloted[index] },
+            {
+              booked: true,
+              user: saved._id,
+              UserId: req.body.userId,
+              ...req.body,
+              packageid: packageid,
+            },
+            { new: true }
+          );
+          console.log(res);
+          return saved._id;
+        });
+      });
+      setTimeout(() => {
+        console.log(users);
+        if (promises)
+          res.json({
+            message: "Booking Saved!",
+            allslots: sloted,
+            status: true,
+          });
         else
           res.status(400).json({
             status: false,
@@ -796,38 +886,6 @@ exports.createBooking = async (req, res) => {
           });
       }, 600);
     }
-    else{
-    const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index] });
-      details.save().then(async (saved) => {
-        users.push(saved._id);
-        let res = await TimeSlots.findOneAndUpdate(
-          { _id: sloted[index] },
-          {
-            booked: true,
-            user: saved._id,
-            UserId: req.body.userId,
-            ...req.body,
-            packageid: packageid,
-          },
-          { new: true }
-        );
-        console.log(res);
-        return saved._id;
-      });
-    });
-    setTimeout(() => {
-      console.log(users);
-      if (promises)
-        res.json({ message: "Booking Saved!", allslots: sloted, status: true });
-      else
-        res.status(400).json({
-          status: false,
-          data: "Something wrong",
-        });
-    }, 600);
-  }
-  
   } catch (error) {
     res.status(503).json({
       status: false,
@@ -837,62 +895,35 @@ exports.createBooking = async (req, res) => {
 };
 exports.createHomeBooking = async (req, res) => {
   try {
-    const { slots, packageid,address,state,city,transportMode } = req.body;
-    console.log(req.body)
-    let sloted = slots.split(",");
-  
-        personal_details = JSON.parse(req.body.personal_details);
-  
-    
-
-    const validation = validate(req.body, {
-      slots: {
-        presence: true,
-      },
-      personal_details: {
-        presence: true,
-      },
-    });
-
-    if (validation) {
-      res.status(400).json({
-        error: validation,
-        status: false,
-      });
-      return console.log(validation);
-    }
-    console.log("here",address);
+    const { date, packageid, address, state, city, transportMode } = req.body;
+    personal_details = JSON.parse(req.body.personal_details);
     let users = [];
-    const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, slot: sloted[index] });
+   
+    const promises =await personal_details.map(async (person, index) => {
+      const details = new PersonalDetails({ ...person });
       details.save().then(async (saved) => {
-        users.push(saved._id);
-        let res = await TimeSlots.findOneAndUpdate(
-          { _id: sloted[index] },
-          {
-            booked: true,
-            user: saved._id,
-            UserId: req.body.userId,
-            ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
-          },
-          { new: true }
-        );
-        console.log(res);
-        return saved._id;
+ 
+        let newUser = new HomeTestBooking({
+          date: date,
+          user: saved._id,
+          packageid: packageid,
+          homeAddress: { address, transportMode, city, state },
+        });
+        let responseForUserSave = await newUser.save();
+        users.push(responseForUserSave._id);
       });
     });
 
     setTimeout(() => {
-      console.log(users);
+      console.log(users,"users");
       if (promises)
-        res.json({ message: "Booking Saved!", allslots: sloted, status: true });
+        res.json({ message: "Booking Saved!", users: users, status: true });
       else
         res.status(400).json({
           status: false,
           data: "Something wrong",
         });
-    }, 600);
+    }, 2000);
   } catch (error) {
     res.status(503).json({
       status: false,
@@ -902,12 +933,11 @@ exports.createHomeBooking = async (req, res) => {
 };
 exports.createBookingHome = async (req, res) => {
   try {
-    const { slots,pcrSlots, packageid } = req.body;
+    const { slots, pcrSlots, packageid } = req.body;
     let sloted = slots.split(",");
     let pcrSlotsed = pcrSlots.split(",");
-     console.log('hello',sloted)
+    console.log("hello", sloted);
     personal_details = JSON.parse(req.body.personal_details);
-    
 
     const validation = validate(req.body, {
       slots: {
@@ -928,7 +958,11 @@ exports.createBookingHome = async (req, res) => {
     console.log("here");
     let users = [];
     const promises = personal_details.map((person, index) => {
-      const details = new PersonalDetails({ ...person, pcrSlot: sloted[index],day5Slot:pcrSlotsed[index] });
+      const details = new PersonalDetails({
+        ...person,
+        pcrSlot: sloted[index],
+        day5Slot: pcrSlotsed[index],
+      });
       details.save().then(async (saved) => {
         users.push(saved._id);
         let res = await TimeSlots.findOneAndUpdate(
@@ -938,7 +972,8 @@ exports.createBookingHome = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,
+            home: true,
           },
           { new: true }
         );
@@ -949,7 +984,8 @@ exports.createBookingHome = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true
+            packageid: packageid,
+            home: true,
           },
           { new: true }
         );
@@ -981,10 +1017,10 @@ exports.createBookingArrival = async (req, res) => {
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-    console.log("hello", slots,personal_details.length);
-   
-    let allslots=slotedDay6.concat(sloted)
-//console.log(allslots)
+    console.log("hello", slots, personal_details.length);
+
+    let allslots = slotedDay6.concat(sloted);
+    //console.log(allslots)
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -1001,15 +1037,19 @@ exports.createBookingArrival = async (req, res) => {
       });
       return console.log(validation);
     }
-  //  console.log("here", personal_details);
+    //  console.log("here", personal_details);
     let users = [];
-    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
-console.log(last_order.uniqueCode,"lastOrder")
+    let last_order = await PersonalDetails.findOne(
+      {},
+      { _id: 0, uniqueCode: 1 }
+    ).sort({ uniqueCode: -1 });
+    console.log(last_order.uniqueCode, "lastOrder");
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        slotDay6: slotedDay6[index],uniqueCode:last_order.uniqueCode+1
+        slotDay6: slotedDay6[index],
+        uniqueCode: last_order.uniqueCode + 1,
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1035,13 +1075,13 @@ console.log(last_order.uniqueCode,"lastOrder")
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
-console.log(allslots)
+    console.log(allslots);
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
@@ -1052,14 +1092,22 @@ console.log(allslots)
 };
 exports.createBookingArrivalHome = async (req, res) => {
   try {
-    const { slots, slotAfterDay6, packageid,address,transportMode,city,state } = req.body;
- console.log(address)
+    const {
+      slots,
+      slotAfterDay6,
+      packageid,
+      address,
+      transportMode,
+      city,
+      state,
+    } = req.body;
+    console.log(address);
     let sloted = slots.split(",");
     let slotedDay6 = slotAfterDay6.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-   
-    let allslots=slotedDay6.concat(sloted)
-//console.log(allslots)
+
+    let allslots = slotedDay6.concat(sloted);
+    //console.log(allslots)
     const validation = validate(req.body, {
       slots: {
         presence: true,
@@ -1076,7 +1124,7 @@ exports.createBookingArrivalHome = async (req, res) => {
       });
       return console.log(validation);
     }
-  //  console.log("here", personal_details);
+    //  console.log("here", personal_details);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
@@ -1085,7 +1133,7 @@ exports.createBookingArrivalHome = async (req, res) => {
         slotDay6: slotedDay6[index],
       });
       details.save().then(async (saved) => {
-        console.log(sloted[index])
+        console.log(sloted[index]);
         let res2 = await TimeSlots.findOneAndUpdate(
           { _id: slotedDay6[index] },
           {
@@ -1093,7 +1141,9 @@ exports.createBookingArrivalHome = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
+            packageid: packageid,
+            home: true,
+            homeAddress: { address, transportMode, city, state },
           },
           { new: true }
         );
@@ -1104,17 +1154,19 @@ exports.createBookingArrivalHome = async (req, res) => {
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
+            packageid: packageid,
+            home: true,
+            homeAddress: { address, transportMode, city, state },
           },
           { new: true }
         );
-      
+
         return saved._id;
       });
     });
-console.log(allslots)
+    console.log(allslots);
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
@@ -1125,28 +1177,31 @@ console.log(allslots)
 };
 exports.createpcrandsingle = async (req, res) => {
   try {
-    let { slots, pcrSlot, packageid,personal_details } = req.body;
+    let { slots, pcrSlot, packageid, personal_details } = req.body;
     console.log("hello", req.body);
     let sloted = slots.split(",");
     let pcrSloted = pcrSlot.split(",");
     try {
-      
       personal_details = JSON.parse(req.body.personal_details);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    console.log('here') 
-    let allslots=pcrSloted.concat(sloted)
-console.log(allslots,'AllSlots')
-let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
-  
+    console.log("here");
+    let allslots = pcrSloted.concat(sloted);
+    console.log(allslots, "AllSlots");
+    let last_order = await PersonalDetails.findOne(
+      {},
+      { _id: 0, uniqueCode: 1 }
+    ).sort({ uniqueCode: -1 });
+
     console.log("here", personal_details);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],uniqueCode:last_order.uniqueCode+1
+        pcrSlot: pcrSloted[index],
+        uniqueCode: last_order.uniqueCode + 1,
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1172,13 +1227,13 @@ let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniq
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
-console.log(allslots)
+    console.log(allslots);
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
@@ -1189,30 +1244,34 @@ console.log(allslots)
 };
 exports.createpcrandtwo = async (req, res) => {
   try {
-    let { slots, pcrSlot,day8Slot, packageid,personal_details } = req.body;
+    let { slots, pcrSlot, day8Slot, packageid, personal_details } = req.body;
     console.log("hello", req.body);
     let sloted = slots.split(",");
     let pcrSloted = pcrSlot.split(",");
     let day8Sloted = day8Slot.split(",");
-    let last_order=await PersonalDetails.findOne({},{_id:0,uniqueCode:1}).sort({uniqueCode:-1})
+    let last_order = await PersonalDetails.findOne(
+      {},
+      { _id: 0, uniqueCode: 1 }
+    ).sort({ uniqueCode: -1 });
 
     try {
-      
       personal_details = JSON.parse(req.body.personal_details);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    console.log('here') 
-    let allslots=pcrSloted.concat(sloted)
-    allslots=allslots.concat(day8Sloted)
-console.log(allslots,'AllSlots')
+    console.log("here");
+    let allslots = pcrSloted.concat(sloted);
+    allslots = allslots.concat(day8Sloted);
+    console.log(allslots, "AllSlots");
 
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],slotDay6:day8Sloted[index],uniqueCode:last_order.uniqueCode+1
+        pcrSlot: pcrSloted[index],
+        slotDay6: day8Sloted[index],
+        uniqueCode: last_order.uniqueCode + 1,
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1249,13 +1308,13 @@ console.log(allslots,'AllSlots')
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
 
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
@@ -1266,7 +1325,8 @@ console.log(allslots,'AllSlots')
 };
 exports.createpcrandthree = async (req, res) => {
   try {
-    let { slots, pcrSlot,day8Slot,day5Slot, packageid,personal_details } = req.body;
+    let { slots, pcrSlot, day8Slot, day5Slot, packageid, personal_details } =
+      req.body;
     console.log("hello", req.body);
     let sloted = slots.split(",");
     let pcrSloted = pcrSlot.split(",");
@@ -1274,24 +1334,25 @@ exports.createpcrandthree = async (req, res) => {
     let day5Sloted = day5Slot.split(",");
 
     try {
-      
       personal_details = JSON.parse(req.body.personal_details);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    console.log('here') 
-    let allslots=pcrSloted.concat(sloted)
-    allslots=allslots.concat(day8Sloted)
-    allslots=allslots.concat(day5Sloted)
-    
-console.log(allslots,'AllSlots')
+    console.log("here");
+    let allslots = pcrSloted.concat(sloted);
+    allslots = allslots.concat(day8Sloted);
+    allslots = allslots.concat(day5Sloted);
+
+    console.log(allslots, "AllSlots");
 
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
         slot: sloted[index],
-        pcrSlot: pcrSloted[index],slotDay6:day8Sloted[index],slot5:day5Sloted[index]
+        pcrSlot: pcrSloted[index],
+        slotDay6: day8Sloted[index],
+        slot5: day5Sloted[index],
       });
       details.save().then(async (saved) => {
         users.push(saved._id);
@@ -1339,13 +1400,13 @@ console.log(allslots,'AllSlots')
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
 
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 1000);
   } catch (error) {
     res.status(503).json({
@@ -1356,18 +1417,18 @@ console.log(allslots,'AllSlots')
 };
 exports.createBooking258 = async (req, res) => {
   try {
-    const { spots5, spots,spots8, packageid } = req.body;
+    const { spots5, spots, spots8, packageid } = req.body;
     let sloted = spots.split(",");
     let slotedDay6 = spots8.split(",");
     let sloted5 = spots5.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-console.log("helllo")
-   
-    let allslots=slotedDay6.concat(sloted)
-console.log(packageid)
-allslots=allslots.concat(sloted5)
-    
-  //  console.log("here", personal_details);
+    console.log("helllo");
+
+    let allslots = slotedDay6.concat(sloted);
+    console.log(packageid);
+    allslots = allslots.concat(sloted5);
+
+    //  console.log("here", personal_details);
     let users = [];
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
@@ -1411,13 +1472,13 @@ allslots=allslots.concat(sloted5)
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
-console.log(allslots)
+    console.log(allslots);
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 2000);
   } catch (error) {
     res.status(503).json({
@@ -1428,20 +1489,29 @@ console.log(allslots)
 };
 exports.createBooking258Home = async (req, res) => {
   try {
-    const { spots5, spots,spots8, packageid,address,transportMode,city,state } = req.body;
+    const {
+      spots5,
+      spots,
+      spots8,
+      packageid,
+      address,
+      transportMode,
+      city,
+      state,
+    } = req.body;
     let sloted = spots.split(",");
     let slotedDay6 = spots8.split(",");
     let sloted5 = spots5.split(",");
     personal_details = JSON.parse(req.body.personal_details);
-console.log("helllo")
-   
-    let allslots=slotedDay6.concat(sloted)
-console.log(packageid)
-allslots=allslots.concat(sloted5)
-    
-  //  console.log("here", personal_details);
+    console.log("helllo");
+
+    let allslots = slotedDay6.concat(sloted);
+    console.log(packageid);
+    allslots = allslots.concat(sloted5);
+
+    //  console.log("here", personal_details);
     let users = [];
-    console.log(personal_details[0])
+    console.log(personal_details[0]);
     const promises = personal_details.map((person, index) => {
       const details = new PersonalDetails({
         ...person,
@@ -1458,7 +1528,9 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
+            packageid: packageid,
+            home: true,
+            homeAddress: { address, transportMode, city, state },
           },
           { new: true }
         );
@@ -1469,8 +1541,9 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
-
+            packageid: packageid,
+            home: true,
+            homeAddress: { address, transportMode, city, state },
           },
           { new: true }
         );
@@ -1481,18 +1554,19 @@ allslots=allslots.concat(sloted5)
             user: saved._id,
             UserId: req.body.userId,
             ...req.body,
-            packageid: packageid,home:true,homeAddress:{address,transportMode,city,state}
-
+            packageid: packageid,
+            home: true,
+            homeAddress: { address, transportMode, city, state },
           },
           { new: true }
         );
-      //   console.log(res)
+        //   console.log(res)
         return saved._id;
       });
     });
-//console.log(allslots)
+    //console.log(allslots)
     setTimeout(() => {
-      res.json({ message: "Booking Saved!",allslots:allslots, status: true });
+      res.json({ message: "Booking Saved!", allslots: allslots, status: true });
     }, 2000);
   } catch (error) {
     res.status(503).json({
@@ -1549,80 +1623,141 @@ exports.getAlltestimonials = (req, res) => {
 };
 exports.cancelMySlot = async (req, res) => {
   let response = await TimeSlots.findById(req.body.id);
-  console.log(req.body.userId)
- let resNot=await Notification.findOne({slotId:req.body.id})
- if(!resNot){
-   let newNotification=new Notification({
-     status:"Pending",slotId:req.body.id,user:response.user,UserId:response.UserId
-    })
-    await newNotification.save()
+  console.log(req.body.userId);
+  let resNot = await Notification.findOne({ slotId: req.body.id });
+  if (!resNot) {
+    let newNotification = new Notification({
+      status: "Pending",
+      slotId: req.body.id,
+      user: response.user,
+      UserId: response.UserId,
+    });
+    await newNotification.save();
   }
   console.log(req.body.id);
   res.json("Success");
 };
 exports.getSlotsDetails = async (req, res) => {
-  let body=JSON.stringify(req.body)
-  let data=body.replace("slots[]",'slots')
-  let slots=JSON.parse(data)
-  console.log(req.body)
- 
-  if(req.body.token){
+  let body = JSON.stringify(req.body);
+  let data = body.replace("slots[]", "slots");
+  let slots = JSON.parse(data);
+  console.log(req.body);
+
+  if (req.body.token) {
     jwt.verify(req.body.token, process.env.JWT_SECRET, (err, payload) => {
       if (err || payload === undefined) {
         console.log(`some error in verifying jwt secret${err}`);
-      res.send("InValid Token")
+        res.send("InValid Token");
+      } else {
+        let md5UserId = payload.secretId;
+
+        TimeSlots.find({ _id: { $in: slots.slots } })
+          .populate("test")
+          .populate("packageid")
+          .populate("user")
+          .populate("UserId")
+          .then((found) => {
+            res.json({ message: "Success", data: found, token: md5UserId });
+          });
+        TimeSlots.updateMany(
+          { _id: { $in: slots.slots } },
+          { UserId: md5UserId }
+        )
+          .populate("test")
+          .populate("packageid")
+          .populate("user")
+          .populate("UserId")
+          .then((found) => {
+            console.log("Update");
+          });
       }
-  else{
-    let  md5UserId=payload.secretId
-
-    TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
-    .populate("packageid")
-    .populate("user")
-    .populate("UserId").then(found=>{
-      res.json({message:"Success",data:found,token:md5UserId});
-    })
-    TimeSlots.updateMany({_id:{$in:slots.slots}},{UserId:md5UserId}).populate("test")
-    .populate("packageid")
-    .populate("user")
-    .populate("UserId").then(found=>{
-     console.log('Update')
-    })
-  }
-  })
-  }
-  else{
-
-    TimeSlots.find({_id:{$in:slots.slots}}).populate("test")
-    .populate("packageid")
-    .populate("user")
-    .populate("UserId").then(found=>{
-      res.json({message:"Success",data:found,token:false});
-    })
+    });
+  } else {
+    TimeSlots.find({ _id: { $in: slots.slots } })
+      .populate("test")
+      .populate("packageid")
+      .populate("user")
+      .populate("UserId")
+      .then((found) => {
+        res.json({ message: "Success", data: found, token: false });
+      });
   }
 };
-exports.PaymentStripe=async (req,res)=>{
-  console.log(req.body,"slots")
-  
-  let slots=req.body.slots
-  if( typeof req.body.slots==="string"){
-    slots=[slots]
+exports.getSlotsHome = async (req, res) => {
+  let body = JSON.stringify(req.body);
+  let data = body.replace("slots[]", "slots");
+  let slots = JSON.parse(data);
+  console.log(req.body);
+
+  if (req.body.token) {
+    jwt.verify(req.body.token, process.env.JWT_SECRET, (err, payload) => {
+      if (err || payload === undefined) {
+        console.log(`some error in verifying jwt secret${err}`);
+        res.send("InValid Token");
+      } else {
+        let md5UserId = payload.secretId;
+
+        HomeTestBooking.find({ _id: { $in: slots.slots } })
+          .populate("test")
+          .populate("packageid")
+          .populate("user")
+          .populate("UserId")
+          .then((found) => {
+            res.json({ message: "Success", data: found, token: md5UserId });
+          });
+          HomeTestBooking.updateMany(
+          { _id: { $in: slots.slots } },
+          { UserId: md5UserId }
+        )
+          .populate("test")
+          .populate("packageid")
+          .populate("user")
+          .populate("UserId")
+          .then((found) => {
+            console.log("Update");
+          });
+      }
+    });
+  } else {
+    HomeTestBooking.find({ _id: { $in: slots.slots } })
+      .populate("test")
+      .populate("packageid")
+      .populate("user")
+      .populate("UserId")
+      .then((found) => {
+        res.json({ message: "Success", data: found, token: false });
+      });
   }
-  User.findById(req.body.userid).then(async foundUser=>{
-    if(foundUser.role=='admin'){
-      TimeSlots.updateMany({_id:{$in:slots}},{paid:true}).populate("test")
-      .then(async foundTimeSlots=>{
-        let found=await   TimeSlots.find({_id:{$in:slots}}).populate("test")
-        .populate("packageid")
-        .populate("user")
-        .populate("UserId")
-        found.map(element=>{
-          if(element.packageid.daysCombo==='p2' || element.packageid.daysCombo==='2' ||
-           element.packageid.daysCombo==='28' || element.packageid.daysCombo==='p28'){
-            let toSubsciberMail = {
-              to: element.user.email,
-              from: "btravelclinic@gmail.com",
-              subject: " Welcome to  BT Travels Clinic ",
-              html: `<html>
+};
+exports.PaymentStripe = async (req, res) => {
+  console.log(req.body, "slots");
+
+  let slots = req.body.slots;
+  if (typeof req.body.slots === "string") {
+    slots = [slots];
+  }
+  User.findById(req.body.userid).then(async (foundUser) => {
+    if (foundUser.role == "admin") {
+      TimeSlots.updateMany({ _id: { $in: slots } }, { paid: true })
+        .populate("test")
+        .then(async (foundTimeSlots) => {
+          let found = await TimeSlots.find({ _id: { $in: slots } })
+            .populate("test")
+            .populate("packageid")
+            .populate("user")
+            .populate("UserId");
+          found.map((element) => {
+            if (
+              element.packageid.daysCombo === "p2" ||
+              element.packageid.daysCombo === "2" ||
+              element.packageid.daysCombo === "28" ||
+              element.packageid.daysCombo === "p28"
+            ) {
+              let toSubsciberMail = {
+                to: element.user.email,
+                from: "btravelclinic@gmail.com",
+                subject: " Welcome to  BT Travels Clinic ",
+                html: `<html>
               <head>    
                 <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
                 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
@@ -1680,7 +1815,9 @@ exports.PaymentStripe=async (req,res)=>{
                                         <b>PURCHASE CONFIRMATION RECEIPT</b>
                                       </div>
                                       <div style="color:#fff;background: #00a0d2;font-size: 20px;text-align: center;padding: 15px 0;">
-                                        ${element.test.test_name} ${element.packageid.packageName}
+                                        ${element.test.test_name} ${
+                  element.packageid.packageName
+                }
                                       </div>
                                     </td>
                                   </tr>
@@ -1694,32 +1831,46 @@ exports.PaymentStripe=async (req,res)=>{
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
                                     <td style="background: #e1e4f3;padding: 0 20px;">
-                                      ${element.user.firstName} ${element.user.lastName}</td>
+                                      ${element.user.firstName} ${
+                  element.user.lastName
+                }</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
-                                    <td style="background: #e1e4f3;padding: 0 20px;">${element.user.dob}</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.dob
+                                    }</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">PASSPORT NUMBER</td>
-                                    <td style="background: #e1e4f3;padding: 0 20px;">${element.user.passport_id}</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.passport_id
+                                    }</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">FLIGHT NO.</td>
-                                    <td style="background: #e1e4f3;padding: 0 20px;">${element.user.arrival_vessel_number}</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.arrival_vessel_number
+                                    }</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL DATE</td>
-                                    <td style="background: #e1e4f3;padding: 0 20px;">${new Date(element.bookedFor).toLocaleDateString()}</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                      element.bookedFor
+                                    ).toLocaleDateString()}</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL TIME</td>
-                                    <td style="background: #e1e4f3;padding: 0 20px;"> ${new Date(element.bookedFor).toLocaleTimeString()}</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;"> ${new Date(
+                                      element.bookedFor
+                                    ).toLocaleTimeString()}</td>
                                   </tr>
                                   <tr>
                                     <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ISOLATION ADDRESS</td>
                                     <td style="background: #e1e4f3;padding: 0 20px;">
-                                      ${element.user.address}    ${element.user.city}   ${element.user.state} </td>
+                                      ${element.user.address}    ${
+                  element.user.city
+                }   ${element.user.state} </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -1734,7 +1885,9 @@ exports.PaymentStripe=async (req,res)=>{
                                         UNIQUE PASSENGER LOCATOR CODE
                                       </div>
                                       <div style="color:#333;background: #e1e4f3;font-size: 20px;text-align: center;padding: 20px 0;">
-                                        <span>BIOWR ${element.user.uniqueCode}</span>
+                                        <span>BIOWR ${
+                                          element.user.uniqueCode
+                                        }</span>
                                       </div>
                                     </td>
                                   </tr>
@@ -1786,31 +1939,23 @@ exports.PaymentStripe=async (req,res)=>{
                 </table>
               </body>
             </html>`,
-           
-          
-            }
-          
-            transporter.sendMail(toSubsciberMail, (err) => {
-              if (err) {
-                console.log(
-                  "some error in sending mail to subscriber",
-                  err
-                );
-                return res
-                  .status(400)
-                  .json({
+              };
+
+              transporter.sendMail(toSubsciberMail, (err) => {
+                if (err) {
+                  console.log("some error in sending mail to subscriber", err);
+                  return res.status(400).json({
                     error: "some error in sending mail to admin",
                   });
-              }
-              console.log("message sent successfully");
-          
-              
-            });
-        }else{ let toSubsciberMail = {
-            to: element.user.email,
-            from: "btravelclinic@gmail.com",
-            subject: " Welcome to  BT Travels Clinic ",
-            html: `<html>
+                }
+                console.log("message sent successfully");
+              });
+            } else {
+              let toSubsciberMail = {
+                to: element.user.email,
+                from: "btravelclinic@gmail.com",
+                subject: " Welcome to  BT Travels Clinic ",
+                html: `<html>
             <head>    
               <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
               <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
@@ -1867,7 +2012,9 @@ exports.PaymentStripe=async (req,res)=>{
                                       <b>PURCHASE CONFIRMATION RECEIPT</b>
                                     </div>
                                     <div style="color:#fff;background: #00a0d2;font-size: 20px;text-align: center;padding: 15px 0;">
-                                      ${element.test.test_name} ${element.packageid.packageName}
+                                      ${element.test.test_name} ${
+                  element.packageid.packageName
+                }
                                     </div>
                                   </td>
                                 </tr>
@@ -1881,43 +2028,69 @@ exports.PaymentStripe=async (req,res)=>{
                                 <tr>
                                   <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
                                   <td style="background: #e1e4f3;padding: 0 20px;">
-                                   ${element.user.firstName} ${element.user.lastName} </td>
+                                   ${element.user.firstName} ${
+                  element.user.lastName
+                } </td>
                                 </tr>
                                 <tr>
                                   <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
-                                  <td style="background: #e1e4f3;padding: 0 20px;">${element.user.dob}</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${
+                                    element.user.dob
+                                  }</td>
                                 </tr>
-                                ${element.user.passport?`
+                                ${
+                                  element.user.passport
+                                    ? `
                                 <tr>
                                 <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">PASSPORT NUMBER</td>
                                 <td style="background: #e1e4f3;padding: 0 20px;">${element.user.passport_id}<</td>
                                 </tr>
-                                `:""}
-                                ${element.user.arrival_vessel_number?`<tr>
+                                `
+                                    : ""
+                                }
+                                ${
+                                  element.user.arrival_vessel_number
+                                    ? `<tr>
                                   <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">FLIGHT NO.</td>
                                   <td style="background: #e1e4f3;padding: 0 20px;">${element.user.arrival_vessel_number}</td>
-                                </tr>`:""}
+                                </tr>`
+                                    : ""
+                                }
                         <tr>
                                 <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Slot Time</td>
-                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(element.bookedFor).toLocaleDateString()}
-                          at      ${new Date(element.bookedFor).toLocaleTimeString()}
+                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                  element.bookedFor
+                                ).toLocaleDateString()}
+                          at      ${new Date(
+                            element.bookedFor
+                          ).toLocaleTimeString()}
                                 </td>
                               </tr>
-                                ${element.user.date_of_arrival?`
+                                ${
+                                  element.user.date_of_arrival
+                                    ? `
                                 <tr>
                                 <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL DATE</td>
-                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(element.user.date_of_arrival).toLocaleDateString()}</td>
+                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                  element.user.date_of_arrival
+                                ).toLocaleDateString()}</td>
                                 </tr>
                                 <tr>
                                   <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform:
                                    uppercase;">ARRIVAL TIME</td>
-                                  <td style="background: #e1e4f3;padding: 0 20px;">${new Date(element.user.date_of_arrival).toLocaleTimeString()}</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                    element.user.date_of_arrival
+                                  ).toLocaleTimeString()}</td>
                                 </tr>
-                                `:""}
+                                `
+                                    : ""
+                                }
                                 <tr>
                                   <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">
                                    ADDRESS</td>
-                                  <td style="background: #e1e4f3;padding: 0 20px;">${element.user.address}</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${
+                                    element.user.address
+                                  }</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -1965,40 +2138,457 @@ exports.PaymentStripe=async (req,res)=>{
               </table>
             </body>
           </html> `,
-          // attachments: [
-          //   {
-          //       filename:"certificate.png",                                         
-          //       path:`http:localhost:3000/certificate/${timeSlots.user.firstName}.png`,                                         
-          //       contentType: 'application/image'
-          //   }]
-        
-          }
-        
-          transporter.sendMail(toSubsciberMail, (err) => {
-            if (err) {
-              console.log(
-                "some error in sending mail to subscriber",
-                err
-              );
-              return res
-                .status(400)
-                .json({
-                  error: "some error in sending mail to admin",
-                });
+                // attachments: [
+                //   {
+                //       filename:"certificate.png",
+                //       path:`http:localhost:3000/certificate/${timeSlots.user.firstName}.png`,
+                //       contentType: 'application/image'
+                //   }]
+              };
+
+              transporter.sendMail(toSubsciberMail, (err) => {
+                if (err) {
+                  console.log("some error in sending mail to subscriber", err);
+                  return res.status(400).json({
+                    error: "some error in sending mail to admin",
+                  });
+                }
+                console.log("message sent successfully");
+              });
             }
-            console.log("message sent successfully");
-        
-            
-          });}
-        })
-       console.log('Update')
-    })
-      res.render('admin-payment')
-    }else{
-     
-      console.log("payment page")
-      res.render('payment',{slots:slots,charge:req.body.charge})
+          });
+          console.log("Update");
+        });
+      res.render("admin-payment");
+    } else {
+      console.log("payment page");
+      res.render("payment", { slots: slots, charge: req.body.charge });
     }
-  })
- 
-}
+  });
+};
+exports.PaymentStripeHome = async (req, res) => {
+  console.log(req.body, "slots");
+
+  let slots = req.body.slots;
+  if (typeof req.body.slots === "string") {
+    slots = [slots];
+  }
+  User.findById(req.body.userid).then(async (foundUser) => {
+    if (foundUser.role == "admin") {
+      HomeTestBooking.updateMany({ _id: { $in: slots } }, { paid: true })
+        .populate("test")
+        .then(async (foundTimeSlots) => {
+          let found = await HomeTestBooking.find({ _id: { $in: slots } })
+            .populate("test")
+            .populate("packageid")
+            .populate("user")
+            .populate("UserId");
+          found.map((element) => {
+            if (
+              element.packageid.daysCombo === "2" ||
+              element.packageid.daysCombo === "28" 
+             
+            ) {
+              let toSubsciberMail = {
+                to: element.user.email,
+                from: "btravelclinic@gmail.com",
+                subject: " Welcome to  BT Travels Clinic ",
+                html: `<html>
+              <head>    
+                <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+                <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+                <meta content="date=no" name="format-detection"/>
+                <meta content="address=no" name="format-detection"/>
+                <meta content="telephone=no" name="format-detection"/>
+                <meta name="x-apple-disable-message-reformatting"/>
+                <title>
+                  Emailer
+                </title>
+              </head>
+              <body> 
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" style="padding:10px">      
+                  <tr>        
+                    <td align="center" valign="top">          
+                      <!-- Main -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="650">            
+                        <tr>              
+                          <td class="td" style="width:650px; min-width:650px;font-size:14px; line-height:16px;padding:0; margin:0; font-weight:normal;background:#fff;font-family: Helvetica, Arial;">  
+                            <!-- Header -->
+                            <div style="background:#0750a4;padding:30px">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="top">                    
+                                      <td>
+                                        <div style="display:inline-flex;padding-bottom: 20px;">
+                                          <div style="text-align: left;padding-right: 30px;" width="70%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/zdpdmcvrst1nl6uk3p28.png">
+                                          
+                                          </div>
+                                          <div style="text-align: left;" width="30%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/gkj22fxycplxvb0a9cum.png" width="100%">
+                                         
+                                          </div>
+                                        </div>
+                                      </td>
+                                  </tr>   
+                                  <tr>
+                                    <td>
+                                      <div style="color:#fff;font-size: 13px;">
+                                        <b>BLACKBURN TRAVEL CLINIC</b> in partnership with <b>BIOGRAD DIAGNOSTIC LABORATORIES LTD.</b>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          
+                            <div style="padding:40px 30px;background:#fff;">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <div style="color:#fff;background: #0750a4;font-size: 24px;text-align: center;padding: 25px 0;">
+                                        <b>PURCHASE CONFIRMATION RECEIPT</b>
+                                      </div>
+                                      <div style="color:#fff;background: #00a0d2;font-size: 20px;text-align: center;padding: 15px 0;">
+                                        I Am Arriving in England ${
+                  element.packageid.packageName
+                }
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+            
+                            <div style="padding:0 30px 20px 30px;background:#fff;">
+                              <table border="0" cellpadding="0" cellspacing="2" width="100%" style="font-size:15px;"> 
+                                <tbody>
+                                  <tr>
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">
+                                      ${element.user.firstName} ${
+                  element.user.lastName
+                }</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.dob
+                                    }</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">PASSPORT NUMBER</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.passport_id
+                                    }</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">FLIGHT NO.</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${
+                                      element.user.arrival_vessel_number
+                                    }</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL DATE</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                      element.date
+                                    ).toLocaleDateString()}</td>
+                                  </tr>
+                                
+                                    <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ISOLATION ADDRESS</td>
+                                    <td style="background: #e1e4f3;padding: 0 20px;">
+                                      ${element.user.address}    ${
+                  element.user.city
+                }   ${element.user.state} </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+            
+                            <div style="padding:0 30px 30px 30px;background:#fff;">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <div style="color:#fff;background: #0750a4;font-size: 20px;text-align: center;padding: 15px 0;">
+                                        UNIQUE PASSENGER LOCATOR CODE
+                                      </div>
+                                      <div style="color:#333;background: #e1e4f3;font-size: 20px;text-align: center;padding: 20px 0;">
+                                        <span>BIOWR ${
+                                          element.user.uniqueCode
+                                        }</span>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+            
+                             <!-- Footer -->
+                            <div style="padding: 0 30px 0 30px;background: url(https://mrinvito.com/html/covid19_pcr/emailer/img/footer-bg.png);background-size: contain;background-repeat: no-repeat;background-position: bottom;">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="bottom">  
+                                      <td  width="75%">
+                                          <div style="text-align: left;padding-right: 30px;padding-bottom: 16px;color: #fff;">
+                                            <div style="padding-bottom:7px;font-size: 17px;">
+                                              <b>Blackburn Travel Clinic</b>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Email: <a href="mailto:blackburntravelclinic@gmail.com"
+                                               style="color: #fff;text-decoration: none;">blackburntravelclinic@gmail.com</a>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Tel: 01254 690496
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Fax: 01254 692995
+                                            </div>
+                                            <div style="font-size: 18px;">
+                                              <a href="https://www.blackburntravelclinic.co.uk/" 
+                                              style="color: #fff;text-decoration: none;"><b>www.blackburntravelclinic.co.uk</b></a>
+                                            </div>
+                                          </div>
+                                      </td>    
+                                      <td>
+                                        <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/avjrsbl8yhsowo0jtkn9.png" width="200px">
+                                     
+                                      </td>              
+                                  </tr>   
+                                </tbody>
+                              </table>
+                            </div>
+            
+                          </td>
+                        </tr>
+                      </table>
+                        <!-- END Main -->
+                    </td>
+                  </tr>
+                </table>
+              </body>
+            </html>`,
+              };
+
+              transporter.sendMail(toSubsciberMail, (err) => {
+                if (err) {
+                  console.log("some error in sending mail to subscriber", err);
+                  return res.status(400).json({
+                    error: "some error in sending mail to admin",
+                  });
+                }
+                console.log("message sent successfully");
+              });
+            } else {
+              let toSubsciberMail = {
+                to: element.user.email,
+                from: "btravelclinic@gmail.com",
+                subject: " Welcome to  BT Travels Clinic ",
+                html: `<html>
+            <head>    
+              <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+              <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+              <meta content="date=no" name="format-detection"/>
+              <meta content="address=no" name="format-detection"/>
+              <meta content="telephone=no" name="format-detection"/>
+              <meta name="x-apple-disable-message-reformatting"/>
+              <title>
+                Emailer
+              </title>
+            </head>
+            <body> 
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" style="padding:10px">      
+                <tr>        
+                  <td align="center" valign="top">          
+                    <!-- Main -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="650">            
+                      <tr>              
+                        <td class="td" style="width:650px; min-width:650px;font-size:14px; line-height:16px;padding:0; margin:0; font-weight:normal;background:#fff;font-family: Helvetica, Arial;">  
+                          <!-- Header -->
+                          <div style="background:#0750a4;padding:30px">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                              <tbody>
+                                <tr valign="top">                    
+                                    <td>
+                                      <div style="display:inline-flex;padding-bottom: 20px;">
+                                        <div style="text-align: left;padding-right: 30px;" width="70%">
+                                          <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/zdpdmcvrst1nl6uk3p28.png">
+                                      
+                                        </div>
+                                        <div style="text-align: left;" width="30%">
+                                          <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/gkj22fxycplxvb0a9cum.png" width="100%">
+                                        </div>
+                                      </div>
+                                    </td>
+                                </tr>   
+                                <tr>
+                                  <td>
+                                    <div style="color:#fff;font-size: 13px;">
+                                      <b>BLACKBURN TRAVEL CLINIC</b> in partnership with <b>BIOGRAD DIAGNOSTIC LABORATORIES LTD.</b>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        
+                          <div style="padding:40px 30px;background:#fff;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div style="color:#fff;background: #0750a4;font-size: 24px;text-align: center;padding: 25px 0;">
+                                      <b>PURCHASE CONFIRMATION RECEIPT</b>
+                                    </div>
+                                    <div style="color:#fff;background: #00a0d2;font-size: 20px;text-align: center;padding: 15px 0;">
+                                      i Am Arriving in England${
+                  element.packageid.packageName
+                }
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+          
+                          <div style="padding:0 30px 20px 30px;background:#fff;">
+                            <table border="0" cellpadding="0" cellspacing="2" width="100%" style="font-size:15px;"> 
+                              <tbody>
+                                <tr>
+                                  <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Name</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">
+                                   ${element.user.firstName} ${
+                  element.user.lastName
+                } </td>
+                                </tr>
+                                <tr>
+                                  <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">DATE OF BIRTH</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${
+                                    element.user.dob
+                                  }</td>
+                                </tr>
+                                ${
+                                  element.user.passport
+                                    ? `
+                                <tr>
+                                <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">PASSPORT NUMBER</td>
+                                <td style="background: #e1e4f3;padding: 0 20px;">${element.user.passport_id}<</td>
+                                </tr>
+                                `
+                                    : ""
+                                }
+                                ${
+                                  element.user.arrival_vessel_number
+                                    ? `<tr>
+                                  <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">FLIGHT NO.</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${element.user.arrival_vessel_number}</td>
+                                </tr>`
+                                    : ""
+                                }
+                        <tr>
+                                <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">Slot Time</td>
+                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                  element.date
+                                ).toLocaleDateString()}
+                         
+                                ${
+                                  element.user.date_of_arrival
+                                    ? `
+                                <tr>
+                                <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">ARRIVAL DATE</td>
+                                <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                  element.user.date_of_arrival
+                                ).toLocaleDateString()}</td>
+                                </tr>
+                                <tr>
+                                  <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform:
+                                   uppercase;">ARRIVAL TIME</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${new Date(
+                                    element.user.date_of_arrival
+                                  ).toLocaleTimeString()}</td>
+                                </tr>
+                                `
+                                    : ""
+                                }
+                                <tr>
+                                  <td style="background:#0750a4;color:#fff;padding: 10px;width: 160px;text-transform: uppercase;">
+                                   ADDRESS</td>
+                                  <td style="background: #e1e4f3;padding: 0 20px;">${
+                                    element.user.address
+                                  }</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+          
+          
+                           <!-- Footer -->
+                          <div style="padding: 0 30px 0 30px;background: url(https://mrinvito.com/html/covid19_pcr/emailer/img/footer-bg.png);background-size: contain;background-repeat: no-repeat;background-position: bottom;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                              <tbody>
+                                <tr valign="bottom">  
+                                    <td  width="75%">
+                                        <div style="text-align: left;padding-right: 30px;padding-bottom: 16px;color: #fff;">
+                                          <div style="padding-bottom:7px;font-size: 17px;">
+                                            <b>Blackburn Travel Clinic</b>
+                                          </div>
+                                          <div style="padding-bottom:6px;font-size: 14px;">
+                                            Email: <a href="mailto:blackburntravelclinic@gmail.com" style="color: #fff;text-decoration: none;">blackburntravelclinic@gmail.com</a>
+                                          </div>
+                                          <div style="padding-bottom:6px;font-size: 14px;">
+                                            Tel: 01254 690496
+                                          </div>
+                                          <div style="padding-bottom:6px;font-size: 14px;">
+                                            Fax: 01254 692995
+                                          </div>
+                                          <div style="font-size: 18px;">
+                                            <a href="https://www.blackburntravelclinic.co.uk/" style="color: #fff;text-decoration: none;"><b>www.blackburntravelclinic.co.uk</b></a>
+                                          </div>
+                                        </div>
+                                    </td>    
+                                    <td>
+                                         <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/avjrsbl8yhsowo0jtkn9.png" width="200px">
+                                    </td>              
+                                </tr>   
+                              </tbody>
+                            </table>
+                          </div>
+          
+                        </td>
+                      </tr>
+                    </table>
+                      <!-- END Main -->
+                  </td>
+                </tr>
+              </table>
+            </body>
+          </html> `,
+                // attachments: [
+                //   {
+                //       filename:"certificate.png",
+                //       path:`http:localhost:3000/certificate/${timeSlots.user.firstName}.png`,
+                //       contentType: 'application/image'
+                //   }]
+              };
+
+              transporter.sendMail(toSubsciberMail, (err) => {
+                if (err) {
+                  console.log("some error in sending mail to subscriber", err);
+                  return res.status(400).json({
+                    error: "some error in sending mail to admin",
+                  });
+                }
+                console.log("message sent successfully");
+              });
+            }
+          });
+          console.log("Update");
+        });
+      res.render("admin-payment");
+    } else {
+      console.log("payment page");
+      res.render("payment-home", { slots: slots, charge: req.body.charge });
+    }
+  });
+};

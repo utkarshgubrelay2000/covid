@@ -559,12 +559,11 @@ function getData(length, slot, packageid) {
     //console.log(JSON.parse(personDetails),length)
   }
 }
-function getHomeData(length, slot, packageid) {
+function getHomeData(length, date, packageid) {
   length = Number(length);
   let isValid = true;
   let array = [];
-  let token = localStorage.getItem("covid");
-  console.log(token);
+
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
@@ -653,7 +652,7 @@ function getHomeData(length, slot, packageid) {
     let pd = JSON.stringify(array);
 
     let data = {
-      slots: slot,
+      date: date,
       personal_details: pd,
       packageid: packageid,
       address: address,
@@ -667,11 +666,11 @@ function getHomeData(length, slot, packageid) {
       url: "/create-home-booking",
       method: "POST",
       data: data,
-      Headers: { contentType: "application/json", Authorization: token },
+      Headers: { contentType: "application/json" },
       success: function (res) {
         console.log(res.allslots);
-        localStorage.setItem("slots", JSON.stringify(res.allslots));
-        window.location.href = "/test-terms";
+        localStorage.setItem("users", JSON.stringify(res.users));
+       window.location.href = "/test-terms-home-kit";
       },
       error: function (err) {
         console.log(err, token);

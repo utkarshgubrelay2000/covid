@@ -221,7 +221,7 @@
                                                                         <li>
                                                                             <p>
                                                                                 <i class="far fa-calendar-day"></i>
-                                                                               <%=date%>
+                                                                               <%=arrivaldateinput%>
                                                                             </p>
                                                                         </li>
                                                                    
@@ -240,10 +240,7 @@
                                                     </div>
                                                   
                                                     <div class="price text-center mt-4 mb-4">
-                                                        <!-- <p class="text-purple">
-                                                            Price : 
-                                                            <span><%=testDetails.base_price%></span>
-                                                        </p> -->
+                                                      
                                                     </div>
 <% people.map((people,index)=>{%>
                                                     <div class="contact-form-box">
@@ -455,7 +452,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 text-md-right text-center">
-                                                        <a onclick="getHomeData('<%=length%>','<%=spots%>','<%=packageid%>')" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
+                                                        <a onclick="getHomeData('<%=length%>','<%=arrivaldateinput%>',
+                                                        '<%=packageid%>')" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
                                                             CONTINUE
                                                         </a>
                                                     </div>
