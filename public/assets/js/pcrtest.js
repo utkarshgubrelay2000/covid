@@ -471,7 +471,7 @@ function getData(length, slot, packageid) {
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
-      passport_id: document.getElementById("passport_id" + index).value,
+  
       ethnicity: document.getElementById("ethnicity" + index).value,
       date_of_arrival: document.getElementById("date_of_arrival" + index).value,
       NHS: document.getElementById("NHS" + index).value,
@@ -487,7 +487,7 @@ function getData(length, slot, packageid) {
         "date_arrival_out_cta" + index
       ).value,
     };
-    console.log(object.phone);
+    console.log(object.passport_id,"hdsaiud");
     array.push(object);
   }
   const re =
@@ -568,6 +568,7 @@ function getHomeData(length, slot, packageid) {
         phone: document.getElementById("phone" + index).value,
         dob: document.getElementById("dob" + index).value,
         gender: document.getElementById("sex" + index).value,
+        passport_id: document.getElementById("passport_id" + index).value,
      
         arrival_vessel_number: document.getElementById(
           "arrival_vessel_number" + index
@@ -593,7 +594,7 @@ function getHomeData(length, slot, packageid) {
       };
       array.push(object);
     }
-    ///  console.log(array)
+      console.log(array[0].isolationaddress)
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
