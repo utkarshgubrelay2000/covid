@@ -525,7 +525,7 @@ exports.contactdetailsHome = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots, req.body.spots);
+  console.log(spots, req.body.spots,'we are here');
   if (
     test._id == "612cbc06e9242568af80cf57" ||
     test.test_name == "I am NOT travelling"
@@ -551,7 +551,7 @@ exports.contactdetailsHome = async (req, res) => {
     });
   } else {
     console.log("slots", req.body.date);
-    res.render("contact-details-arrival-home", {
+    res.render("contact-details-arrival-home-pcr", {
       testDetails: test,
       date: req.body.date,
       spots: spots,
