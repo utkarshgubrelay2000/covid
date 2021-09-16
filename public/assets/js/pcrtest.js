@@ -568,17 +568,14 @@ function getHomeData(length, slot, packageid) {
         phone: document.getElementById("phone" + index).value,
         dob: document.getElementById("dob" + index).value,
         gender: document.getElementById("sex" + index).value,
-        address: document.getElementById("address" + index).value,
-        Postal: document.getElementById("Postal" + index).value,
+     
         arrival_vessel_number: document.getElementById(
           "arrival_vessel_number" + index
         ).value,
         brand_vaccine: document.getElementById("brand_vaccine" + index).value,
         transportMode: document.getElementById("transportMode" + index).value,
         confirmemail: document.getElementById("confirmemail" + index).value,
-        city: document.getElementById("city" + index).value,
-        state: document.getElementById("state" + index).value,
-        passport_id: document.getElementById("passport_id" + index).value,
+    
         ethnicity: document.getElementById("ethnicity" + index).value,
         date_of_arrival: document.getElementById("date_of_arrival" + index).value,
         NHS: document.getElementById("NHS" + index).value,
@@ -627,18 +624,10 @@ function getHomeData(length, slot, packageid) {
         isValid = false;
         alert("Date Of Birth is Empty For Person" + Number(index + 1));
         break;
-      } else if (!array[index].address) {
-        isValid = false;
-        alert("Address is Empty For Person" + Number(index + 1));
-        break;
-      } else if (!array[index].arrival_vessel_number) {
+      }  else if (!array[index].arrival_vessel_number) {
         isValid = false;
         console.log(array[index].confirmemail,array[index].email)
         alert("arrival vessel number  is Empty For Person" + Number(index + 1));
-        break;
-      } else if (!array[index].passport_id) {
-        isValid = false;
-        alert("passport Id is Empty For Person" + Number(index + 1));
         break;
       } else if (!array[index].vaccination_status) {
         isValid = false;
@@ -646,19 +635,25 @@ function getHomeData(length, slot, packageid) {
         break;
       }
     }
-  if(isValid){
+    let address = document.getElementById("address").value;
+    let city = document.getElementById("city").value;
+    let state = document.getElementById("state").value;
+    let transportMode = document.getElementById("transportMode").value;
+    if (!address && !city && !state && !transportMode) {
+      alert("Fill All Details OF Address Form");
+    } else if(isValid){
     let pd = JSON.stringify(array);
     let data = { slots: slot, personal_details: pd, packageid: packageid };
     console.log(data);
     $.ajax({
-      url: "/create-home-booking",
+      url: "/create-home-booking-pcr",
       method: "POST",
       data: data,
       Headers: { contentType: "application/json", Authorization: token },
       success: function (res) {
         console.log(res.allslots);
         localStorage.setItem("slots", JSON.stringify(res.allslots));
-        window.location.href = "/test-terms";
+       // window.location.href = "/test-terms";
       },
       error: function (err) {
         console.log(err, token);

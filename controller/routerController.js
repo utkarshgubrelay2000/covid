@@ -467,7 +467,7 @@ exports.contactdetailsPcr258 = async (req, res) => {
 exports.contactdetailsHomePcr = async (req, res) => {
   let { spots, pcrSlot, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
-  console.log(test);
+ 
   let peopleArray = [];
   let peoplesDetails = {
     email: "",
@@ -513,7 +513,7 @@ exports.contactdetailsHomePcr = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-      departure: true,
+      departure: true,showaddress:true
     });
   }
 };
@@ -926,6 +926,52 @@ exports.createHomeBooking = async (req, res) => {
       console.log(users,"users");
       if (promises)
         res.json({ message: "Booking Saved!", users: users, status: true });
+      else
+        res.status(400).json({
+          status: false,
+          data: "Something wrong",
+        });
+    }, 2000);
+  } catch (error) {
+    res.status(503).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+exports.createHomeBookingPcr = async (req, res) => {
+  try {
+    const { slots, packageid, address, state, city, transportMode } = req.body;
+    personal_details = JSON.parse(req.body.personal_details);
+    let sloted = slots.split(",");
+   console.log(slots)
+    const promises =await personal_details.map(async (person, index) => {
+      let last_order = await PersonalDetails.findOne(
+        {},
+        { _id: 0, uniqueCode: 1 }
+      ).sort({ uniqueCode: -1 });
+      const details = new PersonalDetails({ ...person,uniqueCode:last_order.uniqueCode+1 });
+      details.save().then(async (saved) => {
+ 
+        let res = await TimeSlots.findOneAndUpdate(
+          { _id: sloted[index] },
+          {
+            booked: true,
+            user: saved._id,
+            UserId: req.body.userId,
+            ...req.body,
+            packageid: packageid,
+            home: true,
+          },
+          { new: true }
+        );
+      });
+    });
+
+    setTimeout(() => {
+      console.log(slots,"users");
+      if (promises)
+        res.json({ message: "Booking Saved!", allslots: slots, status: true });
       else
         res.status(400).json({
           status: false,

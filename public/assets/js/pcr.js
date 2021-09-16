@@ -531,8 +531,9 @@ function getData(length, slot, packageid) {
       date_arrival_out_cta: document.getElementById(
         "date_arrival_out_cta" + index
       ).value,
+      isolationaddress:document.getElementById("quanaddress" + index).value,
     };
-    console.log(object.phone)
+ 
     array.push(object);
   }
   const re =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -637,6 +638,7 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
+      isolationaddress:document.getElementById("quanaddress" + index).value,
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,

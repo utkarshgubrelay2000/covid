@@ -404,14 +404,15 @@
                                                                     <option value="partially">partially</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label>
-                                                                    Address of quarantine*
-                                                                    <a href="#">Use same as above</a>
-                                                                </label>                                                                
-                                                                <input type="text" name="number" id="address<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
-                                                            </div>
-                                                            
+                                                            <%if(!showaddress){%>
+                                                                <div class="col-md-12 form-group">
+                                                                    <label>
+                                                                        Address of quarantine*
+                                                                        <a href="#">Use same as above</a>
+                                                                    </label>                                                                
+                                                                    <input type="text" name="number" id="quanaddress<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
+                                                                </div>
+                                                                <%}%>
                                                         </div>
                                                     </div>
                                                     <% })%>

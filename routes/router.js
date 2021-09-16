@@ -75,6 +75,7 @@ router.get('/',registerController.homePage)
  router.post('/get-avaiable-session',bookingController.getSlots)
  router.post("/create",registerController.createBooking);
  router.post("/create-home-booking",registerController.createHomeBooking);
+ router.post("/create-home-booking-pcr",registerController.createHomeBookingPcr);
  router.post("/create-pcr-pcr-and-single",registerController.createpcrandsingle);
  router.post("/create-pcr-pcr-and-28",registerController.createpcrandtwo);
  router.post("/create-pcr-pcr-and-258",registerController.createpcrandthree);
