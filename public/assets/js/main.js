@@ -110,7 +110,7 @@ async function selectTest(name, index, id) {
              <a href="/choose-slots/${res.name}/${
           ele._id
         }" class="btn-purple d-inline-block mt-4 mb-2">
-             BOOK A PCR
+             Book Test
          </a>
          <br>
          ${
@@ -147,12 +147,7 @@ Book A Home  Kit appointment
 <a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
 Book A Home  Kit appointment
 </a>`
-    : ele.daysCombo == "5"
-    ? ` 
-<a href="/choose-slots-days-home/${res.name}/${ele._id}" class="btn-outlined-purple d-inline-block mt-4 mb-2">
-Book A Home  Kit appointment
-</a>`
-    : ""
+    :""
 }
              ${
                /*ele.price2?` <div class="sub-package-name">
@@ -165,7 +160,7 @@ Book A Home  Kit appointment
                      </p>
                  </div>
                  <a href="/choose-slots/${res.name}/${ele._id}" class="btn-purple d-inline-block mt-4 mb-2">
-                 BOOK A PCR
+                 Book Test
       </a></div>`*/ " "
              }
          
