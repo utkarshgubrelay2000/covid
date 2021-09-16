@@ -284,13 +284,13 @@ exports.contactdetails = async (req, res) => {
     email: "",
   };
   if (people == 1) {
-    console.log("hello");
+   // console.log("hello");
     spots = [spots];
   }
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots, req.body.spots, "hhh");
+
   if (
     test._id == "612cbc06e9242568af80cf57" ||
     test.test_name == "I am NOT travelling"
@@ -316,7 +316,7 @@ exports.contactdetails = async (req, res) => {
     });
   } else {
     let response = await TestPackage.findById(packageid);
-    console.log(response);
+    //console.log(response);
     if (response.daysCombo == "fittofly") {
       res.render("contact-details", {
         testDetails: test,
@@ -325,9 +325,10 @@ exports.contactdetails = async (req, res) => {
         packageid: packageid,
         people: peopleArray,
         length: peopleArray.length,
-        departure: true,
+        departure: true,showaddress:true
       });
     } else {
+      console.log('331')
       res.render("contact-details-pcr", {
         testDetails: test,
         date: req.body.date,
@@ -335,7 +336,7 @@ exports.contactdetails = async (req, res) => {
         packageid: packageid,
         people: peopleArray,
         length: peopleArray.length,
-        departure: true,
+        departure: true,showaddress:true
       });
     }
   }
@@ -377,7 +378,7 @@ exports.contactdetailsPCr = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(pcrSlot, spots);
+  console.log( spots);
   res.render("contact-details-pcr-single", {
     testDetails: test,
     packageid: packageid,
@@ -387,7 +388,7 @@ exports.contactdetailsPCr = async (req, res) => {
     people: peopleArray,
     length: people,
     arrivaldateinput: arrivaldateinput,
-    departure: true,
+    departure: true,showaddress:true
   });
 };
 exports.contactdetailsPcr28 = async (req, res) => {
@@ -1194,9 +1195,9 @@ exports.createpcrandsingle = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-    console.log("here");
+   
     let allslots = pcrSloted.concat(sloted);
-    console.log(allslots, "AllSlots");
+   
     let last_order = await PersonalDetails.findOne(
       {},
       { _id: 0, uniqueCode: 1 }
