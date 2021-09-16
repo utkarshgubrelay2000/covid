@@ -170,6 +170,7 @@ let getSlots = (req, res) => {
     .find({ test,available:true, paid: false, bookedFor: { $gt: newDate, $lt: nextDate } })
     .sort({ bookedFor: 1 })
     .then((appointments) => {
+      console.log('galse',appointments)
       res.status(200).json({
         status: true,
         message: "Slots Fetched",

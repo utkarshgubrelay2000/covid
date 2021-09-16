@@ -312,7 +312,7 @@ exports.contactdetails = async (req, res) => {
       people: peopleArray,
       length: peopleArray.length,
       departure: false,
-      arrivaldateinput: req.body.arrivaldateinput,
+      arrivaldateinput: req.body.arrivaldateinput,showaddress:true
     });
   } else {
     let response = await TestPackage.findById(packageid);

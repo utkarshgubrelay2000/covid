@@ -14,6 +14,7 @@ function getData(length, slot, slotAfterDay6, packageid) {
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
+      isolationaddress: document.getElementById("quanaddress" + index).value,
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
