@@ -463,7 +463,7 @@ exports.contactdetailsPcr258 = async (req, res) => {
   });
 };
 
-exports.contactdetailsHome = async (req, res) => {
+exports.contactdetailsHomePcr = async (req, res) => {
   let { spots, pcrSlot, packageid } = req.body;
   let test = await Test.findOne({ _id: req.body._id });
   console.log(test);
@@ -475,7 +475,10 @@ exports.contactdetailsHome = async (req, res) => {
   for (let index = 0; index < Number(req.body.people); index++) {
     peopleArray.push(peoplesDetails);
   }
-  console.log(spots, req.body.spots);
+  if(!spots){
+    spots=pcrSlot
+  }
+  console.log(spots, pcrSlot);
   if (
     test._id == "612cbc06e9242568af80cf57" ||
     test.test_name == "I am NOT travelling"
@@ -501,7 +504,7 @@ exports.contactdetailsHome = async (req, res) => {
     });
   } else {
     console.log("slots", req.body.date);
-    res.render("contact-details-home", {
+    res.render("contact-details-arrival-home-pcr", {
       testDetails: test,
       date: req.body.date,
       spots: spots,
@@ -551,7 +554,7 @@ exports.contactdetailsHome = async (req, res) => {
     });
   } else {
     console.log("slots", req.body.date);
-    res.render("contact-details-arrival-home-pcr", {
+    res.render("contact-details-home", {
       testDetails: test,
       date: req.body.date,
       spots: spots,

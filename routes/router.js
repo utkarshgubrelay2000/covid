@@ -42,6 +42,7 @@ router.get('/',registerController.homePage)
  router.post('/contact-details-pcr-28',registerController.contactdetailsPcr28)
  router.post('/contact-details-pcr-258',registerController.contactdetailsPcr258)
  router.post('/contact-details-home',registerController.contactdetailsHome)
+ router.post('/contact-details-home-pcr',registerController.contactdetailsHomePcr)
  router.post('/contact-details-arrival-home',registerController.contactdetailsHomeArrival)
 
  router.post('/contact-form-for-258',registerController.contactdetails258)
