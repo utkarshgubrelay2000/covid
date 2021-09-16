@@ -354,13 +354,18 @@ exports.contactdetailsHomeArrival = async (req, res) => {
     peopleArray.push(peoplesDetails);
   }
 console.log(packageid)
+let response=await TestPackage.findById(packageid)
+let bool=true
+if(response.daysCombo=='28' || response.daysCombo=='258'){
+  bool=false
+}
   res.render("contact-details-arrival-home", {
     testDetails: test,
     packageid: packageid,
     people: peopleArray,
     length: peopleArray.length,
     departure: false,
-    arrivaldateinput: req.body.arrivaldateinput,
+    arrivaldateinput: req.body.arrivaldateinput,showaddress:bool
   });
 };
 exports.contactdetailsPCr = async (req, res) => {

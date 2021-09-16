@@ -122,6 +122,8 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value,
       dob: document.getElementById("dob" + index).value,
+      isolationaddress: document.getElementById("quanaddress" + index).value,
+
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
       arrival_vessel_number: document.getElementById(
