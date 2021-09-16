@@ -575,7 +575,7 @@ function getHomeData(length, slot, packageid) {
         brand_vaccine: document.getElementById("brand_vaccine" + index).value,
         transportMode: document.getElementById("transportMode" + index).value,
         confirmemail: document.getElementById("confirmemail" + index).value,
-    
+        isolationaddress:document.getElementById("quanaddress" + index)?.value,
         ethnicity: document.getElementById("ethnicity" + index).value,
         date_of_arrival: document.getElementById("date_of_arrival" + index).value,
         NHS: document.getElementById("NHS" + index).value,
@@ -653,7 +653,7 @@ function getHomeData(length, slot, packageid) {
       success: function (res) {
         console.log(res.allslots);
         localStorage.setItem("slots", JSON.stringify(res.allslots));
-       // window.location.href = "/test-terms";
+        window.location.href = "/test-terms";
       },
       error: function (err) {
         console.log(err, token);

@@ -504,7 +504,12 @@ exports.contactdetailsHomePcr = async (req, res) => {
       arrivaldateinput: req.body.arrivaldateinput,
     });
   } else {
-    console.log("slots", req.body.date);
+    let response=await TestPackage.findById(packageid)
+    let bool=true
+    if(response.daysCombo=='p28' || response.daysCombo=='p258'){
+      bool=false
+    }
+    console.log("slots", response.daysCombo);
     res.render("contact-details-arrival-home-pcr", {
       testDetails: test,
       date: req.body.date,
@@ -513,7 +518,7 @@ exports.contactdetailsHomePcr = async (req, res) => {
       packageid: packageid,
       people: peopleArray,
       length: peopleArray.length,
-      departure: true,showaddress:true
+      departure: true,showaddress:bool
     });
   }
 };
