@@ -199,7 +199,9 @@ function getSlotsByArrival(type) {
 
     value.setDate(value.getDate() + 7);
     console.log(value.toISOString().substr(0, 10));
-    day8.setAttribute("min", value.toISOString().substr(0, 10));
+    if(day8){
+      day8.setAttribute("min", value.toISOString().substr(0, 10));
+    }
   }
 
   let data = { test: id, limit: 1, date: date };
