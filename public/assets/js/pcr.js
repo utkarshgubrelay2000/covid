@@ -177,7 +177,7 @@ function getSlotsByArrival(type) {
     let value = new Date(arrivalDate);
     console.log(date, value, date);
 
-    value.setDate(value.getDate() + 7);
+    value.setDate(value.getDate() + 8);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   }
@@ -186,7 +186,7 @@ function getSlotsByArrival(type) {
     date = document.getElementById("pcrdate2").value;
     let value = new Date(arrivalDate);
     console.log(date, value, date);
-    value.setDate(value.getDate() + 4);
+    value.setDate(value.getDate() + 5);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   }
@@ -198,7 +198,7 @@ function getSlotsByArrival(type) {
     
     console.log(date, value);
 
-    value.setDate(value.getDate() + 7);
+    value.setDate(value.getDate() + 8);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   }

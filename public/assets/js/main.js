@@ -231,7 +231,7 @@ function getSlotsByArrival(type) {
 
     console.log(date, value);
 
-    value.setDate(value.getDate() + 7);
+    value.setDate(value.getDate() + 8);
     console.log(value.toISOString().substr(0, 10));
     day8.setAttribute("min", value.toISOString().substr(0, 10));
   } else if (type == 4) {
