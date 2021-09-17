@@ -514,7 +514,7 @@ exports.contactdetailsHomePcr = async (req, res) => {
     if(response.daysCombo=='p28' || response.daysCombo=='p258'){
       bool=false
     }
-    console.log("slots", response.daysCombo);
+    console.log("slots", packageid,"517");
     res.render("contact-details-arrival-home-pcr", {
       testDetails: test,
       date: req.body.date,
@@ -956,13 +956,13 @@ exports.createHomeBookingPcr = async (req, res) => {
     let sloted = slots.split(",");
    console.log(slots)
     const promises =await personal_details.map(async (person, index) => {
-      let last_order = await PersonalDetails.findOne(
-        {},
+      let last_order = await PersonalDetails.findOne({},
         { _id: 0, uniqueCode: 1 }
       ).sort({ uniqueCode: -1 });
+  
       const details = new PersonalDetails({ ...person,uniqueCode:last_order.uniqueCode+1 });
+      console.log(packageid,"package 966")
       details.save().then(async (saved) => {
- 
         let res = await TimeSlots.findOneAndUpdate(
           { _id: sloted[index] },
           {
@@ -971,7 +971,7 @@ exports.createHomeBookingPcr = async (req, res) => {
             UserId: req.body.userId,
             ...req.body,
             packageid: packageid,
-            home: true,
+            home: true,homeAddress:{address, state, city, transportMode}
           },
           { new: true }
         );
@@ -981,7 +981,7 @@ exports.createHomeBookingPcr = async (req, res) => {
     setTimeout(() => {
       console.log(slots,"users");
       if (promises)
-        res.json({ message: "Booking Saved!", allslots: slots, status: true });
+        res.json({ message: "Booking Saved!", allslots: [slots], status: true });
       else
         res.status(400).json({
           status: false,

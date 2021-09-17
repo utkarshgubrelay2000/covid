@@ -129,7 +129,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
-      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+     // brand_vaccine: document.getElementById("brand_vaccine" + index).value,
       confirmemail: document.getElementById("confirmemail" + index).value,  
       passport_id: document.getElementById("passport_id" + index).value,
       ethnicity: document.getElementById("ethnicity" + index).value,
@@ -197,13 +197,8 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       break;
     }
   }
-  let address = document.getElementById("address").value;
-  let city = document.getElementById("city").value;
-  let state = document.getElementById("state").value;
-  let transportMode = document.getElementById("transportMode").value;
-  if (!address && !city && !state && !transportMode) {
-    alert("Fill All Details OF Address Form");
-  } else if (isValid) {
+
+  if (isValid) {
     let pd = JSON.stringify(array);
     let data = {
       spots5: spots5,

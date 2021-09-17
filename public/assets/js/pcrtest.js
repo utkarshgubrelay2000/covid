@@ -559,7 +559,7 @@ function getHomeData(length, slot, packageid) {
     let isValid = true;
     let array = [];
     let token = localStorage.getItem("covid");
-    console.log(token);
+    console.log(packageid,'562');
     for (let index = 0; index < length; index++) {
       let object = {
         email: document.getElementById("email" + index).value,

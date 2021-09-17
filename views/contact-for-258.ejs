@@ -317,7 +317,11 @@
                                                                 <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
                                                                 <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
                                                             </div>
-                                                           
+                                                            <div class="col-md-6 form-group">
+                                                                <label>Confirm Email*</label>
+                                                                <input type="email" name="email" id="confirmemail<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
+                                                                <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
+                                                            </div>
                                                             <div class="col-md-6 form-group">
                                                                 <label>Mobile number*</label>
                                                                 <div class="row">
@@ -433,6 +437,7 @@
                                                         </div>
                                                     </div>
                                                     <% })%>
+                                                    
                                                     <div class="col-md-6 text-md-right text-center">
                                      <a onclick="get258Data('<%=length%>','<%=spots5%>','<%=spots%>','<%=spots8%>','<%=packageid%>')" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
                                                             CONTINUE
