@@ -78,7 +78,8 @@
     }
     .before-arrival .content td,
     .before-arrival .content td span {
-        width: 150px;  
+        width: 120px;  
+        padding: 8px;
     }
 
     

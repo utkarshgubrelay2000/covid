@@ -1,5 +1,10 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('../fonts/EuclidCircularB/EuclidCircularB-Bold.ttf');
+  }
+
 body {
-    font-family: 'Jost', sans-serif;
+    font-family: 'myFirstFont' , sans-serif;
     background-color: #f8f8f8;
 }
 h1,
@@ -8,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Jost', sans-serif;
+    font-family: 'myFirstFont', sans-serif;
 }
 h1,
 h2 {
@@ -364,9 +369,9 @@ input[type=number] { /* Firefox */
 .site-header .cp-nav-link {
     color: #424240;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-    padding: 10px 18px;
+    padding: 5px 9px;
     text-align: center;
     transition: 0.5s;
 }
