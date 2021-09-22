@@ -4,7 +4,7 @@
   }
 
 body {
-    font-family: 'myFirstFont' , sans-serif;
+    font-family: 'FontAwesome' , sans-serif;
     background-color: #f8f8f8;
 }
 h1,
@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'myFirstFont', sans-serif;
+    font-family: 'FontAwesome', sans-serif;
 }
 h1,
 h2 {
@@ -364,6 +364,10 @@ input[type=number] { /* Firefox */
 }
 .site-header .cp-nav-item {
     text-align: center;
+}
+.navbar{
+    font-family: 'myFirstFont' , sans-serif;
+
 }
 .site-header .cp-navbar-light .cp-navbar-nav .cp-nav-link,
 .site-header .cp-nav-link {
