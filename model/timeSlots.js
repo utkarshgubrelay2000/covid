@@ -36,7 +36,7 @@ const timeSlotSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    homeAddress:Object
+    homeAddress:{address:String,state:String,Postal:String,city:String,transportMode:String}
   },
   { timestamps: true }
 );

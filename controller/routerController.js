@@ -909,7 +909,7 @@ exports.createBooking = async (req, res) => {
 };
 exports.createHomeBooking = async (req, res) => {
   try {
-    const { date, packageid, address, state, city, transportMode } = req.body;
+    const { date, packageid, address, state, city, transportMode,Postal } = req.body;
     personal_details = JSON.parse(req.body.personal_details);
     let users = [];
    
@@ -925,7 +925,7 @@ exports.createHomeBooking = async (req, res) => {
           date: date,
           user: saved._id,
           packageid: packageid,
-          homeAddress: { address, transportMode, city, state },
+          homeAddress: { address, transportMode, city, state,Postal },
         });
         let responseForUserSave = await newUser.save();
         users.push(responseForUserSave._id);
@@ -951,15 +951,15 @@ exports.createHomeBooking = async (req, res) => {
 };
 exports.createHomeBookingPcr = async (req, res) => {
   try {
-    const { slots, packageid, address, state, city, transportMode } = req.body;
+    const { slots, packageid, address, state, city, transportMode,Postal } = req.body;
     personal_details = JSON.parse(req.body.personal_details);
     let sloted = slots.split(",");
-   console.log(slots)
+    let homeAddress={address, state, city, transportMode,Postal}
+    console.log(homeAddress)
     const promises =await personal_details.map(async (person, index) => {
       let last_order = await PersonalDetails.findOne({},
         { _id: 0, uniqueCode: 1 }
-      ).sort({ uniqueCode: -1 });
-  
+        ).sort({ uniqueCode: -1 });
       const details = new PersonalDetails({ ...person,uniqueCode:last_order.uniqueCode+1 });
       console.log(packageid,"package 966")
       details.save().then(async (saved) => {
@@ -971,7 +971,7 @@ exports.createHomeBookingPcr = async (req, res) => {
             UserId: req.body.userId,
             ...req.body,
             packageid: packageid,
-            home: true,homeAddress:{address, state, city, transportMode}
+            home: true,homeAddress:homeAddress
           },
           { new: true }
         );
@@ -980,9 +980,9 @@ exports.createHomeBookingPcr = async (req, res) => {
 
     setTimeout(() => {
       console.log(slots,"users");
-      if (promises)
-        res.json({ message: "Booking Saved!", allslots: [slots], status: true });
-      else
+    //   if (promises)
+    //  //   res.json({ message: "Booking Saved!", allslots: [slots], status: true });
+    //   else
         res.status(400).json({
           status: false,
           data: "Something wrong",

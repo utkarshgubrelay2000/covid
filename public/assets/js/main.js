@@ -637,6 +637,8 @@ function getHomeData(length, date, packageid) {
   let city = document.getElementById("city").value;
   let state = document.getElementById("state").value;
   let transportMode = document.getElementById("transportMode").value;
+  let Postal = document.getElementById("Postal").value;
+
   if (!address && !city && !state && !transportMode) {
     alert("Fill All Details OF Address Form");
   } else if (isValid) {
@@ -649,7 +651,7 @@ function getHomeData(length, date, packageid) {
       address: address,
       transportMode: transportMode,
       city: city,
-      state: state,
+      state: state,Postal
     };
 
     console.log(data);

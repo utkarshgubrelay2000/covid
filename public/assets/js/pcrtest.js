@@ -640,11 +640,12 @@ function getHomeData(length, slot, packageid) {
     let city = document.getElementById("city").value;
     let state = document.getElementById("state").value;
     let transportMode = document.getElementById("transportMode").value;
+    let Postal = document.getElementById("Postal").value;
     if (!address && !city && !state && !transportMode) {
       alert("Fill All Details OF Address Form");
     } else if(isValid){
     let pd = JSON.stringify(array);
-    let data = { slots: slot, personal_details: pd, packageid: packageid };
+    let data = { slots: slot, personal_details: pd, packageid: packageid,address,city,state,transportMode,Postal };
     console.log(data);
     $.ajax({
       url: "/create-home-booking-pcr",
