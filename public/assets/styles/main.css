@@ -479,10 +479,9 @@ input[type=number] { /* Firefox */
     position: absolute;
     top: -50px;
     right: -25px;
-    filter: brightness(0.3444);
+ 
 }
 .suitcase{
-    filter: brightness(2.2);
 
 }
 .site-banner .banner-list li {
