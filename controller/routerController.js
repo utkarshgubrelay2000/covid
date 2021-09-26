@@ -20,6 +20,7 @@ const User = require("../model/userModel");
 const Notification = require("../model/Notification");
 const nodemailer = require("nodemailer");
 const HomeTestBooking = require("../model/HomeSlot");
+const about = require("../model/aboutModel");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -46,12 +47,15 @@ exports.prices = (req, res) => {
 };
 exports.afterYourTest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
-
-  res.render("after-your-test", { faqs: faqs });
+  let aboutDeatils = await about.find({})
+console.log('helo')
+  res.render("after-your-test", {data:aboutDeatils[1], faqs: faqs });
 };
 exports.preparingforyourtest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
-  res.render("preparing-for-your-test", { faqs: faqs });
+  let aboutDeatils = await about.find({})
+
+  res.render("preparing-for-your-test", {data:aboutDeatils[2], faqs: faqs });
 };
 
 exports.contact = (req, res) => {

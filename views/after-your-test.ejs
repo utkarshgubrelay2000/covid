@@ -228,9 +228,7 @@
                                                         The Test
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    Your sample will then be transported to our laboratory, where it will be tested for COVID-19. 
-                                                    See our <a href="/about-us/">About Us</a> section if you require further information.
+                                                <p id='blogContent'>
                                                 </p>
                                             </div>
                                         </div>
@@ -243,18 +241,7 @@
                                                         Results
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    We aim to deliver your results by 10pm the day after your test, however, <strong>results could take up to 48 hours to receive.</strong> 
-                                                </p>
-                                                <p>
-                                                    If your result is negative, you will either receive email confirmation of this or if you have an account, you will receive an e-mail 
-                                                    notification that your results are available and will need to log in to view and download them.
-                                                </p>                                                
-                                                <p>
-                                                    If your result is positive, contain in your results will be instructions on the appropriate next steps to take. In England, we are 
-                                                    obliged by law to notify your positive test result and personal details to Public Health England, who may contact you via their 
-                                                    Track & Trace programme. In Scotland, you should follow up by taking an NHS PCR to confirm the result. This will report into Public 
-                                                    Health Scotland who may contact you via their Test and Protect contact tracing programme.
+                                                <p id='shortdescription'>
                                                 </p>
                                             </div>
                                             <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
@@ -285,10 +272,8 @@
                                                         The Test
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    Your sample will then be transported to our laboratory, where it will be tested for COVID-19. 
-                                                    See our <a href="/about-us/">About Us</a> section if you require further information.
-                                                </p>
+                                                <p id='blogContent'>
+                                               </p>
                                             </div>
                                         </div>
 
@@ -300,24 +285,8 @@
                                                         Results
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    We aim to deliver your results by 10pm the day after your test, however, <strong>results could take up to 48 hours to receive</strong>. It is your 
-                                                    responsibility to ensure you allow at least 48 hours to receive your results before planning any arrangements, such as travel, that 
-                                                    may require your results by a certain time.
-                                                </p>
-                                                <p>
-                                                    If your result is negative, you will either receive email confirmation of this or if you have an account, you will receive an e-mail 
-                                                    notification that your results are available and will need to log in to view and download them. You must check with your travel 
-                                                    provider that they will accept this documentation, before booking a test. Requirements for entry to countries during the COVID-19 
-                                                    pandemic may differ and it is your responsibility to ensure that you have all the necessary documentation and information before you 
-                                                    travel.
-                                                </p>                                                
-                                                <p>
-                                                    If your result is positive, contain in your results will be instructions on the appropriate next steps to take. In England, we are 
-                                                    obliged by law to notify your positive test result and personal details to Public Health England, who may contact you via their Track 
-                                                    & Trace programme. In Scotland, you should follow up by taking an NHS PCR to confirm the result. This will report into Public Health 
-                                                    Scotland who may contact you via their Test and Protect contact tracing programme.
-                                                </p>
+                                                <p id='shortdescription'>
+                                              </p>
                                             </div>
                                             <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
                                                 <img src="/assets/images/test5.png" alt="about img" class="right-img w-100">
@@ -894,6 +863,14 @@
 			AOS.init({
 				duration: 1200,
 			});
+            let postCol = document.getElementById('blogContent')
+            let shortdescription = document.getElementById('shortdescription')
+        let a = $.parseHTML('<%=data.content%>');
+        let shortdescriptiondata = $.parseHTML('<%=data.shortdescription%>');
+        let b = a[0].data
+        postCol.innerHTML = b
+        let c = shortdescriptiondata[0].data
+        shortdescription.innerHTML = c
 		</script>
 
     </body>

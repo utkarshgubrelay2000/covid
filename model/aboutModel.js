@@ -4,6 +4,7 @@ const faqSchema = new mongoose.Schema(
   {
     
     content:String,
+    content3:String,
     shortdescription:String,
     img:String
   },

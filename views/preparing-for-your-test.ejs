@@ -228,13 +228,10 @@
                                                         Your Test
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    Booking is essential to get tested at ExpressTest. We offer gold standard COVID-19 PCR testing at these UK locations.
-                                                </p>
-                                                <p>
-                                                    Book your slot at your preferred testing centre and pay online. You will be sent a confirmation email with a QR code, which 
-                                                    you must bring to your appointment.
-                                                </p>
+                                             <p id='blogContent'>
+
+                                             </p>
+                                       
                                             </div>
                                         </div>
 
@@ -246,29 +243,8 @@
                                                         Your Test
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    Please wear a mask until the moment that you are being swabbed. Our team will tell you when to remove your mask and put 
-                                                    it on again afterwards.
-                                                </p>
-                                                <p>
-                                                    Please bring with you:
-                                                </p>
-                                                <ul class="listing ml-3">
-                                                    <li>
-                                                        Photo ID for all people being tested
-                                                    </li>
-                                                    <li>
-                                                        Confirmation email with QR code for each person being tested
-                                                    </li>
-                                                </ul>
-                                                <p>
-                                                    You will be greeted by a member of the ExpressTest Team, who will check your documentation.
-                                                </p>
-                                                <p>
-                                                    You will remain in your car/taxi at our Drive Throughs, or will be directed to the swabbing area at our Walk Throughs.
-                                                </p>
-                                                <p>
-                                                    Our Drive Through vehicle height restriction is 2.4m
+                                                <p id='shortdescription'>
+
                                                 </p>
                                             </div>
                                             <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
@@ -287,23 +263,8 @@
                                                         Process
                                                     </span>
                                                 </h2>
-                                                <p>
-                                                    Please make sure that you 
-                                                    <strong>do not eat or drink anything</strong> 
-                                                    for 30 minutes before your swab is taken. This is to reduce the risk of 
-                                                    tainting the swab (therefore not producing a result).
-                                                </p>
-                                                <p>
-                                                    Children under 16 must be accompanied by a parent/guardian.
-                                                </p>
-                                                <p>
-                                                    Each customer will be safely swabbed by one of our clinically trained swabbing practitioners in full PPE
-                                                </p>
-                                                <p>
-                                                    Swabbing involves taking a sample from both the back of the throat and the nasal passage
-                                                </p>
-                                                <p>
-                                                    Your swab sample is then safely stored and labelled, ready to be sent to an ExpressTest laboratory
+                                                <p id='content3'>
+
                                                 </p>
                                             </div>
                                         </div>
@@ -1111,6 +1072,17 @@
 			AOS.init({
 				duration: 1200,
 			});
+            let postCol = document.getElementById('blogContent')
+            let content3 = document.getElementById('content3')
+            let shortdescription = document.getElementById('shortdescription')
+        let a = $.parseHTML('<%=data.content%>');
+        let d = $.parseHTML('<%=data.content3%>');
+        let shortdescriptiondata = $.parseHTML('<%=data.shortdescription%>');
+        let b = a[0].data
+        postCol.innerHTML = b
+        content3.innerHTML = d[0].data
+        let c = shortdescriptiondata[0].data
+        shortdescription.innerHTML = c
 		</script>
 
     </body>
