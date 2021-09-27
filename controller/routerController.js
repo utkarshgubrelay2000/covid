@@ -22,6 +22,7 @@ const Notification = require("../model/Notification");
 const nodemailer = require("nodemailer");
 const HomeTestBooking = require("../model/HomeSlot");
 const about = require("../model/aboutModel");
+const Enquiries = require("../model/userEnquires");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -42,6 +43,11 @@ exports.homePage = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
   let testimonials = await testimonial.find({});
   res.render("index", { faqs: faqs, testimonials: testimonials });
+};
+exports.Query = async (req, res) => {
+  let newQuery=new Enquiries({...req.body})
+  newQuery.save()
+  res.render("contact");
 };
 exports.prices = (req, res) => {
   res.render("prices");

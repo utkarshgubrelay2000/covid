@@ -171,7 +171,7 @@
 
                         <div class="col-xl-10 offset-xl-1">
                             <div class="contact-form-box">
-                                <form>
+                                <form action='/send-query' method="POST">
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label>Your Name*</label>
@@ -183,39 +183,19 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label>Your Telephone*</label>
-                                            <input type="tel" name="telephone" id="telephone" class="w-100 field" placeholder="Enter your telephone" required />
+                                            <input type="tel" name="phone" id="telephone" class="w-100 field" placeholder="Enter your telephone" required />
                                         </div>
+                                      
+                                       
+                                  
                                         <div class="col-md-6 form-group">
-                                            <label>Clinic*</label>
-                                            <select class="w-100 field">
-                                                <option value="Select">Select</option>
-                                                <option value="Clinic">Clinic</option>
-                                                <option value="Clinic">Clinic</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label>Your destination*</label>
-                                            <input type="test" name="destination" id="destination" class="w-100 field" placeholder="Your destination" required />
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label>Your date of departure*</label>
-                                            <input type="date" name="departure" id="departure" class="w-100 field" placeholder="Your date of departure" required />
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label>Required vaccination (if known)</label>
-                                            <input type="test" name="destination1" id="destination1" class="w-100 field" placeholder="Your destination" />
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label>Is this a COVID-19 PCR Test*</label>
-                                            <select class="w-100 field">
+                                            <label>Is this a COVID-19 PCR Test* Related Query</label>
+                                            <select name='covidQuery' class="w-100 field">
                                                 <option value="no">NO</option>
                                                 <option value="yes">YES</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-6 form-group">
-                                            <label>Preferred Booking Date/Time</label>
-                                            <input type="datetime-local" name="booking" id="booking" class="w-100 field" placeholder="Your destination" />
-                                        </div>
+                                      
                                         <div class="col-md-6 form-group">
                                             <label>Subject*</label>
                                             <input type="text" name="subject" id="subject" class="w-100 field" placeholder="Your Subject" />
@@ -226,7 +206,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group checkboxes-data mb-1">
-                                                <input type="checkbox" id="acceptance" class="d-none" checked="">
+                                                <input type="checkbox" required id="acceptance" class="d-none" checked="">
                                                 <label for="acceptance">
                                                     I have read and accept the Privacy Policy Terms and conditions
                                                 </label>
