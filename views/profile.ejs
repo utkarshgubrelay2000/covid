@@ -98,8 +98,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="pt-4 pb-4">
-					<form>
+				<div class="pt-4 pb-4" id='profile'>
+				
 						<div class="row">
 						
 							<div class=" m-auto col-lg-6 col-md-8 col-12 ">
@@ -163,8 +163,150 @@
 										
 									</div>
 								</div>
+								<button  class="btn  btn-primary " onclick="showEdit(1)">
+									Edit Profile
+								</button>
 							</div>
 						</div>
+					
+				</div>
+				<div class="pt-4 pb-4 d-none" id='editprofile'>
+					<button  class="btn  btn-primary " onclick="showEdit(2)">
+						<i class="fas fa-arrow-left"></i>
+						</button>
+					<form action="/updateuser/<%=token%>" method="POST">
+					    <div class="form-row">
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom01"
+								>First name</label
+							  >
+							  <input
+								type="text"
+								class="form-control"
+								id="validationCustom01"
+								name="firstName"
+								value="<%= data.firstName %> "
+							  />
+							</div>
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom02"
+								>Last name</label
+							  >
+							  <input
+								type="text"
+								name="lastName"
+								class="form-control"
+								id="validationCustom02"
+								value="<%= data.lastName %>"
+							  />
+							</div>
+							<div class="col-md-12 mb-3">
+							  <label for="validationCustom02"
+								>Password</label
+							  >
+							  <input
+								type="text"
+								name="password"
+								class="form-control"
+								id="validationCustom02"
+			   placeholder="***********"
+							  />
+							</div>
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom03">DOB*</label>
+							  <input
+								type="date"
+								class="form-control"
+								name="dob"
+								id="validationCustom03"
+								value="<%= data.dob %>"
+							  />
+							</div>
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom04">Sex*</label>
+							  <select
+								name="gender"
+								class="form-control"
+								id="validationCustom04"
+							  >
+								<option value="male" selected>Male</option>
+								<option value="female">Female</option>
+							  </select>
+							</div>
+							<div class="col-md-12 mb-3">
+							  <label for="validationCustom05"
+								>Home Address*</label
+							  >
+							  <textarea
+						  
+								class="form-control"
+								id="validationCustom05"
+								name="address"
+							  >
+							  <%= data.address %></textarea
+							  >
+							  <!-- <div class="invalid-feedback">
+																  Please provide a valid Address.
+															  </div> -->
+							</div>
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom06">Email*</label>
+							  <input
+								type="email"
+								name="email"
+								class="form-control"
+								id="validationCustom06"
+								value="<%= data.email %>"
+							  />
+							</div>
+							<!-- <div class="col-md-6 mb-3">
+															  <label for="validationCustom07">Confirm email*</label>
+															  <input type="email" class="form-control" id="validationCustom07" value="john@gmail.com"/>
+														  </div> -->
+							<div class="col-md-6 mb-3">
+							  <label for="validationCustom08"
+								>Mobile number*</label
+							  >
+							  <div class="row">
+								<div class="col-xl-3 col-4 pr-0">
+								  <select
+									name="countryCode"
+									class="form-control"
+									id="validationCustom08"
+								  >
+									<option value="91">+91</option>
+									<option value="54" selected>+54</option>
+								  </select>
+								</div>
+								<div class="col-xl-9 col-8">
+								  <input
+									type="number"
+									name="phone"
+									class="form-control"
+									id="validationCustom08"
+									value="<%= data.phone %>"
+								  />
+								</div>
+							  </div>
+							</div>
+							<!-- <div class="col-md-6 mb-3">
+															  <label for="validationCustom09">Mobile number*</label>
+															  <div class="row">
+																  <div class="col-xl-3 col-4 pr-0">
+																	  <select class="form-control" id="validationCustom09">
+																		  <option value="91">+91</option>
+																		  <option value="54" selected>+54</option>
+																	  </select>	
+																  </div>
+																  <div class="col-xl-9 col-8">
+																	  <input type="email" class="form-control" id="validationCustom09" value="9652145852"/>																		
+																  </div>
+															  </div>
+														  </div> -->
+						  </div>
+						  <button class="btn btn-primary mt-4" type="submit">
+							Submit form
+						  </button>
 					</form>
 				</div>
 			</div>
@@ -190,6 +332,19 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/loginCheck.js"></script>
 <script src="/assets/js/font-awesome-5-pro.js"></script>
-
+<script>
+	function showEdit(type){
+		let profile=document.getElementById('profile')
+		let profileEdit=document.getElementById('editprofile')
+		if(type==1){
+			profileEdit.classList.remove('d-none')
+			profile.classList.add('d-none')
+			
+}else{
+	profile.classList.remove('d-none')
+profileEdit.classList.add('d-none')
+}
+	}
+</script>
 </body>
 </html>

@@ -772,6 +772,34 @@ exports.profileEdit = async (req, res) => {
     });
   });
 };
+exports.updateUser = async (req, res) => {
+  try {
+   
+    let data=req.body
+
+    if (data.password) {
+   data.password = await bcryptjs.hash(password, 12);
+    }
+    User.findOneAndUpdate(
+      { _id: req.body.userId },
+      {...data},
+      (err, result) => {
+        if (err) {
+          // res.redirect(`/user-profile?user=${result._id}`)
+    console.log(err)
+
+          res.status(400).json({ error: err });
+        } else {
+          res.redirect(`/profile/`+req.params.token,);
+    
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ error: error });
+  }
+};
 exports.editPersonDetails = async (req, res) => {
   console.log(req.body, req.params);
   await PersonalDetails.findByIdAndUpdate(req.params.id, { ...req.body });
