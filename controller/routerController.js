@@ -731,11 +731,17 @@ exports.notification = (req, res) => {
     })
 
     .populate("user")
-    .then((myNotification) => {
-      console.log(myNotification[0]);
+    .then(async (myNotification) => {
+   let data= await User.findById(req.body.userId, {
+        password: 0,
+        gender: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      })
+     // console.log(data);
       res.render("notification", {
         notification: myNotification,
-        token: req.params.token,
+        token: req.params.token,data:data
       });
     });
 };

@@ -24,7 +24,7 @@
 				</a>
 			</div>
 		
-			<div class="col-lg-5 col-12 text-right mb-3 mb-lg-0">
+			<div class="col-lg-10 col-12 text-right mb-3 mb-lg-0">
 				<ul class="navbar-right mb-0 d-flex justify-content-center justify-content-md-end align-items-center">
 				 	<!-- message -->
                     
@@ -35,15 +35,15 @@
                                 	<img src="/assets/img/user-img.png" alt="user" class="mr-2">
                                 </div>
                                 <div class="text-left">
-                                	<h6 class="m-0 username">My Account</h6>
+									<h6 class="m-0 username"><%=data.firstName%> <%=data.lastName%></h6>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                                 <div class="row m-0">
                                 	<div class="col-6 pl-0">
-                                		<div>
-                                			<h6 class="theme-color font-weight-bold">Account</h6>
-                                		</div>
+                                	    <div class="text-left">
+											<h6 class="m-0 username"><%=data.firstName%> <%=data.lastName%></h6>
+										</div>
                                 		<a class="dropdown-item" href="/profile/<%=token%>">Profile</a>
 		                                <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
 										<a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
