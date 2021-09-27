@@ -36,7 +36,7 @@
             <center>
 
                 <a style="background-color: #1d0a03;
-               border-width: 1px; border-color: #1d0a03" href="/" class="btn btn-primary button " role="button"
+               border-width: 1px; border-color: #1d0a03" onclick="Redirector()" class="btn btn-primary button " role="button"
                     aria-disabled="true"> Back To Home Page</a>
 
             </center>
@@ -64,5 +64,10 @@
 <script>
     localStorage.removeItem('slots')
     localStorage.removeItem('users')
+    function Redirector(){
+    let token=localStorage.getItem('covid')
+
+        window.location.href='/profile/'+token
+    }
 </script>
 </html>
