@@ -2,6 +2,7 @@ const FAQ = require("../model/faqModel");
 const Test = require("../model/testModel");
 let { Scheduler } = require("@ssense/sscheduler");
 const jwt = require("jsonwebtoken");
+const bcryptjs = require("bcryptjs");
 
 let testModal = require("../model/testModel");
 // let Restaurant = require("../model/restaurantModel");
@@ -778,7 +779,7 @@ exports.updateUser = async (req, res) => {
     let data=req.body
 
     if (data.password) {
-   data.password = await bcryptjs.hash(password, 12);
+   data.password = await bcryptjs.hash(data.password, 12);
     }
     User.findOneAndUpdate(
       { _id: req.body.userId },
