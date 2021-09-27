@@ -23,30 +23,11 @@
 					<img src="/assets/img/site-logo.png" width="200px">
 				</a>
 			</div>
-			<div class="col-xl-4 offset-xl-1 col-lg-4 col-md-7 mb-lg-0 mb-4">
-				<form class="search">
-					<div class="input-group">
-		               <input type="text" class="form-control bg-transparent border-0" placeholder="Search"> 
-					   <span class="input-group-append">
-						   <div class="input-group-text bg-transparent border-0"><i class="fal fa-search"></i></div>
-					   </span>
-		             </div>
-				</form>
-			</div>
+		
 			<div class="col-lg-5 col-12 text-right mb-3 mb-lg-0">
 				<ul class="navbar-right mb-0 d-flex justify-content-center justify-content-md-end align-items-center">
 				 	<!-- message -->
-                    <li>
-                        <div class="notify-btn">
-                        	<a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </li>
-                    <!-- notification -->
-                    <li>
-                        <div class="notify-btn">
-                        	<a href="#"><i class="far fa-bell"></i></a>
-                        </div>
-                    </li>
+                    
 					<li class="dropdown">
                         <div class="dropdown nav-pro-img">
                             <a class="dropdown-toggle nav-link nav-user d-flex align-items-center p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -54,7 +35,7 @@
                                 	<img src="/assets/img/user-img.png" alt="user" class="mr-2">
                                 </div>
                                 <div class="text-left">
-                                	<h6 class="m-0 username">John Doe</h6>
+                                	<h6 class="m-0 username">My Account</h6>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown">
@@ -63,11 +44,11 @@
                                 		<div>
                                 			<h6 class="theme-color font-weight-bold">Account</h6>
                                 		</div>
-                                		<a class="dropdown-item" href="profile-details">Profile</a>
-		                                <a class="dropdown-item" href="notification">My Notifications</a>
-										<a class="dropdown-item" href="appointment-bookings">Appointment Bookings</a>
-										<a class="dropdown-item" href="setting">Setting</a>
-										<a class="dropdown-item" href="#">Logout</a>
+                                		<a class="dropdown-item" href="/profile/<%=token%>">Profile</a>
+		                                <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
+										<a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
+										<a class="dropdown-item" onclick="logoutHandler()">Logout</a>
+						
                                 	</div>
                                 </div>
                            	</div>
@@ -100,9 +81,7 @@
 								<li class="nav-item">
 									<a href="/appointment-bookings/<%=token%>" class="nav-link">Appointment Bookings</a>
 								</li>
-								<li class="nav-item">
-									<a href="/setting/<%=token%>" class="nav-link">Setting</a>
-								</li>
+							
 							</ul>
 					  </div>
 					</div>	 
@@ -149,7 +128,7 @@
 		</div>
 		<div class="row notifications-box mt-4">
 			<%notification.map(element=>{%>
-				<%if(element.slotId.packageid && element.slotId.test ){%>
+				<%if(element?.slotId?.packageid && element?.slotId?.test ){%>
 				<div class="col-md-6">
 					<div class="notification">
 						<div class="d-xl-flex">
@@ -196,6 +175,7 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/font-awesome-5-pro.js"></script>
+<script src="/assets/js/loginCheck.js"></script>
 
 </body>
 </html>

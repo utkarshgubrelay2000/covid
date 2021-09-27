@@ -37,17 +37,7 @@
                 <div class="col-lg-5 col-12 text-right mb-3 mb-lg-0">
                     <ul class="navbar-right mb-0 d-flex justify-content-center justify-content-md-end align-items-center">
                          <!-- message -->
-                        <li>
-                            <div class="notify-btn">
-                                <a href="#"><i class="far fa-envelope"></i></a>
-                            </div>
-                        </li>
-                        <!-- notification -->
-                        <li>
-                            <div class="notify-btn">
-                                <a href="#"><i class="far fa-bell"></i></a>
-                            </div>
-                        </li>
+                      
                         <li class="dropdown">
                             <div class="dropdown nav-pro-img">
                                 <a class="dropdown-toggle nav-link nav-user d-flex align-items-center p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -67,7 +57,7 @@
                                             <a class="dropdown-item" href="profile-details">Profile</a>
                                             <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
                                             <a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
-                                            <a class="dropdown-item" href="setting/<%=token%>">Setting</a>
+                                          
                                             <a class="dropdown-item" onclick="logoutHandler()">Logout</a>
                                         </div>
                                     </div>
@@ -101,9 +91,7 @@
                                     <li class="nav-item">
                                         <a href="/appointment-bookings/<%=token%>" class="nav-link">Appointment Bookings</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="/setting/<%=token%>" class="nav-link">Setting</a>
-                                    </li>
+                                   
                                 </ul>
                           </div>
                         </div>	 
@@ -490,6 +478,7 @@ tId-    <%=element.transportId%>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/font-awesome-5-pro.js"></script>
+<script src="/assets/js/loginCheck.js"></script>
 
 </body>
 </html>
