@@ -25,7 +25,7 @@ transporter.verify(function (error, success) {
 
 exports.Signup = (req, res) => {
   const userDetails = req.body;
-
+console.log(userDetails)
   userModel.findOne({ email: userDetails.email }).then((user) => {
     if (user) {
       res.status(404).json({ error: "email Address is already taken" });
@@ -435,7 +435,170 @@ exports.ForgetPassword = (req, res) => {
       });
 
 };
+exports.otpCheck = (req, res) => {
+  var otpGenerator = require('otp-generator')
+   let otp=otpGenerator.generate(6, { upperCase: false, specialChars: false,alphabets:false });
+  //     console.log(ResetOTP);
+  
+       console.log(otp)
+            let toSubsciberMail ={
+              to: req.body.email,
+              from: "welcometofinladder@gmail.com",
+              subject: "Otp ",
+              html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+              <html xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                  <link
+                    rel="stylesheet"
+                    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+                    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+                    crossorigin="anonymous"
+                  />
+                  <link rel="preconnect" href="https://fonts.gstatic.com" />
+                  <link
+                    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+                    rel="stylesheet"
+                  />
+                  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                  <title>welcome to BTC Black Burn</title>
+                  <style>
+                    body {
+                      background-color: #ffffff;
+                      padding: 0;
+                      margin: 0;
+                      font-family: "Open Sans", sans-serif;
+                      font-weight: 600;
+                      color: #803487;
+                    }
+                    tr .span {
+                      color: #803487;
+                      box-shadow: 0px 0px 4px 0px rgb(196, 193, 193);
+                    }
+                    tr .span span {
+                      color: #803487;
+                      font-size: 14px;
+                    }
 
+                    tr .resetButton a {
+                      text-decoration: none;
+                      color: #728b6b;
+                    }
+                    tr .resetButton a:hover {
+                      color: #ffffff;
+                    }
+                  </style>
+                </head>
+                <body style="background-color: #ffffff;   margin: 0">
+                  <span> </span>
+                  <div style="padding-left:10px;">
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="10"
+                    height="100%"
+                    bgcolor="#FFFFFF"
+                    width="100%"
+                    style="max-width: 650px"
+                    id="bodyTable"
+                  >
+                    <tr>
+                      <td align="center" valign="top">
+                        <table
+                          border="0"
+                          cellpadding="0"
+                          cellspacing="0"
+                          width="100%"
+                          id="emailContainer"
+                          style="font-family: Arial; color:
+                          #803487; padding: 10px;"
+                        >
+                          <tr></tr>
+                          <!-- Title -->
+                          <tr>
+                            <td
+                              align="left"
+                              valign="top"
+                              colspan="2"
+                              class="text-center"
+                              style="
+                                border-bottom: 1px solid #cccccc;
+                                font-weight: 700;
+                                padding: 20px 0 10px 0;
+                                padding-left: 10px;
+                              "
+                            >
+                              <span style="font-size: 15px; font-weight: 600"
+                                >Welcome To BTC Black Burn</span
+                              >
+                            </td>
+                          </tr>
+                          <!-- Messages -->
+                          <tr>
+                            <td
+                              class="span"
+                              align="top"
+                              colspan="2"
+                              style="padding-top: 10px"
+                            >
+
+                                  <span style=" line-height: 1.5;">
+                                      We have sent you this email in response for Email Confimartion on BTC Black Burn.
+                                     <br/><br/>
+                                      To reset your password for please follow the link below:
+                                      <br/><br/>
+                                      <div class=" text-center ">
+          <h1>${otp}</h1>
+
+                                      </div>
+                                <tr>
+                                  <td>Looking forward to a lot of interaction with you :)</td>
+                                </tr>
+                                <tr>
+                                  <td>BTC Black Burn wishes you the best for your journey!</td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    For any queries please feel free to contact the founders
+                                    directly -
+                                  </td>
+                                </tr>
+                                <tr>
+                                <td>
+
+                                Regards <br/>
+                                Team BTC Black Burn
+                                <br/>
+                                 <a target='_blank' href='mailto:btravelclinic@gmail.com'>btravelclinic@gmail.com</a>
+                                  <br/>
+                       
+                              </td>
+
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+               </div> </body>
+              </html>
+            `,
+
+            };
+            transporter.sendMail(toSubsciberMail, (err) => {
+              if (err) {
+                console.log("some error in sending mail to subscriber", err);
+                return res
+                  .status(400)
+                  .json({ error: "some error in sending mail to admin" });
+              }
+              console.log("message sent successfully");
+              // res.json("Thanks for subscribing!");
+            });
+      
+          res.json({error:false,data:otp});
+        
+  
+};
 exports.verifyOTP = (req, res) => {
   var crypto=require('crypto')
   crypto.randomBytes(32, (err, buffer) => {

@@ -8,6 +8,9 @@ var userAuthentication=require('../controller/authController');
 router.post('/signup',userAuthentication.Signup,err=>{
   console.log('error while signup user')
 })
+router.post('/sign-up-check',userAuthentication.otpCheck,err=>{
+  console.log('error while signup user')
+})
 router.post('/login',userAuthentication.Signin,err=>{
   console.log('error while signup user')
 })
