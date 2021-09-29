@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+          rel="stylesheet"
+        />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>welcome to BTC Black Burn</title>
+        <style>
+          body {
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            color: #803487;
+          }
+          tr .span {
+            color: #803487;
+            box-shadow: 0px 0px 4px 0px rgb(196, 193, 193);
+          }
+          tr .span span {
+            color: #803487;
+            font-size: 14px;
+          }
+
+          tr .resetButton a {
+            text-decoration: none;
+            color: #728b6b;
+          }
+          tr .resetButton a:hover {
+            color: #ffffff;
+          }
+        </style>
+      </head>
+      <body style="background-color: #ffffff;   margin: 0">
+      
+        <div style="padding-left:10px;">
+        <table
+          border="0"
+          cellpadding="0"
+          cellspacing="10"
+          height="100%"
+          bgcolor="#FFFFFF"
+          width="100%"
+          style="max-width: 650px"
+          id="bodyTable"
+        >
+          <tr>
+            <td align="center" valign="top">
+              <table
+                border="0"
+                cellpadding="0"
+                cellspacing="0"
+                width="100%"
+                id="emailContainer"
+                style="font-family: Arial; color:
+                #803487; padding: 10px;"
+              >
+                <tr></tr>
+                <!-- Title -->
+                <tr>
+                  <td
+                    align="left"
+                    valign="top"
+                    colspan="2"
+                    class="text-center"
+                    style="
+                      border-bottom: 1px solid #cccccc;
+                      font-weight: 700;
+                      padding: 20px 0 10px 0;
+                      padding-left: 10px;
+                    "
+                  >
+                    <span style="font-size: 15px; font-weight: 600"
+                      >Welcome To BTC Black Burn</span
+                    >
+                  </td>
+                </tr>
+                <!-- Messages -->
+                <tr>
+                  <td
+                    class="span"
+                    align="top"
+                    colspan="2"
+                    style="padding-top: 10px"
+                  >
+                  Name : ${req.body.name}
+</td>
+<tr>
+<td
+class="span"
+align="top"
+colspan="2"
+style="padding-top: 10px"
+>
+Email : ${req.body.email}
+</td>    </tr> <tr>
+<td
+class="span"
+align="top"
+colspan="2"
+style="padding-top: 10px"
+>
+phone: ${req.body.phone}
+</td></tr>
+<td
+class="span"
+align="top"
+colspan="2"
+style="padding-top: 10px"
+>
+destination: ${req.body.destination}
+</td>       </tr> <tr>            
+<td
+class="span"
+align="top"
+colspan="2"
+style="padding-top: 10px"
+>
+subject: ${req.body.subject}
+</td>     </tr> <tr>
+<td
+class="span"
+align="top"
+colspan="2"
+style="padding-top: 10px"
+>
+message: ${req.body.message}
+</td>        </tr> 
+              </table>
+          
+     </div> </body>
+    </html>
+  
