@@ -110,7 +110,7 @@ async function selectTest(name, index, id) {
              <a href="/choose-slots/${res.name}/${
           ele._id
         }" class="btn-purple d-inline-block mt-4 mb-2">
-             Book Test
+             BOOK A TEST
          </a>
          <br>
          ${
@@ -156,7 +156,7 @@ Book A Home  Kit appointment
                      </p>
                  </div>
                  <a href="/choose-slots/${res.name}/${ele._id}" class="btn-purple d-inline-block mt-4 mb-2">
-                 Book Test
+                 BOOK A TEST
       </a></div>`*/ " "
              }
          
