@@ -1189,7 +1189,7 @@ function getSlotsForPeopleSingleDay() {
   } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+      option += `<input name='spots' class="w-100 field d-none"  value=${ele}>`;
     });
 
     $("#slotsIdsFotSingleDayTest").html(option);
