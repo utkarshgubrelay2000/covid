@@ -457,7 +457,11 @@ function getData(length, slot, packageid) {
   console.log(token);
   for (let index = 0; index < length; index++) {
     let object = {
-      email: document.getElementById("email" + index).value,
+       city : document.getElementById("city").value,
+         state : document.getElementById("state").value,
+         transportMode : document.getElementById("transportMode").value,
+         transportno : document.getElementById("transportno.").value,
+         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -559,7 +563,11 @@ function getHomeData(length, date, packageid) {
 
   for (let index = 0; index < length; index++) {
     let object = {
-      email: document.getElementById("email" + index).value,
+       city : document.getElementById("city").value,
+         state : document.getElementById("state").value,
+         transportMode : document.getElementById("transportMode").value,
+         transportno : document.getElementById("transportno.").value,
+         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,

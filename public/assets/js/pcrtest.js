@@ -461,7 +461,11 @@ function getData(length, slot, packageid) {
   console.log(token);
   for (let index = 0; index < length; index++) {
     let object = {
-      email: document.getElementById("email" + index).value,
+       city : document.getElementById("city").value,
+         state : document.getElementById("state").value,
+         transportMode : document.getElementById("transportMode").value,
+         transportno : document.getElementById("transportno.").value,
+         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -563,7 +567,11 @@ function getHomeData(length, slot, packageid) {
     console.log(packageid,'562');
     for (let index = 0; index < length; index++) {
       let object = {
-        email: document.getElementById("email" + index).value,
+         city : document.getElementById("city").value,
+         state : document.getElementById("state").value,
+         transportMode : document.getElementById("transportMode").value,
+         transportno : document.getElementById("transportno.").value,
+         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
         firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
         lastName: document.getElementById("lname" + index).value,
         phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -577,6 +585,8 @@ function getHomeData(length, slot, packageid) {
         brand_vaccine: document.getElementById("brand_vaccine" + index).value,
         transportMode: document.getElementById("transportMode" + index).value,
         confirmemail: document.getElementById("confirmemail" + index).value,
+         address : document.getElementById("address").value,
+        
         isolationaddress:document.getElementById("quanaddress" + index)?.value,
         ethnicity: document.getElementById("ethnicity" + index).value,
         date_of_arrival: document.getElementById("date_of_arrival" + index).value,
