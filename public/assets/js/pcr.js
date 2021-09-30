@@ -771,7 +771,7 @@ function getPCRAndTwoData(length, slot,pcrSlot,day8Slot, packageid) {
        city : document.getElementById("city").value,
          state : document.getElementById("state").value,
          transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
+         transportno : document.getElementById("transportno").value,
          Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,

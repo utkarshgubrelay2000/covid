@@ -39,6 +39,7 @@ const personalDetailsSchema = new mongoose.Schema(
     city: String,
     state: String,
     transportMode: String,
+    transportno: String,
     brand_vaccine: String,
     Postal: String,
     
