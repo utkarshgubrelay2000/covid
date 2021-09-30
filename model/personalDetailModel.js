@@ -14,6 +14,10 @@ const personalDetailsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    time: {
+      type: String,
+
+    },
     lastName: {
       type: String,
       required: true,
