@@ -10,7 +10,7 @@ function getData(length, slot, slotAfterDay6, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
@@ -18,6 +18,8 @@ function getData(length, slot, slotAfterDay6, packageid) {
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+
       passport_id: document.getElementById("passport_id" + index).value,
       ethnicity: document.getElementById("ethnicity" + index).value,
       date_of_arrival: document.getElementById("date_of_arrival" + index).value,
@@ -120,7 +122,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       isolationaddress: document.getElementById("quanaddress" + index).value,
 
@@ -129,7 +131,7 @@ function get258Data(length, spots5, spots, spots8, packageid) {
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
-     // brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
       confirmemail: document.getElementById("confirmemail" + index).value,  
       passport_id: document.getElementById("passport_id" + index).value,
       ethnicity: document.getElementById("ethnicity" + index).value,
@@ -237,7 +239,7 @@ function get28HomeData(length, spots, spots8, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,

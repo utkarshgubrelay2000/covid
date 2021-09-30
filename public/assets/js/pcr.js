@@ -509,7 +509,7 @@ function getData(length, slot, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
@@ -525,6 +525,8 @@ function getData(length, slot, packageid) {
       ).value,
       vaccination_status: document.getElementById("vaccination_status" + index)
         .value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+
       date_depart_out_cta: document.getElementById(
         "date_depart_out_cta" + index
       ).value,
@@ -634,7 +636,7 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
@@ -651,6 +653,8 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
       ).value,
       vaccination_status: document.getElementById("vaccination_status" + index)
         .value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+
       date_depart_out_cta: document.getElementById(
         "date_depart_out_cta" + index
       ).value,
@@ -759,7 +763,7 @@ function getPCRAndTwoData(length, slot,pcrSlot,day8Slot, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
@@ -775,6 +779,8 @@ function getPCRAndTwoData(length, slot,pcrSlot,day8Slot, packageid) {
       ).value,
       vaccination_status: document.getElementById("vaccination_status" + index)
         .value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+
       date_depart_out_cta: document.getElementById(
         "date_depart_out_cta" + index
       ).value,
@@ -883,7 +889,7 @@ function getPCRAndThreeData(length, slot,pcrSlot,day8Slot,day5Slot, packageid) {
       email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
-      phone: document.getElementById("phone" + index).value,
+      phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
@@ -899,6 +905,8 @@ function getPCRAndThreeData(length, slot,pcrSlot,day8Slot,day5Slot, packageid) {
       ).value,
       vaccination_status: document.getElementById("vaccination_status" + index)
         .value,
+      brand_vaccine: document.getElementById("brand_vaccine" + index).value,
+
       date_depart_out_cta: document.getElementById(
         "date_depart_out_cta" + index
       ).value,
