@@ -506,11 +506,11 @@ function getData(length, slot, packageid) {
   console.log(token);
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -637,18 +637,18 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
   console.log(pcrSlot,slot);
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
       dob: document.getElementById("dob" + index).value,
       gender: document.getElementById("sex" + index).value,
       address: document.getElementById("address" + index).value,
-      isolationaddress:document.getElementById("quanaddress" + index).value,
+      isolationaddress:document.getElementById("quanaddress" + index)?.value,
       arrival_vessel_number: document.getElementById(
         "arrival_vessel_number" + index
       ).value,
@@ -768,11 +768,11 @@ function getPCRAndTwoData(length, slot,pcrSlot,day8Slot, packageid) {
   console.log(pcrSlot,slot);
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
          transportno : document.getElementById("transportno").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -898,11 +898,11 @@ function getPCRAndThreeData(length, slot,pcrSlot,day8Slot,day5Slot, packageid) {
   console.log(pcrSlot,slot);
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,

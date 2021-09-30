@@ -7,11 +7,11 @@ function getData(length, slot, slotAfterDay6, packageid) {
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -123,11 +123,11 @@ function get258Data(length, spots5, spots, spots8, packageid) {
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,
@@ -244,11 +244,11 @@ function get28HomeData(length, spots, spots8, packageid) {
   let array = [];
   for (let index = 0; index < length; index++) {
     let object = {
-       city : document.getElementById("city").value,
-         state : document.getElementById("state").value,
-         transportMode : document.getElementById("transportMode").value,
-         transportno : document.getElementById("transportno.").value,
-         Postal : document.getElementById("Postal").value,email: document.getElementById("email" + index).value,
+          city : document.getElementById("city"+index).value,
+         state : document.getElementById("state"+index).value,
+         transportMode : document.getElementById("transportMode"+index).value,
+       transportno : document.getElementById("transportno"+index)?.value,
+         Postal : document.getElementById("Postal"+index).value,email: document.getElementById("email" + index).value,
       firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value, time: document.getElementById("time" + index).value,

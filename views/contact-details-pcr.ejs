@@ -300,7 +300,7 @@
                                                                 <input type="text" name="address" id="address<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                             </div>  <div class="col-md-12 form-group">
                                                                 <label>Transport Vehicle No.*</label>
-                                                                <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
+                                                                <input type="text"  id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
                                                             </div>
                                                             <div class="col-md-6 form-group">
                                                                 <label>Email*</label>
@@ -324,19 +324,19 @@
                                                                 </div>
                                                             </div>  <div class="col-md-6 form-group">
                                                             <label> City*</label>
-                                                            <input type="text" name="address" id="city" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="city<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label> State*</label>
-                                                            <input type="text" name="address" id="state" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="state<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label> Postal Code*</label>
-                                                            <input type="text" name="address" id="Postal" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="Postal<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label>Mode of Transport</label>                                                                
-                                                            <select id='transportMode' class="w-100 field">
+                                                            <select id='transportMode<%=index%>' class="w-100 field">
                                                          
                                                                 <option value="Train">Train</option>
                                                                 <option value="Flight">Flight</option>
@@ -477,7 +477,7 @@
                                                                         Address of quarantine*
                                                                         <a href="#">Use same as above</a>
                                                                     </label>                                                                
-                                                                    <input type="text" name="number" id="address<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
+                                                                    <input type="text" name="number" id="quanaddress<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
                                                                 </div>
                                                                 <%}%>
                                                             

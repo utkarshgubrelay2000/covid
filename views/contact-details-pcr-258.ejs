@@ -314,19 +314,19 @@
                                                                 </div>
                                                             </div>  <div class="col-md-6 form-group">
                                                             <label> City*</label>
-                                                            <input type="text" name="address" id="city" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="city<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label> State*</label>
-                                                            <input type="text" name="address" id="state" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="state<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label> Postal Code*</label>
-                                                            <input type="text" name="address" id="Postal" class="w-100 field" placeholder="Enter your address" required="">
+                                                            <input type="text" name="address" id="Postal<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label>Mode of Transport</label>                                                                
-                                                            <select id='transportMode' class="w-100 field">
+                                                            <select id='transportMode<%=index%>' class="w-100 field">
                                                          
                                                                 <option value="Train">Train</option>
                                                                 <option value="Flight">Flight</option>
@@ -450,12 +450,23 @@
                                                              
                                                                 </select>
                                                             </div>
+                                                            <div class="col-md-6 form-group">
+                                                                <label>Brand of vaccine*</label>                                                                
+                                                                <select id='brand_vaccine<%=index%>' class="w-100 field">
+                                                                    <option value="">Select</option>
+                                                                    <option value="Astrazenca">Astrazenca</option>
+                                                                    <option value="Pfizer">Pfizer</option>
+                                                                    <option value="Moderna">Moderna</option>
+                                                                    <option value="others">others</option>
+
+                                                                </select>
+                                                            </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label>
                                                                     Address of quarantine*
                                                                     <a href="#">Use same as above</a>
                                                                 </label>                                                                
-                                                                <input type="text" name="number" id="address<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
+                                                                <input type="text" name="number" id="quanaddress<%=index%>" class="w-100 field" placeholder="Start typing your address or postal code" required="" />
                                                             </div>
                                                             
                                                         </div>
