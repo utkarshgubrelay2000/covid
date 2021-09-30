@@ -507,7 +507,7 @@ function getData(length, slot, packageid) {
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
-      firstName: document.getElementById("fname" + index).value,
+      firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value,
       dob: document.getElementById("dob" + index).value,
@@ -632,7 +632,7 @@ function getPCRAndSingleData(length, slot,pcrSlot, packageid) {
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
-      firstName: document.getElementById("fname" + index).value,
+      firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value,
       dob: document.getElementById("dob" + index).value,
@@ -757,7 +757,7 @@ function getPCRAndTwoData(length, slot,pcrSlot,day8Slot, packageid) {
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
-      firstName: document.getElementById("fname" + index).value,
+      firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value,
       dob: document.getElementById("dob" + index).value,
@@ -881,7 +881,7 @@ function getPCRAndThreeData(length, slot,pcrSlot,day8Slot,day5Slot, packageid) {
   for (let index = 0; index < length; index++) {
     let object = {
       email: document.getElementById("email" + index).value,
-      firstName: document.getElementById("fname" + index).value,
+      firstName: document.getElementById("fname" + index).value, middleName: document.getElementById("middle" + index).value,
       lastName: document.getElementById("lname" + index).value,
       phone: document.getElementById("phone" + index).value,
       dob: document.getElementById("dob" + index).value,
