@@ -335,7 +335,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='spots' class="w-100 field" value=${ele}>`;
+      option += `<input name='spots' class="w-100 field d-none" value=${ele}>`;
     });
 
     $("#pcrSlots").html(option);
@@ -367,7 +367,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='pcrSlot' class="w-100 field" value=${ele}>`;
+      option += `<input name='pcrSlot' class="w-100 field d-none" value=${ele}>`;
     });
 
     $("#pcrSlotsDay2").html(option);
@@ -398,7 +398,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='slotsDay8' class="w-100 field" value=${ele}>`;
+      option += `<input name='slotsDay8' class="w-100 field d-none" value=${ele}>`;
     });
 
     $("#pcrSlotsDay8").html(option);
@@ -429,7 +429,7 @@ function getSlotsForPeople(type) {
     } else {
     arrivalSlots.forEach((ele) => {
       var spot = ele;
-      option += `<input name='slotsDay5' class="w-100 field" value=${ele}>`;
+      option += `<input name='slotsDay5' class="w-100 field d-none" value=${ele}>`;
     });
 
     $("#pcrSlotsDay5").html(option);
@@ -1010,7 +1010,7 @@ function getDate() {
           Date*
       </label>
       <input type="date"
-      onchange="getSlots(${index})" name="date" id="date${index}" class="w-100 field" placeholder="" required />
+      onchange="getSlots(${index})" name="date" id="date${index}" class="w-100 field d-none" placeholder="" required />
   </div>
 </div>
 <div class="col-lg-5 col-md-6">

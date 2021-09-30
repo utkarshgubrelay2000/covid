@@ -352,7 +352,7 @@ function getSlotsForPeople(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spotArrival' class="w-100 field" value=${ele}>`;
+        option += `<input name='spotArrival' class="w-100 field d-none" value=${ele}>`;
       });
 
       $("#slotsIdsForArrival").html(option);
@@ -381,7 +381,7 @@ function getSlotsForPeople(type) {
       );
     } else {
       spotids.forEach((ele) => {
-        option2 += `<input name='spotAfterDay6' class="w-100 field" value=${ele}>`;
+        option2 += `<input name='spotAfterDay6' class="w-100 field d-none" value=${ele}>`;
       });
 
       $("#spotAfterDay6").html(option2);
@@ -688,7 +688,7 @@ function getDate() {
           Date*
       </label>
       <input type="date"
-      onchange="getSlots(${index})" name="date" id="date${index}" class="w-100 field" placeholder="" required />
+      onchange="getSlots(${index})" name="date" id="date${index}" class="w-100 field d-none" placeholder="" required />
   </div>
 </div>
 <div class="col-lg-5 col-md-6">
