@@ -344,7 +344,7 @@ exports.chooseslots = async (req, res) => {
     return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
   }
   // let today = new Date()
-  console.log(req.params);
+  console.log(req.params,'3728898692469');
   let newDate = new Date();
   let nextDate = addDays(newDate, 1);
 
@@ -453,6 +453,7 @@ exports.contactdetails = async (req, res) => {
   let peoplesDetails = {
     email: "",
   };
+  let packAgeDetails=await TestPackage.findById(packageid)
   if (people == 1) {
    // console.log("hello");
     spots = [spots];
@@ -471,7 +472,7 @@ exports.contactdetails = async (req, res) => {
       spots: spots,
       packageid: packageid,
       people: peopleArray,
-      length: peopleArray.length,
+      length: peopleArray.length,packAgeDetails
     });
   } else if (test._id == "612cbc00e9242568af80cf56") {
     res.render("contact-details", {
@@ -482,7 +483,7 @@ exports.contactdetails = async (req, res) => {
       people: peopleArray,
       length: peopleArray.length,
       departure: false,
-      arrivaldateinput: req.body.arrivaldateinput,showaddress:true
+      arrivaldateinput: req.body.arrivaldateinput,showaddress:true,packAgeDetails
     });
   } else {
     let response = await TestPackage.findById(packageid);
@@ -495,7 +496,7 @@ exports.contactdetails = async (req, res) => {
         packageid: packageid,
         people: peopleArray,
         length: peopleArray.length,
-        departure: true,showaddress:true
+        departure: true,showaddress:true,packAgeDetails
       });
     } else {
       console.log('331')
@@ -506,7 +507,7 @@ exports.contactdetails = async (req, res) => {
         packageid: packageid,
         people: peopleArray,
         length: peopleArray.length,
-        departure: true,showaddress:true
+        departure: true,showaddress:true,packAgeDetails
       });
     }
   }

@@ -288,10 +288,18 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label>Home Address*</label>
                                                                 <input type="text" name="address" id="address<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
-                                                            </div>  <div  style='opacity: 0;'  class="col-md-12 form-group">
+                                                            </div>  
+                                                            <%if(packAgeDetails.daysCombo=='fittofly'){%>
+                                                            <div  style='opacity: 0;'  class="col-md-12 form-group">
                                                                 <label>Transport Vehicle No.*</label>
                                                                 <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
                                                             </div>
+                                                            <%}else{%>
+                                                                <div   class="col-md-12 form-group">
+                                                                    <label>Transport Vehicle No.*</label>
+                                                                    <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
+                                                                </div>
+                                                                <%}%>
                                                             <div class="col-md-6 form-group">
                                                                 <label>Email*</label>
                                                                 <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
@@ -324,6 +332,7 @@
                                                             <label> Postal Code*</label>
                                                             <input type="text" name="address" id="Postal<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
+                                                        <%if(packAgeDetails.daysCombo=='fittofly'){%>
                                                         <div style='opacity: 0;' class="col-md-6 form-group">
                                                             <label>Mode of Transport</label>                                                                
                                                             <select id='transportMode<%=index%>' class="w-100 field">
@@ -334,7 +343,18 @@
                                                                 <option value="others">others</option>
                                                             </select>
                                                         </div>
-                                                                                                             
+                                                        <%}else{%>
+                                                            <div style='opacity: 0;' class="col-md-6 form-group">
+                                                                <label>Mode of Transport</label>                                                                
+                                                                <select id='transportMode<%=index%>' class="w-100 field">
+                                                             
+                                                                    <option value="Train">Train</option>
+                                                                    <option value="Flight">Flight</option>
+                                                                    <option value="Vessel">Vessel</option>
+                                                                    <option value="others">others</option>
+                                                                </select>
+                                                            </div>
+                                                            <%}%>                                            
                                                             <div class="col-12">
                                                                 <hr class="mt-0 mb-4">
                                                             </div>
@@ -445,6 +465,7 @@
 
                                                                 </select>
                                                             </div>
+                                                            <%if(packAgeDetails.daysCombo=='fittofly'){%>
                                                             <div  style='opacity: 0;'  class="col-md-6 form-group">
                                                                 <label>The date on which you last departed from or transited through a country or territory outside of the Common Travel Area*</label>                                                                
                                                                 <input type="date"  name="number" id="date_depart_out_cta<%=index%>"
@@ -461,6 +482,24 @@
                                                                      and any country or territory you transited through as part of that journey*</label>                                                                
                                                                 <input type="text" name="number" id="country_before_arrival<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
                                                             </div>
+                                                            <%}else{%>
+                                                                <div    class="col-md-6 form-group">
+                                                                    <label>The date on which you last departed from or transited through a country or territory outside of the Common Travel Area*</label>                                                                
+                                                                    <input type="date"  name="number" id="date_depart_out_cta<%=index%>"
+                                                                     class="w-100 field" placeholder="Enter details" required="" />
+                                                                </div>
+                                                                <div    class="col-md-6 form-group">
+                                                                    <label>The date on which you arrived or will
+                                                                         arrive in England from country or territory outside of the Common Travel Area*</label>                                                                
+                                                                    <input type="date" name="date" id="date_arrival_out_cta<%=index%>" class="w-100 field" value="2021-07-31" required="" />
+                                                                </div>
+                                                                <div    class="col-md-6 form-group">
+                                                                    <label>The country or territory you were,
+                                                                         or will be travelling from when you arrived in the UK, 
+                                                                         and any country or territory you transited through as part of that journey*</label>                                                                
+                                                                    <input type="text" name="number" id="country_before_arrival<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
+                                                                </div>
+                                                                <%}%>
                                                             <%if(!showaddress){%>
                                                             <div class="col-md-12 form-group">
                                                                 <label>
