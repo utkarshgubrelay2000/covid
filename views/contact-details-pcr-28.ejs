@@ -399,10 +399,10 @@
                                                             <div class="col-md-6 form-group">
                                                                 <label>Date of 
                                                                     <%if(departure){%>
-                                                                    departure 
+                                                                    departure   from the UK*
                                                                     <%} else {%>
-                                                                       Arrival <%} %>
-                                                                    in the UK*</label>   
+                                                                       Arrival   in the UK* <%} %>
+                                                                    </label>   
                                                                     <%if(departure){%>                                                             
                                                                     <input type="date" name="date" 
                                                                     id="date_of_arrival<%=index%>" class="w-100 field"  required="" />
@@ -414,12 +414,12 @@
                                                                         <%} %> 
                                                                 </div>
                                                                 <div class="col-md-6 form-group">
-                                                                    <%if(departure){%>
-                                                                        Time of departure 
+                                                                    <label>Time of 
+                                                                        <%if(departure){%>
+                                                                        departure   from the UK*
                                                                         <%} else {%>
-                                                                            Time of arrival 
-                                                                            <%} %>
-                                                                        in the UK*</label>                                                           
+                                                                           Arrival   in the UK* <%} %>
+                                                                        </label>                                                        
                                                                     <input type="text" name="date" 
                                                                     id="time<%=index%>"  class="w-100 field" 
                                                                      required="" />

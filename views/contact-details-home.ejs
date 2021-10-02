@@ -284,13 +284,6 @@
                                                                 </select>
                                                                 <span class="text-lightpurple d-block mt-1">Required by Public Health Authorities</span>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label>Home Address*</label>
-                                                                <input type="text" name="address" id="address<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
-                                                            </div>  <div class="col-md-12 form-group">
-                                                                <label>Transport Vehicle No.*</label>
-                                                                <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
-                                                            </div>
                                                             <div class="col-md-6 form-group">
                                                                 <label>Email*</label>
                                                                 <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
@@ -312,6 +305,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div> 
+                                                            <div class="col-md-12 form-group">
+                                                                <label>Home Address*</label>
+                                                                <input type="text" name="address" id="address<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
+                                                            </div>  <div class="col-md-12 form-group">
+                                                                <label>Transport Vehicle No.*</label>
+                                                                <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
+                                                            </div>
+
                                                              <div class="col-md-6 form-group">
                                                             <label> City*</label>
                                                             <input type="text" name="address" id="city<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
@@ -399,10 +400,10 @@
                                                             <div class="col-md-6 form-group">
                                                                 <label>Date of 
                                                                     <%if(departure){%>
-                                                                    departure 
+                                                                    departure   from the UK*
                                                                     <%} else {%>
-                                                                       Arrival <%} %>
-                                                                    in the UK*</label>   
+                                                                       Arrival   in the UK* <%} %>
+                                                                    </label>  
                                                                     <%if(departure){%>                                                             
                                                                     <input type="date" name="date" 
                                                                     id="date_of_arrival<%=index%>" class="w-100 field"  required="" />
@@ -414,12 +415,12 @@
                                                                         <%} %> 
                                                                 </div>
                                                                 <div class="col-md-6 form-group">
-                                                                    <%if(departure){%>
-                                                                        Time of departure 
+                                                                    <label>Time of 
+                                                                        <%if(departure){%>
+                                                                        departure   from the UK*
                                                                         <%} else {%>
-                                                                            Time of arrival 
-                                                                            <%} %>
-                                                                        in the UK*</label>                                                           
+                                                                           Arrival   in the UK* <%} %>
+                                                                        </label>                                                           
                                                                     <input type="text" name="date" 
                                                                     id="time<%=index%>"  class="w-100 field" 
                                                                      required="" />
