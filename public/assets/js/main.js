@@ -738,7 +738,8 @@ function getArrivalDate(dayCombo) {
     document.getElementById("arrivaldateinput").value = value
       .toISOString()
       .substr(0, 10);
-    value.setDate(arrival.getDate() + 5);
+      console.log('here we are')
+    value.setDate(mindate.getDate() + 5);
     console.log(value.toISOString().substr(0, 10));
     date.setAttribute("min", value.toISOString().substr(0, 10));
     //date.setAttribute("min", mindate.toISOString().substr(0, 10));
