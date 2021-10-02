@@ -182,7 +182,7 @@ id='gender'  class="w-100 field"
                     .map(function (work) {
                       return `<div class='border'>
                       <ul>
-                      <li>Slot Id:${work._id}</li>
+                   
                       <li>Date :${new Date(work.bookedFor).toDateString()}</li>
                       <li>Time :${new Date(
                         work.bookedFor

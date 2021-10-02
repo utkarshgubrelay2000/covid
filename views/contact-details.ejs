@@ -285,18 +285,7 @@
                                                                 </select>
                                                                 <span class="text-lightpurple d-block mt-1">Required by Public Health Authorities</span>
                                                             </div>
-                                                            
-                                                            <%if(packAgeDetails.daysCombo=='fittofly'){%>
-                                                            <div  style='opacity: 0;'  class="col-md-12 form-group">
-                                                                <label>Transport Vehicle No.*</label>
-                                                                <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
-                                                            </div>
-                                                            <%}else{%>
-                                                                <div   class="col-md-12 form-group">
-                                                                    <label>Transport Vehicle No.*</label>
-                                                                    <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
-                                                                </div>
-                                                                <%}%>
+                                                       
                                                             <div class="col-md-6 form-group">
                                                                 <label>Email*</label>
                                                                 <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
@@ -334,45 +323,55 @@
                                                             <label> Postal Code*</label>
                                                             <input type="text" name="address" id="Postal<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
                                                         </div>
-                                                        <%if(packAgeDetails.daysCombo=='fittofly'){%>
-                                                        <div style='opacity: 0;' class="col-md-6 form-group">
-                                                            <label>Mode of Transport</label>                                                                
-                                                            <select id='transportMode<%=index%>' class="w-100 field">
-                                                         
-                                                                <option value="Train">Train</option>
-                                                                <option value="Flight">Flight</option>
-                                                                <option value="Vessel">Vessel</option>
-                                                                <option value="others">others</option>
-                                                            </select>
-                                                        </div>
-                                                        <%}else{%>
-                                                            <div style='opacity: 0;' class="col-md-6 form-group">
-                                                                <label>Mode of Transport</label>                                                                
-                                                                <select id='transportMode<%=index%>' class="w-100 field">
-                                                             
-                                                                    <option value="Train">Train</option>
-                                                                    <option value="Flight">Flight</option>
-                                                                    <option value="Vessel">Vessel</option>
-                                                                    <option value="others">others</option>
-                                                                </select>
-                                                            </div>
-                                                            <%}%>                                            
+                                                                                           
                                                             
                                                             <div class="col-md-6 form-group">
                                                                 <label>Arrival Flight/Vessel/Coach number*</label>
                                                                 <input type="number" name="number" id="arrival_vessel_number<%=index%>" class="w-100 field" placeholder="Enter details" required="">
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <div class="row">
+                                                       
                                                                     <div class="col-md-6 form-group">
                                                                         <label>Passport/ID card number*</label>
                                                                         <input type="number" name="number"
                                                                          id="passport_id<%=index%>" class="w-100 field" placeholder="Enter details" required="">
                                                                         <span class="text-lightpurple d-block mt-1">Required for Test to Release/Arrivals Test results</span>
                                                                     </div>
-                                                                  
-                                                                </div>
-                                                            </div>
+                                                                    <%if(packAgeDetails.daysCombo=='fittofly'){%>
+                                                                        <div style='opacity: 0;' class="col-md-6 form-group">
+                                                                            <label>Mode of Transport</label>                                                                
+                                                                            <select id='transportMode<%=index%>' class="w-100 field">
+                                                                         
+                                                                                <option value="Train">Train</option>
+                                                                                <option value="Flight">Flight</option>
+                                                                                <option value="Vessel">Vessel</option>
+                                                                                <option value="others">others</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <%}else{%>
+                                                                            <div style='opacity: 0;' class="col-md-6 form-group">
+                                                                                <label>Mode of Transport</label>                                                                
+                                                                                <select id='transportMode<%=index%>' class="w-100 field">
+                                                                             
+                                                                                    <option value="Train">Train</option>
+                                                                                    <option value="Flight">Flight</option>
+                                                                                    <option value="Vessel">Vessel</option>
+                                                                                    <option value="others">others</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <%}%>   
+                                                                                 
+                                                                            <%if(packAgeDetails.daysCombo=='fittofly'){%>
+                                                                                <div  style='opacity: 0;'  class="col-md-12 form-group">
+                                                                                    <label>Transport Vehicle No.*</label>
+                                                                                    <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
+                                                                                </div>
+                                                                                <%}else{%>
+                                                                                    <div   class="col-md-12 form-group">
+                                                                                        <label>Transport Vehicle No.*</label>
+                                                                                        <input type="text" name="no." id="transportno<%=index%>" class="w-100 field" placeholder="Enter your Vehicle no" required="">
+                                                                                    </div>
+                                                                                    <%}%>     
+                                                               
                                                         </div>
                                                     </div>
 
