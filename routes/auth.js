@@ -8,6 +8,12 @@ var userAuthentication=require('../controller/authController');
 router.post('/signup',userAuthentication.Signup,err=>{
   console.log('error while signup user')
 })
+router.post('/check-out-login',userAuthentication.SigninCheck,err=>{
+  console.log('error while signup user')
+})
+router.post('/check-out-signup',userAuthentication.SignupCheck,err=>{
+  console.log('error while signup user')
+})
 router.post('/sign-up-check',userAuthentication.otpCheck,err=>{
   console.log('error while signup user')
 })
@@ -16,6 +22,8 @@ router.post('/login',userAuthentication.Signin,err=>{
 })
  router.get('/signup', userAuthentication.SignupPage)
  router.get('/login', userAuthentication.LoginPage)
+ router.get('/check-out-signin/:type', userAuthentication.LoginPageSignin)
+ router.get('/check-out-signup/:type', userAuthentication.SignupPageCheckout)
 
 
 

@@ -205,6 +205,188 @@ console.log(userDetails)
     }
   });
 };
+exports.SignupCheck = (req, res) => {
+  const userDetails = req.body;
+console.log(userDetails)
+  userModel.findOne({ email: userDetails.email }).then((user) => {
+    if (user) {
+      res.status(404).json({ error: "email Address is already taken" });
+    } else {
+      bcryptjs.hash(userDetails.password, 12).then((hashedpassword) => {
+        let newStudent = new userModel({
+          ...userDetails,
+          password: hashedpassword,
+        });
+        //  console.log('done');
+        newStudent
+          .save()
+          .then((user) => {
+            let toSubsciberMail = {
+              to: userDetails.email,
+              from: "btravelclinic@gmail.com",
+              subject: " Welcome to  BT Travels Clinic ",
+              html: `<html>
+              <head>    
+                <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+                <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+                <meta content="date=no" name="format-detection"/>
+                <meta content="address=no" name="format-detection"/>
+                <meta content="telephone=no" name="format-detection"/>
+                <meta name="x-apple-disable-message-reformatting"/>
+                <title>
+                  Emailer
+                </title>
+              </head>
+              <body> 
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" style="padding:10px">      
+                  <tr>        
+                    <td align="center" valign="top">          
+                      <!-- Main -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="650">            
+                        <tr>              
+                          <td class="td" style="width:650px; min-width:650px;font-size:14px; line-height:16px;padding:0; margin:0; font-weight:normal;background:#fff;font-family: Helvetica, Arial;">  
+                            <!-- Header -->
+                            <div style="background:#0750a4;padding:30px">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="top">                    
+                                      <td>
+                                        <div style="display:inline-flex;padding-bottom: 20px;">
+                                          <div style="text-align: left;padding-right: 30px;" width="70%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/zdpdmcvrst1nl6uk3p28.png">
+                                        
+                                          </div>
+                                          <div style="text-align: left;" width="30%">
+                                            <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/gkj22fxycplxvb0a9cum.png" width="100%">
+                                          </div>
+                                        </div>
+                                      </td>
+                                  </tr>   
+                                  <tr>
+                                    <td>
+                                      <div style="color:#fff;font-size: 13px;">
+                                        <b>BLACKBURN TRAVEL CLINIC</b> in partnership with <b>BIOGRAD DIAGNOSTIC LABORATORIES LTD.</b>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                       
+                            <div style="padding:0 30px 20px 30px;background:#fff;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div style="padding-bottom: 20px;font-size: 20px;"><b>Dear ${userDetails.firstName} ${userDetails.lastName}</b></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <p style="margin-bottom: 15px;">
+                                To view and make changes to your booking, or to access your results,
+                                 you  must first activate your account. Click the link below to activate.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <a href="https://covid-user.herokuapp.com/">
+                                https://covid-user.herokuapp.com/
+                                </a>
+                            </p>
+                            <br/>
+                            <p style="margin-bottom: 15px;">
+                                Your New account has been successfully created. You can visit this link.
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <a href="https://covid-user.herokuapp.com/">
+                                https://covid-user.herokuapp.com/
+                                </a>
+                            </p>
+                            <br/>
+                            <p style="margin-bottom: 15px;">
+                               This is an automatically generate email, please do not reply.
+                            </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                            </div>
+            
+            
+                             <!-- Footer -->
+                            <div style="padding: 0 30px 0 30px;background: url(https://mrinvito.com/html/covid19_pcr/emailer/img/footer-bg.png);background-size: contain;background-repeat: no-repeat;background-position: bottom;">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                <tbody>
+                                  <tr valign="bottom">  
+                                      <td  width="75%">
+                                          <div style="text-align: left;padding-right: 30px;padding-bottom: 16px;color: #fff;">
+                                            <div style="padding-bottom:7px;font-size: 17px;">
+                                              <b>Blackburn Travel Clinic</b>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Email: <a href="mailto:blackburntravelclinic@gmail.com" style="color: #fff;text-decoration: none;">blackburntravelclinic@gmail.com</a>
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Tel: 01254 690496
+                                            </div>
+                                            <div style="padding-bottom:6px;font-size: 14px;">
+                                              Fax: 01254 692995
+                                            </div>
+                                            <div style="font-size: 18px;">
+                                              <a href="https://www.blackburntravelclinic.co.uk/" style="color: #fff;text-decoration: none;"><b>www.blackburntravelclinic.co.uk</b></a>
+                                            </div>
+                                          </div>
+                                      </td>    
+                                      <td>
+                                           <img src="https://res.cloudinary.com/dvu7miswu/image/upload/v1629272379/avjrsbl8yhsowo0jtkn9.png" width="200px">
+                                      </td>              
+                                  </tr>   
+                                </tbody>
+                              </table>
+                            </div>
+            
+                          </td>
+                        </tr>
+                      </table>
+                        <!-- END Main -->
+                    </td>
+                  </tr>
+                </table>
+              </body>
+            </html> `,
+            // attachments: [
+            //   {
+            //       filename:"certificate.png",                                         
+            //       path:`http:localhost:3000/certificate/${timeSlots.user.firstName}.png`,                                         
+            //       contentType: 'application/image'
+            //   }]
+          
+            }
+  
+            transporter.sendMail(toSubsciberMail, (err) => {
+              if (err) {
+                console.log(
+                  "some error in sending mail to subscriber",
+                  err
+                );
+                return res
+                  .status(400)
+                  .json({
+                    error: "some error in sending mail to admin",
+                  });
+              }
+              console.log("message sent successfully");
+             //  res.json("Thanks for subscribing!");
+            });
+            res.render("signin",{home:req.body.type});
+          })
+          .catch((err) => {
+            //   console.log(err.message)
+            res.status(404).json({ error: err.message });
+          });
+      });
+    }
+  });
+};
 
 /////////------ User SignIn ----////////////////
 exports.Signin = (req, res) => {
@@ -250,6 +432,51 @@ exports.Signin = (req, res) => {
         .json({ error: true, data: "Something went wrong", errMsg: err });
     });
 };
+exports.SigninCheck = (req, res) => {
+  const { email, password } = req.body;
+  console.log(email, password);
+  userModel
+    .findOne({ email: email })
+    .then((user) => {
+      if (user) {
+        // console.log(password,user.password)
+        bcryptjs
+          .compare(password, user.password)
+          .then((ifSame) => {
+            //if user is normal user
+            if (ifSame) {
+              const token = jwt.sign(
+                { secretId: user._id },
+                process.env.JWT_SECRET
+              );
+              console.log('home', req.body.type)
+              res.json({
+                message: "SignSuccess",
+                token: token,
+                email: user.email,
+                name: user.name,
+                userId: user._id,
+                home:req.body.type
+              });
+            } else {
+              res.status(400).json({ error: "Invalid password" });
+            }
+          })
+          .catch((err) => {
+            console.log("error in comparing password", err);
+          });
+      } else {
+        res
+          .status(404)
+          .json({ error: "User not found of " + email + " address" });
+      }
+    })
+    .catch((err) => {
+      res
+        .status(404)
+        .json({ error: true, data: "Something went wrong", errMsg: err });
+    });
+};
 
 exports.SignupPage = (req, res) => {
   res.render("signup");
@@ -260,6 +487,14 @@ exports.newPasswordPage = (req, res) => {
 };
 exports.LoginPage = (req, res) => {
   res.render("login");
+};
+exports.LoginPageSignin = (req, res) => {
+ 
+  res.render("signin",{home:req.params.type});
+};
+exports.SignupPageCheckout = (req, res) => {
+  let home=req.params.type
+  res.render("signupsign",{home:req.params.type});
 };
 exports.ForgetPasswordPage = (req, res) => {
   res.render("forgot");

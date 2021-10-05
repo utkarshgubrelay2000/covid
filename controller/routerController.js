@@ -1185,13 +1185,15 @@ exports.createHomeBookingPcr = async (req, res) => {
 
     setTimeout(() => {
       console.log(slots,"users");
-    //   if (promises)
-    //  //   res.json({ message: "Booking Saved!", allslots: [slots], status: true });
-    //   else
+      if (promises)
+      res.json({ message: "Booking Saved!", allslots: [slots], status: true });
+      else{
+
         res.status(400).json({
           status: false,
           data: "Something wrong",
         });
+      }
     }, 2000);
   } catch (error) {
     res.status(503).json({

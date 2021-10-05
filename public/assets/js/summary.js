@@ -274,9 +274,10 @@ id='gender'  class="w-100 field"
               <button  class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
           CONTINUE
       </button></form> `
-              : ` <button  data-toggle="modal" id='openLogin' data-target="#exampleModal" class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
+              : `<a href='/check-out-signin/test'> <button  
+              class="btn-purple d-inline-block mt-4 mb-md-0 mb-3">
       Login
-  </button>`
+  </button></a>`
           }
              
           </div>
