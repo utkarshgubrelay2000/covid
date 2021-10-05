@@ -129,7 +129,7 @@
                     .then(data =>{
                         console.log(data)
                         localStorage.setItem('covid',data.data.token)
-                        if(data.data.tpe=='home'){
+                        if(data.data.home=='home'){
                            
                             window.location.href='/test-summary-home'
                         }else{
