@@ -929,7 +929,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group checkboxes-data mb-1">
-                                    <input type="radio" id="none-people" name="select-test" class="d-none" checked
+                                       <input type="radio" id="none-people" onchange="showBtw('off')" name="select-test" class="d-none" checked
                                         required>
                                     <label for="none-people">
                                         None of the people in this booking have or will have visited, or transited
@@ -939,7 +939,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group checkboxes-data mb-1">
-                                    <input type="radio" id="one-more" name="select-test" class="d-none" required>
+                                    <input type="radio" id="one-more" onchange="showBtw('on')" name="select-test" class="d-none" required>
                                     <label for="one-more">
                                         One of more of the people in this booking have or will have, visited or
                                         transited through one or more of the above countries within 10 days prior to
@@ -968,7 +968,8 @@
                                 </div>
                             </div>
                             <div class="col-12 mt-4">
-                                <button class="btn-purple d-inline-block mr-1 ml-1" data-dismiss="modal"
+                         <button id='bookATest' class="btn-purple  mr-1 ml-1"
+                                 data-dismiss="modal"
                                     aria-label="Close">
                                     BOOK A TEST
                                 </button>

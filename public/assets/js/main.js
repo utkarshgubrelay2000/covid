@@ -1,3 +1,5 @@
+
+
 // mobile menu open close
 let str = "";
 let nav = "";
@@ -1036,4 +1038,19 @@ function cancelMySlot(id) {
       alert("Something went Wrong Required");
     },
   });
+}
+function showBtw(value){
+  let btnTEst=document.getElementById('bookATest')
+  let datepick=document.getElementById('select-dates')
+  
+  if(value==='on' ){
+    btnTEst.style.display='none'
+    
+    datepick.style.display='none'
+    console.log(value)
+  }
+  else{
+    btnTEst.style.display='block '
+    datepick.style.display='block'
+  }
 }
