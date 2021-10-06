@@ -894,7 +894,7 @@ function getSlotsDay(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+        option += `<input name='spots' class="w-100 field d-none"  value=${ele}>`;
       });
 
       $("#personSpotsForDay5").html(option);
@@ -924,7 +924,7 @@ function getSlotsDay(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+        option += `<input name='spots' class="w-100 field d-none"  value=${ele}>`;
       });
 
       $("#BookingForDay2Only").html(option);
@@ -954,7 +954,7 @@ function getSlotsDay(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spots' class="w-100 field "  value=${ele}>`;
+        option += `<input name='spots' class="w-100 field d-none"  value=${ele}>`;
       });
 
       $("#BookingForDay2Only").html(option);
@@ -984,7 +984,7 @@ function getSlotsDay(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spots5' class="w-100 field "  value=${ele}>`;
+        option += `<input name='spots5' class="w-100 field d-none"  value=${ele}>`;
       });
 
       $("#personSpotsForDay5").html(option);
@@ -1014,7 +1014,7 @@ function getSlotsDay(type) {
     } else {
       arrivalSlots.forEach((ele) => {
         var spot = ele;
-        option += `<input name='spots8' class="w-100 field "  value=${ele}>`;
+        option += `<input name='spots8' class="w-100 field d-none"  value=${ele}>`;
       });
 
       $("#spotAfterDay6").html(option);
@@ -1053,4 +1053,15 @@ function showBtw(value){
     btnTEst.style.display='block '
     datepick.style.display='block'
   }
+}
+let docs=document.getElementsByName('dob')
+let todaysDate=new Date()
+if(docs){
+  for (let index = 0; index < docs.length; index++) {
+    const element = docs[index];
+    console.log(element)
+    element.setAttribute("max", todaysDate.toISOString().substr(0, 10));
+    
+  }
+ 
 }

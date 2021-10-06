@@ -1375,3 +1375,29 @@ function cancelMySlot(id) {
     },
   });
 }
+function showBtw(value){
+  let btnTEst=document.getElementById('bookATest')
+  let datepick=document.getElementById('select-dates')
+  
+  if(value==='on' ){
+    btnTEst.style.display='none'
+    
+    datepick.style.display='none'
+    console.log(value)
+  }
+  else{
+    btnTEst.style.display='block '
+    datepick.style.display='block'
+  }
+}
+let docs=document.getElementsByName('dob')
+let todaysDate=new Date()
+if(docs){
+  for (let index = 0; index < docs.length; index++) {
+    const element = docs[index];
+    console.log(element)
+    element.setAttribute("max", todaysDate.toISOString().substr(0, 10));
+    
+  }
+ 
+}
