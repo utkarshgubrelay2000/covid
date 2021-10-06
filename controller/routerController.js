@@ -1,12 +1,9 @@
 const FAQ = require("../model/faqModel");
 const Test = require("../model/testModel");
-let { Scheduler } = require("@ssense/sscheduler");
+
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 
-let testModal = require("../model/testModel");
-// let Restaurant = require("../model/restaurantModel");
-let moment = require("moment");
 const stripe = require("stripe")(
   "sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw"
 );

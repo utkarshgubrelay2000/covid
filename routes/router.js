@@ -2,14 +2,13 @@ var express = require('express');
 var router = express.Router();
 const registerController=require('../controller/routerController')
 const bookingController=require('../controller/bookingController')
-var mutter=require('multer')
-var path=require('path');
-const verifyAdmin = require('../middleware/verifyAdmin');
+
 const requireLogin  = require('../middleware/requireLogin');
 const TimeSlots = require('../model/timeSlots');
 const stripe=require('stripe')('sk_test_51IOluBGlqCnXQgM3ZFPmiFzEzyKmVUO9MwjXaQ6dmROPbv0v1ZmIUH8YAq3X50DQR2FfagyyNLKpIoZLiI8HKXxJ00eMZxOuTw')
 const nodemailer=require('nodemailer');
 const HomeTestBooking = require('../model/HomeSlot');
+const aboutmodel = require("../model/aboutModel");
 
 
 const transporter = nodemailer.createTransport({
@@ -53,11 +52,14 @@ router.get('/',registerController.homePage)
  router.get('/privacy-policy',(req,res)=>{
    res.render('privacy-policy')
  })
- router.get('/what-we-offer',(req,res)=>{
-  res.render('what-we-offer')
+ router.get('/what-we-offer',async (req,res)=>{
+  let data = await aboutmodel.find({});
+  res.render('what-we-offer',{data:data[3]})
 })
- router.get('/terms-conditions',(req,res)=>{
-  res.render('terms-conditions')
+ router.get('/terms-conditions',async (req,res)=>{
+  let data = await aboutmodel.find({});
+
+  res.render('terms-conditions',{data:data[3]})
 })
  router.get('/find-test-center',registerController.findtestcenter)
  router.get('/notification',registerController.notification)
