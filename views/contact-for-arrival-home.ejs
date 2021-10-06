@@ -292,6 +292,32 @@
                                                                 <span class="text-lightpurple d-block mt-1">Required by Public Health Authorities</span>
                                                             </div>
                                                             <div class="col-md-6 form-group">
+                                                                <label>Ethnicity*</label>                                                                
+                                                                <select id='ethnicity<%=index%>' class="w-100 field">
+                                                                    <option value="Any Other Ethnic Category">Any Other Ethnic Category</option>
+                                                                    <option value="Any other Mixed Group">Any other Mixed Group</option>
+                                                                    <option value=" Black - Other"> Black - Other</option>
+                                                                    <option value="Bangladeshi">Bangladeshi</option>
+                                                                    <option value="Pakistani">Pakistani</option>
+                                                                    <option value="Indian">Indian</option>
+                                                                    <option value="White Other">White Other</option>
+                                                                    <option value="White">White & Black African</option>
+                                                                    <option value="White & Black Caribbean">White & Black Caribbean</option>
+                                                                    <option value="White British">White British</option>
+                                                                    <option value="White Irish">White Irish</option>
+                                                                    <option value="White">White</option>
+                                                                    <option value="Unknown">Unknown</option>
+                                                                    <option value="White And Asian">White And Asian</option>
+
+                                                                    <option value="Other / Mixed">Other / Mixed</option>
+                                                                    <option value="ISC - Unspecified">ISC - Unspecified</option>
+                                                                    <option value="Black - African">Black - African</option>
+                                                                    <option value="Black - Caribbean">Black - Caribbean</option>
+
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 form-group">
                                                                 <label>Gender</label>
                                                                 <select id='sex<%=index%>' class="w-100 field">
                                                                     <option value="male">Male</option>
@@ -299,27 +325,7 @@
                                                                 </select>
                                                                 <span class="text-lightpurple d-block mt-1">Required by Public Health Authorities</span>
                                                             </div>
-                                                            <div class="col-md-6 form-group">
-                                                                <label>Email*</label>
-                                                                <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
-                                                                <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
-                                                            </div>
-                                                            <div class="col-md-6 form-group">
-                                                                <label>Confirm Email*</label>
-                                                                <input type="email" name="email" id="confirmemail<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
-                                                                <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
-                                                            </div>
-                                                            <div class="col-md-6 form-group">
-                                                                <label>Mobile number*</label>
-                                                                <div class="row">
-                                                                  
-                                                                    <div class="col-lg-9 col-md-8 col-12">
-                                                                        <input type="tel" name="number" id='phone<%=index%>'
-                                                                        class="w-100 field txtPhone"
-                                                                         placeholder="Enter your phone" required="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                          
                                                             <div class="col-md-12 form-group">
                                                                 <label>  Address*</label>
                                                                 <input type="text" name="address" id="address<%=index%>" class="w-100 field" placeholder="Enter your address" required="">
@@ -347,7 +353,27 @@
                                                                 <option value="others">others</option>
                                                             </select>
                                                         </div>
-                                                                                                             
+                                                        <div class="col-md-6 form-group">
+                                                            <label>Email*</label>
+                                                            <input type="email" name="email" id="email<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
+                                                            <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <label>Confirm Email*</label>
+                                                            <input type="email" name="email" id="confirmemail<%=index%>" class="w-100 field" placeholder="Enter your email" required="">
+                                                            <span class="text-lightpurple d-block mt-1">We will send your test details by both SMS/Email</span>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <label>Mobile number*</label>
+                                                            <div class="row">
+                                                              
+                                                                <div class="col-lg-9 col-md-8 col-12">
+                                                                    <input type="tel" name="number" id='phone<%=index%>'
+                                                                    class="w-100 field txtPhone"
+                                                                     placeholder="Enter your phone" required="">
+                                                                </div>
+                                                            </div>
+                                                        </div>                                              
                                                             <div class="col-12">
                                                                 <hr class="mt-0 mb-4">
                                                             </div>
@@ -379,36 +405,17 @@
                                                         </div>
                                                         <div class="row align-items-end">
                                                       
-                                                            <div class="col-md-6 form-group">
-                                                                <label>Ethnicity*</label>                                                                
-                                                                <select id='ethnicity<%=index%>' class="w-100 field">
-                                                                    <option value="Any Other Ethnic Category">Any Other Ethnic Category</option>
-                                                                    <option value="Any other Mixed Group">Any other Mixed Group</option>
-                                                                    <option value=" Black - Other"> Black - Other</option>
-                                                                    <option value="Bangladeshi">Bangladeshi</option>
-                                                                    <option value="Pakistani">Pakistani</option>
-                                                                    <option value="Indian">Indian</option>
-                                                                    <option value="White Other">White Other</option>
-                                                                    <option value="White">White & Black African</option>
-                                                                    <option value="White & Black Caribbean">White & Black Caribbean</option>
-                                                                    <option value="White British">White British</option>
-                                                                    <option value="White Irish">White Irish</option>
-                                                                    <option value="White">White</option>
-                                                                    <option value="Unknown">Unknown</option>
-                                                                    <option value="White And Asian">White And Asian</option>
-
-                                                                    <option value="Other / Mixed">Other / Mixed</option>
-                                                                    <option value="ISC - Unspecified">ISC - Unspecified</option>
-                                                                    <option value="Black - African">Black - African</option>
-                                                                    <option value="Black - Caribbean">Black - Caribbean</option>
-
-                                                                    
-                                                                </select>
-                                                            </div>
+                                                         
                                                             <div class="col-md-6 form-group">
                                                                 <label>NHS number (if known)</label>                                                                
                                                                 <input type="text" name="number" 
                                                                 id="NHS<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
+                                                            </div>
+                                                            <div class="col-md-6 form-group">
+                                                                <label>The country or territory you were,
+                                                                     or will be travelling from when you arrived in the UK, 
+                                                                     and any country or territory you transited through as part of that journey*</label>                                                                
+                                                                <input type="text" name="number" id="country_before_arrival<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
                                                             </div>
                                                             <div class="col-md-6 form-group">
                                                                 <label>Date of Arrival in the UK*</label>                                                                
@@ -434,12 +441,7 @@
                                                                      arrive in England from country or territory outside of the Common Travel Area*</label>                                                                
                                                                 <input type="date" name="date" id="date_arrival_out_cta<%=index%>" class="w-100 field" value="2021-07-31" required="" />
                                                             </div>
-                                                            <div class="col-md-6 form-group">
-                                                                <label>The country or territory you were,
-                                                                     or will be travelling from when you arrived in the UK, 
-                                                                     and any country or territory you transited through as part of that journey*</label>                                                                
-                                                                <input type="text" name="number" id="country_before_arrival<%=index%>" class="w-100 field" placeholder="Enter details" required="" />
-                                                            </div>
+                                                         
                                                             <div class="col-md-6 form-group">
                                                                 <label>COVID-19 Vaccination Status*</label>                                                                
                                                                 <select id='vaccination_status<%=index%>' class="w-100 field">
