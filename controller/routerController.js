@@ -903,7 +903,7 @@ exports.notification = (req, res) => {
       })
       console.log(data);
       res.render("notifications", {
-        notification: myNotification,
+        mydata: myNotification,
         token: req.params.token,data:data
       });
     });
