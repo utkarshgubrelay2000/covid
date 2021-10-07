@@ -59,7 +59,7 @@ router.get('/',registerController.homePage)
  router.get('/terms-conditions',async (req,res)=>{
   let data = await aboutmodel.find({});
 
-  res.render('terms-conditions',{data:data[3]})
+  res.render('terms-conditions',{data:data[4]})
 })
  router.get('/find-test-center',registerController.findtestcenter)
  router.get('/notification',registerController.notification)
