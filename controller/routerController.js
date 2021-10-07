@@ -205,8 +205,17 @@ message: ${req.body.message}
   newQuery.save()
   res.render("contact");
 };
-exports.prices = (req, res) => {
-  res.render("prices");
+exports.prices =async (req, res) => {
+  let aboutDeatils = await about.find({})
+//console.log(aboutDeatils)
+let contant3=aboutDeatils[5].content3.slice(-25)
+ contant3=aboutDeatils[5].content3.slice(36)
+ let short=aboutDeatils[5].shortdescription.slice(-25)
+ short=aboutDeatils[5].shortdescription.slice(36)
+ let content=aboutDeatils[5].content.slice(-25)
+ content=aboutDeatils[5].content.slice(36)
+
+  res.render("prices",{data:aboutDeatils[5],contant3,short,content});
 };
 exports.afterYourTest = async (req, res) => {
   let faqs = await FAQ.find({}).limit(10);
