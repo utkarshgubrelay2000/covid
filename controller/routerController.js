@@ -247,30 +247,48 @@ exports.loadMoreFaqs = async (req, res) => {
   }
 };
 exports.appointment = async (req, res) => {
-  Notification.find({ UserId: req.body.userId })
-  .sort({ _id: -1 })
-  .populate("slotId")
-  .populate({
-    path: "slotId",
-    model: "TimeSlots",
-    populate: {
-      path: "packageid",
-      model: "TestPackage",
-    },
+  let userDetails = await User.findById(req.body.userId, {
+    password: 0,
+    gender: 0,
+    createdAt: 0,
+    updatedAt: 0,
+  });
+  let myslots = await TimeSlots.find({
+    UserId: req.body.userId,
+    paid: true,
+    barcode: { $exists: false },
   })
-  .populate("user")
-  .then(async (myNotification) => {
- let data= await User.findById(req.body.userId, {
-      password: 0,
-      gender: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    })
-    console.log(data);
-    res.render("notifications", {
-      mydata: myNotification,
-      token: req.params.token,data:data
-    });
+    .populate("test")
+    .populate("packageid")
+    .populate("user")
+    .limit(10);
+  let completeslots = await TimeSlots.find({
+    UserId: req.body.userId,
+    approved: true,
+    paid: true,
+  })
+    .populate("test")
+    .populate("packageid")
+    .populate("user")
+    .limit(10);
+  let reports = await TimeSlots.find({
+    approved: false,
+    paid: true,
+    barcode: { $exists: true },
+  })
+    .populate("User")
+    .populate("test")
+    .populate("packageid")
+    .populate("user")
+    .limit(10);
+  console.log(completeslots[0], req.body);
+  res.render("appointment-bookings", {
+    myslots: myslots,
+    data: userDetails,
+    token: req.params.token,
+    curpage: 1,
+    completeslots: completeslots,
+    reports: reports,
   });
 };
 exports.paginationappointment = async (req, res) => {
