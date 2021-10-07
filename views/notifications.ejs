@@ -105,9 +105,30 @@
 		</div>
 		<div class="row notifications-box mt-4">
 			<%notification.map(element=>{%>
-				<%if(element?.slotId?.packageid && element?.slotId?.test ){%>
+				<%if(element?.slotId?.packageid ){%>
 				<div class="col-md-6">
-					hello
+					<div class="notification">
+						<div class="d-xl-flex">
+						
+							<div class="content">
+								<h6 class=".text-darkgreen font-weight-bold">
+								<%=element.slotId.packageid.packageName%> 
+								</h6>
+								<h6 class="text-info font-weight-bold">
+									<%=element.status%> 
+									</h6>
+								<p>
+								For:	<%=element.user.firstName%>  <%=element.user.lastName%>
+							
+								</p>
+								<span class="date text-blue font-weight-bold">
+									<%=getDate(element.slotId.bookedFor)%> :
+									<%=getTime(element.slotId.bookedFor)%>
+								</span>
+
+							</div>
+						</div>
+					</div>
 				</div>
 		<%}})%>
 		</div>
