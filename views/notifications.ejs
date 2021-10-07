@@ -104,8 +104,9 @@
 			</div>
 		</div>
 		<div class="row notifications-box mt-4">
-			<%notification.map(element=>{%>
-		
+			<%=notification%>
+			<%notification.forEach(element=>{%>
+				<%if(element?.slotId?.packageid ){%>
 				<div class="col-md-6">
 					<div class="notification">
 						<div class="d-xl-flex">
@@ -130,7 +131,7 @@
 						</div>
 					</div>
 				</div>
-		<%})%>
+		<%}})%>
 		</div>
 	</div>
 </section>
