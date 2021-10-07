@@ -925,7 +925,21 @@ exports.profile = (req, res) => {
     updatedAt: 0,
   })
     .then((found) => {
-      res.render("profile", { data: found, token: req.params.token });
+      res.render("profile", {Setting:null, data: found, token: req.params.token });
+    })
+    .catch((err) => {
+      res.send({ msg: "Something Went Wrong " });
+    });
+};
+exports.Setting = (req, res) => {
+  User.findById(req.body.userId, {
+    password: 0,
+    gender: 0,
+    createdAt: 0,
+    updatedAt: 0,
+  })
+    .then((found) => {
+      res.render("profile", {Setting:true, data: found, token: req.params.token });
     })
     .catch((err) => {
       res.send({ msg: "Something Went Wrong " });

@@ -90,6 +90,7 @@ router.get('/',registerController.homePage)
  router.get("/pages",registerController.getAllPage);
  router.get("/page/:id",registerController.getPageById);
  router.get("/profile/:token",requireLogin,registerController.profile);
+ router.get("/setting/:token",requireLogin,registerController.Setting);
  router.post("/updateuser/:token",requireLogin,registerController.updateUser);
  router.get("/notification/:token",requireLogin,registerController.notification);
  router.get("/appointment-bookings/:token",requireLogin,registerController.appointment);

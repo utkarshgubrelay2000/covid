@@ -45,6 +45,8 @@
                                 			<h6 class="theme-color font-weight-bold">Account</h6>
                                 		</div>
                                 		<a class="dropdown-item" href="/profile/<%=token%>">Profile</a>
+										<a class="dropdown-item" href="/Setting/<%=token%>">Setting</a>
+
 		                                <a class="dropdown-item" href="/notification/<%=token%>">My Notifications</a>
 										<a class="dropdown-item" href="appointment-bookings/<%=token%>">Appointment Bookings</a>
 						
@@ -333,6 +335,11 @@
 <script src="/assets/js/loginCheck.js"></script>
 <script src="/assets/js/font-awesome-5-pro.js"></script>
 <script>
+	let seetingDefault='<%=Setting%>'
+	console.log(seetingDefault,"set")
+	if(seetingDefault){
+		showEdit(1)
+	}
 	function showEdit(type){
 		let profile=document.getElementById('profile')
 		let profileEdit=document.getElementById('editprofile')
