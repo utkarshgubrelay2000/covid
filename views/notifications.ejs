@@ -104,12 +104,12 @@
 			</div>
 		</div>
 		<div class="row notifications-box mt-4">
-			<%if(mydata.length==0){%>
+			<%mydata.map(element=>{%>
 		<span>
 
 			Hello
 		</span>
-				<%}%>
+				<%})%>
 		</div>
 	</div>
 </section>
