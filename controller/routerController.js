@@ -893,7 +893,6 @@ exports.notification = (req, res) => {
         model: "TestPackage",
       },
     })
-
     .populate("user")
     .then(async (myNotification) => {
    let data= await User.findById(req.body.userId, {
@@ -902,8 +901,8 @@ exports.notification = (req, res) => {
         createdAt: 0,
         updatedAt: 0,
       })
-     // console.log(data);
-      res.render("notification", {
+      console.log(data);
+      res.render("notifications", {
         notification: myNotification,
         token: req.params.token,data:data
       });
