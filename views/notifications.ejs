@@ -104,7 +104,12 @@
 			</div>
 		</div>
 		<div class="row notifications-box mt-4">
-			
+			<%notification.map(element=>{%>
+				<%if(element?.slotId?.packageid && element?.slotId?.test ){%>
+				<div class="col-md-6">
+					hello
+				</div>
+		<%}})%>
 		</div>
 	</div>
 </section>
